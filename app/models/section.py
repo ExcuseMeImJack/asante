@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from datetime import datetime
 
 class Section(db.Model):
     __tablename__ = "sections"
@@ -10,8 +11,9 @@ class Section(db.Model):
     name = db.Column(db.String, nullable=False)
     order = db.Column(db.Integer, nullable=False)
     board_id = db.Column(db.Integer, db.ForeignKey("boards.id"))
-    created_at = db.Column(db.Date)
-    updated_at = db.Column(db.Date)
+    created_at = db.Column(db.Date, default=datetime.today)
+    updated_at = db.Column(db.Date, default=datetime.today)
+
 
     tasks = db.relationship("Task", back_populates="sections")
     boards = db.relationship("Board", back_populates="sections")

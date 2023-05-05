@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from datetime import date
+from datetime import datetime
 
 class Task(db.Model):
     __tablename__ = "tasks"
@@ -14,8 +14,8 @@ class Task(db.Model):
     description = db.Column(db.Text)
     section_id = db.Column(db.Integer, db.ForeignKey("sections.id"))
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    created_at = db.Column(db.Date)
-    updated_at = db.Column(db.Date)
+    created_at = db.Column(db.Date, default=datetime.today)
+    updated_at = db.Column(db.Date, default=datetime.today)
 
     sections = db.relationship('Section', back_populates='tasks')
     users = db.relationship('User', back_populates='tasks')
