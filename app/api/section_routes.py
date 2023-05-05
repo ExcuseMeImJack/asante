@@ -5,7 +5,12 @@ from .auth_routes import validation_errors_to_error_messages
 from ..forms.edit_section_form import EditSectionForm
 from ..forms.create_task_form import CreateTaskForm
 
-section_routes = Blueprint('sections', __name__, url_prefix="/sections")
+section_routes = Blueprint('sections', __name__, url_prefix="/api/sections")
+
+@section_routes.route('')
+def test():
+    sections = Section.query.all()
+    return {'sections': [section.to_dict() for section in sections]}
 
 @section_routes.route('/<int:section_id>')
 @login_required

@@ -26,5 +26,4 @@ class Section(db.Model):
             'board_id': self.board_id,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            'tasks': self.tasks
         }

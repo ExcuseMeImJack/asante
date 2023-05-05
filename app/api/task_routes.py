@@ -4,7 +4,12 @@ from flask_login import login_required
 from .auth_routes import validation_errors_to_error_messages
 from ..forms.edit_task_form import EditTaskForm
 
-task_routes = Blueprint('tasks', __name__, url_prefix="/tasks")
+task_routes = Blueprint('tasks', __name__, url_prefix="/api/tasks")
+
+@task_routes.route('')
+def test():
+    tasks = Task.query.all()
+    return {'tasks': [task.to_dict() for task in tasks]}
 
 @task_routes.route('/<int:user_id>')
 @login_required

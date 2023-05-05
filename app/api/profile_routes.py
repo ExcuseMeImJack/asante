@@ -4,7 +4,12 @@ from flask_login import login_required
 from .auth_routes import validation_errors_to_error_messages
 from ..forms.edit_profile_form import EditProfileForm
 
-profile_routes = Blueprint('profiles', __name__, url_prefix="/profiles")
+profile_routes = Blueprint('profiles', __name__, url_prefix="/api/profiles")
+
+@profile_routes.route('')
+def test():
+    profiles = User.query.all()
+    return {'profiles': [profile.to_dict() for profile in profiles]}
 
 @profile_routes.route('/<int:user_id>')
 @login_required

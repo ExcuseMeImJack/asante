@@ -5,7 +5,12 @@ from .auth_routes import validation_errors_to_error_messages
 from ..forms.create_board_form import CreateBoardForm
 from ..forms.create_section_form import CreateSectionForm
 
-board_routes = Blueprint('boards', __name__, url_prefix="/boards")
+board_routes = Blueprint('boards', __name__, url_prefix="/api/boards")
+
+@board_routes.route('')
+def test():
+    boards = Board.query.all()
+    return {'boards': [board.to_dict() for board in boards]}
 
 @board_routes.route('/<int:user_id>')
 @login_required
