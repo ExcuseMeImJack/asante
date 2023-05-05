@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-
+from datetime import datetime
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -13,6 +13,14 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    name = db.Column(db.String, nullable=True)
+    about_me = db.Column(db.Text)
+    profile_pic_url = db.Column(db.String)
+    created_at = db.Column(db.Date, default=datetime.today)
+    updated_at = db.Column(db.Date, default=datetime.today)
+
+    tasks = db.relationship('Task', back_populates='users')
+    boards = db.relationship('Board', back_populates='users')
 
     @property
     def password(self):
@@ -29,5 +37,10 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'name': self.name,
+            'about_me': self.about_me,
+            'profile_pic_url': self.profile_pic_url,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at
         }
