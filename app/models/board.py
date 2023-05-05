@@ -9,7 +9,7 @@ class Board(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
     created_at = db.Column(db.Date, default=datetime.today)
     updated_at = db.Column(db.Date, default=datetime.today)
 

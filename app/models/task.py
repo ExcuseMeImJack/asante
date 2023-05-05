@@ -12,8 +12,8 @@ class Task(db.Model):
     order = db.Column(db.Integer, nullable=False)
     due_date = db.Column(db.DateTime)
     description = db.Column(db.Text)
-    section_id = db.Column(db.Integer, db.ForeignKey("sections.id"))
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    section_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('sections.id')))
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
     created_at = db.Column(db.Date, default=datetime.today)
     updated_at = db.Column(db.Date, default=datetime.today)
 
