@@ -11,7 +11,7 @@ board_routes = Blueprint('boards', __name__, url_prefix="/boards")
 @login_required
 # Get all boards of current user
 def get_boards(user_id):
-    boards = Board.query.get(user_id)
+    boards = Board.query.filter(Board.user_id == user_id)
     return {'boards': [board.to_dict() for board in boards]}
 
 @board_routes.route('/<int:user_id>', methods=["POST"])
@@ -55,7 +55,7 @@ def get_sections(board_id):
 
 @board_routes.route('/<int:board_id>', methods=["POST"])
 @login_required
-# Create a board of current user
+# Create a section of current user
 def create_section(board_id):
     section_count = len(Section.query.filter(Section.board_id == board_id))
     form = CreateSectionForm()
