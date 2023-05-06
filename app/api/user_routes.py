@@ -16,7 +16,7 @@ def users():
     Query for all users and returns them in a list of user dictionaries
     """
     users = User.query.all()
-    return {'users': [user.to_dict() for user in users]}
+    return {'users': [user.to_dict() for user in users] }
 
 @user_routes.route('/<int:id>/tasks')
 @login_required
@@ -24,7 +24,7 @@ def users():
 def get_tasks(user_id):
     #Filter all tasks by the user id
     tasks = Task.query.filter(Task.user_id == user_id)
-    return {'tasks': [task.to_dict() for task in tasks]}
+    return {'Tasks': [task.to_dict() for task in tasks] }
 
 @user_routes.route('/<int:id>/boards')
 @login_required
@@ -32,7 +32,7 @@ def get_tasks(user_id):
 def get_boards(id):
     #Filter all boards by the user id
     boards = Board.query.filter(Board.user_id == id)
-    return {'boards': [board.to_dict() for board in boards]}
+    return {'Boards': [board.to_dict() for board in boards] }
 
 @user_routes.route('/<int:id>')
 @login_required
@@ -42,7 +42,7 @@ def user(id):
     Query for a user by id and returns that user in a dictionary
     """
     user = User.query.get(id)
-    return user.to_dict()
+    return { "user": user.to_dict() }
 
 @user_routes.route('/<int:id>/task/<int:section_id>', methods=["POST"])
 @login_required
@@ -68,7 +68,7 @@ def create_task(id, section_id):
         db.session.add(task)
         # Updates database
         db.session.commit()
-        return task.to_dict()
+        return { "Task": task.to_dict() }
     # Returns validation errors
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 

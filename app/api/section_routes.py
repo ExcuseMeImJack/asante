@@ -16,7 +16,7 @@ section_routes = Blueprint('sections', __name__, url_prefix="/api/sections")
 def get_section(id):
     # Query a section by section id
     section = Section.query.get(id)
-    return section.to_dict()
+    return { "Section": section.to_dict() }
 
 @section_routes.route('/<int:id>', methods=["DELETE"])
 @login_required
@@ -44,7 +44,7 @@ def edit_section(id):
         section.name=form.data['name']
         # Updates database
         db.session.commit()
-        return section.to_dict()
+        return { "Section": section.to_dict() }
     # Returns validation errors
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -69,6 +69,6 @@ def create_section(board_id):
         db.session.add(section)
         # Updates database
         db.session.commit()
-        return section.to_dict()
+        return { "Section": section.to_dict() }
     # Returns validation errors
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

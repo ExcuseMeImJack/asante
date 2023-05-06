@@ -13,7 +13,7 @@ task_routes = Blueprint('tasks', __name__, url_prefix="/api/tasks")
 def get_task(task_id):
     # Query a task by task id
     task = Task.query.get(task_id)
-    return task.to_dict()
+    return { "Task": task.to_dict() }
 
 @task_routes.route('/<int:task_id>', methods=["PUT"])
 @login_required
@@ -32,7 +32,8 @@ def edit_task(task_id):
         task.description=form.data["description"]
         # Updates database
         db.session.commit()
-        return task.to_dict()
+        return { "Task": task.to_dict() }
+
     # Returns validation errors
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 

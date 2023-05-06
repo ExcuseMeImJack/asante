@@ -14,7 +14,7 @@ board_routes = Blueprint('boards', __name__, url_prefix="/api/boards")
 def get_sections(board_id):
     # Query all sections by board id
     sections = Section.query.filter(Section.board_id,)
-    return {'sections': [section.to_dict() for section in sections]}
+    return { 'sections': [section.to_dict() for section in sections] }
 
 @board_routes.route('/<int:user_id>', methods=["POST"])
 @login_required
@@ -34,7 +34,7 @@ def create_board(user_id):
         db.session.add(board)
         # Updates database
         db.session.commit()
-        return board.to_dict()
+        return { "Board": board.to_dict() }
     # Returns validation errors
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -44,7 +44,7 @@ def create_board(user_id):
 def get_board(board_id):
     # Query all boards by board id
     board = Board.query.get(board_id)
-    return board.to_dict()
+    return { "Board": board.to_dict() }
 
 @board_routes.route('/<int:board_id>', methods=["DELETE"])
 @login_required
