@@ -3,7 +3,7 @@ from app.models import Board, db, Section
 from flask_login import login_required
 from .auth_routes import validation_errors_to_error_messages
 from ..forms.create_board_form import CreateBoardForm
-from ..forms.create_section_form import CreateSectionForm
+
 
 board_routes = Blueprint('boards', __name__, url_prefix="/api/boards")
 
@@ -12,7 +12,6 @@ def test():
     boards = Board.query.all()
     return {'boards': [board.to_dict() for board in boards]}
 
-# Check routes for multiple endpoints
 @board_routes.route('/<int:user_id>')
 @login_required
 # Get all boards of current user
@@ -43,7 +42,7 @@ def get_board(board_id):
     board = Board.query.get(board_id)
     return board.to_dict()
 
-@board_routes.route('/<int:board_id>')
+@board_routes.route('/<int:board_id>', methods=["DELETE"])
 @login_required
 # Delete single board by id
 def delete_board(board_id):
@@ -56,23 +55,5 @@ def delete_board(board_id):
 @login_required
 # Get all sections by board id
 def get_sections(board_id):
-    sections = session.query(Board).join(Section)
+    sections = Section.query.filter(Section.board_id,)
     return {'sections': [section.to_dict() for section in sections]}
-
-@board_routes.route('/<int:board_id>', methods=["POST"])
-@login_required
-# Create a section of current user
-def create_section(board_id):
-    section_count = len(Section.query.filter(Section.board_id == board_id))
-    form = CreateSectionForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        section = Section(
-            name=form.data['name'],
-            order = section_count,
-            board_id=board_id,
-        )
-        db.session.add(section)
-        db.session.commit()
-        return section.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

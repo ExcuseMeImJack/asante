@@ -4,6 +4,7 @@ from flask_login import login_required
 from .auth_routes import validation_errors_to_error_messages
 from ..forms.edit_section_form import EditSectionForm
 from ..forms.create_task_form import CreateTaskForm
+from ..forms.create_section_form import CreateSectionForm
 
 section_routes = Blueprint('sections', __name__, url_prefix="/api/sections")
 
@@ -60,4 +61,22 @@ def create_task(user_id, section_id):
         db.session.add(task)
         db.session.commit()
         return task.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@section_routes.route('/<int:board_id>', methods=["POST"])
+@login_required
+# Create a section of current user
+def create_section(board_id):
+    section_count = len(Section.query.filter(Section.board_id == board_id))
+    form = CreateSectionForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        section = Section(
+            name=form.data['name'],
+            order = section_count,
+            board_id=board_id,
+        )
+        db.session.add(section)
+        db.session.commit()
+        return section.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
