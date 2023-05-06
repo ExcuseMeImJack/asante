@@ -6,18 +6,6 @@ from ..forms.edit_task_form import EditTaskForm
 
 task_routes = Blueprint('tasks', __name__, url_prefix="/api/tasks")
 
-@task_routes.route('')
-def test():
-    tasks = Task.query.all()
-    return {'tasks': [task.to_dict() for task in tasks]}
-
-@task_routes.route('/<int:user_id>')
-@login_required
-# Get all tasks of current user
-def get_tasks(user_id):
-    tasks = Task.query.filter(Task.user_id == user_id)
-    return {'tasks': [task.to_dict() for task in tasks]}
-
 @task_routes.route('/<int:task_id>')
 @login_required
 # Get task by id

@@ -7,17 +7,13 @@ from ..forms.create_board_form import CreateBoardForm
 
 board_routes = Blueprint('boards', __name__, url_prefix="/api/boards")
 
-@board_routes.route('')
-def test():
-    boards = Board.query.all()
-    return {'boards': [board.to_dict() for board in boards]}
 
-@board_routes.route('/<int:user_id>')
+@board_routes.route('/<int:board_id>/sections')
 @login_required
-# Get all boards of current user
-def get_boards(user_id):
-    boards = Board.query.filter(Board.user_id == user_id)
-    return {'boards': [board.to_dict() for board in boards]}
+# Get all sections by board id
+def get_sections(board_id):
+    sections = Section.query.filter(Section.board_id,)
+    return {'sections': [section.to_dict() for section in sections]}
 
 @board_routes.route('/<int:user_id>', methods=["POST"])
 @login_required
@@ -50,10 +46,3 @@ def delete_board(board_id):
     db.session.delete(board)
     db.session.commit()
     return {'message': 'Successfully deleted!'}
-
-@board_routes.route('/<int:board_id>/sections')
-@login_required
-# Get all sections by board id
-def get_sections(board_id):
-    sections = Section.query.filter(Section.board_id,)
-    return {'sections': [section.to_dict() for section in sections]}
