@@ -5,7 +5,7 @@ from ..forms.create_task_form import CreateTaskForm
 from .auth_routes import validation_errors_to_error_messages
 from ..forms.edit_profile_form import EditProfileForm
 
-
+# Creates a Blueprint for user routes
 user_routes = Blueprint('users', __name__)
 
 
@@ -48,7 +48,7 @@ def user(id):
 @login_required
 # Create a task
 def create_task(id, section_id):
-    # Gets the length of the section
+    # Gets the length of the tasks in a section
     task_count = len(Task.query.filter(Task.section_id == section_id))
     # Creates instance of create task form class
     form = CreateTaskForm()
@@ -64,7 +64,9 @@ def create_task(id, section_id):
             section_id=section_id,
             user_id=id,
         )
+        # Add task to database
         db.session.add(task)
+        # Updates database
         db.session.commit()
         return task.to_dict()
     # Returns validation errors
@@ -75,14 +77,20 @@ def create_task(id, section_id):
 @login_required
 # Edit profile by user id
 def edit_profile(user_id):
+    # Query a user by user id
     profile = User.query.get(user_id)
+    # Creates instance of edit profile form class
     form = EditProfileForm()
+    # Uses values from the form instance to edit a user information
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         profile.name=form.data["name"]
         profile.about_me=form.data["about_me"]
         profile.profile_pic_url=form.data["profile_pic_url"]
+        # Updates database
         db.session.commit()
         return profile.to_dict()
+    # Returns validation errors
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
@@ -90,7 +98,10 @@ def edit_profile(user_id):
 @login_required
 # Delete user by id
 def delete_user(user_id):
+    # Query a user by user id
     profile = User.query.get(user_id)
+    # Deletes profile from database
     db.session.delete(profile)
+    # Updates database
     db.session.commit()
     return {'message': 'Successfully deleted!'}

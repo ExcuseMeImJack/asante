@@ -4,12 +4,14 @@ from flask_login import login_required
 from .auth_routes import validation_errors_to_error_messages
 from ..forms.edit_task_form import EditTaskForm
 
+# Creates a Blueprint for task routes
 task_routes = Blueprint('tasks', __name__, url_prefix="/api/tasks")
 
 @task_routes.route('/<int:task_id>')
 @login_required
 # Get task by id
 def get_task(task_id):
+    # Query a task by task id
     task = Task.query.get(task_id)
     return task.to_dict()
 
@@ -17,21 +19,31 @@ def get_task(task_id):
 @login_required
 # Edit task by id
 def edit_task(task_id):
+    # Query a task by task id
     task = Task.query.get(task_id)
+    # Creates instance of edit task form class
     form = EditTaskForm()
+    # Uses values from the form instance to edit a task
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        # Uses values from the form instance to edit task
         task.name=form.data["name"]
         task.due_date=form.data["due_date"]
         task.description=form.data["description"]
+        # Updates database
         db.session.commit()
         return task.to_dict()
+    # Returns validation errors
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @task_routes.route('/<int:task_id>')
 @login_required
 # Delete task by id
 def delete_task(task_id):
+    # Query a task by task id
     task = Task.query.get(task_id)
+    # Deletes task from database
     db.session.delete(task)
+    # Updates database
     db.session.commit()
     return {'message': 'Successfully deleted!'}
