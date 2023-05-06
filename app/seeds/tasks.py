@@ -8,89 +8,104 @@ def seed_tasks():
     task1 = Task(
         name='Task 1',
         order=0,
-        section_id=1
+        section_id=1,
+        user_id='1'
     )
     task2 = Task(
         name='Task 2',
         order=1,
         description='This is task numero dos',
-        section_id=2
+        section_id=2,
+        user_id='1'
     )
     task3 = Task(
         name='Task 3',
         order=0,
-        section_id=3
+        section_id=3,
+        user_id='2'
     )
     task4 = Task(
         name='Task 4',
         order=1,
         description='This is task numero quatro',
-        section_id=4
+        section_id=4,
+        user_id='2'
     )
     task5 = Task(
         name='Task 5',
         order=0,
-        section_id=5
+        section_id=5,
+        user_id='3'
     )
     task6 = Task(
         name='Task 6',
         order=1,
         description='This is task numero seis',
-        section_id=6
+        section_id=6,
+        user_id='3'
     )
     task7 = Task(
         name='Task 7',
         order=0,
-        section_id=7
+        section_id=7,
+        user_id='4'
     )
     task8 = Task(
         name='Task 8',
         order=1,
         description='This is task numero ocho',
-        section_id=8
+        section_id=8,
+        user_id='4'
     )
     task9 = Task(
         name='Task 9',
         order=0,
-        section_id=9
+        section_id=9,
+        user_id='5'
     )
     task10 = Task(
         name='Task 10',
         order=1,
         description='This is task numero diez',
-        section_id=10
+        section_id=10,
+        user_id='5'
     )
     task11 = Task(
         name='Task 11',
         order=0,
         description='This is task numero once',
-        section_id=2
+        section_id=2,
+        user_id='1'
     )
     task12 = Task(
         name='Task 12',
         order=0,
         description='This is task numero doce',
-        section_id=4
+        section_id=4,
+        user_id='2'
     )
     task13 = Task(
         name='Task 13',
         order=0,
         description='This is task numero trece',
-        section_id=6
+        section_id=6,
+        user_id='3'
     )
     task14 = Task(
         name='Task 14',
         order=0,
         description='This is task numero catorce',
-        section_id=8
+        section_id=8,
+        user_id='4'
     )
     task15 = Task(
         name='Task 15',
         order=0,
         description='This is task numero quince',
-        section_id=10
+        section_id=10,
+        user_id='5'
     )
-    
+
     db.session.add(task1)
     db.session.add(task2)
     db.session.add(task3)

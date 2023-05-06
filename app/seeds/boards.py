@@ -6,19 +6,24 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_boards():
     board1 = Board(
-        name='Board 1'
+        name='Board 1',
+        user_id='1'
     )
     board2 = Board(
-        name='Board 2'
+        name='Board 2',
+        user_id='2'
     )
     board3 = Board(
-        name='Board 3'
+        name='Board 3',
+        user_id='3'
     )
     board4 = Board(
-        name='Board 4'
+        name='Board 4',
+        user_id='4'
     )
     board5 = Board(
-        name='Board 5'
+        name='Board 5',
+        user_id='5'
     )
 
     db.session.add(board1)

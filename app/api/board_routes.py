@@ -12,6 +12,7 @@ def test():
     boards = Board.query.all()
     return {'boards': [board.to_dict() for board in boards]}
 
+# Check routes for multiple endpoints
 @board_routes.route('/<int:user_id>')
 @login_required
 # Get all boards of current user
