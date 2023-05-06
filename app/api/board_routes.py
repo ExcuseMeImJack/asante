@@ -22,7 +22,6 @@ def get_sections(board_id):
 def create_board(user_id):
     # Creates instance of create board form class
     form = CreateBoardForm()
-    # Uses values from the form instance to create new board
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         # Uses values from the form instance to create new board
