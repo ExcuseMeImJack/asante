@@ -7,6 +7,10 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Users from "./components/Users/Users"
 import SingleBoard from "./components/Boards/SingleBoard"
+import SingleTask from "./components/Tasks/SingleTask"
+import SingleSection from "./components/Sections/SingleSection";
+import Sections from "./components/Sections/Sections"
+import UsersTasks from "./components/Tasks/UsersTasks";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +24,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path="/" >
+            <UsersTasks />
+          </Route>
           <Route path="/login" >
             <LoginFormPage />
           </Route>
@@ -28,9 +35,16 @@ function App() {
           </Route>
           <Route path="/boards/:boardId">
             <SingleBoard />
+            <Sections />
           </Route>
           <Route path="/users">
             <Users />
+          </Route>
+          <Route path="/task/:taskId">
+            <SingleTask />
+          </Route>
+          <Route path="/sections/:sectionId">
+            <SingleSection />
           </Route>
         </Switch>
       )}

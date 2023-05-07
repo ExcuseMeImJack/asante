@@ -22,7 +22,7 @@ export const getBoardById = (boardId) => async (dispatch) => {
 		}
 		dispatch(getBoard(data));
 	}
-};
+}
 
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
