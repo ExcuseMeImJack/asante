@@ -23,7 +23,6 @@ function Sections(){
             {sections.map((section) => {
             return  <div key={section.id}>
                         <div>{section.name}</div>
-                        <div>{section.order}</div>
                     </div>
             })}
         </div>
