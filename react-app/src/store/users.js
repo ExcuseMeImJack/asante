@@ -19,7 +19,6 @@ export const getAllUsers = () => async (dispatch) => {
 		if (data.errors) {
 			return;
 		}
-        console.log(data)
 		dispatch(getUsers(data));
 	}
 };
@@ -27,7 +26,7 @@ export const getAllUsers = () => async (dispatch) => {
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case GET_USERS:
-			return state = {...state, users: action.payload };
+			return state = {...state, users: action.payload.users };
 		default:
 			return state;
 	}
