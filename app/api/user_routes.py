@@ -21,9 +21,9 @@ def users():
 @user_routes.route('/<int:id>/tasks')
 @login_required
 # Get all tasks of current user
-def get_tasks(user_id):
+def get_tasks(id):
     #Filter all tasks by the user id
-    tasks = Task.query.filter(Task.user_id == user_id)
+    tasks = Task.query.filter(Task.user_id == id)
     return {'tasks': [task.to_dict() for task in tasks]}
 
 @user_routes.route('/<int:id>/boards')

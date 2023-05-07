@@ -11,6 +11,8 @@ import SingleTask from "./components/Tasks/SingleTask"
 import SingleSection from "./components/Sections/SingleSection";
 import Sections from "./components/Sections/Sections"
 import UsersTasks from "./components/Tasks/UsersTasks";
+import UsersBoards from "./components/Boards/UsersBoards";
+import UserProfile from "./components/Users/UserProfile";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,6 +28,8 @@ function App() {
         <Switch>
           <Route exact path="/" >
             <UsersTasks />
+            <UsersBoards />
+            <UserProfile />
           </Route>
           <Route path="/login" >
             <LoginFormPage />

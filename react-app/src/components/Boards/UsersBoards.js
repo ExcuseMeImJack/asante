@@ -1,0 +1,32 @@
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getBoardsByUserId } from '../../store/boards';
+import './UsersBoards.css'
+
+function UsersBoards(){
+    const dispatch = useDispatch();
+    const storeBoards = useSelector((state) => state.boards);
+    const userId = useSelector((state) => state.session.user.id);
+
+    //dispatch thunk to populate storeBoards variable
+    useEffect(() => {
+        dispatch(getBoardsByUserId(userId))
+    }, [dispatch, userId])
+
+    // grab boards array from the storeUsers object
+    if (!storeBoards.boards) return <h1>...Loading</h1>
+    const boards = storeBoards.boards.boards;
+
+	return (
+        <div>
+            <h1>My Boards</h1>
+            {boards.map((board) => {
+            return  <div key={board.id}>
+                        <div>{board.name}</div>
+                    </div>
+            })}
+        </div>
+	);
+}
+
+export default UsersBoards;
