@@ -4,6 +4,7 @@ from app.models import db, User, Board, Task
 from ..forms.create_task_form import CreateTaskForm
 from .auth_routes import validation_errors_to_error_messages
 from ..forms.edit_profile_form import EditProfileForm
+from .aws_helpers import upload_file_to_s3, get_unique_filename
 
 # Creates a Blueprint for user routes
 user_routes = Blueprint('users', __name__)
@@ -77,9 +78,19 @@ def edit_profile():
     # Uses values from the form instance to edit a user information
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        profile_pic = form.data["profile_pic_url"]
+        profile_pic.filename = get_unique_filename(profile_pic.filename)
+        upload = upload_file_to_s3(profile_pic)
+
+        if "url" not in upload:
+            return {'errors': [upload]}
+
+        profile_pic_url = upload["url"]
+
         profile.name=form.data["name"]
         profile.about_me=form.data["about_me"]
-        profile.profile_pic_url=form.data["profile_pic_url"]
+        profile.profile_pic_url=profile_pic_url
+
         # Updates database
         db.session.commit()
         return profile.to_dict()
