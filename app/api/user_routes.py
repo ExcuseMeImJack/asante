@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.models import db, User, Board, Task
 from ..forms.create_task_form import CreateTaskForm
 from .auth_routes import validation_errors_to_error_messages
@@ -8,52 +8,45 @@ from ..forms.edit_profile_form import EditProfileForm
 # Creates a Blueprint for user routes
 user_routes = Blueprint('users', __name__)
 
-
-@user_routes.route('/')
-@login_required
-def users():
-    """
-    Query for all users and returns them in a list of user dictionaries
-    """
-    users = User.query.all()
-    return {'users': [user.to_dict() for user in users] }
-
-@user_routes.route('/<int:id>/tasks')
+@user_routes.route('/tasks')
 @login_required
 # Get all tasks of current user
-def get_tasks(user_id):
+def get_tasks():
+    user_id = current_user.to_dict().id
     #Filter all tasks by the user id
     tasks = Task.query.filter(Task.user_id == user_id)
     return {'Tasks': [task.to_dict() for task in tasks] }
 
-@user_routes.route('/<int:id>/boards')
+@user_routes.route('/boards')
 @login_required
 # Get all boards of current user
-def get_boards(id):
+def get_boards():
+    user_id = current_user.to_dict().id
     #Filter all boards by the user id
-    boards = Board.query.filter(Board.user_id == id)
+    boards = Board.query.filter(Board.user_id == user_id)
     return {'Boards': [board.to_dict() for board in boards] }
 
-@user_routes.route('/<int:id>')
+@user_routes.route('')
 @login_required
 # Get profile of current user
-def user(id):
+def user():
     """
     Query for a user by id and returns that user in a dictionary
     """
-    user = User.query.get(id)
-    return { "user": user.to_dict() }
+    profile = User.query.get(current_user.to_dict().id)
+    return { "user": profile.to_dict() }
 
-@user_routes.route('/<int:id>/task/<int:section_id>', methods=["POST"])
+@user_routes.route('/task/<int:section_id>', methods=["POST"])
 @login_required
 # Create a task
-def create_task(id, section_id):
+def create_task(section_id):
     # Gets the length of the tasks in a section
     task_count = len(Task.query.filter(Task.section_id == section_id))
     # Creates instance of create task form class
     form = CreateTaskForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        user_id = current_user.to_dict().id
         # Uses values from the form instance to create new task
         task = Task(
             name=form.data['name'],
@@ -62,7 +55,7 @@ def create_task(id, section_id):
             due_date=form.data['due_date'],
             description=form.data['description'],
             section_id=section_id,
-            user_id=id,
+            user_id=user_id,
         )
         # Add task to database
         db.session.add(task)
@@ -73,12 +66,12 @@ def create_task(id, section_id):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-@user_routes.route('/<int:user_id>', methods=["PUT"])
+@user_routes.route('', methods=["PUT"])
 @login_required
 # Edit profile by user id
-def edit_profile(user_id):
+def edit_profile():
     # Query a user by user id
-    profile = User.query.get(user_id)
+    profile = User.query.get(current_user.to_dict().id)
     # Creates instance of edit profile form class
     form = EditProfileForm()
     # Uses values from the form instance to edit a user information
@@ -94,12 +87,12 @@ def edit_profile(user_id):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-@user_routes.route('/<int:user_id>', methods=['DELETE'])
+@user_routes.route('', methods=['DELETE'])
 @login_required
 # Delete user by id
-def delete_user(user_id):
+def delete_user():
     # Query a user by user id
-    profile = User.query.get(user_id)
+    profile = User.query.get(current_user.to_dict().id)
     # Deletes profile from database
     db.session.delete(profile)
     # Updates database
