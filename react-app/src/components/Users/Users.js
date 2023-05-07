@@ -7,10 +7,14 @@ function Users(){
     const dispatch = useDispatch();
     const storeUsers = useSelector((state) => state.users);
 
+    //dispatch thunk to populate storeUsers variable
     useEffect(() => {
         dispatch(getAllUsers())
     }, [dispatch])
+
+    // grab users array from the storeUsers object
     const users = storeUsers.users;
+
 	return (
         <div>
             <h1>Users</h1>
@@ -21,7 +25,6 @@ function Users(){
                     <img className="user-profile-img" src={user.profile_pic_url} alt="profile pic" />
                </div>
             })}
-            <div>{}</div>
         </div>
 	);
 }

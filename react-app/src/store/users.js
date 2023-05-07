@@ -8,6 +8,7 @@ const getUsers = (users) => ({
 
 const initialState = { users: null };
 
+// get users thunk
 export const getAllUsers = () => async (dispatch) => {
 	const response = await fetch("/api/users/", {
 		headers: {
