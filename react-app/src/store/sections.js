@@ -14,7 +14,7 @@ const getSection = (section) => ({
 
 const initialState = { sections: null, section: null };
 
-// get sections thunk
+// get sections by board id thunk
 export const getSectionsByBoardId = (boardId) => async (dispatch) => {
     const response = await fetch(`/api/boards/${boardId}/sections`, {
         headers: {
@@ -30,7 +30,7 @@ export const getSectionsByBoardId = (boardId) => async (dispatch) => {
     }
 };
 
-// get section by id thunk
+// get section by section id thunk
 export const getSectionById = (sectionId) => async (dispatch) => {
     const response = await fetch(`/api/sections/${sectionId}`, {
         headers: {

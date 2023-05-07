@@ -8,16 +8,16 @@ function SingleSection(){
     const dispatch = useDispatch();
     const { sectionId } = useParams();
     const storeSections = useSelector((state) => state.sections);
+
     //dispatch thunk to populate storeSections variable
     useEffect(() => {
         dispatch(getSectionById(sectionId))
     }, [dispatch, sectionId])
 
-    // grab users array from the storeUsers object
-    console.log(storeSections)
     const section = storeSections.section;
-    console.log(section)
+
     if (!section) return <h1>...Loading</h1>
+
 	return (
         <div>
             <h1>Section</h1>

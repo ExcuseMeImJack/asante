@@ -14,9 +14,11 @@ function Sections(){
         dispatch(getSectionsByBoardId(boardId))
     }, [dispatch, boardId])
 
-    // grab Sections array from the storeSections object
+    // grab sections array from the storeSections object
     const sections = storeSections.sections;
+
     if (!sections) return <h1>...Loading</h1>
+
 	return (
         <div>
             <h1>Sections</h1>

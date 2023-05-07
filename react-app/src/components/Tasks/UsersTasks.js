@@ -8,13 +8,14 @@ function UsersTasks(){
     const storeTasks = useSelector((state) => state.tasks);
     const userId = useSelector((state) => state.session.user.id);
 
-    //dispatch thunk to populate storeUsers variable
+    //dispatch thunk to populate storeTasks variable
     useEffect(() => {
         dispatch(getTasksByUserId(userId))
     }, [dispatch, userId])
 
-    // grab users array from the storeUsers object
+    // grab tasks array from the storeTasks object
     if (!storeTasks.tasks) return <h1>...Loading</h1>
+
     const tasks = storeTasks.tasks.tasks;
 
 	return (

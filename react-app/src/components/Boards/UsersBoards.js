@@ -13,8 +13,8 @@ function UsersBoards(){
         dispatch(getBoardsByUserId(userId))
     }, [dispatch, userId])
 
-    // grab boards array from the storeUsers object
     if (!storeBoards.boards) return <h1>...Loading</h1>
+    // grab boards array from the storeBoards object
     const boards = storeBoards.boards.boards;
 
 	return (

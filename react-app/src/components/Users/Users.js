@@ -14,7 +14,9 @@ function Users(){
 
     // grab users array from the storeUsers object
     const users = storeUsers.users;
+
     if (!users) return <h1>...Loading</h1>
+
 	return (
         <div>
             <h1>Users</h1>
