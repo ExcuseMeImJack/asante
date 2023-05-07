@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Users from "./components/Users/Users"
+import Boards from "./components/Boards/Boards"
 
 function App() {
   const dispatch = useDispatch();
@@ -25,9 +26,14 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route path="/boards/:boardId">
+            <Boards />
+          </Route>
+          <Route path="/users">
+            <Users />
+          </Route>
         </Switch>
       )}
-      <Users />
     </>
   );
 }

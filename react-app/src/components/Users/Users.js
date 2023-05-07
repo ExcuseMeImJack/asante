@@ -14,16 +14,16 @@ function Users(){
 
     // grab users array from the storeUsers object
     const users = storeUsers.users;
-
+    if (!users) return <h1>...Loading</h1>
 	return (
         <div>
             <h1>Users</h1>
-            {users && users.map((user) => {
-        return <div key={user.id}>
-                    <div>{user.username}</div>
-                    <div>{user.about_me}</div>
-                    <img className="user-profile-img" src={user.profile_pic_url} alt="profile pic" />
-               </div>
+            {users.map((user) => {
+            return  <div key={user.id}>
+                        <div>{user.username}</div>
+                        <div>{user.about_me}</div>
+                        <img className="user-profile-img" src={user.profile_pic_url} alt="profile pic" />
+                    </div>
             })}
         </div>
 	);
