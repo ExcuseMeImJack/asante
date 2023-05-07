@@ -6,7 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Users from "./components/Users/Users"
-import Boards from "./components/Boards/Boards"
+import SingleBoard from "./components/Boards/SingleBoard"
 
 function App() {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route path="/boards/:boardId">
-            <Boards />
+            <SingleBoard />
           </Route>
           <Route path="/users">
             <Users />

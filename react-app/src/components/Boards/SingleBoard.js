@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBoardById } from '../../store/boards';
-import './Boards.css'
+import './SingleBoard.css'
 import { useParams } from 'react-router-dom';
 
-function Boards(){
+function SingleBoard(){
     const dispatch = useDispatch();
     const { boardId } = useParams();
     const storeBoards = useSelector((state) => state.boards);
@@ -25,4 +25,4 @@ function Boards(){
 	);
 }
 
-export default Boards;
+export default SingleBoard;
