@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllUsers } from '../../store/users';
-// import './Users.css'
+import './Users.css'
 
 function Users(){
     const dispatch = useDispatch();
