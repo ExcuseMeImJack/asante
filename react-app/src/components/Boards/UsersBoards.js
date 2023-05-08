@@ -20,7 +20,7 @@ function UsersBoards(){
     const boards = storeBoards.boards;
 
     if (!boards) return <h1>...Loading</h1>
-    console.log(boards)
+
 	return (
         <div>
             <h1>My Boards</h1>

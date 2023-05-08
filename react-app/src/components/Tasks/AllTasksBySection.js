@@ -24,7 +24,7 @@ function AllTasksBySection({sectionId}){
 	return (
         <div>
             {tasks.map((task) => {
-                return <div>
+                return <div key={task.id}>
                     <SingleTask task={task}/>
                 </div>
             })}

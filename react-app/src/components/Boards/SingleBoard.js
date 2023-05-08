@@ -5,6 +5,7 @@ import './SingleBoard.css'
 import { useParams } from 'react-router-dom';
 import { getSectionsByBoardId } from '../../store/sections';
 import Sections from '../Sections/Sections';
+import CreateSectionForm from '../Sections/CreateSectionForm';
 
 function SingleBoard(){
     const dispatch = useDispatch();
@@ -28,7 +29,7 @@ function SingleBoard(){
             <h2>{board.name}</h2>
             {!buttonHidden
             ? <button className="add-section-button" onClick={() => {setButtonHidden(true)}}>Add New Section</button>
-            : <input type="text" placeholder='Section Name'></input>}
+            : <CreateSectionForm boardId={board.id} />}
             <div>
                 <Sections />
             </div>

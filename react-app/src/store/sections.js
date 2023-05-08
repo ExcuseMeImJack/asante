@@ -59,6 +59,7 @@ export const getSectionById = (sectionId) => async (dispatch) => {
 
 // add section by board id
 export const addSectionByBoardId = (section, boardId) => async (dispatch) => {
+    console.log(section, boardId)
     const response = await fetch(`/api/sections/${boardId}`, {
         method: "POST",
         headers: {
