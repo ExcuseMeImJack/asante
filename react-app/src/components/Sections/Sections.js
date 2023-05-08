@@ -11,7 +11,6 @@ function Sections() {
     const { boardId } = useParams()
     const dispatch = useDispatch();
     const storeSections = useSelector((state) => state.sections);
-    const [buttonHidden, setButtonHidden] = useState(false);
 
     //dispatch thunk to populate storeSections variable
     useEffect(() => {
@@ -31,9 +30,6 @@ function Sections() {
                 {sections.map((section) => {
                     return <div key={section.id} className='single-section-border'>
                         <div>{section.name}</div>
-                        {!buttonHidden
-                        ? <button className="edit-section-button" onClick={() => {setButtonHidden(true)}}>Edit Section</button>
-                        : <EditSectionForm sectionId={section.id} />}
                         <AllTasksBySection sectionId={section.id}/>
                     </div>
                 })}

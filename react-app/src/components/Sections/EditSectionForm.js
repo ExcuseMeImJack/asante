@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { editSectionBySectionId } from '../../store/sections';
 
-function EditSectionForm({sectionId}){
+function EditSectionForm({sectionId, setButtonHidden}){
     const dispatch = useDispatch();
     const [sectionName, setSectionName] = useState('')
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         await dispatch(editSectionBySectionId({name: sectionName}, sectionId))
+        setButtonHidden(false)
     }
 
     return (

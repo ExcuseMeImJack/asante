@@ -29,7 +29,7 @@ function SingleBoard(){
             <h2>{board.name}</h2>
             {!buttonHidden
             ? <button className="add-section-button" onClick={() => {setButtonHidden(true)}}>Add New Section</button>
-            : <CreateSectionForm boardId={board.id} />}
+            : <CreateSectionForm boardId={board.id} setButtonHidden={setButtonHidden} />}
             <div>
                 <Sections />
             </div>

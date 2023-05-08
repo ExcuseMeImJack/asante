@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTasksByUserId } from '../../store/tasks';
 import './AllTasksBySection.css'
 import SingleTask from './SingleTask';
+import EditSectionForm from '../Sections/EditSectionForm';
 
 function AllTasksBySection({sectionId}){
     const dispatch = useDispatch();
     const storeTasks = useSelector((state) => state.tasks);
+    const [buttonHidden, setButtonHidden] = useState(false);
 
     // dispatch thunk to populate storeTasks variable
     useEffect(() => {
@@ -23,6 +25,9 @@ function AllTasksBySection({sectionId}){
 
 	return (
         <div>
+            {!buttonHidden
+            ? <button className="edit-section-button" onClick={() => {setButtonHidden(true)}}>Edit Section</button>
+            : <EditSectionForm sectionId={sectionId} setButtonHidden={setButtonHidden} />}
             {tasks.map((task) => {
                 return <div key={task.id}>
                     <SingleTask task={task}/>
