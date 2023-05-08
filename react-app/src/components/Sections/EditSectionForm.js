@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import editSectionBySectionId from '../../store/sections'
+import { editSectionBySectionId } from '../../store/sections';
 
 function EditSectionForm({sectionId}){
     const dispatch = useDispatch();
     const [sectionName, setSectionName] = useState('')
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault()
         await dispatch(editSectionBySectionId({name: sectionName}, sectionId))
     }
 
@@ -18,7 +19,7 @@ function EditSectionForm({sectionId}){
                     <input
                         type="text"
                         placeholder="Name"
-                        value={boardName}
+                        value={sectionName}
                         onChange={(e) => setSectionName(e.target.value)}
                     />
                     </label>

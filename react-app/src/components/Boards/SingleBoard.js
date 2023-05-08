@@ -11,7 +11,7 @@ function SingleBoard(){
     const dispatch = useDispatch();
     const { boardId } = useParams();
     const storeBoards = useSelector((state) => state.boards);
-    const [buttonHidden, setButtonHidden] = useState(false)
+    const [buttonHidden, setButtonHidden] = useState(false);
 
     //dispatch thunk to populate storeBoards variable
     useEffect(() => {

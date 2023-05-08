@@ -115,6 +115,7 @@ export default function reducer(state = initialState, action) {
         case EDIT_SECTION: {
             const newState = { ...state }
             newState.sections = [...state.sections, action.payload]
+            console.log(newState.sections)
 			newState.section = action.payload
             return newState
         }

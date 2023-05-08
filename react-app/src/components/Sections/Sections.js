@@ -1,15 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSectionsByBoardId } from '../../store/sections';
 import { useParams } from 'react-router-dom';
 import AllTasksBySection from '../Tasks/AllTasksBySection';
 import './Sections.css'
 import { getAllTasksBySectionId } from '../../store/tasks';
+import EditSectionForm from './EditSectionForm';
 
 function Sections() {
     const { boardId } = useParams()
     const dispatch = useDispatch();
     const storeSections = useSelector((state) => state.sections);
+    const [buttonHidden, setButtonHidden] = useState(false);
 
     //dispatch thunk to populate storeSections variable
     useEffect(() => {
@@ -29,6 +31,9 @@ function Sections() {
                 {sections.map((section) => {
                     return <div key={section.id} className='single-section-border'>
                         <div>{section.name}</div>
+                        {!buttonHidden
+                        ? <button className="edit-section-button" onClick={() => {setButtonHidden(true)}}>Edit Section</button>
+                        : <EditSectionForm sectionId={section.id} />}
                         <AllTasksBySection sectionId={section.id}/>
                     </div>
                 })}
