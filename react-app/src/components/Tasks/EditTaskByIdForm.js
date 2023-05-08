@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTaskBySectionId } from '../../store/tasks';
 
-function CreateTaskBySectionForm({sectionId}){
+function EditTaskByIdForm({ task }){
     const dispatch = useDispatch();
-    const [taskName, setTaskName] = useState('')
-    const [dueDate, setDueDate] = useState('')
-    const [description, setDescription] = useState('')
+    const [taskName, setTaskName] = useState(task.name)
+    const [dueDate, setDueDate] = useState(task.due_date)
+    const [description, setDescription] = useState(task.description)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -61,4 +61,4 @@ function CreateTaskBySectionForm({sectionId}){
     );
 }
 
-export default CreateTaskBySectionForm;
+export default EditTaskByIdForm;

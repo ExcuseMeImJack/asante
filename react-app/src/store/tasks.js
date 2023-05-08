@@ -10,7 +10,6 @@ const getTask = (task) => ({
 	payload: task,
 });
 
-
 const getAllTasksBySection = (tasks) => ({
 	type: GET_ALL_TASKS_BY_SECTION,
 	payload: tasks,
@@ -95,7 +94,26 @@ export const addTaskBySectionId = (task, sectionId) => async (dispatch) => {
         if (data.errors) {
             return;
         }
-        dispatch(addTask(data.Task));
+        dispatch(addTask(data.Task)); 
+    }
+}
+
+// edit task by section id
+export const editTaskByTaskId = (task, taskId) => async (dispatch) => {
+    const response = await fetch(`/api/user/task/${taskId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(task)
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        if (data.errors) {
+            return;
+        }
+        dispatch(editTask(data.Task));
     }
 }
 
@@ -115,6 +133,15 @@ export default function reducer(state = initialState, action) {
 			newState.task = action.payload
             return newState
 		}
+		case EDIT_TASK: {
+            const newState = { ...state }
+            const id = action.payload.id
+            const task = newState.tasks.find(task => task.id === id)
+            const index = newState.tasks.indexOf(task)
+            newState.tasks[index] = action.payload
+			newState.task = action.payload
+            return newState
+        }
 		default:
 			return state;
 	}
