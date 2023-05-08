@@ -8,6 +8,10 @@ function EditSectionForm({sectionId, setButtonHidden}){
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        if (!sectionName) {
+            setButtonHidden(false);
+            return;
+        }
         await dispatch(editSectionBySectionId({name: sectionName}, sectionId))
         setButtonHidden(false)
     }

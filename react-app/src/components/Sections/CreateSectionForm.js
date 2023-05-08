@@ -8,6 +8,10 @@ function CreateSectionForm({boardId, setButtonHidden}){
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        if (!sectionName) {
+            setButtonHidden(false);
+            return;
+        }
         await dispatch(addSectionByBoardId({name: sectionName}, boardId))
         setButtonHidden(false)
     }
