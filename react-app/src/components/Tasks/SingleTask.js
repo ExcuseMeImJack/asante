@@ -8,8 +8,6 @@ function SingleTask({task}){
 
     if (!task) return <h1>...Loading</h1>
 
-    console.log(task)
-
 	return (
         <div className='single-task-card'>
             <h3>{task.name}</h3>

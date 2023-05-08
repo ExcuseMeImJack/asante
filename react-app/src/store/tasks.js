@@ -38,7 +38,6 @@ export const getTaskById = (taskId) => async (dispatch) => {
 
 // get all tasks by sectionId thunk
 export const getAllTasksBySectionId = (sectionId) => async (dispatch) => {
-	console.log(sectionId)
 	const response = await fetch(`/api/tasks/section/${sectionId}`, {
 		headers: {
 			"Content-Type": "application/json",
@@ -46,7 +45,6 @@ export const getAllTasksBySectionId = (sectionId) => async (dispatch) => {
 	});
 	if (response.ok) {
 		const data = await response.json();
-		console.log('thunk data',data)
 		if (data.errors) {
 			return;
 		}
