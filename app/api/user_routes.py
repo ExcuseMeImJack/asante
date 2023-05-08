@@ -88,17 +88,21 @@ def edit_profile():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         profile_pic = form.data["profile_pic_url"]
-        profile_pic.filename = get_unique_filename(profile_pic.filename)
-        upload = upload_file_to_s3(profile_pic)
 
-        if "url" not in upload:
-            return {'errors': [upload]}
+        if profile_pic:
+            profile_pic.filename = get_unique_filename(profile_pic.filename)
+            upload = upload_file_to_s3(profile_pic)
 
-        profile_pic_url = upload["url"]
+            if "url" not in upload:
+                return {'errors': [upload]}
+
+            profile_pic_url = upload["url"]
+
+            profile.profile_pic_url=profile_pic_url
 
         profile.name=form.data["name"]
         profile.about_me=form.data["about_me"]
-        profile.profile_pic_url=profile_pic_url
+
 
         # Updates database
         db.session.commit()
