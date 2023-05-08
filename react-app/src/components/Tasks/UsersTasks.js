@@ -10,7 +10,7 @@ function UsersTasks(){
 
     //dispatch thunk to populate storeTasks variable
     useEffect(() => {
-        dispatch(getTasksByUserId(userId))
+        dispatch(getTasksByUserId())
     }, [dispatch, userId])
 
     // grab tasks array from the storeTasks object

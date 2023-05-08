@@ -10,7 +10,7 @@ function UsersBoards(){
 
     //dispatch thunk to populate storeBoards variable
     useEffect(() => {
-        dispatch(getBoardsByUserId(userId))
+        dispatch(getBoardsByUserId())
     }, [dispatch, userId])
 
     if (!storeBoards.boards) return <h1>...Loading</h1>

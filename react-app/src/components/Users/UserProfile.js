@@ -6,11 +6,9 @@ import './Users.css'
 function UserProfile(){
     const dispatch = useDispatch();
     const profile = useSelector((state) => state.users.profile);
-    const userId = useSelector((state) => state.session.user.id);
-
     //dispatch thunk to populate storeUsers variable
     useEffect(() => {
-        dispatch(getUserProfile(userId))
+        dispatch(getUserProfile())
     }, [dispatch])
 
     if (!profile) return <h1>...Loading</h1>

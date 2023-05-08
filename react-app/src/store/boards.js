@@ -30,9 +30,9 @@ export const getBoardById = (boardId) => async (dispatch) => {
 	}
 }
 
-// get boards by user id thunk
-export const getBoardsByUserId = (userId) => async (dispatch) => {
-	const response = await fetch(`/api/users/${userId}/boards`, {
+// get boards by user
+export const getBoardsByUserId = () => async (dispatch) => {
+	const response = await fetch(`/api/users/boards`, {
 		headers: {
 			"Content-Type": "application/json",
 		},

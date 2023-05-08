@@ -30,9 +30,9 @@ export const getTaskById = (taskId) => async (dispatch) => {
 	}
 }
 
-// get all tasks by user id thunk
-export const getTasksByUserId = (userId) => async (dispatch) => {
-	const response = await fetch(`/api/users/${userId}/tasks`, {
+// get all tasks by user
+export const getTasksByUserId = () => async (dispatch) => {
+	const response = await fetch(`/api/users/tasks`, {
 		headers: {
 			"Content-Type": "application/json",
 		},
