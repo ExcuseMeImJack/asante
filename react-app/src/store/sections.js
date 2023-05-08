@@ -15,7 +15,7 @@ const getSection = (section) => ({
 });
 
 const addSection = (section) => ({
-	type: GET_SECTION,
+	type: ADD_SECTION,
 	payload: section,
 });
 
@@ -76,7 +76,7 @@ export const addSectionByBoardId = (section, boardId) => async (dispatch) => {
 }
 
 // edit section by section id
-export const editSectionByBoardId = (section, sectionId) => async (dispatch) => {
+export const editSectionBySectionId = (section, sectionId) => async (dispatch) => {
     const response = await fetch(`/api/sections/${sectionId}`, {
         method: "PUT",
         headers: {

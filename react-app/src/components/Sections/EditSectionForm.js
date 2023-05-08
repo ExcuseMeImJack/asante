@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import editSection from '../../store/sections'
+import editSectionBySectionId from '../../store/sections'
 
-function EditSectionForm(){
+function EditSectionForm({sectionId}){
     const dispatch = useDispatch();
     const [sectionName, setSectionName] = useState('')
 
     const handleSubmit = async () => {
-        await dispatch(editSection({name: sectionName}))
+        await dispatch(editSectionBySectionId({name: sectionName}, sectionId))
     }
 
     return (
