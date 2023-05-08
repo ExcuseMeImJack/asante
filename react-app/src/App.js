@@ -5,7 +5,6 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
-import Users from "./components/Users/Users"
 import SingleBoard from "./components/Boards/SingleBoard"
 import SingleTask from "./components/Tasks/SingleTask"
 import SingleSection from "./components/Sections/SingleSection";
@@ -40,9 +39,6 @@ function App() {
           <Route path="/boards/:boardId">
             <SingleBoard />
             <Sections />
-          </Route>
-          <Route path="/users">
-            <Users />
           </Route>
           <Route path="/task/:taskId">
             <SingleTask />
