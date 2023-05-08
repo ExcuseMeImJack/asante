@@ -23,6 +23,17 @@ def get_task(task_id):
     else:
         return {'errors': ['Unauthorized']}, 401
 
+@task_routes.route('/section/<int:section_id>')
+@login_required
+# Get task by id
+def get_all_tasks(section_id):
+    print()
+    # Query a task by task id
+    tasks = Task.query.filter(Task.section_id == section_id)
+    print('TASKS~~~~', tasks)
+    # Check if task belongs to current user
+    return { "Tasks": [task.to_dict() for task in tasks] }
+
 @task_routes.route('/<int:task_id>', methods=["PUT"])
 @login_required
 # Edit task by id

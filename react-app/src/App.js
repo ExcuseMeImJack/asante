@@ -38,7 +38,6 @@ function App() {
           </Route>
           <Route path="/boards/:boardId">
             <SingleBoard />
-            <Sections />
           </Route>
           <Route path="/task/:taskId">
             <SingleTask />

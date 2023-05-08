@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSectionsByBoardId } from '../../store/sections';
 import { useParams } from 'react-router-dom';
+import AllTasksBySection from '../Tasks/AllTasksBySection';
 import './Sections.css'
 
 function Sections(){
@@ -22,11 +23,14 @@ function Sections(){
 	return (
         <div>
             <h1>Sections</h1>
+            <div className='section-gallery'>
             {sections.map((section) => {
-            return  <div key={section.id}>
+                return  <div key={section.id} className='single-section-border'>
                         <div>{section.name}</div>
+                        <AllTasksBySection sectionId={section.id}/>
                     </div>
             })}
+            </div>
         </div>
 	);
 }

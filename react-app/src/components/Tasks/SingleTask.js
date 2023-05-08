@@ -4,15 +4,14 @@ import { getTaskById } from '../../store/tasks';
 import { useParams } from 'react-router-dom';
 import './SingleTask.css'
 
-function SingleTask(){
+function SingleTask({taskId}){
     const dispatch = useDispatch();
-    const { taskId } = useParams();
     const storeTasks = useSelector((state) => state.tasks);
 
     //dispatch thunk to populate storeTasks variable
     useEffect(() => {
         dispatch(getTaskById(taskId))
-    }, [dispatch, taskId])
+    }, [dispatch])
 
     const task = storeTasks.task;
 
