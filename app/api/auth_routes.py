@@ -66,6 +66,7 @@ def sign_up():
         # Uses values from the form instance to create new user
         user = User(
             username=form.data['username'],
+            profile_pic_url="https://d3ki9tyy5l5ruj.cloudfront.net/obj/3d4665c7cf119dc9dc38232301b18fa68b9bb17c/avatar.svg",
             email=form.data['email'],
             password=form.data['password'],
             name=form.data['name']

@@ -11,7 +11,7 @@ function UserProfile(){
     //dispatch thunk to populate storeUsers variable
     useEffect(() => {
         dispatch(getUserProfile())
-    }, [])
+    }, [dispatch])
 
     if (!profile) return <h1>...Loading</h1>
 
