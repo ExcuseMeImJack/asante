@@ -17,6 +17,8 @@ function UsersBoards(){
     // grab boards array from the storeBoards object
     const boards = storeBoards.boards.boards;
 
+    if (!boards) return <h1>...Loading</h1>
+
 	return (
         <div>
             <h1>My Boards</h1>

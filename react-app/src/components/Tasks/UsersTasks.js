@@ -18,6 +18,8 @@ function UsersTasks(){
 
     const tasks = storeTasks.tasks.tasks;
 
+    if (!tasks) return <h1>...Loading</h1>
+
 	return (
         <div>
             <h1>My Tasks</h1>
