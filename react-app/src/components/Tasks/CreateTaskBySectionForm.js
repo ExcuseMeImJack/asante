@@ -7,14 +7,20 @@ function CreateTaskBySectionForm({sectionId}){
     const [taskName, setTaskName] = useState('')
     const [dueDate, setDueDate] = useState('')
     const [description, setDescription] = useState('')
+    const [buttonHidden, setButtonHidden] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        if (!taskName) {
+            setButtonHidden(false);
+            return;
+        }
         await dispatch(addTaskBySectionId({
             name: taskName,
             due_date: dueDate,
             description: description
         }, sectionId))
+        setButtonHidden(false);
     }
 
     return (
@@ -48,14 +54,14 @@ function CreateTaskBySectionForm({sectionId}){
                     <input
                         type="text"
                         placeholder="Description"
-                        value={sectionName}
+                        value={description}
                         onChange={(e) => setDescription(e.target.value)}
                     />
                     </label>
                     {/* <div className="error-container">
                     {errors.name && <p>{errors.name}</p>}
                     </div> */}
-                    <button type="submit" className="submit-create">Create Section</button>
+                    <button type="submit" className="submit-create">Create Task</button>
                 </form>
             </div>
     );

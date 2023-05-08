@@ -4,11 +4,13 @@ import { getTasksByUserId } from '../../store/tasks';
 import './AllTasksBySection.css'
 import SingleTask from './SingleTask';
 import EditSectionForm from '../Sections/EditSectionForm';
+import CreateTaskBySectionForm from './CreateTaskBySectionForm';
 
 function AllTasksBySection({sectionId}){
     const dispatch = useDispatch();
     const storeTasks = useSelector((state) => state.tasks);
-    const [buttonHidden, setButtonHidden] = useState(false);
+    const [editButtonHidden, setEditButtonHidden] = useState(false);
+    const [createButtonHidden, setCreateButtonHidden] = useState(false);
 
     // dispatch thunk to populate storeTasks variable
     useEffect(() => {
@@ -25,9 +27,12 @@ function AllTasksBySection({sectionId}){
 
 	return (
         <div>
-            {!buttonHidden
-            ? <button className="edit-section-button" onClick={() => {setButtonHidden(true)}}>Edit Section</button>
-            : <EditSectionForm sectionId={sectionId} setButtonHidden={setButtonHidden} />}
+            {!editButtonHidden
+            ? <button className="edit-section-button" onClick={() => {setEditButtonHidden(true)}}>Edit Section</button>
+            : <EditSectionForm sectionId={sectionId} setButtonHidden={setEditButtonHidden} />}
+            {!createButtonHidden
+            ? <button className="create-task-button" onClick={() => {setCreateButtonHidden(true)}}>Add Task</button>
+            : <CreateTaskBySectionForm sectionId={sectionId} setButtonHidden={setCreateButtonHidden} />}
             {tasks.map((task) => {
                 return <div key={task.id}>
                     <SingleTask task={task}/>
