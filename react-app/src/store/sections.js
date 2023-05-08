@@ -94,7 +94,7 @@ export const editSectionBySectionId = (section, sectionId) => async (dispatch) =
     }
 }
 
-const initialState = { sections: null, section: null };
+const initialState = { sections: [], section: null };
 
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
@@ -115,7 +115,9 @@ export default function reducer(state = initialState, action) {
         case EDIT_SECTION: {
             const newState = { ...state }
             const id = action.payload.id
-            newState.sections.find(section => section.id === id) = action.payload
+            const section = newState.sections.find(section => section.id === id)
+            const index = newState.sections.indexOf(section)
+            newState.sections[index] = action.payload
 			newState.section = action.payload
             return newState
         }
