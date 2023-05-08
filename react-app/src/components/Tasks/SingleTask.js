@@ -4,24 +4,16 @@ import { getTaskById } from '../../store/tasks';
 import { useParams } from 'react-router-dom';
 import './SingleTask.css'
 
-function SingleTask({taskId}){
-    const dispatch = useDispatch();
-    const storeTasks = useSelector((state) => state.tasks);
-
-    //dispatch thunk to populate storeTasks variable
-    useEffect(() => {
-        dispatch(getTaskById(taskId))
-    }, [dispatch])
-
-    const task = storeTasks.task;
+function SingleTask({task}){
 
     if (!task) return <h1>...Loading</h1>
 
+    console.log(task)
+
 	return (
-        <div>
-            <h1>Task</h1>
-            <div>{task.name}</div>
-            <div>{task.id}</div>
+        <div className='single-task-card'>
+            <h3>{task.name}</h3>
+            <div>{task.description || "No description"}</div>
         </div>
 	);
 }
