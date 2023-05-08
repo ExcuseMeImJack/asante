@@ -1,14 +1,16 @@
 // constants
 const GET_TASK = "tasks/GET_TASK";
-const GET_ALL_TASKS = "tasks/GET_ALL_TASKS";
+const GET_ALL_TASKS_BY_SECTION = "tasks/GET_ALL_TASKS_BY_SECTION";
 const GET_USER_TASKS = "tasks/GET_USER_TASKS";
+const ADD_TASK = "tasks/ADD_TASK";
 
 const getTask = (task) => ({
 	type: GET_TASK,
 	payload: task,
 });
 
-const getAllTasks = (tasks) => ({
+
+const getAllTasksBySection = (tasks) => ({
 	type: GET_ALL_TASKS,
 	payload: tasks,
 });
@@ -18,7 +20,11 @@ const getUserTasks = (tasks) => ({
 	payload: tasks,
 });
 
-const initialState = { tasks: null, task: null };
+const addTask = (task) => ({
+	type: ADD_TASK,
+	payload: task,
+});
+
 
 // get task by id thunk
 export const getTaskById = (taskId) => async (dispatch) => {
@@ -48,7 +54,7 @@ export const getAllTasksBySectionId = (sectionId) => async (dispatch) => {
 		if (data.errors) {
 			return;
 		}
-		dispatch(getAllTasks(data.Tasks));
+		dispatch(getAllTasksBySection(data.Tasks));
 	}
 }
 
@@ -68,14 +74,41 @@ export const getTasksByUserId = () => async (dispatch) => {
 	}
 }
 
+// add new task by section id
+export const addTaskBySectionId = (task, sectionId) => async (dispatch) => {
+    const response = await fetch(`/api/user/task/${sectionId}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(task)
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        if (data.errors) {
+            return;
+        }
+        dispatch(addTask(data.Task));
+    }
+}
+
+const initialState = { tasks: null, task: null };
+
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case GET_TASK:
 			return state = {...state, task: action.payload };
 		case GET_USER_TASKS:
 			return state = {...state, tasks: action.payload };
-		case GET_ALL_TASKS:
+		case GET_ALL_TASKS_BY_SECTION:
 			return state = {...state, tasks: action.payload };
+		case ADD_TASK: {
+			const newState = { ...state }
+			newState.tasks = [...state.tasks, action.payload]
+			newState.task = action.payload
+            return newState
+		}
 		default:
 			return state;
 	}
