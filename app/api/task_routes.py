@@ -13,8 +13,12 @@ task_routes = Blueprint('tasks', __name__, url_prefix="/api/tasks")
 def get_task(task_id):
     # Query a task by task id
     task = Task.query.get(task_id)
+
+    if not task:
+        return {'errors': ['Task does not exist']}, 404
+
     # Check if task belongs to current user
-    if (task.user_id == current_user.to_dict().id):
+    if (task.user_id == current_user.id):
         return { "Task": task.to_dict() }
     else:
         return {'errors': ['Unauthorized']}, 401
@@ -25,8 +29,12 @@ def get_task(task_id):
 def edit_task(task_id):
     # Query a task by task id
     task = Task.query.get(task_id)
+
+    if not task:
+        return {'errors': ['Task does not exist']}, 404
+
     # Check if task belongs to current user
-    if (task.user_id == current_user.to_dict().id):
+    if (task.user_id == current_user.id):
         # Creates instance of edit task form class
         form = EditTaskForm()
         # Uses values from the form instance to edit a task
@@ -45,14 +53,18 @@ def edit_task(task_id):
     else:
         return {'errors': ['Unauthorized']}, 401
 
-@task_routes.route('/<int:task_id>')
+@task_routes.route('/<int:task_id>', methods=["DELETE"])
 @login_required
 # Delete task by id
 def delete_task(task_id):
     # Query a task by task id
     task = Task.query.get(task_id)
+
+    if not task:
+        return {'errors': ['Task does not exist']}, 404
+
     # Check if task belongs to current user
-    if (task.user_id == current_user.to_dict().id):
+    if (task.user_id == current_user.id):
         # Deletes task from database
         db.session.delete(task)
         # Updates database

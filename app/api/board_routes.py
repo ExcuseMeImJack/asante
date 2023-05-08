@@ -14,7 +14,11 @@ board_routes = Blueprint('boards', __name__, url_prefix="/api/boards")
 def get_sections(board_id):
     # Query board by board id
     board = Board.query.get(board_id)
-    if (board.user_id == current_user.to_dict().id):
+
+    if (not board):
+        return {'errors': ['Board does not exist']}, 404
+
+    if (board.user_id == current_user.id):
         # Query all sections by board id
         sections = Section.query.filter(Section.board_id == board_id)
         return { 'sections': [section.to_dict() for section in sections] }
@@ -25,7 +29,7 @@ def get_sections(board_id):
 @login_required
 # Create a board of current user
 def create_board():
-    user_id = current_user.to_dict().id
+    user_id = current_user.id
     # Creates instance of create board form class
     form = CreateBoardForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -49,8 +53,12 @@ def create_board():
 def get_board(board_id):
     # Query board by board id
     board = Board.query.get(board_id)
+
+    if not board:
+        return {'errors': ['Board does not exist']}, 404
+
     # Check if board belongs to user
-    if (board.user_id == current_user.to_dict().id):
+    if (board.user_id == current_user.id):
         return { "Board": board.to_dict() }
     else:
         return {'errors': ['Unauthorized']}, 401
@@ -61,8 +69,12 @@ def get_board(board_id):
 def delete_board(board_id):
     # Query a board by board id
     board = Board.query.get(board_id)
+
+    if not board:
+        return {'errors': ['Board does not exist']}, 404
+
     # Check if board belongs to user
-    if (board.user_id == current_user.to_dict().id):
+    if (board.user_id == current_user.id):
         # Deletes board from database
         db.session.delete(board)
         # Updates database

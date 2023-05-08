@@ -16,10 +16,18 @@ section_routes = Blueprint('sections', __name__, url_prefix="/api/sections")
 def get_section(section_id):
     # Query a section by section id
     section = Section.query.get(section_id)
+
+    if not section:
+        return {'errors': ['Section does not exist']}, 404
+
     board_id = section.board_id
     board = Board.query.get(board_id)
+
+    # if not board:
+    #     return {'errors': ['Board does not exist']}, 404
+
     # Check if board belongs to current user
-    if (board.user_id == current_user.to_dict().id):
+    if (board.user_id == current_user.id):
         return { "Section": section.to_dict() }
     else:
         return {'errors': ['Unauthorized']}, 401
@@ -30,10 +38,14 @@ def get_section(section_id):
 def delete_section(section_id):
     # Query a section by section id
     section = Section.query.get(section_id)
+
+    if not section:
+        return {'errors': ['Section does not exist']}, 404
+
     board_id = section.board_id
     board = Board.query.get(board_id)
     # Check if board belongs to current user
-    if (board.user_id == current_user.to_dict().id):
+    if (board.user_id == current_user.id):
         # Delete section
         db.session.delete(section)
         # Updates database
@@ -48,10 +60,14 @@ def delete_section(section_id):
 def edit_section(section_id):
     # Query a section by section id
     section = Section.query.get(section_id)
+
+    if not section:
+        return {'errors': ['Section does not exist']}, 404
+
     board_id = section.board_id
     board = Board.query.get(board_id)
     # Check if board belongs to current user
-    if (board.user_id == current_user.to_dict().id):
+    if (board.user_id == current_user.id):
         # Creates instance of edit section form class
         form = EditSectionForm()
         form['csrf_token'].data = request.cookies['csrf_token']
@@ -73,14 +89,18 @@ def edit_section(section_id):
 # Create a section of current user
 def create_section(board_id):
     board = Board.query.get(board_id)
+
+    if not board:
+        return {'errors': ['Board does not exist']}, 404
+
     # Check if board belongs to current user
-    if (board.user_id == current_user.to_dict().id):
+    if (board.user_id == current_user.id):
         # Creates instance of create section form class
         form = CreateSectionForm()
         form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
             # Gets the length of the sections in a board
-            section_count = len(Section.query.filter(Section.board_id == board_id))
+            section_count = len(list(Section.query.filter(Section.board_id == board_id)))
             # Uses values from the form instance to create new section
             section = Section(
                 name=form.data['name'],
