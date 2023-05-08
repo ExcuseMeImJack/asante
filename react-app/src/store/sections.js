@@ -114,8 +114,8 @@ export default function reducer(state = initialState, action) {
         }
         case EDIT_SECTION: {
             const newState = { ...state }
-            newState.sections = [...state.sections, action.payload]
-            console.log(newState.sections)
+            const id = action.payload.id
+            newState.sections.find(section => section.id === id) = action.payload
 			newState.section = action.payload
             return newState
         }
