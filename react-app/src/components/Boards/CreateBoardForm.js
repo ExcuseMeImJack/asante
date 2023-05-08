@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createBoard } from '../../store/boards';
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 function CreateBoardForm(){
     const dispatch = useDispatch();
+    const history = useHistory();
     const [boardName, setBoardName] = useState('')
 
-    const handleSubmit = async () => {
-        const board = await dispatch(createBoard({boardName}))
-        return Redirect(`/boards/${board.id}`)
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const board = await dispatch(createBoard({name: boardName}))
+        return history.push(`/boards/${board.id}`)
     }
 
     return (

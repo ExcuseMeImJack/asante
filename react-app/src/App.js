@@ -8,7 +8,7 @@ import Navigation from "./components/Navigation";
 import SingleBoard from "./components/Boards/SingleBoard"
 import SingleTask from "./components/Tasks/SingleTask"
 import SingleSection from "./components/Sections/SingleSection";
-import Sections from "./components/Sections/Sections"
+import CreateBoardForm from "./components/Boards/CreateBoardForm"
 import UsersTasks from "./components/Tasks/UsersTasks";
 import UsersBoards from "./components/Boards/UsersBoards";
 import UserProfile from "./components/Users/UserProfile";
@@ -36,6 +36,9 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route exact path="/boards/new">
+            <CreateBoardForm />
+          </Route>
           <Route path="/boards/:boardId">
             <SingleBoard />
           </Route>
@@ -46,7 +49,7 @@ function App() {
             <SingleSection />
           </Route>
         </Switch>
-      )}
+        )}
     </>
   );
 }
