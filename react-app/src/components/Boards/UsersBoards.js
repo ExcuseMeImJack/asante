@@ -15,10 +15,10 @@ function UsersBoards(){
 
     if (!storeBoards.boards) return <h1>...Loading</h1>
     // grab boards array from the storeBoards object
-    const boards = storeBoards.boards.boards;
+    const boards = storeBoards.boards;
 
     if (!boards) return <h1>...Loading</h1>
-
+    console.log(boards)
 	return (
         <div>
             <h1>My Boards</h1>

@@ -16,7 +16,7 @@ function UsersTasks(){
     // grab tasks array from the storeTasks object
     if (!storeTasks.tasks) return <h1>...Loading</h1>
 
-    const tasks = storeTasks.tasks.tasks;
+    const tasks = storeTasks.tasks;
 
     if (!tasks) return <h1>...Loading</h1>
 

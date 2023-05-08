@@ -42,7 +42,7 @@ export const getSectionById = (sectionId) => async (dispatch) => {
         if (data.errors) {
             return;
         }
-        dispatch(getSection(data));
+        dispatch(getSection(data.Section));
     }
 };
 
