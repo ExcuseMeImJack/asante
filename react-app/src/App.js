@@ -26,9 +26,12 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path="/" >
+            
+          </Route>
+          <Route path="/profile">
+            <UserProfile />
             <UsersTasks />
             <UsersBoards />
-            <UserProfile />
           </Route>
           <Route path="/login" >
             <LoginFormPage />
