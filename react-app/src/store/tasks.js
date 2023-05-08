@@ -3,6 +3,7 @@ const GET_TASK = "tasks/GET_TASK";
 const GET_ALL_TASKS_BY_SECTION = "tasks/GET_ALL_TASKS_BY_SECTION";
 const GET_USER_TASKS = "tasks/GET_USER_TASKS";
 const ADD_TASK = "tasks/ADD_TASK";
+const EDIT_TASK = "tasks/EDIT_TASK";
 
 const getTask = (task) => ({
 	type: GET_TASK,
@@ -11,7 +12,7 @@ const getTask = (task) => ({
 
 
 const getAllTasksBySection = (tasks) => ({
-	type: GET_ALL_TASKS,
+	type: GET_ALL_TASKS_BY_SECTION,
 	payload: tasks,
 });
 
@@ -22,6 +23,11 @@ const getUserTasks = (tasks) => ({
 
 const addTask = (task) => ({
 	type: ADD_TASK,
+	payload: task,
+});
+
+const editTask = (task) => ({
+	type: EDIT_TASK,
 	payload: task,
 });
 
