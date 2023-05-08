@@ -1,5 +1,10 @@
 body {
     font-family: "Helvetica Neue", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .navbar {
@@ -8,6 +13,60 @@ body {
     align-items: center
 }
 
+.main-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-left {
+    width: 50%;
+    /* border: 5px solid pink; */
+    padding: 0 10px;
+}
+
+.main-right {
+    /* border: 5px solid rgb(192, 243, 255); */
+    margin: 0px;
+    padding: 0 10px;
+}
+
+/********* BOTTOM SECTION ******/
+.footer-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-left {
+    /* width: 75%; */
+    /* border: 5px solid rgb(192, 255, 205); */
+    padding: 0 0 0 20px;
+}
+
+.footer-right {
+    /* border: 5px solid rgb(250, 216, 131); */
+    width: 50%;
+    padding: 0 10px;
+}
+/********* CAPITAL 'DRIVE EFFICIENCY ACROSS TEAMS' *******/
+.uppercase-text-bio {
+    text-transform: uppercase;
+    font-size: 12px;
+    color: darkgray;
+}
+
+/********* List View / Board View layout for title and bio **********/
+.layouts-styling div {
+    font-size: 20px;
+}
+
+.layouts-styling p {
+    font-size: 16px;
+    color: gray;
+}
+
+/******************* BUTTONS *********************/
 .reg-button {
     font-size: 17px;
 }
@@ -17,7 +76,7 @@ body {
     border-radius: 10px;
     padding: 0 16px;
     transition: background-color 0.6s;
-
+    margin: 5px;
 }
 
 .button1:hover {
@@ -29,6 +88,7 @@ body {
     border: none;
     border-radius: 10px;
     padding: 0 16px;
+    margin: 5px;
 }
 
 .button2:hover {
@@ -39,6 +99,7 @@ body {
     border: none;
     border-radius: 10px;
     padding: 0 16px;
+    margin: 5px;
 }
 
 .button3:hover {
@@ -50,6 +111,7 @@ body {
     border: none;
     border-radius: 10px;
     padding: 0 16px;
+    margin: 5px;
 }
 
 .button4:hover {
@@ -61,51 +123,10 @@ body {
     border: none;
     border-radius: 10px;
     padding: 0 16px;
+    margin: 5px;
 }
 
 .button5:hover {
     background-color: #5da283;
     color: white;
-}
-
-.main-section {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.main-left {
-    width: 50%;
-}
-
-.drive-efficiency-text {
-    text-transform: uppercase;
-    font-size: 12px;
-    color: darkgray;
-}
-
-.end-container h4 {
-    font-size: 31px;
-}
-
-.footer-text {
-    font-size: 18px;
-    color: grey;
-}
-
-.layout-container {
-    display: flex;
-}
-
-.footer-header h4 {
-    margin: 0px
-}
-
-.layouts-styling div {
-    font-size: 22px;
-}
-
-.layouts-styling p {
-    font-size: 16px;
-    color: gray;
 }
