@@ -20,7 +20,7 @@ export const getUserProfile = () => async (dispatch) => {
 		if (data.errors) {
 			return;
 		}
-		dispatch(getProfile(data));
+		dispatch(getProfile(data.user));
 	}
 };
 
