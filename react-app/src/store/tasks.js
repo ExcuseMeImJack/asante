@@ -26,7 +26,7 @@ export const getTaskById = (taskId) => async (dispatch) => {
 		if (data.errors) {
 			return;
 		}
-		dispatch(getTask(data));
+		dispatch(getTask(data.Task));
 	}
 }
 
@@ -42,7 +42,7 @@ export const getTasksByUserId = () => async (dispatch) => {
 		if (data.errors) {
 			return;
 		}
-		dispatch(getUserTasks(data));
+		dispatch(getUserTasks(data.Tasks));
 	}
 }
 

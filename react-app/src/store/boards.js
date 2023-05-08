@@ -26,7 +26,7 @@ export const getBoardById = (boardId) => async (dispatch) => {
 		if (data.errors) {
 			return;
 		}
-		dispatch(getBoard(data));
+		dispatch(getBoard(data.Board));
 	}
 }
 
@@ -42,7 +42,7 @@ export const getBoardsByUserId = () => async (dispatch) => {
 		if (data.errors) {
 			return;
 		}
-		dispatch(getUserBoards(data));
+		dispatch(getUserBoards(data.Boards));
 	}
 }
 
