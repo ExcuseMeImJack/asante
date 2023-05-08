@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import db, User, Board, Task
+from app.models import db, User, Board, Task, Section
 from ..forms.create_task_form import CreateTaskForm
 from .auth_routes import validation_errors_to_error_messages
 from ..forms.edit_profile_form import EditProfileForm
@@ -44,12 +44,15 @@ def create_task(section_id):
     # Gets the length of the tasks in a section
     task_count = len(list(Task.query.filter(Task.section_id == section_id)))
 
-    section = Task.query.get(section_id)
+    section = Section.query.get(section_id)
+    print('SECTION ==================',section)
+    board = list(Board.query.filter(Board.id == section.board_id))
+    print('BOARD ==================', board[0].to_dict())
 
     if not section:
         return {'errors': ['Section does not exist']}, 404
 
-    if section.user_id == current_user.id:
+    if board[0].user_id == current_user.id:
         # Creates instance of create task form class
         form = CreateTaskForm()
         form['csrf_token'].data = request.cookies['csrf_token']

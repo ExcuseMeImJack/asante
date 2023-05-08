@@ -81,7 +81,7 @@ export const getTasksByUserId = () => async (dispatch) => {
 
 // add new task by section id
 export const addTaskBySectionId = (task, sectionId) => async (dispatch) => {
-    const response = await fetch(`/api/user/task/${sectionId}`, {
+    const response = await fetch(`/api/users/task/${sectionId}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -94,13 +94,13 @@ export const addTaskBySectionId = (task, sectionId) => async (dispatch) => {
         if (data.errors) {
             return;
         }
-        dispatch(addTask(data.Task)); 
+        dispatch(addTask(data.Task));
     }
 }
 
 // edit task by section id
 export const editTaskByTaskId = (task, taskId) => async (dispatch) => {
-    const response = await fetch(`/api/user/task/${taskId}`, {
+    const response = await fetch(`/api/users/task/${taskId}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
