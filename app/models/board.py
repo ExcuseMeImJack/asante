@@ -14,7 +14,7 @@ class Board(db.Model):
     updated_at = db.Column(db.Date, default=datetime.today)
 
     users = db.relationship("User", back_populates="boards")
-    sections = db.relationship("Section", back_populates="boards")
+    sections = db.relationship("Section", back_populates="boards", cascade="all, delete-orphan")
 
     def to_dict(self):
         return {

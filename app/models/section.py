@@ -15,7 +15,7 @@ class Section(db.Model):
     updated_at = db.Column(db.Date, default=datetime.today)
 
 
-    tasks = db.relationship("Task", back_populates="sections")
+    tasks = db.relationship("Task", back_populates="sections", cascade="all, delete-orphan")
     boards = db.relationship("Board", back_populates="sections")
 
     def to_dict(self):
