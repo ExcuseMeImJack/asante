@@ -85,7 +85,7 @@ export default function reducer(state = initialState, action) {
 			const newState = { ...state }
 			newState.boards = [...state.boards, action.payload]
 			newState.board = action.payload
-            return state = {...state, board: action.payload };
+            return newState
 		}
 		default:
 			return state;
