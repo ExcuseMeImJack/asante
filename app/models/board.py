@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from datetime import datetime
 
 class Board(db.Model):
     __tablename__ = "boards"
@@ -8,12 +9,12 @@ class Board(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    created_at = db.Column(db.Date)
-    updated_at = db.Column(db.Date)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
+    created_at = db.Column(db.Date, default=datetime.today)
+    updated_at = db.Column(db.Date, default=datetime.today)
 
     users = db.relationship("User", back_populates="boards")
-    sections = db.relationship("Section", back_populates="boards")
+    sections = db.relationship("Section", back_populates="boards", cascade="all, delete-orphan")
 
     def to_dict(self):
         return {
@@ -22,5 +23,4 @@ class Board(db.Model):
             'user_id': self.user_id,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            'sections': self.sections
         }

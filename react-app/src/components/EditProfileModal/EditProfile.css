@@ -1,0 +1,100 @@
+.edit-profile-modal-content{
+    width: 575px;
+}
+
+.divider{
+    border-bottom: 1px dimgray solid;
+    width:111.5%;
+    margin-left:-33px;
+}
+
+#modal-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 5px;
+    width: 600px;
+    height: 650px;
+    top: 100px;
+}
+
+#profile-settings-header{
+    margin: -10px 0px 15px 0px;
+}
+
+.edit-profile-pic-container{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    margin-bottom: 25px;
+}
+
+.profile-pic-input-description > label{
+    font-size: 16px;
+    color: #5688e5;
+}
+
+.upload-profile-pic-input{
+    display: none;
+}
+
+#current-profile-pic{
+    /* border: 1px transparent; */
+    box-shadow: 1px 1px 6px dimgray;
+    border-radius: 48px;
+    width: 100%;
+    max-width: 48px;
+}
+
+.profile-pic-description {
+    margin: 0px;
+    height: 20px;
+    font-size: 13px;
+}
+
+.profile-pic-input-description{
+    margin-left: 15px;
+}
+
+.edit-profile-details-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 'name email';
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.name-input{
+    grid-area: name;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.email-input{
+    grid-area: email;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.profile-pic-section{
+    font-size: 14px;
+}
+
+.aboutme-input{
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.aboutme-input > textarea {
+    resize: none;
+}
+
+.commit-changes{
+    margin-top: 30px;
+    display: flex;
+    justify-content: end;
+}

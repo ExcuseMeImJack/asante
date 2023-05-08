@@ -19,8 +19,8 @@ class User(db.Model, UserMixin):
     created_at = db.Column(db.Date, default=datetime.today)
     updated_at = db.Column(db.Date, default=datetime.today)
 
-    tasks = db.relationship('Task', back_populates='users')
-    boards = db.relationship('Board', back_populates='users')
+    tasks = db.relationship('Task', back_populates='users', cascade="all, delete-orphan")
+    boards = db.relationship('Board', back_populates='users', cascade="all, delete-orphan")
 
     @property
     def password(self):

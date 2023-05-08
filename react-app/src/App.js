@@ -5,6 +5,14 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import SingleBoard from "./components/Boards/SingleBoard"
+import SingleTask from "./components/Tasks/SingleTask"
+import SingleSection from "./components/Sections/SingleSection";
+import CreateBoardForm from "./components/Boards/CreateBoardForm"
+import UsersTasks from "./components/Tasks/UsersTasks";
+import UsersBoards from "./components/Boards/UsersBoards";
+import UserProfile from "./components/Users/UserProfile";
+import LandingPage from "./components/LandingPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,14 +26,34 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path="/" >
+            <LandingPage />
+          </Route>
+          <Route path="/profile">
+            <UserProfile />
+            <UsersTasks />
+            <UsersBoards />
+          </Route>
           <Route path="/login" >
             <LoginFormPage />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route exact path="/boards/new">
+            <CreateBoardForm />
+          </Route>
+          <Route path="/boards/:boardId">
+            <SingleBoard />
+          </Route>
+          <Route path="/task/:taskId">
+            <SingleTask />
+          </Route>
+          <Route path="/sections/:sectionId">
+            <SingleSection />
+          </Route>
         </Switch>
-      )}
+        )}
     </>
   );
 }

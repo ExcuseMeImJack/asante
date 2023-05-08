@@ -1,0 +1,7 @@
+.single-section-border {
+    border: 1px solid black;
+}
+
+.section-gallery {
+    display: flex;
+}

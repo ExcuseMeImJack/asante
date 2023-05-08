@@ -59,16 +59,23 @@ def sign_up():
     """
     Creates a new user and logs them in
     """
+    # Creates instance of create sign up form class
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        # Uses values from the form instance to create new user
         user = User(
             username=form.data['username'],
+            profile_pic_url="https://d3ki9tyy5l5ruj.cloudfront.net/obj/3d4665c7cf119dc9dc38232301b18fa68b9bb17c/avatar.svg",
             email=form.data['email'],
-            password=form.data['password']
+            password=form.data['password'],
+            name=form.data['name']
         )
+        # Add user to database
         db.session.add(user)
+        # Updates database
         db.session.commit()
+        # Logs in user
         login_user(user)
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
