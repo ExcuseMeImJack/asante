@@ -12,6 +12,7 @@ import Sections from "./components/Sections/Sections"
 import UsersTasks from "./components/Tasks/UsersTasks";
 import UsersBoards from "./components/Boards/UsersBoards";
 import UserProfile from "./components/Users/UserProfile";
+import LandingPage from "./components/LandingPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path="/" >
-            
+            <LandingPage />
           </Route>
           <Route path="/profile">
             <UserProfile />
