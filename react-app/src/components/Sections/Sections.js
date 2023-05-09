@@ -16,6 +16,8 @@ function Sections() {
         dispatch(getSectionsByBoardId(boardId))
     }, [dispatch, boardId])
 
+
+
     // grab sections array from the storeSections object
     const sections = storeSections.sections;
 
@@ -26,20 +28,22 @@ function Sections() {
             <Droppable droppableId="ROOT">
                 {(provided) => (
                     <div className='section-gallery' {...provided.droppableProps} ref={provided.innerRef}>
-                        {sections.map((section, index) => (
-                            <Draggable draggableId={"section-" + section.id} key={section.id} index={index}>
-                            {(provided) => (
-                                <div className='single-section-border' ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                    {sections.map((section, index) => (
+                        <Draggable draggableId={"section-" + section.id} key={section.id} index={index}>
+                        {(provided) => (
+                            <div className='single-section-border' ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                                <div {...provided.droppableProps} ref={provided.innerRef}>
                                     <div>{section.name}</div>
                                     <AllTasksBySection sectionId={section.id}/>
                                 </div>
-                            )}
-                            </Draggable>
-                        ))}
-                        {provided.placeholder}
-                    </div>
-                )}
-            </Droppable>
+                            </div>
+                        )}
+                        </Draggable>
+                    ))}
+                    {provided.placeholder}
+                </div>
+            )}
+        </Droppable>
         </div>
     );
 }

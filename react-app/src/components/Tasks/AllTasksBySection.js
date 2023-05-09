@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTasksByUserId } from '../../store/tasks';
-import { Droppable, Draggable } from 'react-beautiful-dnd';
+import { Draggable } from 'react-beautiful-dnd';
 import './AllTasksBySection.css'
 import SingleTask from './SingleTask';
 import EditSectionForm from '../Sections/EditSectionForm';
@@ -35,22 +35,11 @@ function AllTasksBySection({sectionId}){
             ? <button className="create-task-button" onClick={() => {setCreateButtonHidden(true)}}>Add Task</button>
             : <CreateTaskBySectionForm sectionId={sectionId} setButtonHidden={setCreateButtonHidden} />}
 
-            <Droppable droppableId={"section-" + sectionId}>
-                {(provided) => (
-                    <div {...provided.droppableProps} ref={provided.innerRef}>
-                        {tasks.map((task, index) => (
-                            <Draggable draggableId={"task-" + task.id} key={task.id} index={index}>
-                                {(provided) => (
-                                    <div ref={provided.innerRef} {...provided.droppableProps} {...provided.dragHandleProps}>
-                                        <SingleTask task={task}/>
-                                    </div>
-                                )}
-                            </Draggable>
-                        ))}
-                    {provided.placeholder}
-                    </div>
-                )}
-            </Droppable>
+            {tasks.map((task) => (
+                <div>
+                    <SingleTask task={task}/>
+                </div>
+            ))}
         </div>
 	);
 }

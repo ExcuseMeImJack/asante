@@ -33,7 +33,6 @@ function SingleBoard(){
             <div>
                 <Sections />
             </div>
-
         </div>
 	);
 }
