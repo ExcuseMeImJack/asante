@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserProfile } from '../../store/users';
@@ -7,6 +7,7 @@ import './EditProfile.css'
 
 function EditProfileModal() {
     const { closeModal } = useModal();
+    const modalRef = useRef();
     const dispatch = useDispatch();
     const userInfo = useSelector(state => state.users.profile)
     const [name, setName] = useState(userInfo.name)

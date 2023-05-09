@@ -1,0 +1,66 @@
+.profile-page{
+    margin: 10px 40px;
+}
+
+.profile-info-container{
+    display: flex;
+    height: 160px;
+}
+
+.profile-aboutme-container{
+    border: 1px red solid;
+}
+
+/* .profile-boards-container{
+    border: 1px red solid;
+}
+
+.profile-tasks-container{
+    border: 1px red solid;
+} */
+
+#profile-pic-image{
+    width: 160px;
+    height: 160px;
+    box-shadow: 1px 1px 6px dimgray;
+    border-radius: 130px;
+}
+
+.profile-info{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 30px;
+}
+
+.profile-info > h1, p{
+    margin: 2px 0px;
+}
+
+.email-container{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.edit-profile-button-div{
+    display: flex;
+    margin-left: auto;
+    align-items: flex-end;
+}
+
+.edit-profile-button{
+    color: white;
+    background-color: #3f6ac4;
+    padding: 8px 12px;
+    border: 1px #3f6ac4 solid;
+    border-radius: 10px;
+}
+
+#about-me-container{
+    border: 1px solid blue;
+}
+
+#quotes-container{
+    border: 1px solid purple;
+}
