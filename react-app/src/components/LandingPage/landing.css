@@ -7,6 +7,9 @@
 
 } */
 
+.page-container {
+    height: 100%;
+}
 .nav-container {
     font-family: "Helvetica Neue", sans-serif;
     /* display: flex;
@@ -19,7 +22,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
+    margin-bottom: 70px;
 }
 
 .navbar-left a {
@@ -32,9 +35,10 @@
 .navbar-right a {
     text-decoration: none;
     margin-left: 17px;
-    /* margin-right: 10px; */
+    margin-right: 10px;
     color: grey;
 }
+
 /** keeps the navlinks grey even after you clicked on it**/
 .navbar-left a:visited {
     color: grey;
@@ -44,16 +48,12 @@
     color: grey;
 }
 
-.get-started-btn {
-    margin-left: 20px;
-    background-color: black;
-    color: white;
-    font-size: 17px;
-    padding: 3px 15px 3px 15px;
-    cursor: pointer;
+/***************** MAIN SECTION ******************/
+
+.main-container {
+    flex-grow: 1;
 }
 
-/***************** MAIN SECTION ******************/
 .main-section {
     display: flex;
     align-items: center;
@@ -64,7 +64,11 @@
 .main-left {
     width: 35%;
     /* border: 5px solid pink; */
-    padding: 0 10px;
+    /* padding: 0 10px; */
+}
+
+.main-left p {
+    margin-bottom: 50px;
 }
 
 .main-right {
@@ -83,29 +87,30 @@
     font-family: "Helvetica Neue", sans-serif;
 }
 
-.main2-section-left {
-    /* width: 75%; */
-    /* border: 5px solid rgb(192, 255, 205); */
-    padding: 0 0 0 10px;
-}
-
 .main2-section-right {
     /* border: 5px solid rgb(250, 216, 131); */
-    width: 30%;
+    width: 35%;
     /* padding: 0 0 0 10px; */
     /* margin: 0 0 0 50px; */
 }
 
-.main2-section-container h4 {
-    font-size: 25px;
+.main2-section-left-text {
+    display: flex;
+    flex-direction: column;
+    /* gap: 6px; */
 }
 
+.main2-section-left-text h2 {
+    margin: 9px;
+    margin-left: 0px;
+}
 .main2-section-container p {
     font-size: 20px;
     /* margin: 0 10px 5px 0px; */
 }
+
 /********* CAPITAL 'DRIVE EFFICIENCY ACROSS TEAMS' *******/
-.uppercase-text-bio {
+.uppercase-text {
     text-transform: uppercase;
     font-size: 16px;
     color: darkgray;
@@ -114,15 +119,26 @@
 /********* List View / Board View layout for title and bio **********/
 .layouts-styling div {
     font-size: 20px;
+    margin-bottom: 7px;
 }
 
 .layouts-styling p {
     font-size: 16px;
     color: gray;
+    margin-bottom: 20px;
 }
 
 /******************* BUTTONS *********************/
-.main-section-btn-1 {
+.get-started-btn-1 {
+    margin-left: 20px;
+    background-color: black;
+    color: white;
+    font-size: 17px;
+    padding: 3px 15px 3px 15px;
+    cursor: pointer;
+}
+
+.get-started-btn-2 {
     font-size: 17px;
     margin-right: 17px;
     background-color: black;
@@ -132,7 +148,7 @@
     cursor: pointer;
 }
 
-.main-section-btn-2 {
+.demo-user-btn {
     font-size: 17px;
     background-color: white;
     font-size: 17px;
