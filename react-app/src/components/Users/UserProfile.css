@@ -1,0 +1,109 @@
+.profile-page{
+    margin: 10px 40px;
+}
+
+.profile-info-container{
+    display: flex;
+    height: 160px;
+}
+
+.profile-boards-container{
+    border: 1px red solid;
+}
+
+.profile-tasks-container{
+    border: 1px red solid;
+}
+
+#profile-pic-image{
+    width: 160px;
+    height: 160px;
+    box-shadow: 1px 1px 6px dimgray;
+    border-radius: 130px;
+}
+
+.profile-info{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 30px;
+}
+
+.profile-info > h1, p{
+    margin: 2px 0px;
+}
+
+.email-container{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.edit-profile-button-div{
+    display: flex;
+    margin-left: auto;
+    align-items: flex-end;
+}
+
+.edit-profile-button{
+    color: white;
+    background-color: #3f6ac4;
+    padding: 8px 12px;
+    border: 1px #3f6ac4 solid;
+    border-radius: 10px;
+}
+
+#about-me-container{
+    border: solid 1px rgb(221, 221, 221);
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgb(189, 189, 189);
+    grid-area: aboutme;
+    padding: 5px 20px;
+}
+
+#quotes-container{
+    border: solid 1px rgb(221, 221, 221);
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgb(189, 189, 189);
+    grid-area: quote;
+    padding: 5px 20px;
+}
+
+.profile-divider{
+    border-bottom: 1px rgb(221, 221, 221) solid;
+    margin: 10px 0px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.profile-tiles-container{
+    margin: 30px 0px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+    'tasks aboutme'
+    'boards quote';
+    gap: 25px;
+}
+
+#profile-boards-container{
+    border: solid 1px rgb(221, 221, 221);
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgb(189, 189, 189);
+    grid-area: boards;
+    padding: 5px 20px;
+}
+
+#profile-tasks-container{
+    border: solid 1px rgb(221, 221, 221);
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgb(189, 189, 189);
+    grid-area: tasks;
+    padding: 5px 20px;
+}
+
+#author{
+    font-style: italic;
+    font-weight: bold;
+}

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTaskBySectionId } from '../../store/tasks';
+import './CreateTaskBySectionForm.css'
 
-function CreateTaskBySectionForm({sectionId}){
+function CreateTaskBySectionForm({sectionId, setButtonHidden}){
     const dispatch = useDispatch();
     const [taskName, setTaskName] = useState('')
     const [dueDate, setDueDate] = useState('')
     const [description, setDescription] = useState('')
-    const [buttonHidden, setButtonHidden] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -25,7 +25,7 @@ function CreateTaskBySectionForm({sectionId}){
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form className='form' onSubmit={handleSubmit}>
                     <label>
                     Name
                     <input
