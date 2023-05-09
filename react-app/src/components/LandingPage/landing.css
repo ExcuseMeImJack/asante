@@ -7,6 +7,14 @@
 
 } */
 
+.nav-container {
+    font-family: "Helvetica Neue", sans-serif;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; */
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -42,6 +50,7 @@
     color: white;
     font-size: 17px;
     padding: 3px 15px 3px 15px;
+    cursor: pointer;
 }
 
 /***************** MAIN SECTION ******************/
@@ -49,6 +58,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    font-family: "Helvetica Neue", sans-serif;
 }
 
 .main-left {
@@ -64,30 +74,40 @@
 }
 
 /********* BOTTOM SECTION ******/
-.footer-section {
+.main2-section-section {
     display: flex;
     align-items: center;
     justify-content: space-around;
     /* margin-top: 20px; */
     padding-top: 70px;
+    font-family: "Helvetica Neue", sans-serif;
 }
 
-.footer-left {
+.main2-section-left {
     /* width: 75%; */
     /* border: 5px solid rgb(192, 255, 205); */
     padding: 0 0 0 10px;
 }
 
-.footer-right {
+.main2-section-right {
     /* border: 5px solid rgb(250, 216, 131); */
     width: 30%;
     /* padding: 0 0 0 10px; */
     /* margin: 0 0 0 50px; */
 }
+
+.main2-section-container h4 {
+    font-size: 25px;
+}
+
+.main2-section-container p {
+    font-size: 20px;
+    /* margin: 0 10px 5px 0px; */
+}
 /********* CAPITAL 'DRIVE EFFICIENCY ACROSS TEAMS' *******/
 .uppercase-text-bio {
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 16px;
     color: darkgray;
 }
 
@@ -109,6 +129,7 @@
     color: white;
     font-size: 17px;
     padding: 3px 15px 3px 15px;
+    cursor: pointer;
 }
 
 .main-section-btn-2 {
@@ -116,6 +137,7 @@
     background-color: white;
     font-size: 17px;
     padding: 3px 15px 3px 15px;
+    cursor: pointer;
 }
 
 .button1 {
@@ -125,6 +147,7 @@
     transition: background-color 0.6s;
     margin: 5px;
     font-size: 17px;
+    cursor: pointer;
 }
 
 .button1:hover {
@@ -138,6 +161,7 @@
     padding: 0 16px;
     margin: 5px;
     font-size: 17px;
+    cursor: pointer;
 }
 
 .button2:hover {
@@ -150,6 +174,7 @@
     padding: 0 16px;
     margin: 5px;
     font-size: 17px;
+    cursor: pointer;
 }
 
 .button3:hover {
@@ -163,6 +188,7 @@
     padding: 0 16px;
     margin: 5px;
     font-size: 17px;
+    cursor: pointer;
 }
 
 .button4:hover {
@@ -176,6 +202,7 @@
     padding: 0 16px;
     margin: 5px;
     font-size: 17px;
+    cursor: pointer;
 }
 
 .button5:hover {
