@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-
+import { DragDropContext } from 'react-beautiful-dnd';
 import { ModalProvider, Modal } from "./context/Modal";
 import configureStore from "./store";
 import * as sessionActions from "./store/session";
@@ -25,7 +25,9 @@ function Root() {
 		<ModalProvider>
 			<Provider store={store}>
 				<BrowserRouter>
-					<App />
+					<DragDropContext onDragEnd={() => {console.log("dnd event occured")}}>
+						<App />
+					</DragDropContext>
 					<Modal />
 				</BrowserRouter>
 			</Provider>
