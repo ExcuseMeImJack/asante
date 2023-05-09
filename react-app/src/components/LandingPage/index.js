@@ -7,12 +7,17 @@ const LandingPage = () => {
         <div className="nav-container">
           <div className="navbar">
             <div className="navbar-left">
-              Why Asana? Features Resources Enterprise Pricing
+              <a href="">Why Asana?</a>
+              <a href="">Features</a>
+              <a href="">Resources</a>
+              <a href="">Enterprise</a>
+              <a href="">Pricing</a>
             </div>
 
             <div className="navbar-right">
-              Contact Sales Log In
-              <button>Get Started</button>
+              <a href="">Contact</a>
+              <a href="">Log In</a>
+              <button className="get-started-btn">Get Started</button>
             </div>
           </div>
         </div>
@@ -28,8 +33,8 @@ const LandingPage = () => {
                 flexible and easy for all teams to use, so you can deliver
                 quality work together, faster.
               </p>
-              <button className="reg-button">Get Started</button>
-              <button className="reg-button">See how it works</button>
+              <button className="main-section-btn-1">Get Started</button>
+              <button className="main-section-btn-2">See how it works</button>
             </div>
             <div className="main-right">
               <button className="button1">Marketing</button>
@@ -44,39 +49,35 @@ const LandingPage = () => {
       </main>
 
       {/* <footer> */}
-        <div className="footer-container">
-          <div className="footer-section">
-            <div className="footer-left">
-              <p className="uppercase-text-bio">
-                Drive efficiency across teams
-              </p>
-              <h4>Manage complex work easily</h4>
-              <p>
-                Connect what needs to get done, who's doing it, and by when.
-              </p>
-            </div>
+      <div className="footer-container">
+        <div className="footer-section">
+          <div className="footer-left">
+            <p className="uppercase-text-bio">Drive efficiency across teams</p>
+            <h4>Manage complex work easily</h4>
+            <p>Connect what needs to get done, who's doing it, and by when.</p>
+          </div>
 
-            <div className="footer-right">
-              <div className="layouts-styling">
-                <div>List View</div>
-                <p>
-                  Organize and assign tasks. With lists, teams see immediately
-                  what they need to do, which tasks are a priority, and when
-                  work is due.
-                </p>
-              </div>
-              <div className="layouts-styling">
-                <div>Boards</div>
-                <p>
-                  Make it easy for your team to focus on tasks currently at
-                  hand. Define each stage of work to see what’s important and
-                  where things are getting stuck.
-                </p>
-              </div>
-              <div></div>
+          <div className="footer-right">
+            <div className="layouts-styling">
+              <div>List View</div>
+              <p>
+                Organize and assign tasks. With lists, teams see immediately
+                what they need to do, which tasks are a priority, and when work
+                is due.
+              </p>
             </div>
+            <div className="layouts-styling">
+              <div>Boards</div>
+              <p>
+                Make it easy for your team to focus on tasks currently at hand.
+                Define each stage of work to see what’s important and where
+                things are getting stuck.
+              </p>
+            </div>
+            <div></div>
           </div>
         </div>
+      </div>
       {/* </footer> */}
     </>
   );
