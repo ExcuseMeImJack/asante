@@ -1,6 +1,6 @@
 import "./landing.css";
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 const LandingPage = () => {
   const history = useHistory();
 
@@ -11,26 +11,27 @@ const LandingPage = () => {
   const handleLogInClick = () => {
     history.push("/login");
   }
-
-  console.log("testing hehe")
   return (
     <>
+    <div className="page-container">
       <header>
         <div className="nav-container">
           <div className="navbar">
             <div className="navbar-left">
-              <a href="">Why Asante?</a>
-              <a href="">Features</a>
-              <a href="">Resources</a>
-              <a href="">Enterprise</a>
-              <a href="">Pricing</a>
+              <Link href="">Why Asante?</Link>
+              <Link href="">Features</Link>
+              <Link href="">Resources</Link>
+              <Link href="">Enterprise</Link>
+              <Link href="">Pricing</Link>
             </div>
 
             <div className="navbar-right">
               <a href="">Contact</a>
-              <a href="" onClick={handleLogInClick}>Log In</a>
+              <a href="" onClick={handleLogInClick}>
+                Log In
+              </a>
               <button
-                className="get-started-btn"
+                className="get-started-btn-1"
                 onClick={handleGetStartedClick}
               >
                 Get Started
@@ -51,12 +52,12 @@ const LandingPage = () => {
                 quality work together, faster.
               </p>
               <button
-                className="main-section-btn-1"
+                className="get-started-btn-2"
                 onClick={handleGetStartedClick}
               >
                 Get Started
               </button>
-              <button className="main-section-btn-2">See how it works</button>
+              <button className="demo-user-btn">See how it works</button>
             </div>
             <div className="main-right">
               <button className="button1">Marketing</button>
@@ -72,13 +73,13 @@ const LandingPage = () => {
         <div className="main2-section-container">
           <div className="main2-section-section">
             <div className="main2-section-left">
-              <p className="uppercase-text-bio">
-                Drive efficiency across teams
-              </p>
-              <h4>Manage complex work easily</h4>
-              <p>
-                Connect what needs to get done, who's doing it, and by when.
-              </p>
+              <div className="main2-section-left-text">
+                <p className="uppercase-text">Drive efficiency across teams</p>
+                <h2>Manage complex work easily</h2>
+                <p>
+                  Connect what needs to get done, who's doing it, and by when.
+                </p>
+              </div>
             </div>
 
             <div className="main2-section-right">
@@ -103,6 +104,7 @@ const LandingPage = () => {
           </div>
         </div>
       </main>
+      </div>
     </>
   );
 };

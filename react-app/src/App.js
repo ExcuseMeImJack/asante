@@ -15,6 +15,7 @@ import UserProfile from "./components/Users/UserProfile";
 import LandingPage from "./components/LandingPage";
 import { getUserProfile } from "./store/users";
 import Home from "./components/Home";
+import Footer from "./components/Footer"
 
 function App() {
   const dispatch = useDispatch();
@@ -71,6 +72,7 @@ function App() {
           </Switch>
         </>
       )}
+    <Footer />
     </>
   );
 }
