@@ -5,3 +5,13 @@
 .hidden {
   display: none;
 }
+
+.nav-list {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.nav-list > li {
+  list-style:  none;
+}

@@ -8,12 +8,11 @@ function UsersBoards(){
     const dispatch = useDispatch();
     const history = useHistory();
     const storeBoards = useSelector((state) => state.boards);
-    const userId = useSelector((state) => state.session.user.id);
 
     //dispatch thunk to populate storeBoards variable
     useEffect(() => {
         dispatch(getBoardsByUserId())
-    }, [dispatch, userId])
+    }, [dispatch])
 
     if (!storeBoards.boards) return <h1>...Loading</h1>
     // grab boards array from the storeBoards object

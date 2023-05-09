@@ -8,9 +8,11 @@ function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 
 	return (
-		<ul>
-			<li>
+		<ul className='nav-list'>
+			<li className='nav-list'>
 				<NavLink exact to="/">Home</NavLink>
+				<NavLink exact to="/profile">Profile</NavLink>
+				<NavLink exact to="/boards/new">New Board</NavLink>
 			</li>
 			{isLoaded && (
 				<li>
