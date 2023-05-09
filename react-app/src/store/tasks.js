@@ -4,6 +4,7 @@ const GET_ALL_TASKS_BY_SECTION = "tasks/GET_ALL_TASKS_BY_SECTION";
 const GET_USER_TASKS = "tasks/GET_USER_TASKS";
 const ADD_TASK = "tasks/ADD_TASK";
 const EDIT_TASK = "tasks/EDIT_TASK";
+const DELETE_TASK = "tasks/DELETE_TASK";
 
 const getTask = (task) => ({
 	type: GET_TASK,
@@ -27,6 +28,11 @@ const addTask = (task) => ({
 
 const editTask = (task) => ({
 	type: EDIT_TASK,
+	payload: task,
+});
+
+const deleteTask = (task) => ({
+	type: DELETE_TASK,
 	payload: task,
 });
 
@@ -98,7 +104,7 @@ export const addTaskBySectionId = (task, sectionId) => async (dispatch) => {
     }
 }
 
-// edit task by section id
+// edit task by task id
 export const editTaskByTaskId = (task, taskId) => async (dispatch) => {
     const response = await fetch(`/api/users/task/${taskId}`, {
         method: "PUT",
@@ -114,6 +120,23 @@ export const editTaskByTaskId = (task, taskId) => async (dispatch) => {
             return;
         }
         dispatch(editTask(data.Task));
+    }
+}
+
+// delete task by task id
+export const deleteTaskByTaskId = (task) => async (dispatch) => {
+    const response = await fetch(`/api/tasks/${task.id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+    if (response.ok) {
+        const data = await response.json();
+        if (data.errors) {
+            return;
+        }
+        dispatch(deleteTask(task));
     }
 }
 
@@ -140,6 +163,14 @@ export default function reducer(state = initialState, action) {
             const index = newState.tasks.indexOf(task)
             newState.tasks[index] = action.payload
 			newState.task = action.payload
+            return newState
+        }
+		case DELETE_TASK: {
+            const newState = { ...state }
+            const id = action.payload.id
+            const task = newState.tasks.find(task => task.id === id)
+            const index = newState.tasks.indexOf(task)
+            newState.tasks.splice(index, 1)
             return newState
         }
 		default:

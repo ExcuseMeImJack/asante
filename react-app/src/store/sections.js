@@ -3,25 +3,31 @@ const GET_SECTIONS = "sections/GET_SECTIONS";
 const GET_SECTION = "sections/GET_SECTION";
 const ADD_SECTION = "sections/ADD_SECTION";
 const EDIT_SECTION = "sections/EDIT_SECTION";
+const DELETE_SECTION = "sections/DELETE_SECTION";
 
 const getSections = (sections) => ({
-	type: GET_SECTIONS,
-	payload: sections,
+    type: GET_SECTIONS,
+    payload: sections,
 });
 
 const getSection = (section) => ({
-	type: GET_SECTION,
-	payload: section,
+    type: GET_SECTION,
+    payload: section,
 });
 
 const addSection = (section) => ({
-	type: ADD_SECTION,
-	payload: section,
+    type: ADD_SECTION,
+    payload: section,
 });
 
 const editSection = (section) => ({
-	type: EDIT_SECTION,
-	payload: section,
+    type: EDIT_SECTION,
+    payload: section,
+});
+
+const deleteSection = (section) => ({
+    type: DELETE_SECTION,
+    payload: section,
 });
 
 
@@ -94,22 +100,40 @@ export const editSectionBySectionId = (section, sectionId) => async (dispatch) =
     }
 }
 
+export const deleteSectionById = (section) => async (dispatch) => {
+    const response = await fetch(`/api/sections/${section.id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    if (response.ok) {
+        const data = await response.json();
+        if (data.errors) {
+            return;
+        }
+        console.log("hitting dispatch delete action")
+        console.log(section)
+        dispatch(deleteSection(section))
+    }
+}
+
 const initialState = { sections: [], section: null };
 
 export default function reducer(state = initialState, action) {
-	switch (action.type) {
-		case GET_SECTIONS: {
-			const newState = {...state, sections: action.payload };
+    switch (action.type) {
+        case GET_SECTIONS: {
+            const newState = { ...state, sections: action.payload };
             return newState
         }
-		case GET_SECTION: {
-            const newState = {...state, section: action.payload };
-			return newState
+        case GET_SECTION: {
+            const newState = { ...state, section: action.payload };
+            return newState
         }
         case ADD_SECTION: {
             const newState = { ...state }
             newState.sections = [...state.sections, action.payload]
-			newState.section = action.payload
+            newState.section = action.payload
             return newState
         }
         case EDIT_SECTION: {
@@ -118,10 +142,19 @@ export default function reducer(state = initialState, action) {
             const section = newState.sections.find(section => section.id === id)
             const index = newState.sections.indexOf(section)
             newState.sections[index] = action.payload
-			newState.section = action.payload
+            newState.section = action.payload
             return newState
         }
-		default:
-			return state;
-	}
+        case DELETE_SECTION: {
+            const newState = { ...state }
+            newState.sections = [...state.sections]
+            const id = action.payload.id
+            const section = newState.sections.find(section => section.id === id)
+            const index = newState.sections.indexOf(section)
+            newState.sections.splice(index, 1)
+            return newState
+        }
+        default:
+            return state;
+    }
 }

@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSectionsByBoardId } from '../../store/sections';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import AllTasksBySection from '../Tasks/AllTasksBySection';
 import './Sections.css'
-import { getAllTasksBySectionId } from '../../store/tasks';
-import EditSectionForm from './EditSectionForm';
+import { deleteSectionById } from '../../store/sections';
 
 function Sections() {
-    const { boardId } = useParams()
+    const { boardId } = useParams();
     const dispatch = useDispatch();
+    const history = useHistory();
     const storeSections = useSelector((state) => state.sections);
 
     //dispatch thunk to populate storeSections variable
     useEffect(() => {
         dispatch(getSectionsByBoardId(boardId))
-    }, [dispatch, boardId])
-
+    }, [dispatch, boardId, storeSections.sections.length])
 
 
     // grab sections array from the storeSections object
@@ -30,6 +29,11 @@ function Sections() {
                 {sections.map((section) => {
                     return <div key={section.id} className='single-section-border'>
                         <div>{section.name}</div>
+                        <button onClick={async (e) => {
+                            e.preventDefault()
+                            await dispatch(deleteSectionById(section))
+                            return history.push(`/boards/${boardId}`)
+                        }}>Delete Section</button>
                         <AllTasksBySection sectionId={section.id}/>
                     </div>
                 })}
