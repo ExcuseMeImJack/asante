@@ -21,24 +21,26 @@ function Sections() {
         console.log('Source ~~~~~~~~~>', source)
         console.log('Destination ~~~~~~~~~>', destination)
         console.log('DraggableId ~~~~~~~~~~~~~~~>', draggableId)
-        // if (!destination) {
-        //     return;
-        // }
+        if (!destination) {
+            return;
+        }
 
-        // if (
-        //     destination.dropableId === source.droppableId &&
-        //     destination.index === source.index
-        // ) {
-        //     return;
-        // }
+        if (
+            destination.dropableId === source.droppableId &&
+            destination.index === source.index
+        ) {
+            return;
+        }
 
+        // column is board id
         // const column = source.droppableId;
-        // console.log("COLUMN ~~~~~~~~~~~~~~~>", column)
+
+        // sections from state
         // const newSectionIds = Array.from(column.sectionIds);
-        // console.log("new section ids ~~~~~~~~~~~>", newSectionIds)
+
+        // remove dragged section from section order
         // newSectionIds.splice(source.index, 1);
         // newSectionIds.splice(destination.index, 0, draggableId);
-        // console.log("new section ids after~~~~~~~~~~~>", newSectionIds)
 
         // const newColumn = {
         //     ...column,
@@ -61,7 +63,7 @@ function Sections() {
                         <Draggable draggableId={"section-" + section.id} key={section.id} index={index}>
                         {(provided) => (
                             <div className='single-section-border' ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                                <div {...provided.droppableProps} ref={provided.innerRef}>
+                                <div>
                                     <div>{section.name}</div>
                                     <AllTasksBySection sectionId={section.id}/>
                                 </div>
@@ -71,9 +73,9 @@ function Sections() {
                     ))}
                     {provided.placeholder}
                 </div>
-            )}
-        </Droppable>
-        </DragDropContext>
+                )}
+            </Droppable>
+            </DragDropContext>
         </div>
     );
 }

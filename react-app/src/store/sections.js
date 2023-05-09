@@ -3,6 +3,7 @@ const GET_SECTIONS = "sections/GET_SECTIONS";
 const GET_SECTION = "sections/GET_SECTION";
 const ADD_SECTION = "sections/ADD_SECTION";
 const EDIT_SECTION = "sections/EDIT_SECTION";
+const MOVE_SECTION = "sections/MOVE_SECTION";
 
 const getSections = (sections) => ({
 	type: GET_SECTIONS,
@@ -22,6 +23,11 @@ const addSection = (section) => ({
 const editSection = (section) => ({
 	type: EDIT_SECTION,
 	payload: section,
+});
+
+const moveSection = (order) => ({
+	type: MOVE_SECTION,
+	payload: order,
 });
 
 
@@ -94,6 +100,24 @@ export const editSectionBySectionId = (section, sectionId) => async (dispatch) =
     }
 }
 
+// move section
+export const updateSectionOrder = (section, destination, source, draggableId) => async (dispatch) => {
+    const response = await fetch(`/api/sections/${section.id}/move`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(destination.index)
+    });
+    if (response.ok) {
+        const data = await response.json();
+        if (data.errors) {
+            return;
+        }
+        dispatch(moveSection(data.Section));
+    }
+}
+
 const initialState = { sections: [], section: null };
 
 export default function reducer(state = initialState, action) {
@@ -113,6 +137,15 @@ export default function reducer(state = initialState, action) {
             return newState
         }
         case EDIT_SECTION: {
+            const newState = { ...state }
+            const id = action.payload.id
+            const section = newState.sections.find(section => section.id === id)
+            const index = newState.sections.indexOf(section)
+            newState.sections[index] = action.payload
+			newState.section = action.payload
+            return newState
+        }
+        case MOVE_SECTION: {
             const newState = { ...state }
             const id = action.payload.id
             const section = newState.sections.find(section => section.id === id)
