@@ -7,6 +7,10 @@ const LandingPage = () => {
   const handleGetStartedClick = () => {
     history.push("/signup");
   };
+
+  const handleLogInClick = () => {
+    history.push("/login");
+  }
   return (
     <>
       <header>
@@ -22,7 +26,7 @@ const LandingPage = () => {
 
             <div className="navbar-right">
               <a href="">Contact</a>
-              <a href="">Log In</a>
+              <a href="" onClick={handleLogInClick}>Log In</a>
               <button
                 className="get-started-btn"
                 onClick={handleGetStartedClick}

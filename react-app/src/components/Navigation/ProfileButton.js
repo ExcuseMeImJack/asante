@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
-import './ProfileButton.css'
+import "./ProfileButton.css";
+import { getUserProfile } from "../../store/users";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -54,13 +55,9 @@ function ProfileButton({ user }) {
           </>
         ) : (
           <>
-            <button onClick={() => history.push('/login')}>
-              Log In
-            </button>
+            <button onClick={() => history.push("/login")}>Log In</button>
 
-            <button onClick={() => history.push('/signup')}>
-              Sign up
-            </button>
+            <button onClick={() => history.push("/signup")}>Sign up</button>
           </>
         )}
       </ul>
