@@ -36,7 +36,7 @@ function AllTasksBySection({sectionId}){
             : <CreateTaskBySectionForm sectionId={sectionId} setButtonHidden={setCreateButtonHidden} />}
 
             {tasks.map((task) => (
-                <div>
+                <div key={task.id}>
                     <SingleTask task={task}/>
                 </div>
             ))}
