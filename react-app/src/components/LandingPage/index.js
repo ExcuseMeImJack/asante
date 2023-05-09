@@ -11,6 +11,8 @@ const LandingPage = () => {
   const handleLogInClick = () => {
     history.push("/login");
   }
+
+  console.log("testing hehe")
   return (
     <>
       <header>
