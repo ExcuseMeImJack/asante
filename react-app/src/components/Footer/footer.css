@@ -4,9 +4,12 @@
     width: 100%;
     height: 2.5rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     background-color: black;
     color: white;
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 10pt;
+    align-items: center;
 }
 
 /* .social-links {
@@ -23,7 +26,7 @@
 
 .about-asante {
     word-break: break-word;
-    width: 300px;
+    /* width: 300px; */
 
     background-color: black;
 }
