@@ -25,9 +25,9 @@ const editSection = (section) => ({
 	payload: section,
 });
 
-const moveSection = (order) => ({
+const moveSection = (sections) => ({
 	type: MOVE_SECTION,
-	payload: order,
+	payload: sections,
 });
 
 
@@ -101,20 +101,20 @@ export const editSectionBySectionId = (section, sectionId) => async (dispatch) =
 }
 
 // move section
-export const updateSectionOrder = (section, destination, source, draggableId) => async (dispatch) => {
-    const response = await fetch(`/api/sections/${section.id}/move`, {
+export const orderSections = (sections, boardId) => async (dispatch) => {
+    const response = await fetch(`/api/sections/${boardId}/move`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(destination.index)
+        body: JSON.stringify(sections)
     });
     if (response.ok) {
         const data = await response.json();
         if (data.errors) {
             return;
         }
-        dispatch(moveSection(data.Section));
+        dispatch(moveSection(sections));
     }
 }
 
@@ -147,11 +147,7 @@ export default function reducer(state = initialState, action) {
         }
         case MOVE_SECTION: {
             const newState = { ...state }
-            const id = action.payload.id
-            const section = newState.sections.find(section => section.id === id)
-            const index = newState.sections.indexOf(section)
-            newState.sections[index] = action.payload
-			newState.section = action.payload
+            newState.sections = action.payload
             return newState
         }
 		default:

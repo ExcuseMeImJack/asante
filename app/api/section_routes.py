@@ -54,6 +54,23 @@ def delete_section(section_id):
     else:
         return {'errors': ['Unauthorized']}, 401
 
+@section_routes.route('/<int:board_id>/move', methods=["PUT"])
+@login_required
+# Reorder sections
+def edit_section_order(board_id):
+    data = request.json
+    board = Board.query.get(board_id)
+    # Check if board belongs to current user
+    if (board.user_id == current_user.id):
+        for index in range(0,len(data)):
+            section = data[index]
+            section['order'] = index
+        return {}
+
+    else:
+        return {'errors': ['Unauthorized']}, 401
+
+
 @section_routes.route('/<int:section_id>', methods=["PUT"])
 @login_required
 # Edit a section by id

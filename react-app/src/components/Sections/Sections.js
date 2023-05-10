@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSectionsByBoardId } from '../../store/sections';
+import { getSectionsByBoardId, orderSections } from '../../store/sections';
 import { useParams } from 'react-router-dom';
 import { Droppable, Draggable, DragDropContext } from 'react-beautiful-dnd';
 import AllTasksBySection from '../Tasks/AllTasksBySection';
@@ -32,20 +32,13 @@ function Sections() {
             return;
         }
 
-        // column is board id
-        // const column = source.droppableId;
 
-        // sections from state
-        // const newSectionIds = Array.from(column.sectionIds);
+        const sections = [ ...storeSections.sections ]
+        const section = sections[source.index]
+        sections.splice(source.index, 1)
+        sections.splice(destination.index, 0, section)
 
-        // remove dragged section from section order
-        // newSectionIds.splice(source.index, 1);
-        // newSectionIds.splice(destination.index, 0, draggableId);
-
-        // const newColumn = {
-        //     ...column,
-        //     sectionIds: newSectionIds
-        // }
+        dispatch(orderSections(sections, boardId))
     }
 
     // grab sections array from the storeSections object
@@ -56,7 +49,7 @@ function Sections() {
     return (
         <div>
             <DragDropContext onDragEnd={onDragEnd}>
-            <Droppable droppableId="ROOT">
+            <Droppable droppableId="ROOT" direction='horizontal'>
                 {(provided) => (
                     <div className='section-gallery' {...provided.droppableProps} ref={provided.innerRef}>
                     {sections.map((section, index) => (
