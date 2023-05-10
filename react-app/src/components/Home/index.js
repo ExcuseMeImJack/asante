@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { deleteUserThunk, getUserProfile } from "../../store/users"
 import { useEffect } from "react"
+import { getBoardsByUserId } from "../../store/boards"
 
 function Home() {
 
@@ -9,16 +10,12 @@ function Home() {
 
     useEffect(() => {
         dispatch(getUserProfile())
+        dispatch(getBoardsByUserId())
     }, [dispatch])
 
-    console.log(storeProfile.profile)
     return (
         <div>
             <h1>Homepage</h1>
-            <button onClick={async (e) => {
-                e.preventDefault()
-                await dispatch(deleteUserThunk(storeProfile.profile))
-            }}>Delete User</button>
         </div>
     )
 }

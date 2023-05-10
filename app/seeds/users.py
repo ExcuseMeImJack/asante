@@ -11,7 +11,7 @@ def seed_users():
         password='password',
         name='Demo',
         about_me="I'm a great person and I love Python!",
-        profile_pic_url="https://news.mit.edu/sites/default/files/styles/news_article__image_gallery/public/images/202012/MIT-Coding-Brain-01-press_0.jpg"
+        profile_pic_url="https://d3ki9tyy5l5ruj.cloudfront.net/obj/3d4665c7cf119dc9dc38232301b18fa68b9bb17c/avatar.svg"
     )
     marnie = User(
         username='marnie',
@@ -19,7 +19,7 @@ def seed_users():
         password='password',
         name='Marnie',
         about_me="I'm a great person and I love Python!",
-        profile_pic_url="https://news.mit.edu/sites/default/files/styles/news_article__image_gallery/public/images/202012/MIT-Coding-Brain-01-press_0.jpg"
+        profile_pic_url="https://d3ki9tyy5l5ruj.cloudfront.net/obj/3d4665c7cf119dc9dc38232301b18fa68b9bb17c/avatar.svg"
     )
     bobbie = User(
         username='bobbie',
@@ -27,7 +27,7 @@ def seed_users():
         password='password',
         name='Bobbie',
         about_me="I'm a great person and I love Python!",
-        profile_pic_url="https://news.mit.edu/sites/default/files/styles/news_article__image_gallery/public/images/202012/MIT-Coding-Brain-01-press_0.jpg"
+        profile_pic_url="https://d3ki9tyy5l5ruj.cloudfront.net/obj/3d4665c7cf119dc9dc38232301b18fa68b9bb17c/avatar.svg"
     )
     tester = User(
         username='tester',
@@ -35,7 +35,7 @@ def seed_users():
         password='password',
         name='Elam Sander',
         about_me="I'm a great person and I love Python!",
-        profile_pic_url="https://news.mit.edu/sites/default/files/styles/news_article__image_gallery/public/images/202012/MIT-Coding-Brain-01-press_0.jpg"
+        profile_pic_url="https://d3ki9tyy5l5ruj.cloudfront.net/obj/3d4665c7cf119dc9dc38232301b18fa68b9bb17c/avatar.svg"
     )
     tester1 = User(
         username='tester1',
@@ -43,7 +43,7 @@ def seed_users():
         password='password',
         name='Roland Hemingr',
         about_me="I'm a great person and I love Python!",
-        profile_pic_url="https://news.mit.edu/sites/default/files/styles/news_article__image_gallery/public/images/202012/MIT-Coding-Brain-01-press_0.jpg"
+        profile_pic_url="https://d3ki9tyy5l5ruj.cloudfront.net/obj/3d4665c7cf119dc9dc38232301b18fa68b9bb17c/avatar.svg"
     )
     tester2 = User(
         username='tester2',
@@ -51,7 +51,7 @@ def seed_users():
         password='password',
         name='Dumuzid Patric',
         about_me="I'm a great person and I love Python!",
-        profile_pic_url="https://news.mit.edu/sites/default/files/styles/news_article__image_gallery/public/images/202012/MIT-Coding-Brain-01-press_0.jpg"
+        profile_pic_url="https://d3ki9tyy5l5ruj.cloudfront.net/obj/3d4665c7cf119dc9dc38232301b18fa68b9bb17c/avatar.svg"
     )
 
     db.session.add(demo)

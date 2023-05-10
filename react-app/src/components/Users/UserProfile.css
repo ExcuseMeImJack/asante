@@ -1,18 +1,13 @@
 .profile-page{
-    margin: 10px 40px;
+    margin: 0 auto;
+    max-width: 1000px;
+    min-width: 800px;
+    /* padding: 0px 32px; */
 }
 
 .profile-info-container{
     display: flex;
     height: 160px;
-}
-
-.profile-boards-container{
-    border: 1px red solid;
-}
-
-.profile-tasks-container{
-    border: 1px red solid;
 }
 
 #profile-pic-image{
@@ -33,23 +28,45 @@
     margin: 2px 0px;
 }
 
+.username-email-container{
+    display: flex;
+    gap: 5px;
+}
+
 .email-container{
+    color: #6b6c6c;
     display: flex;
     align-items: center;
     gap: 5px;
 }
 
-.edit-profile-button-div{
+.username-container{
+    color: #6b6c6c;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.edit-delete-profile-button-div{
     display: flex;
     margin-left: auto;
     align-items: flex-end;
+    gap: 15px;
 }
 
 .edit-profile-button{
     color: white;
     background-color: #3f6ac4;
-    padding: 8px 12px;
+    padding: 10px 12px;
     border: 1px #3f6ac4 solid;
+    border-radius: 10px;
+}
+
+.delete-user-button{
+    color: white;
+    background-color: #da3636;
+    padding: 10px 12px;
+    border: 1px #da3636 solid;
     border-radius: 10px;
 }
 
@@ -57,16 +74,16 @@
     border: solid 1px rgb(221, 221, 221);
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgb(189, 189, 189);
-    grid-area: aboutme;
     padding: 5px 20px;
+    grid-area: aboutme;
 }
 
 #quotes-container{
     border: solid 1px rgb(221, 221, 221);
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgb(189, 189, 189);
-    grid-area: quote;
     padding: 5px 20px;
+    grid-area: quote;
 }
 
 .profile-divider{
@@ -77,13 +94,28 @@
 }
 
 .profile-tiles-container{
-    margin: 30px 0px;
+    margin: 35px 0px;
     display: grid;
     grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr 1fr;
     grid-template-areas:
-    'tasks aboutme'
-    'boards quote';
+    'profilediv1 profilediv2';
+    gap: 25px;
+}
+
+.profile-page-div-1{
+    grid-area: profilediv1;
+    display: grid;
+    grid-template-areas:
+    'boards'
+    'tasks';
+    gap: 25px;
+}
+.profile-page-div-2{
+    grid-area: profilediv2;
+    display: grid;
+    grid-template-areas:
+    'aboutme'
+    'quote';
     gap: 25px;
 }
 
@@ -91,19 +123,27 @@
     border: solid 1px rgb(221, 221, 221);
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgb(189, 189, 189);
-    grid-area: boards;
     padding: 5px 20px;
+    grid-area: boards;
 }
 
 #profile-tasks-container{
     border: solid 1px rgb(221, 221, 221);
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgb(189, 189, 189);
-    grid-area: tasks;
     padding: 5px 20px;
+    grid-area: tasks;
 }
 
 #author{
     font-style: italic;
     font-weight: bold;
+}
+
+.save-profile-edit-changes{
+    color: white;
+    background-color: #3f6ac4;
+    padding: 8px 12px;
+    border: 1px #3f6ac4 solid;
+    border-radius: 10px;
 }

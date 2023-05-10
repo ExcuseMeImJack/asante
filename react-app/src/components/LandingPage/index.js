@@ -1,35 +1,65 @@
 import "./landing.css";
-import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useState} from "react";
+import { Link, useHistory, Redirect } from "react-router-dom";
+import { login } from "../../store/session";
+import { getUserProfile } from "../../store/users";
+import { useDispatch, useSelector } from "react-redux";
+
 const LandingPage = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login(email, password));
+    if (data) {
+      setErrors(data);
+    }
+    dispatch(getUserProfile())
+    history.push('/')
+  };
+
+  const handleDemoLogin = async (e) => {
+    e.preventDefault()
+    const demoEmail = "tester@aa.io"
+    const demoPassword = "password"
+
+    const data = await dispatch(login(demoEmail, demoPassword))
+    if (data) {
+      setErrors(data);
+    }
+    dispatch(getUserProfile())
+    history.push('/')
+  };
+
 
   const handleGetStartedClick = () => {
     history.push("/signup");
   };
 
-  const handleLogInClick = () => {
-    history.push("/login");
-  }
+
   return (
-    <>
     <div className="page-container">
       <header>
         <div className="nav-container">
           <div className="navbar">
             <div className="navbar-left">
-              <Link href="">Why Asante?</Link>
-              <Link href="">Features</Link>
-              <Link href="">Resources</Link>
-              <Link href="">Enterprise</Link>
-              <Link href="">Pricing</Link>
+              <Link to="">Why Asante?</Link>
+              <Link to="">Features</Link>
+              <Link to="">Resources</Link>
+              <Link to="">Enterprise</Link>
+              <Link to="">Pricing</Link>
             </div>
 
             <div className="navbar-right">
-              <a href="">Contact</a>
-              <a href="" onClick={handleLogInClick}>
+              <Link to="">Contact</Link>
+              <Link to="/login">
                 Log In
-              </a>
+              </Link>
               <button
                 className="get-started-btn-1"
                 onClick={handleGetStartedClick}
@@ -57,7 +87,7 @@ const LandingPage = () => {
               >
                 Get Started
               </button>
-              <button className="demo-user-btn">See how it works</button>
+              <button className="demo-user-btn" onClick={handleDemoLogin}>See how it works</button>
             </div>
             <div className="main-right">
               <button className="button1">Marketing</button>
@@ -99,13 +129,11 @@ const LandingPage = () => {
                   where things are getting stuck.
                 </p>
               </div>
-              <div></div>
             </div>
           </div>
         </div>
       </main>
       </div>
-    </>
   );
 };
 
