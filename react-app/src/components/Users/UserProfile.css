@@ -74,16 +74,16 @@
     border: solid 1px rgb(221, 221, 221);
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgb(189, 189, 189);
-    grid-area: aboutme;
     padding: 5px 20px;
+    grid-area: aboutme;
 }
 
 #quotes-container{
     border: solid 1px rgb(221, 221, 221);
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgb(189, 189, 189);
-    grid-area: quote;
     padding: 5px 20px;
+    grid-area: quote;
 }
 
 .profile-divider{
@@ -97,10 +97,25 @@
     margin: 35px 0px;
     display: grid;
     grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr 1fr;
     grid-template-areas:
-    'tasks aboutme'
-    'boards quote';
+    'profilediv1 profilediv2';
+    gap: 25px;
+}
+
+.profile-page-div-1{
+    grid-area: profilediv1;
+    display: grid;
+    grid-template-areas:
+    'boards'
+    'tasks';
+    gap: 25px;
+}
+.profile-page-div-2{
+    grid-area: profilediv2;
+    display: grid;
+    grid-template-areas:
+    'aboutme'
+    'quote';
     gap: 25px;
 }
 
@@ -108,16 +123,16 @@
     border: solid 1px rgb(221, 221, 221);
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgb(189, 189, 189);
-    grid-area: boards;
     padding: 5px 20px;
+    grid-area: boards;
 }
 
 #profile-tasks-container{
     border: solid 1px rgb(221, 221, 221);
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgb(189, 189, 189);
-    grid-area: tasks;
     padding: 5px 20px;
+    grid-area: tasks;
 }
 
 #author{
