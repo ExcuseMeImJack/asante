@@ -1,12 +1,48 @@
 import "./landing.css";
-import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useState} from "react";
+import { Link, useHistory, Redirect } from "react-router-dom";
+import { login } from "../../store/session";
+import { getUserProfile } from "../../store/users";
+import { useDispatch, useSelector } from "react-redux";
+
 const LandingPage = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([]);
+
+  if (sessionUser) return <Redirect to="/" />;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login(email, password));
+    if (data) {
+      setErrors(data);
+    }
+    dispatch(getUserProfile())
+    history.push('/')
+  };
+
+  const handleDemoLogin = async (e) => {
+    e.preventDefault()
+    const demoEmail = "tester@aa.io"
+    const demoPassword = "password"
+
+    const data = await dispatch(login(demoEmail, demoPassword))
+    if (data) {
+      setErrors(data);
+    }
+    dispatch(getUserProfile())
+    history.push('/')
+  };
+
 
   const handleGetStartedClick = () => {
     history.push("/signup");
   };
+
 
   return (
     <>
@@ -54,7 +90,7 @@ const LandingPage = () => {
               >
                 Get Started
               </button>
-              <button className="demo-user-btn">See how it works</button>
+              <button className="demo-user-btn" onClick={handleDemoLogin}>See how it works</button>
             </div>
             <div className="main-right">
               <button className="button1">Marketing</button>
