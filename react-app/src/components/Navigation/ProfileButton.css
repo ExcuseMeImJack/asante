@@ -1,3 +1,32 @@
-.profile-dropdown > li {
-    list-style: none;
+.profile-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    font-size: 17px;
+    padding: 6px 15px 6px 15px;
+    min-width: 100px;
+    min-height: 34px;
+    cursor: pointer;
+    box-shadow: 3px 2px 3px grey;
+    transition: box-shadow, background-color .6s;
+    border: none;
 }
+
+.profile-button:hover {
+    box-shadow: 4px 4px 4px grey;
+    background-color: white;
+    color: black
+  }
+
+  .profile-button:active {
+    box-shadow: 1px 1px 1px grey;
+  }
+
+  #navbar-pic-image {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }

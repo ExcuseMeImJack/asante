@@ -9,11 +9,9 @@ function Navigation({ isLoaded }){
 
 	return (
 		<ul className='nav-list'>
-			<li className='nav-list'>
-				<NavLink exact to="/">Home</NavLink>
-				<NavLink exact to="/profile">Profile</NavLink>
-				<NavLink exact to="/boards/new">New Board</NavLink>
-			</li>
+				<NavLink className='nav-list-item' exact to="/">Home</NavLink>
+				<NavLink className='nav-list-item' exact to="/profile">Profile</NavLink>
+				<NavLink className='nav-list-item' exact to="/boards/new">New Board</NavLink>
 			{isLoaded && (
 				<li>
 					<ProfileButton user={sessionUser} />
