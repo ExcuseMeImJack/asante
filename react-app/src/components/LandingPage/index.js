@@ -20,18 +20,18 @@ const LandingPage = () => {
         <div className="nav-container">
           <div className="navbar">
             <div className="navbar-left">
-              <Link href="">Why Asante?</Link>
-              <Link href="">Features</Link>
-              <Link href="">Resources</Link>
-              <Link href="">Enterprise</Link>
-              <Link href="">Pricing</Link>
+              <Link to="">Why Asante?</Link>
+              <Link to="">Features</Link>
+              <Link to="">Resources</Link>
+              <Link to="">Enterprise</Link>
+              <Link to="">Pricing</Link>
             </div>
 
             <div className="navbar-right">
-              <a href="">Contact</a>
-              <a href="" onClick={handleLogInClick}>
+              <Link to="">Contact</Link>
+              <Link to="" onClick={handleLogInClick}>
                 Log In
-              </a>
+              </Link>
               <button
                 className="get-started-btn-1"
                 onClick={handleGetStartedClick}
