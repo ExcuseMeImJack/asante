@@ -13,16 +13,6 @@ const LandingPage = () => {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const data = await dispatch(login(email, password));
-    if (data) {
-      setErrors(data);
-    }
-    dispatch(getUserProfile())
-    history.push('/')
-  };
-
   const handleDemoLogin = async (e) => {
     e.preventDefault()
     const demoEmail = "tester@aa.io"
