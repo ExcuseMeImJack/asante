@@ -40,7 +40,6 @@ function AllTasksBySection({sectionId}){
                             e.preventDefault()
                             const boardId = task.board_id
                             await dispatch(deleteTaskByTaskId(task))
-                            console.log(task)
                             return history.push(`/boards/${storeBoards.board.id}`)
                         }}>Delete Task</button>
                     <SingleTask task={task}/>

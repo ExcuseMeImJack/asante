@@ -1,21 +1,20 @@
-.edit-profile-modal-content{
+.edit-profile-content{
     width: 575px;
 }
 
 .divider{
     border-bottom: 1px dimgray solid;
-    width:111.5%;
-    margin-left:-33px;
+    width:100%;
 }
 
-#modal-content{
+.edit-profile-modal-content{
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
     border-radius: 5px;
     width: 600px;
-    height: 350px;
+    height: 360px;
     top: 100px;
 }
 
@@ -95,6 +94,7 @@
 
 .aboutme-input > textarea {
     resize: none;
+    height: 70px;
 }
 
 .commit-changes{

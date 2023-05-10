@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { logout } from "../../store/session";
+import { logoutUserThunk } from "../../store/users";
 import OpenModalButton from "../OpenModalButton";
 import "./ProfileButton.css";
 import { getUserProfile } from "../../store/users";
@@ -31,9 +31,10 @@ function ProfileButton({ user }) {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
-  const handleLogout = (e) => {
+  const handleLogout = async (e) => {
     e.preventDefault();
-    dispatch(logout());
+    await dispatch(logoutUserThunk());
+    return history.push('/')
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
