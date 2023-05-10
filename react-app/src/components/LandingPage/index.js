@@ -132,7 +132,6 @@ const LandingPage = () => {
                   where things are getting stuck.
                 </p>
               </div>
-              <div></div>
             </div>
           </div>
         </div>
