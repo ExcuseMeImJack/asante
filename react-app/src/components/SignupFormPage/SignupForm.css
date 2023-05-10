@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 10px;
+    height: 58vh;
 }
 
 .form {
@@ -11,7 +11,7 @@
     /* justify-content: space-between; */
     /* align-items: space-between; */
     flex-direction: column;
-    gap: 10px;
+    gap: 18px;
 }
 
 label {
@@ -19,28 +19,37 @@ label {
     gap: 10px;
 }
 
-.test {
+.sign-up-h1 {
+    font-size: 48px;
     margin: 0;
     padding: 0;
 }
 
-.submit {
+.form-button {
     border: none;
     background-color: #3f6ac4;
     box-shadow: 2px 2px 3px #3f6ac4;
     color: white;
-    padding: 10px 12px;
+    padding: 10px 0;
     border: 1px #3f6ac4 solid;
     border-radius: 10px;
-    width: 80px;
+    width: 100px;
     align-self: center;
 }
 
-.submit:hover {
-    border: #3054a1;
+.form-button:hover {
+    background-color:#315fc4;
+    cursor: pointer;
 }
 
 input {
     border: 1px solid #3054a1;
-    width: 300px;
+    box-shadow: 2px 2px 2px #3054a1;
+    width: 260px;
+    height: 24px;
+}
+
+input:focus {
+    border: 1px solid #616f8f;
+    box-shadow: 2px 2px 2px #3054a1;
 }

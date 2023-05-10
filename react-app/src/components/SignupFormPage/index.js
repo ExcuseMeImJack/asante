@@ -35,7 +35,7 @@ function SignupFormPage() {
   return (
     <>
       <div className="form-container">
-        <h1 className="test">Sign Up</h1>
+        <h1 className="sign-up-h1">Sign Up</h1>
         <form onSubmit={handleSubmit} className="form">
           <ul>
             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -75,7 +75,7 @@ function SignupFormPage() {
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
-          <button className="submit" type="submit">Sign Up</button>
+          <button className="form-button" type="submit">Sign Up</button>
         </form>
       </div>
     </>
