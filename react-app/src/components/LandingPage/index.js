@@ -8,9 +8,6 @@ const LandingPage = () => {
     history.push("/signup");
   };
 
-  const handleLogInClick = () => {
-    history.push("/login");
-  }
   return (
     <>
     <div className="page-container">
@@ -27,7 +24,7 @@ const LandingPage = () => {
 
             <div className="navbar-right">
               <Link to="">Contact</Link>
-              <Link to="" onClick={handleLogInClick}>
+              <Link to="/login">
                 Log In
               </Link>
               <button
