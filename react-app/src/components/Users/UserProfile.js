@@ -6,6 +6,7 @@ import OpenModalButton from '../OpenModalButton';
 import './UserProfile.css'
 import { getTasksByUserId } from '../../store/tasks';
 import { getBoardsByUserId } from '../../store/boards';
+import DeleteUserModal from '../DeleteUserModal';
 
 function UserProfile(){
     const dispatch = useDispatch();
@@ -13,10 +14,6 @@ function UserProfile(){
     const tasks = useSelector((state) => state.tasks.tasks);
     const boards = useSelector((state) => state.boards.boards);
     const [quoteInfo, setQuoteInfo] = useState("");
-
-    console.log(profile)
-    console.log(tasks);
-    console.log(boards);
 
     //dispatch thunk to populate storeUsers variable
     useEffect(() => {
@@ -57,17 +54,30 @@ function UserProfile(){
                     </div>
                     <div className='profile-info'>
                         <h1>{profile.name}</h1>
-                        <div className='email-container'>
-                            <i className="fa-regular fa-envelope"></i>
-                            <p>{profile.email}</p>
+                        <div className='username-email-container'>
+                            <div className='username-container'>
+                                <p>@</p>
+                                <p>{profile.username} |</p>
+                            </div>
+                            <div className='email-container'>
+                                <i className="fa-regular fa-envelope"></i>
+                                <p>{profile.email}</p>
+                            </div>
                         </div>
                     </div>
-                    <div className='edit-profile-button-div'>
+                    <div className='edit-delete-profile-button-div'>
                         <OpenModalButton
-                                cName={"edit-profile-button"}
-                                buttonText={"Edit profile"}
-                                modalComponent={<EditProfileModal/>}
-                            />
+                            buttonStyleClass={"edit-profile-button change-cursor"}
+                            buttonText={"Edit profile"}
+                            modalComponent={<EditProfileModal/>}
+                            modalStyleClass={'edit-profile-modal-content'}
+                        />
+                        <OpenModalButton
+                            buttonStyleClass={"delete-user-button change-cursor"}
+                            buttonText={"Delete user"}
+                            modalComponent={<DeleteUserModal/>}
+                            modalStyleClass={'delete-profile-modal-content'}
+                        />
                     </div>
                 </div>
                 <div className='profile-tiles-container'>

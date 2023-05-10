@@ -1,0 +1,46 @@
+.delete-profile-modal-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#delete-profile-text{
+    text-align: center;
+}
+
+.delete-profile-button{
+    color: white;
+    background-color: #da3636;
+    padding: 8px 12px;
+    border: 1px #da3636 solid;
+    border-radius: 10px;
+    width: 85px;
+}
+
+.cancel-delete-profile-button{
+    color: white;
+    background-color: #3f6ac4;
+    padding: 8px 12px;
+    border: 1px #3f6ac4 solid;
+    border-radius: 10px;
+    width: 85px;
+}
+
+.delete-cancel-profile-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin: 20px;
+}
+
+.delete-profile-modal-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 5px;
+    width: 450px;
+    height: 230px;
+    top: 100px;
+}

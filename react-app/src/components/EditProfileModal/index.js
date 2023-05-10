@@ -6,7 +6,7 @@ import { useModal } from "../../context/Modal";
 import './EditProfile.css'
 
 function EditProfileModal() {
-    const { closeModal } = useModal();
+    const { closeModal, setModalStyleClass } = useModal();
     const modalRef = useRef();
     const dispatch = useDispatch();
     const userInfo = useSelector(state => state.users.profile)
@@ -59,8 +59,8 @@ function EditProfileModal() {
     return(
         <div>
             <h2 id="profile-settings-header">My Settings</h2>
-            <div className="divider"/>
-            <div className="edit-profile-modal-content">
+            <div className="profile-divider"/>
+            <div className="edit-profile-content">
                 <form
                     onSubmit={handleSubmit}
                     encType="multipart/form-data">
@@ -68,7 +68,7 @@ function EditProfileModal() {
                         <div className="edit-profile-pic-container">
                             <img id="current-profile-pic" src={userInfo.profile_pic_url} onClick={() => handleChangeProfilePic()}/>
                             <div className="profile-pic-input-description">
-                                <label> Upload your photo
+                                <label className="change-cursor"> Upload your photo
                                     <input
                                     className="upload-profile-pic-input"
                                     type="file"
@@ -115,7 +115,7 @@ function EditProfileModal() {
                         </div>
                     {(imageLoading)&& <p>Loading...</p>}
                     <div className="commit-changes">
-                        <button type="submit">Save changes</button>
+                        <button className="save-profile-edit-changes change-cursor" type="submit">Save changes</button>
                     </div>
                 </form>
             </div>
