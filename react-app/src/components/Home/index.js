@@ -15,10 +15,6 @@ function Home() {
     return (
         <div>
             <h1>Homepage</h1>
-            <button onClick={async (e) => {
-                e.preventDefault()
-                await dispatch(deleteUserThunk(storeProfile.profile))
-            }}>Delete User</button>
         </div>
     )
 }
