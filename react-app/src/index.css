@@ -1,3 +1,5 @@
-.change-cursor{
+body {
+    margin: 0;
+}.change-cursor{
     cursor: pointer;
 }
