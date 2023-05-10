@@ -100,7 +100,7 @@ export const editSectionBySectionId = (section, sectionId) => async (dispatch) =
     }
 }
 
-// move section
+// order section
 export const orderSections = (sections, boardId) => async (dispatch) => {
     const response = await fetch(`/api/sections/${boardId}/move`, {
         method: "PUT",

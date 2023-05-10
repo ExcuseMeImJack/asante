@@ -34,6 +34,18 @@ def get_all_tasks(section_id):
     # Check if task belongs to current user
     return { "Tasks": [task.to_dict() for task in tasks] }
 
+@task_routes.route('/<int:section_id>/move', methods=["PUT"])
+@login_required
+# Re order tasks
+def edit_task_order(task_id):
+    data = request.json
+    task = Task.query.get(task_id)
+    if (task.user_id == current_user.id):
+        for index in range(0,len(data)):
+            task = data[index]
+            task['order'] = index
+
+
 @task_routes.route('/<int:task_id>', methods=["PUT"])
 @login_required
 # Edit task by id

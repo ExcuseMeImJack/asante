@@ -66,7 +66,6 @@ def edit_section_order(board_id):
             section = data[index]
             section['order'] = index
         return {}
-
     else:
         return {'errors': ['Unauthorized']}, 401
 

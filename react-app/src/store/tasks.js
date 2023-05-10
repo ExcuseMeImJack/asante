@@ -4,6 +4,7 @@ const GET_ALL_TASKS_BY_SECTION = "tasks/GET_ALL_TASKS_BY_SECTION";
 const GET_USER_TASKS = "tasks/GET_USER_TASKS";
 const ADD_TASK = "tasks/ADD_TASK";
 const EDIT_TASK = "tasks/EDIT_TASK";
+const MOVE_TASK = "tasks/MOVE_TASK";
 
 const getTask = (task) => ({
 	type: GET_TASK,
@@ -28,6 +29,11 @@ const addTask = (task) => ({
 const editTask = (task) => ({
 	type: EDIT_TASK,
 	payload: task,
+});
+
+const moveTask = (tasks) => ({
+	type: MOVE_TASK,
+	payload: tasks,
 });
 
 
@@ -117,6 +123,24 @@ export const editTaskByTaskId = (task, taskId) => async (dispatch) => {
     }
 }
 
+// order tasks
+export const orderTasks = (tasks, sectionId) => async (dispatch) => {
+    const response = await fetch(`/api/tasks/${sectionId}/move`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(tasks)
+    });
+    if (response.ok) {
+        const data = await response.json();
+        if (data.errors) {
+            return;
+        }
+        dispatch(moveTask(tasks));
+    }
+}
+
 const initialState = { tasks: null, task: null };
 
 export default function reducer(state = initialState, action) {
@@ -142,6 +166,11 @@ export default function reducer(state = initialState, action) {
 			newState.task = action.payload
             return newState
         }
+		case MOVE_TASK: {
+            const newState = { ...state }
+            newState.tasks = action.payload
+            return newState
+		}
 		default:
 			return state;
 	}
