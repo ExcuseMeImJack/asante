@@ -7,34 +7,13 @@
     justify-content: space-around;
     background-color: black;
     color: white;
-}
-
-/* .social-links {
-    display: flex;
-    flex-direction: column;
-}
-
-.social-links a {
-    color: white;
-    text-decoration: none;
-    background-color: black;
-}
-*/
-
-.about-asante {
-    word-break: break-word;
-    width: 300px;
-
-    background-color: black;
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 10pt;
+    align-items: center;
 }
 
 .social-links a {
     color: white;
     text-decoration: none;
     background-color: black;
-}
-
-.fa-solid {
-    font-size: 10px;
-    margin: 0 5px 0 5px;
 }
