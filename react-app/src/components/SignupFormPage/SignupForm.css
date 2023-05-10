@@ -18,3 +18,29 @@ label {
     display: flex;
     gap: 10px;
 }
+
+.test {
+    margin: 0;
+    padding: 0;
+}
+
+.submit {
+    border: none;
+    background-color: #3f6ac4;
+    box-shadow: 2px 2px 3px #3f6ac4;
+    color: white;
+    padding: 10px 12px;
+    border: 1px #3f6ac4 solid;
+    border-radius: 10px;
+    width: 80px;
+    align-self: center;
+}
+
+.submit:hover {
+    border: #3054a1;
+}
+
+input {
+    border: 1px solid #3054a1;
+    width: 300px;
+}
