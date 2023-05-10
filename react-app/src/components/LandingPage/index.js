@@ -13,7 +13,15 @@ const LandingPage = () => {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login(email, password));
+    if (data) {
+      setErrors(data);
+    }
+    dispatch(getUserProfile())
+    history.push('/')
+  };
 
   const handleDemoLogin = async (e) => {
     e.preventDefault()
@@ -35,7 +43,6 @@ const LandingPage = () => {
 
 
   return (
-    <>
     <div className="page-container">
       <header>
         <div className="nav-container">
@@ -127,7 +134,6 @@ const LandingPage = () => {
         </div>
       </main>
       </div>
-    </>
   );
 };
 
