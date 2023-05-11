@@ -20,7 +20,7 @@ function Sections() {
     //dispatch thunk to populate storeSections variable
     useEffect(() => {
         dispatch(getSectionsByBoardId(boardId))
-    }, [dispatch, boardId, storeSections.sections.length])
+    }, [dispatch, boardId, sections.length])
 
     const onDragEnd = async (result) => {
         const { destination, source, draggableId, type } = result;

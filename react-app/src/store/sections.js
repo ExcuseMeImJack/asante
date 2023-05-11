@@ -120,6 +120,24 @@ export const orderSections = (sections, boardId) => async (dispatch) => {
     });
 }
 
+export const deleteSectionById = (section) => async (dispatch) => {
+    const response = await fetch(`/api/sections/${section.id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    if (response.ok) {
+        const data = await response.json();
+        if (data.errors) {
+            return;
+        }
+        console.log("hitting dispatch delete action")
+        console.log(section)
+        dispatch(deleteSection(section))
+    }
+}
+
 
 const initialState = { sections: [], section: null };
 
