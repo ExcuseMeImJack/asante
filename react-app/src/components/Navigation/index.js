@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import SlideOutMenu from '../SlideOutMenu/SlideOutMenu';
 import './Navigation.css';
+import CreateBoardForm from '../Boards/CreateBoardForm';
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
@@ -12,10 +13,10 @@ function Navigation({ isLoaded }){
 		<div className='nav-container'>
 			<SlideOutMenu />
 			<ul className='nav-list'>
-					<NavLink className='nav-list-item' exact to="/">Home</NavLink>
+					<CreateBoardForm/>
+				<NavLink className='nav-list-item' exact to="/">Home</NavLink>
 					<NavLink className='nav-list-item' exact to="/profile">Profile</NavLink>
-					<NavLink className='nav-list-item' exact to="/boards/new">New Board</NavLink>
-				{isLoaded && (
+					{isLoaded && (
 					<li>
 						<ProfileButton user={sessionUser} />
 					</li>
@@ -26,3 +27,35 @@ function Navigation({ isLoaded }){
 }
 
 export default Navigation;
+
+// import React, {useState} from 'react';
+// import { NavLink } from 'react-router-dom';
+// import { useSelector } from 'react-redux';
+// import ProfileButton from './ProfileButton';
+// import './Navigation.css';
+// import CreateBoardForm from '../Boards/CreateBoardForm';
+
+// function Navigation({ isLoaded }){
+// 	const sessionUser = useSelector(state => state.session.user);
+// 	const [test, setTest] = useState(false)
+
+// 	const handleSubmit = () => {
+// 		setTest(true)
+// 	}
+
+// 	return (
+// 		<ul className='nav-list'>
+// 				<button className='nav-list-item' onClick={handleSubmit}>Create</button>
+// 				{test && <CreateBoardForm />}
+// 				<NavLink className='nav-list-item' exact to="/">Home</NavLink>
+// 				<NavLink className='nav-list-item' exact to="/profile">Profile</NavLink>
+// 			{isLoaded && (
+// 				<li>
+// 					<ProfileButton user={sessionUser} />
+// 				</li>
+// 			)}
+// 		</ul>
+// 	);
+// }
+
+// export default Navigation;
