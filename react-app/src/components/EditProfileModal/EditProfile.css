@@ -1,21 +1,20 @@
-.edit-profile-modal-content{
+.edit-profile-content{
     width: 575px;
 }
 
 .divider{
     border-bottom: 1px dimgray solid;
-    width:111.5%;
-    margin-left:-33px;
+    width:100%;
 }
 
-#modal-content{
+.edit-profile-modal-content{
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
     border-radius: 5px;
     width: 600px;
-    height: 650px;
+    height: 380px;
     top: 100px;
 }
 
@@ -43,8 +42,12 @@
     /* border: 1px transparent; */
     box-shadow: 1px 1px 6px dimgray;
     border-radius: 48px;
-    width: 100%;
+    width: 48px;
+    height: 48px;
+    /* min-width: 48px;
+    min-height: 48px;
     max-width: 48px;
+    max-height: 48px; */
 }
 
 .profile-pic-description {
@@ -91,6 +94,7 @@
 
 .aboutme-input > textarea {
     resize: none;
+    height: 70px;
 }
 
 .commit-changes{

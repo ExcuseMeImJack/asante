@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSectionsByBoardId, orderSections } from '../../store/sections';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { Droppable, Draggable, DragDropContext } from 'react-beautiful-dnd';
 import AllTasksBySection from '../Tasks/AllTasksBySection';
 import EditSectionForm from './EditSectionForm';
 import CreateTaskBySectionForm from '../Tasks/CreateTaskBySectionForm';
 import './Sections.css'
+import './Sections.css'
+import { deleteSectionById } from '../../store/sections';
 
 function Sections() {
-    const { boardId } = useParams()
+    const { boardId } = useParams();
     const dispatch = useDispatch();
+    const history = useHistory();
     const sections = useSelector((state) => state.sections.sections);
     console.log('sections from state', sections.map(s => s.name))
     const [editButtonHidden, setEditButtonHidden] = useState(false);
@@ -20,7 +23,7 @@ function Sections() {
     //dispatch thunk to populate storeSections variable
     useEffect(() => {
         dispatch(getSectionsByBoardId(boardId))
-    }, [dispatch, boardId])
+    }, [dispatch, boardId, storeSections.sections.length])
 
     const onDragEnd = async (result) => {
         const { destination, source, draggableId } = result;
@@ -61,6 +64,11 @@ function Sections() {
                                         <div className='single-section-border' ref={provided.innerRef} {...provided.draggableProps}>
                                             <div className='section-header' {...provided.dragHandleProps}>
                                                 <div>{section.name}</div>
+                                                <button onClick={async (e) => {
+                                                    e.preventDefault()
+                                                    await dispatch(deleteSectionById(section))
+                                                    return history.push(`/boards/${boardId}`)
+                                                }}>Delete Section</button>
                                                 {!editButtonHidden
                                                     ? <button className="edit-section-button" onClick={() => { setEditButtonHidden(true) }}>Edit Section</button>
                                                     : <EditSectionForm sectionId={section.id} setButtonHidden={setEditButtonHidden} />}

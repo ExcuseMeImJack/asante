@@ -1,0 +1,20 @@
+.login-form {
+    height: 50vh;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.demo-button {
+    background-color: #33b249;
+    border: 1px solid #33b249;
+    box-shadow: 3px 3px 3px #33b249;
+}
+
+.demo-button:hover {
+    background-color: #1da734;
+}

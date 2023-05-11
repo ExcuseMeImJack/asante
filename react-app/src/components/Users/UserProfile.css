@@ -1,0 +1,167 @@
+.profile-page{
+    margin: 0 auto;
+    max-width: 1000px;
+    min-width: 800px;
+    /* padding: 0px 32px; */
+}
+
+.profile-info-container{
+    display: flex;
+    height: 160px;
+}
+
+#profile-pic-image{
+    width: 160px;
+    height: 160px;
+    box-shadow: 1px 1px 6px dimgray;
+    border-radius: 130px;
+}
+
+.profile-info{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 30px;
+}
+
+.profile-info > h1, p{
+    margin: 2px 0px;
+}
+
+.username-email-container{
+    display: flex;
+    gap: 5px;
+}
+
+.email-container{
+    color: #6b6c6c;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.username-container{
+    color: #6b6c6c;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.edit-delete-profile-button-div{
+    display: flex;
+    margin-left: auto;
+    align-items: flex-end;
+    gap: 15px;
+}
+
+.edit-profile-button{
+    color: white;
+    background-color: #3f6ac4;
+    padding: 10px 12px;
+    border: 1px #3f6ac4 solid;
+    border-radius: 10px;
+}
+
+.delete-user-button{
+    color: white;
+    background-color: #da3636;
+    padding: 10px 12px;
+    border: 1px #da3636 solid;
+    border-radius: 10px;
+}
+
+#about-me-container{
+    border: solid 1px rgb(221, 221, 221);
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgb(189, 189, 189);
+    padding: 5px 20px;
+    grid-area: aboutme;
+}
+
+#quotes-container{
+    border: solid 1px rgb(221, 221, 221);
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgb(189, 189, 189);
+    padding: 5px 20px;
+    grid-area: quote;
+}
+
+.profile-divider{
+    border-bottom: 1px rgb(221, 221, 221) solid;
+    margin: 10px 0px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.profile-tiles-container{
+    margin: 35px 0px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+    'profilediv1 profilediv2';
+    gap: 25px;
+}
+
+.profile-page-div-1{
+    grid-area: profilediv1;
+    display: grid;
+    grid-template-areas:
+    'boards'
+    'tasks';
+    gap: 25px;
+}
+.profile-page-div-2{
+    grid-area: profilediv2;
+    display: grid;
+    grid-template-areas:
+    'aboutme'
+    'quote';
+    gap: 25px;
+}
+
+#profile-boards-container{
+    border: solid 1px rgb(221, 221, 221);
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgb(189, 189, 189);
+    padding: 5px 20px;
+    grid-area: boards;
+}
+
+#profile-tasks-container{
+    border: solid 1px rgb(221, 221, 221);
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgb(189, 189, 189);
+    padding: 5px 20px;
+    grid-area: tasks;
+}
+
+#author{
+    font-style: italic;
+    font-weight: bold;
+}
+
+.save-profile-edit-changes{
+    color: white;
+    background-color: #3f6ac4;
+    padding: 8px 12px;
+    border: 1px #3f6ac4 solid;
+    border-radius: 10px;
+}
+
+#profile-board-link{
+    text-decoration: none;
+    color: black;
+    border: 1px solid rgb(189, 189, 189);
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgb(189, 189, 189);
+    padding: 5px 5px;
+}
+
+#profile-task-link{
+    text-decoration: none;
+    color: black;
+    border: 1px solid rgb(189, 189, 189);
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgb(189, 189, 189);
+    padding: 5px 5px;
+}

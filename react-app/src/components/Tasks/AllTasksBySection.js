@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTasksByUserId } from '../../store/tasks';
+import { deleteTaskByTaskId, getTasksByUserId } from '../../store/tasks';
 import { Draggable } from 'react-beautiful-dnd';
 import './AllTasksBySection.css'
 import SingleTask from './SingleTask';
 import EditSectionForm from '../Sections/EditSectionForm';
 import CreateTaskBySectionForm from './CreateTaskBySectionForm';
+import { useHistory } from 'react-router-dom';
 
 function AllTasksBySection({sectionId}){
     const dispatch = useDispatch();
+    const history = useHistory();
     const storeTasks = useSelector((state) => state.tasks);
+    const storeBoards = useSelector((state) => state.boards);
     const [editButtonHidden, setEditButtonHidden] = useState(false);
     const [createButtonHidden, setCreateButtonHidden] = useState(false);
 
@@ -17,8 +20,6 @@ function AllTasksBySection({sectionId}){
     useEffect(() => {
         dispatch(getTasksByUserId())
     }, [dispatch])
-
-
 
     // grab tasks array from the storeTasks object
     if (!storeTasks.tasks) return <h1>...Loading</h1>

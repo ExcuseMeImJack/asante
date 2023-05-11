@@ -1,0 +1,46 @@
+.slide-out-menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 66px;
+    left: -1px;
+    padding: 5px;
+    padding-left: 10px;
+    width: 150px;
+    height: 80%;
+    cursor: pointer;
+    transition: left 1s;
+    text-decoration: none;
+    list-style: none;
+    margin-right: 10px;
+    box-shadow: 4px 4px 5px #3054a1;
+  }
+
+  .slide-out-menu > li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+  }
+
+  .slide-out-menu > li:hover {
+    background-color: rgb(214, 214, 214);
+  }
+
+  #bars {
+    padding: 28px;
+    font-size: 24px;
+  }
+
+  #bars:hover {
+    cursor: pointer;
+  }
+
+  .hidden-menu {
+    left: -200px;
+  }
+
+  .cushion {
+    margin-top: 100px;
+  }
