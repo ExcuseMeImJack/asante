@@ -15,7 +15,6 @@ function Sections() {
     const dispatch = useDispatch();
     const history = useHistory();
     const sections = useSelector((state) => state.sections.sections);
-    console.log('sections from state', sections.map(s => s.name))
     const [editButtonHidden, setEditButtonHidden] = useState(false);
     const [createButtonHidden, setCreateButtonHidden] = useState(false);
 
@@ -26,15 +25,12 @@ function Sections() {
     }, [dispatch, boardId, storeSections.sections.length])
 
     const onDragEnd = async (result) => {
-        const { destination, source, draggableId } = result;
-        console.log('Source ~~~~~~~~~>', source)
-        console.log('Destination ~~~~~~~~~>', destination)
-        console.log('DraggableId ~~~~~~~~~~~~~~~>', draggableId)
+        const { destination, source, draggableId, type } = result;
 
         if (
             !destination ||
-            destination.dropableId === source.droppableId &&
-            destination.index === source.index
+            (destination.droppableId === source.droppableId &&
+            destination.index === source.index)
         ) {
             return;
         }
@@ -53,9 +49,8 @@ function Sections() {
 
     return (
         <div>
-            {console.log('sections in return ', sections.map(s => s.name))}
             <DragDropContext onDragEnd={onDragEnd}>
-                <Droppable droppableId="ROOT" direction='horizontal'>
+                <Droppable droppableId="ROOT" direction='horizontal' type='section'>
                     {(provided) => (
                         <div className='section-gallery' {...provided.droppableProps} ref={provided.innerRef}>
                             {sections.map((section, index) => (

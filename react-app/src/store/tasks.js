@@ -5,6 +5,7 @@ const GET_USER_TASKS = "tasks/GET_USER_TASKS";
 const ADD_TASK = "tasks/ADD_TASK";
 const EDIT_TASK = "tasks/EDIT_TASK";
 const DELETE_TASK = "tasks/DELETE_TASK";
+const ORDER_TASKS = "tasks/ORDER_TASKS";
 
 const getTask = (task) => ({
 	type: GET_TASK,
@@ -35,6 +36,13 @@ const deleteTask = (task) => ({
 	type: DELETE_TASK,
 	payload: task,
 });
+
+const orderTasks = (tasks) => ({
+	type: ORDER_TASKS,
+	payload: tasks,
+});
+
+
 
 
 // get task by id thunk
@@ -140,6 +148,24 @@ export const deleteTaskByTaskId = (task) => async (dispatch) => {
     }
 }
 
+
+export const orderTasksThunk = (tasks, sectionId) => async (dispatch) => {
+	const response = await fetch(`/api/tasks/move`, {
+		method: "PUT",
+        headers: {
+			"Content-Type": "application/json",
+        },
+        body: JSON.stringify(tasks)
+    });
+    if (response.ok) {
+		const data = await response.json();
+        if (data.errors) {
+			return;
+        }
+		await dispatch(orderTasks(tasks));
+    }
+}
+
 const initialState = { tasks: null, task: null };
 
 export default function reducer(state = initialState, action) {
@@ -173,6 +199,13 @@ export default function reducer(state = initialState, action) {
             newState.tasks.splice(index, 1)
             return newState
         }
+		case ORDER_TASKS: {
+			const newState = { ...state }
+			console.log('newState ', newState)
+			const tasks = action.payload
+			console.log('tasks in case ', tasks)
+			return newState;
+		}
 		default:
 			return state;
 	}

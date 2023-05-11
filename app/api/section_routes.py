@@ -65,8 +65,8 @@ def edit_section_order(board_id):
         for index in range(0,len(data)):
             section = data[index]
             section['order'] = index
+            db.session.commit()
         return {}
-
     else:
         return {'errors': ['Unauthorized']}, 401
 
