@@ -1,12 +1,4 @@
-.single-task-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .single-task-card {
     border: 1px solid black;
-    padding-left: 20px;
-    padding-right: 30px;
-    padding-bottom: 50px;
+    margin: 10px;
 }
