@@ -1,0 +1,39 @@
+.create-board-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 66px;
+    left: 1px;
+    border: 1px solid black;
+    padding: 5px;
+    padding-right: 10px;
+    width: 250px;
+    cursor: pointer;
+    transition: left 1s;
+    text-decoration: none;
+}
+
+.create-board-slide > div {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.submit-create {
+    display: none;
+}
+
+.create-board-input > input {
+    width: 250px;
+    border: none;
+    box-shadow: inset 0px 0px 0px 0px white;
+    outline: none;
+}
+
+.createBoardHidden {
+    left: -300px;
+}
