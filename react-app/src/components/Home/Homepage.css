@@ -1,0 +1,32 @@
+.homepage-container {
+    font-family: "Helvetica Neue", sans-serif;
+}
+/*
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+} */
+
+.yellow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "tasks" "boards";
+    
+    justify-content: flex-start;
+    align-items: center;
+    width: 1000px;
+}
+
+/* .red {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.blue {
+    display: flex;
+    gap: 20px;
+    margin-top: 25px;
+} */
