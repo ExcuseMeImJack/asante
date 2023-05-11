@@ -8,6 +8,7 @@ import { getTasksByUserId } from '../../store/tasks';
 import { getBoardsByUserId } from '../../store/boards';
 import DeleteUserModal from '../DeleteUserModal';
 import quoteCensor from './quoteCensor';
+import { Link } from 'react-router-dom';
 
 function UserProfile(){
     const dispatch = useDispatch();
@@ -89,9 +90,9 @@ function UserProfile(){
                             <div className='profile-user-boards-container'>
                                 {boards ?
                                     boards.map(board => (
-                                        <div className='profile-user-board-tile change-cursor' key={board.id}>
+                                        <div className='profile-user-board-tile' key={board.id}>
                                             <div className='profile-divider'></div>
-                                            <p>{board.name}</p>
+                                            <Link to={`/boards/${board.id}`} id='profile-board-link' className='change-cursor'>{board.name}</Link>
                                         </div>
                                     ))
                                 :
@@ -104,9 +105,9 @@ function UserProfile(){
                             <div className='profile-user-tasks'>
                                 {tasks ?
                                         tasks.map(task => (
-                                            <div className='profile-user-task-tile change-cursor' key={task.id}>
+                                            <div className='profile-user-task-tile' key={task.id}>
                                                 <div className='profile-divider'></div>
-                                                <p>{task.name}</p>
+                                                <Link to={`/tasks/${task.id}`} id='profile-task-link' className='change-cursor'>{task.name}</Link>
                                             </div>
                                         ))
                                     :
