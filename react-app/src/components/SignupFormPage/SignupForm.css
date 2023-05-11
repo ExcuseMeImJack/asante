@@ -47,6 +47,7 @@ input {
     box-shadow: 2px 2px 2px #3054a1;
     width: 260px;
     height: 24px;
+    outline: none;
 }
 
 input:focus {

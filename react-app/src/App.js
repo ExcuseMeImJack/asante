@@ -9,8 +9,6 @@ import SingleBoard from "./components/Boards/SingleBoard";
 import SingleTask from "./components/Tasks/SingleTask";
 import SingleSection from "./components/Sections/SingleSection";
 import CreateBoardForm from "./components/Boards/CreateBoardForm";
-import UsersTasks from "./components/Tasks/UsersTasks";
-import UsersBoards from "./components/Boards/UsersBoards";
 import UserProfile from "./components/Users/UserProfile";
 import LandingPage from "./components/LandingPage";
 import { getUserProfile } from "./store/users";

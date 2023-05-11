@@ -58,9 +58,7 @@ function ProfileButton({ user }) {
             <li><NavLink to="/profile">Profile</NavLink></li>
             <li>{user.username}</li>
             <li>{user.email}</li>
-            <li>
-              <li onClick={handleLogout}>Log Out</li>
-            </li>
+            <li onClick={handleLogout}>Log Out</li>
           </>
         ) : (
           <>
