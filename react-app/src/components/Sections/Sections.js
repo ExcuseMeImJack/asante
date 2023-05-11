@@ -40,6 +40,7 @@ function Sections() {
         sections.splice(destination.index, 0, section)
 
         dispatch(orderSections(sections, boardId))
+        // dispatch new sections
     }
 
     // grab sections array from the storeSections object
