@@ -43,6 +43,7 @@ export const getSectionsByBoardId = (boardId) => async (dispatch) => {
         if (data.errors) {
             return;
         }
+        console.log('Get sections thunk', data.sections)
         dispatch(getSections(data.sections));
     }
 };
@@ -102,6 +103,8 @@ export const editSectionBySectionId = (section, sectionId) => async (dispatch) =
 
 // move section
 export const orderSections = (sections, boardId) => async (dispatch) => {
+    console.log('Sections in thunk', sections)
+    dispatch(moveSection(sections));
     const response = await fetch(`/api/sections/${boardId}/move`, {
         method: "PUT",
         headers: {
@@ -114,7 +117,6 @@ export const orderSections = (sections, boardId) => async (dispatch) => {
         if (data.errors) {
             return;
         }
-        dispatch(moveSection(sections));
     }
 }
 
@@ -148,6 +150,8 @@ export default function reducer(state = initialState, action) {
         case MOVE_SECTION: {
             const newState = { ...state }
             newState.sections = action.payload
+            console.log('CASE ', newState.sections.map(section => section.name))
+
             return newState
         }
 		default:

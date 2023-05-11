@@ -28,13 +28,6 @@ function AllTasksBySection({sectionId}){
 
 	return (
         <div>
-            {!editButtonHidden
-            ? <button className="edit-section-button" onClick={() => {setEditButtonHidden(true)}}>Edit Section</button>
-            : <EditSectionForm sectionId={sectionId} setButtonHidden={setEditButtonHidden} />}
-            {!createButtonHidden
-            ? <button className="create-task-button" onClick={() => {setCreateButtonHidden(true)}}>Add Task</button>
-            : <CreateTaskBySectionForm sectionId={sectionId} setButtonHidden={setCreateButtonHidden} />}
-
             {tasks.map((task) => (
                 <div key={task.id}>
                     <SingleTask task={task}/>
