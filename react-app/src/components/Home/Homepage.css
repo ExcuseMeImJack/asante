@@ -1,25 +1,28 @@
-.homepage-container {
+/* .homepage-container {
     font-family: "Helvetica Neue", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
 }
-/*
+
 .home {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-} */
+}
 
 .yellow {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "tasks" "boards";
-    
+    display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     width: 1000px;
 }
 
-/* .red {
+.red {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,3 +33,72 @@
     gap: 20px;
     margin-top: 25px;
 } */
+
+.homepage-container {
+  font-family: "Helvetica Neue", sans-serif;
+  display: grid;
+  place-items: center;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.yellow {
+  display: grid;
+  place-items: center stretch;
+  width: 1000px;
+}
+
+.red {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+  /* .blue {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-top: 25px;
+  } */
+
+#homepage-tasks-container,
+#homepage-boards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.homepage-user-tasks,
+.homepage-user-boards-container {
+  display: grid;
+  gap: 20px;
+}
+
+.homepage-user-task-tile,
+.homepage-user-board-tile {
+  display: flex;
+  align-items: center;
+}
+
+.homepage-divider {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+#homepage-task-link,
+#homepage-board-link {
+  cursor: pointer;
+}
+
+#homepage-tasks-container,
+#homepage-boards-container {
+  border: solid 1px rgb(221, 221, 221);
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgb(189, 189, 189);
+  padding: 5px 20px;
+}

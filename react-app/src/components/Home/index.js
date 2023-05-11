@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteUserThunk, getUserProfile } from "../../store/users";
+import { getUserProfile } from "../../store/users";
 import { getBoardsByUserId } from "../../store/boards";
 import "./Homepage.css";
 import { getTasksByUserId } from "../../store/tasks";
@@ -57,9 +57,9 @@ function Home() {
   const storeProfile = useSelector((state) => state.users.profile);
   const [currentDate, setCurrentDate] = useState("");
   const greeting = greetingUser();
-  const storeTasks = useSelector((state) => state.tasks);
-  const storeBoards = useSelector((state) => state.boards.boards);
-  console.log("store boards:", storeBoards);
+  const tasks = useSelector((state) => state.tasks.tasks);
+  const boards = useSelector((state) => state.boards.boards);
+//   console.log("store boards:", storeBoards);
 
   useEffect(() => {
     dispatch(getUserProfile());
@@ -71,20 +71,20 @@ function Home() {
     setCurrentDate(formattedDate);
   }, [dispatch]);
 
-  const tasks = storeTasks && storeTasks.tasks;
+//   const tasks = storeTasks && storeTasks.tasks;
   //make sure storeBoards is not null before accessing boards property
-  const boards = storeBoards && storeBoards.boards;
+//   const boards = storeBoards && storeBoards.boards;
 
   return (
     <>
       <div className="homepage-container">
-        <div className="home">Home</div>
+        {/* <div className="home">Home</div> */}
         <div className="yellow">
           <div className="red">
             <div className="current-date">{currentDate}</div>
             <div className="hello-user">
-              {greeting}
-              {storeProfile.name}
+              <h2>{greeting}
+              {storeProfile.name}</h2>
             </div>
           </div>
 
