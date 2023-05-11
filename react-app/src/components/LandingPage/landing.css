@@ -23,6 +23,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 70px;
+    width: 100%;
 }
 
 .navbar-left a {
