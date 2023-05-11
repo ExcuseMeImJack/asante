@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from "react-router-dom";
 import './SlideOutMenu.css'
+import CreateBoardForm from '../Boards/CreateBoardForm';
 
 export default function SlideOutMenu() {
     const [showMenu, setShowMenu] = useState(false);
@@ -35,7 +36,7 @@ export default function SlideOutMenu() {
             <div className='cushion'></div>
             <li><NavLink exact to="/">Home</NavLink></li>
             <li><NavLink exact to="/profile">Profile</NavLink></li>
-            <li><NavLink exact to="/boards/new">New Board</NavLink></li>
+            <li>{<CreateBoardForm/>}</li>
             <li>Filler</li>
         </ul>
     </div>

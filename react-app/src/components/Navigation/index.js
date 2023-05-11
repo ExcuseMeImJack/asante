@@ -13,7 +13,6 @@ function Navigation({ isLoaded }){
 		<div className='nav-container'>
 			<SlideOutMenu />
 			<ul className='nav-list'>
-				<CreateBoardForm/>
 				<NavLink className='nav-list-item' exact to="/">Home</NavLink>
 				<NavLink className='nav-list-item' exact to="/profile">Profile</NavLink>
 				{isLoaded && (
