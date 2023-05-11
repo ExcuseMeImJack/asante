@@ -5,6 +5,7 @@ import { logoutUserThunk } from "../../store/users";
 import { getUserProfile } from '../../store/users';
 import OpenModalButton from "../OpenModalButton";
 import "./ProfileButton.css";
+import { logout } from "../../store/session";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ function ProfileButton({ user }) {
   const handleLogout = async (e) => {
     e.preventDefault();
     await dispatch(logoutUserThunk());
+    await dispatch(logout())
     return history.push('/')
   };
 

@@ -1,5 +1,5 @@
 import "./landing.css";
-import React, { useState} from "react";
+import React, { useEffect, useState} from "react";
 import { Link, useHistory, Redirect } from "react-router-dom";
 import { login } from "../../store/session";
 import { getUserProfile } from "../../store/users";
@@ -9,6 +9,7 @@ const LandingPage = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+  const [auth, setAuth] = useState(true)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -31,6 +32,12 @@ const LandingPage = () => {
     history.push("/signup");
   };
 
+  useEffect(() => {
+    if(!auth){
+      
+    }
+  })
+
 
   return (
     <div className="page-container">
@@ -47,15 +54,17 @@ const LandingPage = () => {
 
             <div className="navbar-right">
               <Link to="">Contact</Link>
-              <Link to="/login">
+              {auth && <Link to="/login">
                 Log In
-              </Link>
-              <button
+              </Link>}
+
+              {auth && <button
                 className="get-started-btn-1"
                 onClick={handleGetStartedClick}
               >
                 Get Started
-              </button>
+              </button>}
+
             </div>
           </div>
         </div>
@@ -71,12 +80,12 @@ const LandingPage = () => {
                 flexible and easy for all teams to use, so you can deliver
                 quality work together, faster.
               </p>
-              <button
+              {auth && <button
                 className="get-started-btn-2"
                 onClick={handleGetStartedClick}
               >
                 Get Started
-              </button>
+              </button>}
               <button className="demo-user-btn" onClick={handleDemoLogin}>See how it works</button>
             </div>
             <div className="main-right">
