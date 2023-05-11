@@ -24,8 +24,8 @@ function App() {
 
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
+    dispatch(getUserProfile())
   }, [dispatch]);
-
   return (
     <>
       {user ? (
@@ -51,6 +51,9 @@ function App() {
               <Route path="/sections/:sectionId">
                 <SingleSection />
               </Route>
+              <Route>
+                <h1>404 Page not Found</h1>
+              </Route>
             </Switch>
           )}
         </>
@@ -66,10 +69,13 @@ function App() {
             <Route path="/signup">
               <SignupFormPage />
             </Route>
+            <Route>
+              <h1>404 Page not Found</h1>
+            </Route>
           </Switch>
         </>
       )}
-    <Footer />
+      <Footer />
     </>
   );
 }
