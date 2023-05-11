@@ -118,7 +118,7 @@ export const orderSections = (sections, boardId) => async (dispatch) => {
         },
         body: JSON.stringify(sections)
     });
-
+}
 
 
 const initialState = { sections: [], section: null };

@@ -7,8 +7,6 @@ import AllTasksBySection from '../Tasks/AllTasksBySection';
 import EditSectionForm from './EditSectionForm';
 import CreateTaskBySectionForm from '../Tasks/CreateTaskBySectionForm';
 import './Sections.css'
-import './Sections.css'
-import { deleteSectionById } from '../../store/sections';
 
 function Sections() {
     const { boardId } = useParams();
