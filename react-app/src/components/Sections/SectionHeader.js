@@ -2,29 +2,24 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSectionById } from '../../store/sections';
 import { useParams } from 'react-router-dom';
-import './SingleSection.css'
+import './SectionHeader.css'
 
-function SingleSection(){
+function SectionHeader({ section }) {
     const dispatch = useDispatch();
-    const { sectionId } = useParams();
     const storeSections = useSelector((state) => state.sections);
 
     //dispatch thunk to populate storeSections variable
-    useEffect(() => {
-        dispatch(getSectionById(sectionId))
-    }, [dispatch, sectionId])
-
-    const section = storeSections.section;
+    // useEffect(() => {
+    //     dispatch(getSectionById(sectionId))
+    // }, [dispatch, sectionId])
 
     if (!section) return <h1>...Loading</h1>
 
-	return (
-        <div>
-            <h1>Section</h1>
+    return (
+        <div className='section-header'>
             <div>{section.name}</div>
-            <div>{section.id}</div>
         </div>
-	);
+    );
 }
 
-export default SingleSection;
+export default SectionHeader;

@@ -8,3 +8,7 @@
 .section-gallery {
     display: flex;
 }
+
+.Section-Header {
+    background-color: black;
+}

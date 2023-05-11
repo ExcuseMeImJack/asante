@@ -18,34 +18,6 @@ function AllTasksBySection({sectionId}){
         dispatch(getTasksByUserId())
     }, [dispatch])
 
-    const storeTasks = useSelector((state) => state.tasks)
-
-    const onDragEnd = (result) => {
-        const {destination, source, draggableId} = result;
-        console.log('Source ~~~~~~~~~>', source)
-        console.log('Destination ~~~~~~~~~>', destination)
-        console.log('DraggableId ~~~~~~~~~~~~~~~>', draggableId)
-        if (!destination) {
-            return;
-        }
-
-        if (
-            destination.dropableId === source.droppableId &&
-            destination.index === source.index
-        ) {
-            return;
-        }
-
-
-        const tasks = [ ...storeTasks.tasks ]
-        const task = tasks[source.index]
-        tasks.splice(source.index, 1)
-        tasks.splice(destination.index, 0, task)
-
-        dispatch(orderTasks(tasks, sectionId))
-    }
-
-
     // grab tasks array from the storeTasks object
     if (!storeTasks.tasks) return <h1>...Loading</h1>
 
