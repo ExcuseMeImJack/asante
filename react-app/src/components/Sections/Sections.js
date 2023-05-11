@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSectionsByBoardId, orderSections } from '../../store/sections';
+import { getSectionsByBoardId, orderSections, deleteSectionById } from '../../store/sections';
 import { useHistory, useParams } from 'react-router-dom';
 import { Droppable, Draggable, DragDropContext } from 'react-beautiful-dnd';
 import AllTasksBySection from '../Tasks/AllTasksBySection';
