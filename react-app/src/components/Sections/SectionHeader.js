@@ -4,9 +4,11 @@ import { getSectionById } from '../../store/sections';
 import { useParams } from 'react-router-dom';
 import './SectionHeader.css'
 
-function SectionHeader({ section }) {
+function SectionHeader({ section, provided }) {
     const dispatch = useDispatch();
     const storeSections = useSelector((state) => state.sections);
+
+
 
     //dispatch thunk to populate storeSections variable
     // useEffect(() => {
@@ -16,9 +18,7 @@ function SectionHeader({ section }) {
     if (!section) return <h1>...Loading</h1>
 
     return (
-        <div className='section-header'>
-            <div>{section.name}</div>
-        </div>
+        <h1>hi</h1>
     );
 }
 

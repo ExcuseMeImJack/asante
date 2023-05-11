@@ -55,14 +55,17 @@ function Sections() {
                         <div className='section-gallery' {...provided.droppableProps} ref={provided.innerRef}>
                             {sections.map((section, index) => (
                                 <Draggable draggableId={"section-" + section.id}
-                                                        key={section.id}
-                                                        index={index}>
+                                    key={section.id}
+                                    index={index}>
                                     {(provided) => (
                                         <div className='single-section-border'
                                             ref={provided.innerRef}
                                             {...provided.draggableProps}>
+                                            <div className='section-header' {...provided.dragHandleProps}>
+                                            {console.log(provided.dragHandleProps)}
+                                                <div>{section.name}</div>
+                                            </div>
                                             <div>
-                                                <SectionHeader {...provided.dragHandleProps} section={section} />
                                                 <AllTasksBySection sectionId={section.id} />
                                             </div>
                                         </div>
