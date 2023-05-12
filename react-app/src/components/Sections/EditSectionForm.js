@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { editSectionBySectionId } from '../../store/sections';
 import { getSectionsByBoardId } from '../../store/sections';
 
-function EditSectionForm({sectionId, setButtonHidden}){
+function EditSectionForm({sectionId, setButtonHidden, boardId}){
     const dispatch = useDispatch();
     const [sectionName, setSectionName] = useState('');
     const [errors, setErrors] = useState({});
@@ -18,7 +18,7 @@ function EditSectionForm({sectionId, setButtonHidden}){
             return;
         }
         await dispatch(editSectionBySectionId({name: sectionName}, sectionId));
-        await dispatch(getSectionsByBoardId());
+        await dispatch(getSectionsByBoardId(boardId));
         setButtonHidden(false)
     }
 

@@ -15,7 +15,7 @@ function Sections() {
     //dispatch thunk to populate storeSections variable
     useEffect(() => {
         dispatch(getSectionsByBoardId(boardId))
-    }, [dispatch, boardId, sections.length, sections])
+    }, [dispatch, boardId, sections.length])
 
     const onDragEnd = async (result) => {
         const { destination, source, draggableId, type } = result;
@@ -65,7 +65,7 @@ function Sections() {
                                                 }}>Delete Section</button>
                                             </div>
                                             <div>
-                                                <AllTasksBySection section={section} />
+                                                <AllTasksBySection section={section} boardId={boardId} />
                                             </div>
                                         </div>
                                     )}

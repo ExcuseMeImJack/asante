@@ -12,6 +12,7 @@ function SingleBoard() {
     const history = useHistory();
     const { boardId } = useParams();
     const storeBoards = useSelector((state) => state.boards);
+    const sections = useSelector((state) => state.sections.sections);
     const [buttonHidden, setButtonHidden] = useState(false);
 
     //dispatch thunk to populate storeBoards variable

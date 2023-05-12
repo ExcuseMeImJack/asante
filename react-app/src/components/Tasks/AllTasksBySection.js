@@ -8,7 +8,7 @@ import CreateTaskBySectionForm from '../Tasks/CreateTaskBySectionForm';
 import { useHistory } from 'react-router-dom';
 import './AllTasksBySection.css'
 
-function AllTasksBySection({ section }) {
+function AllTasksBySection({ section, boardId }) {
     const dispatch = useDispatch();
     const storeTasks = useSelector((state) => state.tasks);
     const sections = useSelector((state) => state.sections.sections);
@@ -18,7 +18,7 @@ function AllTasksBySection({ section }) {
     // dispatch thunk to populate storeTasks variable
     useEffect(() => {
         dispatch(getTasksByUserId())
-    }, [dispatch])
+    }, [dispatch, sections])
 
     const onDragEnd = async (result) => {
         const { destination, source, draggableId, type } = result;
@@ -73,7 +73,7 @@ function AllTasksBySection({ section }) {
                     <div>
                         {!editButtonHidden
                             ? <button className="edit-section-button" onClick={() => { setEditButtonHidden(true) }}>Edit Section</button>
-                            : <EditSectionForm sectionId={section.id} setButtonHidden={setEditButtonHidden} />}
+                            : <EditSectionForm sectionId={section.id} boardId={boardId} setButtonHidden={setEditButtonHidden} />}
                     <div className='tasks-container'>
                         {!createButtonHidden
                         ? <button className="create-task-button" onClick={() => { setCreateButtonHidden(true) }}>Add Task</button>
