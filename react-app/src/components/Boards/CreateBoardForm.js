@@ -37,7 +37,6 @@ function CreateBoardForm({needsButton}) {
 
   const ulClassName =
     "create-board-slide" + (showCreateBoardMenu ? "" : " createBoardHidden");
-  const closeMenu = () => setShowCreateBoardMenu(false);
 
   return (
     <>

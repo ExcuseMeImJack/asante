@@ -1,4 +1,12 @@
 .single-task-card {
     border: 1px solid black;
-    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.single-task-card > h3 {
+    margin: 0px 0px;
 }

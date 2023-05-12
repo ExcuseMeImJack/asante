@@ -3,6 +3,7 @@ const GET_SECTIONS = "sections/GET_SECTIONS";
 const GET_SECTION = "sections/GET_SECTION";
 const ADD_SECTION = "sections/ADD_SECTION";
 const EDIT_SECTION = "sections/EDIT_SECTION";
+const MOVE_SECTION = "sections/MOVE_SECTION";
 const DELETE_SECTION = "sections/DELETE_SECTION";
 
 const getSections = (sections) => ({
@@ -30,6 +31,11 @@ const deleteSection = (section) => ({
     payload: section,
 });
 
+const moveSection = (sections) => ({
+	type: MOVE_SECTION,
+	payload: sections,
+});
+
 
 // get sections by board id thunk
 export const getSectionsByBoardId = (boardId) => async (dispatch) => {
@@ -43,6 +49,7 @@ export const getSectionsByBoardId = (boardId) => async (dispatch) => {
         if (data.errors) {
             return;
         }
+        console.log('Get sections thunk', data.sections)
         dispatch(getSections(data.sections));
     }
 };
@@ -100,6 +107,26 @@ export const editSectionBySectionId = (section, sectionId) => async (dispatch) =
     }
 }
 
+// move section
+export const orderSections = (sections, boardId) => async (dispatch) => {
+    console.log('Sections in thunk', sections)
+    dispatch(moveSection(sections));
+    const response = await fetch(`/api/sections/${boardId}/move`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(sections)
+    });
+    if (response.ok) {
+        const data = await response.json();
+        if (data.errors) {
+            return;
+        }
+        dispatch(getSections(data.sections))
+    }
+}
+
 export const deleteSectionById = (section) => async (dispatch) => {
     const response = await fetch(`/api/sections/${section.id}`, {
         method: "DELETE",
@@ -112,11 +139,10 @@ export const deleteSectionById = (section) => async (dispatch) => {
         if (data.errors) {
             return;
         }
-        console.log("hitting dispatch delete action")
-        console.log(section)
         dispatch(deleteSection(section))
     }
 }
+
 
 const initialState = { sections: [], section: null };
 
@@ -154,7 +180,13 @@ export default function reducer(state = initialState, action) {
             newState.sections.splice(index, 1)
             return newState
         }
-        default:
-            return state;
-    }
+        case MOVE_SECTION: {
+            const newState = { ...state }
+            newState.sections = action.payload
+            console.log('CASE ', newState.sections.map(section => section.name))
+            return newState
+        }
+		default:
+			return state;
+	}
 }

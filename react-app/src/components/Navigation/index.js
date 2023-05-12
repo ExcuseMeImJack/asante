@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import SlideOutMenu from '../SlideOutMenu/SlideOutMenu';
 import './Navigation.css';
-import CreateBoardForm from '../Boards/CreateBoardForm';
 import icon_image from '../../assets/asante-icon.png'
 
 function Navigation({ isLoaded }){
@@ -16,7 +15,7 @@ function Navigation({ isLoaded }){
 			<div className='home-left-navbar'>
 				<SlideOutMenu />
 				<div className='home-left-navbar change-cursor' onClick={() => history.push('/')}>
-					<img id="site-icon" src={icon_image}></img>
+					<img id="site-icon" alt="" src={icon_image}></img>
 					<h2 id='site-logo'>asana</h2>
 				</div>
 			</div>

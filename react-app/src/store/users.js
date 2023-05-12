@@ -1,7 +1,7 @@
 // constants
 const GET_USER_PROFILE = "users/GET_USER_PROFILE";
 const LOGOUT_USER = "users/LOGOUT_USER";
-const DELETE_USER = "users/DELETE_USER";
+// const DELETE_USER = "users/DELETE_USER";
 
 const getProfile = (profile) => ({
 	type: GET_USER_PROFILE,
@@ -12,10 +12,10 @@ const logoutUser = () => ({
 	type: LOGOUT_USER
 });
 
-const deleteUser = (profile) => ({
-	type: GET_USER_PROFILE,
-	payload: profile,
-});
+// const deleteUser = (profile) => ({
+// 	type: GET_USER_PROFILE,
+// 	payload: profile,
+// });
 
 const initialState = { users: null, profile: null };
 

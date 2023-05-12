@@ -1,52 +1,92 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteTaskByTaskId, getTasksByUserId } from '../../store/tasks';
+import { deleteTaskByTaskId, editTaskByTaskId, getAllTasksBySectionId, getTasksByUserId, orderTasksThunk } from '../../store/tasks';
+import { Droppable, Draggable, DragDropContext } from 'react-beautiful-dnd';
 import './AllTasksBySection.css'
 import SingleTask from './SingleTask';
-import EditSectionForm from '../Sections/EditSectionForm';
-import CreateTaskBySectionForm from './CreateTaskBySectionForm';
 import { useHistory } from 'react-router-dom';
 
-function AllTasksBySection({sectionId}){
+function AllTasksBySection({ sectionId }) {
     const dispatch = useDispatch();
-    const history = useHistory();
     const storeTasks = useSelector((state) => state.tasks);
-    const storeBoards = useSelector((state) => state.boards);
-    const [editButtonHidden, setEditButtonHidden] = useState(false);
-    const [createButtonHidden, setCreateButtonHidden] = useState(false);
 
     // dispatch thunk to populate storeTasks variable
     useEffect(() => {
         dispatch(getTasksByUserId())
     }, [dispatch])
 
+    const onDragEnd = async (result) => {
+        const { destination, source, draggableId, type } = result;
+        console.log('Source ~~~~~~~~~>', source)
+        console.log('Destination ~~~~>', destination)
+        console.log('DraggableId ~~~~>', draggableId)
+
+        if (
+            !destination ||
+            (destination.droppableId === source.droppableId &&
+                destination.index === source.index)
+        ) {
+            return;
+        }
+        //same column
+        if (destination.droppableId === source.droppableId) {
+            //reorder the task in 1 section
+            const tasksClone = [...tasks]
+            const task = tasks[source.index]
+            tasksClone.splice(source.index, 1)
+            tasksClone.splice(destination.index, 0, task)
+            await dispatch(orderTasksThunk(tasksClone, sectionId))
+            await dispatch(getTasksByUserId())
+        }
+
+        // else {
+        //     //call 2 thunks
+        //     //change section id for task
+        //     //reorder the tasks in the both sections source/destination
+        //     const tasksClone = [...storeTasks.tasks]
+        //     const task = tasksClone[source.index]
+        //     console.log(task)
+        //     tasksClone.splice(source.index, 1)
+        //     tasksClone.splice(destination.index, 0, task)
+        //     // dispatch(editTaskByTaskId(task, task.id))
+        //     // dispatch(orderTasks(tasksClone))
+        // }
+
+
+    }
+
     // grab tasks array from the storeTasks object
     if (!storeTasks.tasks) return <h1>...Loading</h1>
 
-    const tasks = storeTasks.tasks.filter((task) => task.section_id === sectionId);
+    const tasks = storeTasks.tasks.filter(task => task.section_id === sectionId)
 
+    tasks.sort((a,b) => {
+        return a.order - b.order
+    })
 
-	return (
-        <div>
-            {!editButtonHidden
-            ? <button className="edit-section-button" onClick={() => {setEditButtonHidden(true)}}>Edit Section</button>
-            : <EditSectionForm sectionId={sectionId} setButtonHidden={setEditButtonHidden} />}
-            {!createButtonHidden
-            ? <button className="create-task-button" onClick={() => {setCreateButtonHidden(true)}}>Add Task</button>
-            : <CreateTaskBySectionForm sectionId={sectionId} setButtonHidden={setCreateButtonHidden} />}
-            {tasks.map((task) => {
-                return <div key={task.id}>
-                    <button onClick={async (e) => {
-                            e.preventDefault()
-                            const boardId = task.board_id
-                            await dispatch(deleteTaskByTaskId(task))
-                            return history.push(`/boards/${storeBoards.board.id}`)
-                        }}>Delete Task</button>
-                    <SingleTask task={task}/>
-                </div>
-            })}
-        </div>
-	);
+    return (
+        <div className='tasks-container'>
+            {console.log('STORE TASKS~~~~~~~', tasks.map(t => [t.order, t.name]))}
+            <DragDropContext onDragEnd={onDragEnd}>
+                <Droppable droppableId={'section-' + sectionId} type='task'>
+                    {(provided) => (
+                        <div className='task-gallery' {...provided.droppableProps} ref={provided.innerRef}>
+                            {tasks.map((task, index) => (
+                                <Draggable draggableId={"task-" + task.id} key={task.id} index={index}>
+                                    {(provided) => (
+                                        < div className='single-task-border' ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps}>
+                                            <SingleTask task={task} />
+                                        </div>
+                                    )}
+                                </Draggable>
+                            ))}
+                        {provided.placeholder}
+                        </div>
+                    )}
+                </Droppable>
+            </DragDropContext>
+        </div >
+    );
 }
 
 export default AllTasksBySection;

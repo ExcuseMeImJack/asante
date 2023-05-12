@@ -5,6 +5,7 @@ const GET_USER_TASKS = "tasks/GET_USER_TASKS";
 const ADD_TASK = "tasks/ADD_TASK";
 const EDIT_TASK = "tasks/EDIT_TASK";
 const DELETE_TASK = "tasks/DELETE_TASK";
+const ORDER_TASKS = "tasks/ORDER_TASKS";
 
 const getTask = (task) => ({
 	type: GET_TASK,
@@ -35,6 +36,16 @@ const deleteTask = (task) => ({
 	type: DELETE_TASK,
 	payload: task,
 });
+
+const orderTasks = (tasks, sectionId) => ({
+	type: ORDER_TASKS,
+	payload: {
+		tasks: tasks,
+		sectionId: sectionId
+	}
+});
+
+
 
 
 // get task by id thunk
@@ -106,7 +117,7 @@ export const addTaskBySectionId = (task, sectionId) => async (dispatch) => {
 
 // edit task by task id
 export const editTaskByTaskId = (task, taskId) => async (dispatch) => {
-    const response = await fetch(`/api/users/task/${taskId}`, {
+    const response = await fetch(`/api/tasks/${taskId}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -120,7 +131,10 @@ export const editTaskByTaskId = (task, taskId) => async (dispatch) => {
             return;
         }
         dispatch(editTask(data.Task));
-    }
+		return response;
+    } else {
+		return response;
+	}
 }
 
 // delete task by task id
@@ -137,6 +151,30 @@ export const deleteTaskByTaskId = (task) => async (dispatch) => {
             return;
         }
         dispatch(deleteTask(task));
+    }
+}
+
+// Orders Tasks in a section
+export const orderTasksThunk = (tasks, sectionId) => async (dispatch) => {
+	// console.log('DATA in THUNK', tasks.map(t => [t.order, t.name]))
+	// for (let i = 0; i < tasks.length ; i++) {
+	// 	const task = tasks[i]
+	// 	task.order = i
+	// }
+	console.log('DATA in THUNK', tasks.map(t => [t.order, t.name]))
+	const response = await fetch(`/api/tasks/${sectionId}/move`, {
+		method: "PUT",
+        headers: {
+			"Content-Type": "application/json",
+        },
+        body: JSON.stringify(tasks)
+    });
+    if (response.ok) {
+		const data = await response.json();
+        if (data.errors) {
+			return;
+        }
+		await dispatch(orderTasks(data.tasks, sectionId));
     }
 }
 
@@ -173,6 +211,14 @@ export default function reducer(state = initialState, action) {
             newState.tasks.splice(index, 1)
             return newState
         }
+		case ORDER_TASKS: {
+			const newState = { ...state }
+			console.log(action.payload)
+			const tasks = action.payload.tasks
+			console.log('newState ', newState.tasks.map(t => [t.order, t.name]))
+			console.log('tasks in case ', tasks.map(t => [t.order, t.name]))
+			return newState;
+		}
 		default:
 			return state;
 	}

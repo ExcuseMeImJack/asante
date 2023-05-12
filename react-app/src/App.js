@@ -14,6 +14,7 @@ import LandingPage from "./components/LandingPage";
 import { getUserProfile } from "./store/users";
 import Home from "./components/Home";
 import Footer from "./components/Footer"
+import UsersTasks from './components/Tasks/UsersTasks'
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +34,9 @@ function App() {
             <Switch>
               <Route exact path="/">
                 <Home />
+              </Route>
+              <Route path='/tasks'>
+                <UsersTasks/>
               </Route>
               <Route path="/profile">
                 <UserProfile />

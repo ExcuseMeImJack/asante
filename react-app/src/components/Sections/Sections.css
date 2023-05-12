@@ -1,5 +1,8 @@
 .single-section-border {
     border: 1px solid black;
+    min-height: 240px;
+    margin: 20px;
+    background-color: white;
 }
 
 .section-gallery {
