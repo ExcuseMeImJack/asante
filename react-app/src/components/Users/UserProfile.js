@@ -38,17 +38,9 @@ function UserProfile() {
             } else {
                 return('error', res.error)
             }
-        }
-      );
-      // console.log('QUOTE RES', res)
-      if (res.ok) {
-        const data = await res.json();
-        setQuoteInfo(data);
-      } else {
-        return "error", res.error;
-      }
-    };
+        };
     fetchQuote();
+    
   }, [dispatch]);
 
   if (!profile) return <h1>...Loading</h1>;
