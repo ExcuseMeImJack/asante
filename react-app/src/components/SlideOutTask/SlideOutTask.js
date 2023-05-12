@@ -7,8 +7,9 @@ export default function SlideOutTask({ task }) {
     const storeTasks = useSelector((state) => state.tasks.tasks);
     const [showTask, setShowTask] = useState(false);
     const ulRef = useRef();
+    // console.log(task)
     const storeTask = storeTasks.find(findTask => findTask.id === task.id)
-
+    // console.log(storeTask)
     const openTask = () => {
         if (showTask) return;
         setShowTask(true);
@@ -31,7 +32,6 @@ export default function SlideOutTask({ task }) {
 
     const ulClassName = "slide-out-task" + (showTask ? "" : " hidden-task");
 
-    if(!storeTask.due_date) return null
   return (
     <div>
       {/* <div className='profile-divider'></div> */}
@@ -39,7 +39,7 @@ export default function SlideOutTask({ task }) {
         <div className='task-slide-container'>
             <ul className={ulClassName} ref={ulRef}>
                 <li className='slide-out-task-item'>{storeTask.name}</li>
-                <li className='slide-out-task-item'>Due: {storeTask.due_date.split("00:00:00")[0]}</li>
+                <li className='slide-out-task-item'>Due: {storeTask.due_date?.split("00:00:00")[0]}</li>
                 <li className='slide-out-task-item'>{storeTask.description}</li>
                 <EditTaskByIdForm task={task} ulRef={ulRef}/>
             </ul>

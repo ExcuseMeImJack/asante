@@ -15,6 +15,7 @@ function UserProfile() {
   const dispatch = useDispatch();
   const profile = useSelector((state) => state.users.profile);
   const tasks = useSelector((state) => state.tasks.tasks);
+  console.log(tasks)
   const boards = useSelector((state) => state.boards.boards);
   const [quoteInfo, setQuoteInfo] = useState("");
 
@@ -49,7 +50,6 @@ function UserProfile() {
   if (quoteInfo[0]) {
     const quote = quoteInfo[0].quote;
     const author = quoteCensor(quoteInfo[0].author);
-
 
         return (
             <div className='profile-page'>
