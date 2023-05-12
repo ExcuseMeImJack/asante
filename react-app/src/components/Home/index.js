@@ -111,7 +111,7 @@ function Home() {
                   </div>
                 )}
               </div>
-              <div className="profile-divider"></div>
+              <div className="homepage-divider"></div>
             </div>
             <div id="homepage-boards-container">
               <h2>My Boards</h2>
@@ -135,7 +135,7 @@ function Home() {
                   </div>
                 )}
               </div>
-              <div className="profile-divider"></div>
+              {/* <div className="pro-divider"></div> */}
             </div>
           </div>
         </div>

@@ -23,35 +23,53 @@
   align-items: center;
 }
 
-  .blue {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 65px;
-    margin-top: 25px;
-  }
+.blue {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 65px;
+  margin-top: 25px;
+}
+
+
+.hello-user h2 {
+    font-size: 30px;
+}
+
+.current-date {
+    font-size: 18px;
+    color: grey;
+}
+
+#homepage-task-link,
+#homepage-board-link {
+    text-decoration: none;
+    color: black;
+    border: 1px solid rgb(189, 189, 189);
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgb(189, 189, 189);
+    padding: 5px 5px;
+}
 
 #homepage-tasks-container,
 #homepage-boards-container {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
 }
 
 .homepage-user-tasks,
 .homepage-user-boards-container {
   display: grid;
-  gap: 20px;
+  gap: 10px;
 }
 
 .homepage-user-task-tile,
 .homepage-user-board-tile {
   display: flex;
   align-items: center;
-}
-
-.homepage-divider {
-  border-bottom: 1px solid #ccc;
-  margin-bottom: 10px;
+  text-decoration: none;
+  color: black;
+  padding-bottom: 5px;
 }
 
 #homepage-task-link,
@@ -65,5 +83,15 @@
   border-radius: 5px;
   box-shadow: 2px 2px 5px rgb(189, 189, 189);
   padding: 5px 20px;
+  background-color: darkgrey;
 }
 
+#homepage-board-link,
+#homepage-task-link {
+    background-color: white;
+}
+
+#homepage-boards-container h2,
+#homepage-tasks-container h2 {
+    color: white;
+}
