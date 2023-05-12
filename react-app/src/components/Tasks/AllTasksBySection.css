@@ -19,7 +19,6 @@
 }
 
 .fa-plus {
-    align-self: flex-end;
     font-size: 20px;
 }
 
@@ -33,12 +32,11 @@
 
 #plus {
     font-size: 22px;
-
+    align-self: flex-end;
 }
 
 #minus {
     font-size: 22px;
-
 }
 
 .delete-warning-section {
