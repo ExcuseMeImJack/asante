@@ -1,0 +1,15 @@
+.task-gallery {
+    min-height: 400px;
+    border: 1px solid red !important;
+    margin: 10px;
+}
+
+.tasks-container {
+    border: 1px dotted black;
+    margin: 10px;
+}
+
+.single-task-border {
+    background-color: white;
+    align-items: center;
+}
