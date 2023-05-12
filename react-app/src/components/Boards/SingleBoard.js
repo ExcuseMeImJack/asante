@@ -44,7 +44,7 @@ function SingleBoard() {
                         {deleteClicked && <i className='fa-solid fa-xmark' id="xmark" onClick={() => { setDeleteClicked(false)}}></i>}
                         {deleteClicked && <i className='fa-solid fa-check' id="check" onClick={async () => {
                             await dispatch(deleteBoardById(board))
-                            return history.push(`/profile`)
+                            return history.push(`/`)
                         }}></i>}
                     </div>
                 </div>

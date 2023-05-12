@@ -121,3 +121,12 @@
     margin-left: 8px;
     padding-left: -8px;
   }
+
+  #sidemenu-boards-icon{
+    width: 14px;
+    height: 14px;
+    background-color: #da3636;
+    padding: 5px;
+    border-radius: 8px;
+    margin-right: 10px;
+}

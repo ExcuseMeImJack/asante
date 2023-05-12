@@ -44,7 +44,7 @@
 #homepage-task-link,
 #homepage-board-link {
     text-decoration: none;
-    color: black;
+    color: var(--jackblack);
     border: 1px solid rgb(189, 189, 189);
     border-radius: 5px;
     box-shadow: 1px 1px 5px rgb(189, 189, 189);
@@ -69,7 +69,7 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: black;
+  color: var(--jackblack);
   padding-bottom: 5px;
 }
 
@@ -80,11 +80,11 @@
 
 #homepage-tasks-container,
 #homepage-boards-container {
-  border: solid 1px rgb(221, 221, 221);
+  border: solid 1px rgb(209, 207, 207);
   border-radius: 5px;
-  box-shadow: 2px 2px 5px rgb(189, 189, 189);
+  box-shadow: 2px 2px 5px rgb(168, 167, 167);
   padding: 5px 20px;
-  background-color: darkgrey;
+  background-color: rgb(219, 218, 218);
 }
 
 #homepage-board-link,
@@ -94,5 +94,5 @@
 
 #homepage-boards-container h2,
 #homepage-tasks-container h2 {
-    color: white;
+    color: var(--jackblack);
 }

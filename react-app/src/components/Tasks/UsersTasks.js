@@ -21,15 +21,13 @@ function UsersTasks(){
     // const id = user.id;
     const tasks = storeTasks.tasks;
 
-    if (!tasks) return <h1>...Loading</h1>
-
 	return (
         <div>
             <h1>My Tasks</h1>
             {tasks ?
                 tasks.map(task => (
-                <SlideOutTask task={task} key={task.id}/>
-            )):
+                <SlideOutTask task={task} key={task.id}/>))
+                :
                 <div><p>You have no tasks</p></div>}
         </div>
 	);

@@ -76,6 +76,8 @@ function Home() {
   //make sure storeBoards is not null before accessing boards property
   //   const boards = storeBoards && storeBoards.boards;
 
+  if(!tasks) return null
+
   return (
     <>
       <div className="homepage-container">
@@ -95,7 +97,7 @@ function Home() {
             <div id="homepage-tasks-container">
               <h2>My Tasks</h2>
               <div className="homepage-user-tasks">
-                {tasks ? (
+                {tasks.length > 0 ? (
                   tasks.map((task) => (
                     <SlideOutTask task={task} key={task.id} />
                   ))
@@ -110,7 +112,7 @@ function Home() {
             <div id="homepage-boards-container">
               <h2>My Boards</h2>
               <div className="homepage-user-boards-container">
-                {boards ? (
+                {boards.length > 0 ? (
                   boards.map((board) => (
                     <div className="homepage-user-board-tile" key={board.id}>
                       <div className="homepage-divider"></div>

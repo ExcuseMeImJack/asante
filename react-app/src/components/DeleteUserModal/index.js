@@ -4,6 +4,7 @@ import { deleteUserThunk, getUserProfile } from "../../store/users"
 import { useModal } from "../../context/Modal";
 import { useHistory } from 'react-router-dom';
 import "./DeleteUser.css"
+import UserDeleteConfirmation from "../Users/UserDeleteConfirmation";
 
 function DeleteUserModal() {
     const dispatch = useDispatch()
@@ -25,6 +26,7 @@ function DeleteUserModal() {
                     await dispatch(deleteUserThunk(storeProfile.profile))
                     closeModal()
                     history.push('/')
+                    alert('You have successfully deleted your profile.')
                 }}>Delete</button>
                 <button className="cancel-delete-profile-button" onClick={() => closeModal()}>Cancel</button>
             </div>

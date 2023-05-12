@@ -3,10 +3,12 @@ body {
     overflow-x: hidden;
     overflow-y: scroll;
     max-width: 100vp;
+    font-family: 'Noto Sans', sans-serif;
 }
 #root {
     overflow-x: hidden;
-    --jackblack: #1a1919
+    --jackblack: #1a1919;
+    --asantered: #da3636;
 }
 .overflow-hide {
     overflow-x: hidden;
