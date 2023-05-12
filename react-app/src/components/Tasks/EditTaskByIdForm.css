@@ -7,3 +7,9 @@
 .edit-task-input {
     width: 200px;
 }
+
+.updated {
+    color: green;
+    font-weight: bold;
+    height: 24px;
+}

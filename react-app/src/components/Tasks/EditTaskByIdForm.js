@@ -6,22 +6,42 @@ import './EditTaskByIdForm.css'
 
 function EditTaskByIdForm({ task, ulRef }){
     const dispatch = useDispatch();
-    const [errors, setErrors] = useState({})
-    const [taskName, setTaskName] = useState(task.name)
-    const [dueDate, setDueDate] = useState(task.due_date)
-    const [description, setDescription] = useState(task.description)
+    const [taskName, setTaskName] = useState(task.name);
+    const [dueDate, setDueDate] = useState(task.due_date);
+    const [description, setDescription] = useState(task.description);
+    const [clickedOnce, setClickedOnce] = useState(false);
+    const [errors, setErrors] = useState({});
+    const [updated, setUpdated] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        if (!taskName) setErrors({...errors, taskName: "Task Name Required!"})
-        if (!dueDate) setErrors({...errors, dueDate: "Due Date Required!"})
-        if (!description) setErrors({...errors, description: "Description Required!"})
+        setErrors({})
+        let hasErrors = false;
+        if (!clickedOnce){
+            setErrors(errors => ({...errors, dueDate: "Due Date Required!"}))
+            hasErrors = true;
+            setClickedOnce(true);
+        }
+        if (!taskName){
+            setErrors(errors => ({...errors, taskName: "Task Name Required!"}))
+            hasErrors = true;
+        }
+        if (!dueDate) {
+            setErrors(errors => ({...errors, dueDate: "Due Date Required!"}))
+            hasErrors = true;
+        }
+        if (!description) {
+            setErrors(errors => ({...errors, description: "Description Required!"}))
+            hasErrors = true;
+        }
+        if (hasErrors) return;
         await dispatch(editTaskByTaskId({
             name: taskName,
             due_date: dueDate,
             description: description
         }, task.id))
         await dispatch(getTasksByUserId())
+        setUpdated(true)
     }
 
 
@@ -45,7 +65,7 @@ function EditTaskByIdForm({ task, ulRef }){
                         onChange={(e) => setTaskName(e.target.value)}
                     />
                     <div className="error-container">
-                        {errors.dueDate && <p>{errors.dueDate}</p>}
+                        {errors.taskName && <p>{errors.taskName}</p>}
                     </div>
                     <input
                         type="date"
@@ -54,7 +74,7 @@ function EditTaskByIdForm({ task, ulRef }){
                         onChange={(e) => setDueDate(e.target.value)}
                     />
                     <div className="error-container">
-                        {errors.taskName && <p>{errors.taskName}</p>}
+                        {errors.dueDate && <p>{errors.dueDate}</p>}
                     </div>
                     <input
                         type="text"
@@ -65,6 +85,9 @@ function EditTaskByIdForm({ task, ulRef }){
                     />
                     <div className="error-container">
                         {errors.description && <p>{errors.description}</p>}
+                    </div>
+                    <div className="updated">
+                        {updated && <p>Updated!</p>}
                     </div>
                     <button type="submit" className="form-button">Edit Task</button>
                 </form>
