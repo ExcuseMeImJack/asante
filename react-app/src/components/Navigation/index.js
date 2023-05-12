@@ -16,7 +16,7 @@ function Navigation({ isLoaded }){
 				<SlideOutMenu />
 				<div className='home-left-navbar change-cursor' onClick={() => history.push('/')}>
 					<img id="site-icon" alt="" src={icon_image}></img>
-					<h2 id='site-logo'>asana</h2>
+					<h2 id='site-logo'>asante</h2>
 				</div>
 			</div>
 			<ul className='nav-list'>

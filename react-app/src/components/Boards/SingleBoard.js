@@ -33,7 +33,7 @@ function SingleBoard() {
                 <button onClick={async (e) => {
                     e.preventDefault()
                     await dispatch(deleteBoardById(board))
-                    return history.push(`/profile`)
+                    return history.push(`/`)
                 }}>Delete Board</button>
                 {!buttonHidden
                     ? <button className="add-section-button" onClick={() => { setButtonHidden(true) }}>Add New Section</button>

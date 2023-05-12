@@ -10,6 +10,7 @@
     font-family: "Helvetica Neue", sans-serif;
     font-size: 10pt;
     align-items: center;
+    z-index: 3;
 }
 
 /* .social-links {

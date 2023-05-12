@@ -161,9 +161,45 @@
 #profile-task-link{
     text-decoration: none;
     color: black;
-    border: 1px solid rgb(189, 189, 189);
     border-radius: 5px;
     box-shadow: 1px 1px 5px rgb(189, 189, 189);
     padding: 5px 5px;
+    background-color: white;
 }
 
+#boardimg{
+    width: 24px;
+    height: 24px;
+    background-color: #da3636;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.profile-user-board-tile{
+    margin: 10px 0px 10px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 200px;
+}
+
+#profile-board-text{
+    padding: 10px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 600;
+}
+
+.profile-user-boards-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+
+#profile-boards-header{
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 600;
+}
+
+.profile-user-boards-container > div:hover{
+    background-color: rgb(151, 151, 151,.3);
+}

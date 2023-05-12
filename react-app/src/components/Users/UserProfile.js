@@ -9,10 +9,12 @@ import { getBoardsByUserId } from "../../store/boards";
 import DeleteUserModal from "../DeleteUserModal";
 import SlideOutTask from '../SlideOutTask/SlideOutTask'
 import quoteCensor from "./quoteCensor";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import boardicon from "../../assets/board.png"
 
 function UserProfile() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const profile = useSelector((state) => state.users.profile);
   const tasks = useSelector((state) => state.tasks.tasks);
   console.log(tasks)
@@ -88,22 +90,23 @@ function UserProfile() {
                 <div className='profile-tiles-container'>
                     <div className='profile-page-div-1'>
                         <div id='profile-boards-container'>
-                            <h2>My Boards</h2>
+                            <h2 id="profile-boards-header">My Boards</h2>
+                            <div className='profile-divider'></div>
                             <div className='profile-user-boards-container'>
                                 {boards ?
                                     boards.map(board => (
-                                        <div className='profile-user-board-tile' key={board.id}>
-                                            <div className='profile-divider'></div>
-                                            <Link to={`/boards/${board.id}`} id='profile-board-link' className='change-cursor'>{board.name}</Link>
+                                        <div className='profile-user-board-tile change-cursor' key={board.id} onClick={() => history.push(`/boards/${board.id}`)}>
+                                            <img id="boardimg" src={boardicon}/>
+                                            <p id="profile-board-text">{board.name}</p>
                                         </div>
                                     ))
                                 :
                                 <div><p>You have no boards</p></div>}
                             </div>
-                            <div className='profile-divider'></div>
                         </div>
                         <div id='profile-tasks-container'>
                             <h2>My Tasks</h2>
+                            <div className='profile-divider'></div>
                             <div className='profile-user-tasks'>
                                 {tasks ?
                                         tasks.map(task => (
@@ -112,9 +115,7 @@ function UserProfile() {
                                     :
                                     <div><p>You have no tasks</p></div>}
                             </div>
-                            <div className='profile-divider'></div>
                         </div>
-
                     </div>
                     <div className='profile-page-div-2'>
                             <div id='about-me-container'>
