@@ -7,6 +7,7 @@ import './UserProfile.css'
 import { getTasksByUserId } from '../../store/tasks';
 import { getBoardsByUserId } from '../../store/boards';
 import DeleteUserModal from '../DeleteUserModal';
+import SlideOutTask from '../SlideOutTask/SlideOutTask'
 import quoteCensor from './quoteCensor';
 import { Link } from 'react-router-dom';
 
@@ -105,10 +106,7 @@ function UserProfile(){
                             <div className='profile-user-tasks'>
                                 {tasks ?
                                         tasks.map(task => (
-                                            <div className='profile-user-task-tile' key={task.id}>
-                                                <div className='profile-divider'></div>
-                                                <Link to={`/tasks/${task.id}`} id='profile-task-link' className='change-cursor'>{task.name}</Link>
-                                            </div>
+                                            <SlideOutTask task={task} key={task.id}/>
                                         ))
                                     :
                                     <div><p>You have no tasks</p></div>}

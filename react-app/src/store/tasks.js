@@ -106,7 +106,7 @@ export const addTaskBySectionId = (task, sectionId) => async (dispatch) => {
 
 // edit task by task id
 export const editTaskByTaskId = (task, taskId) => async (dispatch) => {
-    const response = await fetch(`/api/users/task/${taskId}`, {
+    const response = await fetch(`/api/tasks/${taskId}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",

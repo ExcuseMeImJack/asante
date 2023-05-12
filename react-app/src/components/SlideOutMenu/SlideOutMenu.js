@@ -36,7 +36,7 @@ export default function SlideOutMenu() {
             <div className='cushion'></div>
             <li><NavLink exact to="/">Home</NavLink></li>
             <li><NavLink exact to="/profile">Profile</NavLink></li>
-            <li>{<CreateBoardForm/>}</li>
+            <CreateBoardForm/>
             <li>Filler</li>
         </ul>
     </div>

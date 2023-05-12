@@ -41,20 +41,21 @@ function CreateBoardForm() {
 
   return (
     <>
-      <button onClick={openMenu} className="create-board-btn nav-list-item">
+      <li onClick={openMenu} className="create-board-btn">
         Create
-      </button>
-      <div className={ulClassName} ref={ulRef}>
+      </li>
+      <div className={ulClassName}>
        <div>
         <form onSubmit={handleCreateBoard}>
-<div className="create-board-input">
+          <div className="create-board-input">
             <input
+              ref={ulRef}
               type="text"
               placeholder="New board name..."
               value={boardName}
               onChange={(e) => setBoardName(e.target.value)}
             />
-</div>
+          </div>
           {/* <div className="error-container">
                     {errors.name && <p>{errors.name}</p>}
                 </div> */}

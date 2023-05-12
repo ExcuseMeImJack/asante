@@ -112,8 +112,6 @@ export const deleteSectionById = (section) => async (dispatch) => {
         if (data.errors) {
             return;
         }
-        console.log("hitting dispatch delete action")
-        console.log(section)
         dispatch(deleteSection(section))
     }
 }

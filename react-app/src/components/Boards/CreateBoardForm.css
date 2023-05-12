@@ -4,7 +4,7 @@
     align-items: center;
     flex-direction: column;
     position: absolute;
-    top: 66px;
+    top: 162px;
     left: 170px;
     border: 1px solid black;
     padding: 5px;
@@ -13,6 +13,8 @@
     cursor: pointer;
     transition: left 1s;
     text-decoration: none;
+    background-color: white;
+    /* z-index: -1; BREAKS INPUT NOT SURE WHY */
 }
 
 .create-board-slide > div {

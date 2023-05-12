@@ -1,6 +1,14 @@
 body {
     margin: 0;
     overflow-x: hidden;
+    max-width: 100vp;
+}
+#root {
+    overflow-x: hidden;
+}
+.overflow-hide {
+    overflow-x: hidden;
+    border: 1px solid red;
 }
 .change-cursor{
     cursor: pointer;

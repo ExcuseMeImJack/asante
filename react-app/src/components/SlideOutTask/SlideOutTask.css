@@ -1,0 +1,40 @@
+
+.slide-out-task {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  position: absolute;
+  top: 284px;
+  right: -1px;
+  padding: 10px 60px;
+  width: 550px;
+  height: 65%;
+  cursor: pointer;
+  transition: right 1.5s;
+  text-decoration: none;
+  list-style: none;
+  margin-right: 10px;
+  box-shadow: 4px 4px 5px #3054a1;
+  border: 1px solid #3054a1;
+  background-color: white;
+}
+
+  .slide-out-task > li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+  }
+
+  .hidden-task {
+    right: -700px;
+  }
+
+  .cushion {
+    margin-top: 100px;
+  }
+
+  .slide-out-task-item {
+    font-size: 26px;
+  }
