@@ -120,7 +120,10 @@ export const editTaskByTaskId = (task, taskId) => async (dispatch) => {
             return;
         }
         dispatch(editTask(data.Task));
-    }
+		return response;
+    } else {
+		return response;
+	}
 }
 
 // delete task by task id

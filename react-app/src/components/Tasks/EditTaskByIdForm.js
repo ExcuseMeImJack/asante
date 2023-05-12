@@ -9,7 +9,7 @@ function EditTaskByIdForm({ task, ulRef }){
     const [taskName, setTaskName] = useState(task.name);
     const [dueDate, setDueDate] = useState(task.due_date);
     const [description, setDescription] = useState(task.description);
-    const [clickedOnce, setClickedOnce] = useState(false);
+    // const [clickedOnce, setClickedOnce] = useState(false);
     const [errors, setErrors] = useState({});
     const [updated, setUpdated] = useState(false);
 
@@ -17,11 +17,11 @@ function EditTaskByIdForm({ task, ulRef }){
         e.preventDefault()
         setErrors({})
         let hasErrors = false;
-        if (!clickedOnce){
-            setErrors(errors => ({...errors, dueDate: "Due Date Required!"}))
-            hasErrors = true;
-            setClickedOnce(true);
-        }
+        // if (!clickedOnce){
+        //     setErrors(errors => ({...errors, dueDate: "Due Date Required!"}))
+        //     hasErrors = true;
+        //     setClickedOnce(true);
+        // }
         if (!taskName){
             setErrors(errors => ({...errors, taskName: "Task Name Required!"}))
             hasErrors = true;
@@ -35,11 +35,18 @@ function EditTaskByIdForm({ task, ulRef }){
             hasErrors = true;
         }
         if (hasErrors) return;
-        await dispatch(editTaskByTaskId({
+        const data = await dispatch(editTaskByTaskId({
             name: taskName,
             due_date: dueDate,
             description: description
         }, task.id))
+        console.log(data)
+        if (data.status === 401) {
+            setErrors(errors => ({...errors, dueDate: "Due Date Required!"}))
+            hasErrors = true;
+            return;
+            // setClickedOnce(true);
+        }
         await dispatch(getTasksByUserId())
         setUpdated(true)
     }
