@@ -97,15 +97,15 @@ function AllTasksBySection({ section, boardId }) {
                             : <i className="fa-solid fa-xmark edit-section-button" id="xmark" onClick={() => { setEditButton(false) }}></i>}
                         {!editButton
                             ? <></>
-                            : <EditSectionForm sectionId={section.id} boardId={boardId} setButton={setEditButton} />}
+                            : <EditSectionForm sectionId={section.id} boardId={boardId} setEditButton={setEditButton} />}
                     <div className='tasks-container'>
 
                         {createButton
-                        ?  <i className="fa-solid fa-plus create-task-button" id="plus" onClick={() => { createButton ? setCreateButton(false) : setCreateButton(true) }}></i>
-                        : <i className="fa-solid fa-minus create-task-button" id="minus" onClick={() => { createButton ? setCreateButton(false) : setCreateButton(true) }}></i>}
+                        ?  <i className="fa-solid fa-plus create-task-button" id="plus" onClick={() => { setCreateButton(false) }}></i>
+                        : <i className="fa-solid fa-minus create-task-button" id="minus" onClick={() => { setCreateButton(true) }}></i>}
                         {createButton
                         ?  <></>
-                        :  <CreateTaskBySectionForm sectionId={section.id} setButton={setCreateButton} />}
+                        :  <CreateTaskBySectionForm sectionId={section.id} setCreateButton={setCreateButton} />}
                         {console.log('STORE TASKS~~~~~~~', tasks.map(t => [t.order, t.name]))}
                         <DragDropContext onDragEnd={onDragEnd}>
                             <Droppable droppableId={'section-' + sectionId} type='task'>

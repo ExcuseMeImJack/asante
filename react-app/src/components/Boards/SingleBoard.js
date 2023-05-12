@@ -12,7 +12,7 @@ function SingleBoard() {
     const history = useHistory();
     const { boardId } = useParams();
     const storeBoards = useSelector((state) => state.boards);
-    const sections = useSelector((state) => state.sections.sections);
+    // const sections = useSelector((state) => state.sections.sections);
     const [plus, setPlus] = useState(true);
     const [deleteClicked, setDeleteClicked] = useState(false);
 

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getTasksByUserId } from '../../store/tasks';
+import { deleteTaskByTaskId, getTasksByUserId } from '../../store/tasks';
 import { editTaskByTaskId } from '../../store/tasks';
 import './EditTaskByIdForm.css'
 
-function EditTaskByIdForm({ task, ulRef, type}){
+function EditTaskByIdForm({ task, ulRef, type, setShowEditTask}){
     const dispatch = useDispatch();
     const [taskName, setTaskName] = useState(task.name);
     const [dueDate, setDueDate] = useState(task.due_date);
@@ -93,6 +93,9 @@ function EditTaskByIdForm({ task, ulRef, type}){
                     <div className="updated">
                         {updated && <p>Updated!</p>}
                     </div>
+                    <button className="form-button demo-button" onClick={async () => {
+                        await dispatch(deleteTaskByTaskId(task))
+                    }}>Complete Task</button>
                     <button type="submit" className="form-button">Edit Task</button>
                 </form>
             </div>
