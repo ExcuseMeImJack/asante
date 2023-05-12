@@ -37,7 +37,7 @@ function SingleBoard() {
                     if (!deleteClicked) {
                         return setDeleteClicked(true)
                     }
-                }}></i><p className='delete-text'>Delete Board</p>
+                }}></i>
                 <div className='delete-warning-section'>
                     {deleteClicked && <p className='delete-text red'>Are you sure?</p>}
                     <div>

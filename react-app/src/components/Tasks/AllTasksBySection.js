@@ -83,7 +83,7 @@ function AllTasksBySection({ section, boardId }) {
                             // await dispatch(deleteSectionById(section))
                             // return history.push(`/boards/${boardId}`)
                         }}></i>
-                            {deleteClicked && <p className='delete-text-section red'>Are you sure?</p>}
+                            {deleteClicked && <p className='delete-text-section'>Are you sure?</p>}
                             <div>
                                 {deleteClicked && <i className='fa-solid fa-xmark' id="section-xmark" onClick={() => { setDeleteClicked(false)}}></i>}
                                 {deleteClicked && <i className='fa-solid fa-check' id="section-check" onClick={async () => {

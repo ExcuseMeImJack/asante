@@ -27,13 +27,11 @@
     font-size: 22px;
     margin-right: 30px;
 }
-.red {
-    color: red;
-}
 
 .delete-text {
     align-self: flex-end;
     margin-right: 10px;
+    color: red;
 }
 .delete-warning {
     display: flex;
