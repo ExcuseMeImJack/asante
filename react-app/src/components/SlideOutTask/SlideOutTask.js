@@ -33,7 +33,7 @@ export default function SlideOutTask({ task }) {
 
     const ulClassName = "slide-out-task" + (showTask ? "" : " hidden-task");
 
-
+    if(!storeTask.due_date) return null
   return (
     <div>
       <div className='profile-divider'></div>
