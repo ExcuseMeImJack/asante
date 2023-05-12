@@ -35,18 +35,23 @@ def get_all_tasks(section_id):
     return { "Tasks": [task.to_dict() for task in tasks] }
 
 
-@task_routes.route('/move', methods=["PUT"])
+@task_routes.route('/<int:section_id>/move', methods=["PUT"])
 @login_required
 # Reorder tasks
-def edit_task_order():
+def edit_task_order(section_id):
     data = request.json
-    # Check if board belongs to current user
-    for index in range(0,len(data)):
+    # Gets all tasks of current user
+    for index in range(len(data)):
         task = data[index]
-        task['order'] = index
-
+        print(task)
+        print('DB TASKSSS~~~~~', task)
+        db_task = Task.query.get(task['id'])
+        db_task.order = index
         db.session.commit()
-    return {}
+
+    db_tasks = Task.query.filter(Task.user_id == current_user.id)
+
+    return { 'tasks': [task.to_dict() for task in db_tasks]}
 
 
 @task_routes.route('/<int:task_id>', methods=["PUT"])

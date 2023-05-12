@@ -9,8 +9,6 @@ function SingleTask({ task }) {
         <div className='single-task-card'>
             <h3>{task.name}</h3>
             <div>{task.description || "No description"}</div>
-            <button>HERE</button>
-
         </div>
     );
 }

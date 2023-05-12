@@ -37,9 +37,12 @@ const deleteTask = (task) => ({
 	payload: task,
 });
 
-const orderTasks = (tasks) => ({
+const orderTasks = (tasks, sectionId) => ({
 	type: ORDER_TASKS,
-	payload: tasks,
+	payload: {
+		tasks: tasks,
+		sectionId: sectionId
+	}
 });
 
 
@@ -148,9 +151,15 @@ export const deleteTaskByTaskId = (task) => async (dispatch) => {
     }
 }
 
-
+// Orders Tasks in a section
 export const orderTasksThunk = (tasks, sectionId) => async (dispatch) => {
-	const response = await fetch(`/api/tasks/move`, {
+	// console.log('DATA in THUNK', tasks.map(t => [t.order, t.name]))
+	// for (let i = 0; i < tasks.length ; i++) {
+	// 	const task = tasks[i]
+	// 	task.order = i
+	// }
+	console.log('DATA in THUNK', tasks.map(t => [t.order, t.name]))
+	const response = await fetch(`/api/tasks/${sectionId}/move`, {
 		method: "PUT",
         headers: {
 			"Content-Type": "application/json",
@@ -162,7 +171,7 @@ export const orderTasksThunk = (tasks, sectionId) => async (dispatch) => {
         if (data.errors) {
 			return;
         }
-		await dispatch(orderTasks(tasks));
+		await dispatch(orderTasks(data.tasks, sectionId));
     }
 }
 
@@ -201,9 +210,10 @@ export default function reducer(state = initialState, action) {
         }
 		case ORDER_TASKS: {
 			const newState = { ...state }
-			console.log('newState ', newState)
-			const tasks = action.payload
-			console.log('tasks in case ', tasks)
+			console.log(action.payload)
+			const tasks = action.payload.tasks
+			console.log('newState ', newState.tasks.map(t => [t.order, t.name]))
+			console.log('tasks in case ', tasks.map(t => [t.order, t.name]))
 			return newState;
 		}
 		default:
