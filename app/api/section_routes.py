@@ -62,11 +62,15 @@ def edit_section_order(board_id):
     board = Board.query.get(board_id)
     # Check if board belongs to current user
     if (board.user_id == current_user.id):
+        sections = []
         for index in range(0,len(data)):
             section = data[index]
-            section['order'] = index
+            print('SECTION ~~~~~', type(section))
+            db_section = Section.query.get(section['id'])
+            db_section.order = index
             db.session.commit()
-        return {}
+            sections.append(db_section)
+        return { 'sections': [section.to_dict() for section in sections] }
     else:
         return {'errors': ['Unauthorized']}, 401
 

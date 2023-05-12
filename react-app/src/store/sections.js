@@ -118,6 +118,13 @@ export const orderSections = (sections, boardId) => async (dispatch) => {
         },
         body: JSON.stringify(sections)
     });
+    if (response.ok) {
+        const data = await response.json();
+        if (data.errors) {
+            return;
+        }
+        dispatch(getSections(data.sections))
+    }
 }
 
 export const deleteSectionById = (section) => async (dispatch) => {

@@ -45,8 +45,14 @@ function Sections() {
 
     if (!sections) return <h1>...Loading</h1>
 
+    sections.sort((a,b) => {
+        console.log(a, b)
+        return a.order - b.order
+    })
+
     return (
         <div>
+            {console.log(sections.map((s)=> s.order))}
             <DragDropContext onDragEnd={onDragEnd}>
                 <Droppable droppableId="ROOT" direction='horizontal' type='section'>
                     {(provided) => (
