@@ -12,3 +12,47 @@
     justify-content: center;
     margin: 20px;
 }
+
+#board-trash {
+    align-self: flex-end;
+    margin-right: 42px;
+    font-size: 28px;
+}
+
+#xmark {
+    font-size: 22px;
+}
+
+#check {
+    font-size: 22px;
+    margin-right: 30px;
+}
+.red {
+    color: red;
+}
+
+.delete-text {
+    align-self: flex-end;
+    margin-right: 10px;
+}
+.delete-warning {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    align-self: flex-end;
+    height: 60px;
+}
+
+.fa-solid {
+    cursor: pointer;
+}
+
+.new-section-form {
+    height: 60px;
+}
+
+.aligned-right {
+    align-self: flex-end;
+    margin-right: 46px;
+}

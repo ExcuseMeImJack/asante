@@ -12,3 +12,7 @@
     display: flex;
     overflow-x: hidden;
 }
+
+#trash {
+    font-size: 22px;
+}

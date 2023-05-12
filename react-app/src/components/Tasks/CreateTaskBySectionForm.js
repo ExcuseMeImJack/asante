@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { addTaskBySectionId } from '../../store/tasks';
 import './CreateTaskBySectionForm.css'
 
-function CreateTaskBySectionForm({sectionId, setButtonHidden}){
+function CreateTaskBySectionForm({sectionId, setButton}){
     const dispatch = useDispatch();
     const [errors, setErrors] = useState({});
     const [taskName, setTaskName] = useState('');
@@ -40,7 +40,6 @@ function CreateTaskBySectionForm({sectionId, setButtonHidden}){
             hasErrors = true;
             return;
         }
-        setButtonHidden(false);
     }
 
     return (

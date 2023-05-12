@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteTaskByTaskId, editTaskByTaskId, getAllTasksBySectionId, getTasksByUserId, orderTasksThunk } from '../../store/tasks';
+import { getTasksByUserId, orderTasksThunk } from '../../store/tasks';
+import { useHistory, useParams } from 'react-router-dom';
+import { getSectionsByBoardId, orderSections, deleteSectionById } from '../../store/sections';
 import { Droppable, Draggable, DragDropContext } from 'react-beautiful-dnd';
 import SingleTask from './SingleTask';
 import EditSectionForm from '../Sections/EditSectionForm';
 import CreateTaskBySectionForm from '../Tasks/CreateTaskBySectionForm';
-import { useHistory } from 'react-router-dom';
 import './AllTasksBySection.css'
 
 function AllTasksBySection({ section, boardId }) {
     const dispatch = useDispatch();
     const storeTasks = useSelector((state) => state.tasks);
     const sections = useSelector((state) => state.sections.sections);
-    const [editButtonHidden, setEditButtonHidden] = useState(false);
-    const [createButtonHidden, setCreateButtonHidden] = useState(false);
+    const [editButton, setEditButton] = useState(false);
+    const [createButton, setCreateButton] = useState(true);
+    const [deleteClicked, setDeleteClicked] = useState(false);
+    const history = useHistory();
 
     // dispatch thunk to populate storeTasks variable
     useEffect(() => {
@@ -71,13 +74,38 @@ function AllTasksBySection({ section, boardId }) {
 
                 return (
                     <div>
-                        {!editButtonHidden
-                            ? <button className="edit-section-button" onClick={() => { setEditButtonHidden(true) }}>Edit Section</button>
-                            : <EditSectionForm sectionId={section.id} boardId={boardId} setButtonHidden={setEditButtonHidden} />}
+                        <div className='delete-warning-section'>
+                        <i className='fa-solid fa-trash section-trash' id="section-trash" onClick={async (e) => {
+                            e.preventDefault()
+                            if (!deleteClicked) {
+                                return setDeleteClicked(true)
+                            }
+                            // await dispatch(deleteSectionById(section))
+                            // return history.push(`/boards/${boardId}`)
+                        }}></i>
+                            {deleteClicked && <p className='delete-text-section red'>Are you sure?</p>}
+                            <div>
+                                {deleteClicked && <i className='fa-solid fa-xmark' id="section-xmark" onClick={() => { setDeleteClicked(false)}}></i>}
+                                {deleteClicked && <i className='fa-solid fa-check' id="section-check" onClick={async () => {
+                                    await dispatch(deleteSectionById(section))
+                                    return history.push(`/boards/${boardId}`)
+                                }}></i>}
+                            </div>
+                        </div>
+                        {!editButton
+                            ? <i className="fa-solid fa-pen-to-square edit-section-button" id="pen" onClick={() => { setEditButton(true) }}></i>
+                            : <i className="fa-solid fa-xmark edit-section-button" id="xmark" onClick={() => { setEditButton(false) }}></i>}
+                        {!editButton
+                            ? <></>
+                            : <EditSectionForm sectionId={section.id} boardId={boardId} setButton={setEditButton} />}
                     <div className='tasks-container'>
-                        {!createButtonHidden
-                        ? <button className="create-task-button" onClick={() => { setCreateButtonHidden(true) }}>Add Task</button>
-                        : <CreateTaskBySectionForm sectionId={section.id} setButtonHidden={setCreateButtonHidden} />}
+
+                        {createButton
+                        ?  <i className="fa-solid fa-plus create-task-button" id="plus" onClick={() => { createButton ? setCreateButton(false) : setCreateButton(true) }}></i>
+                        : <i className="fa-solid fa-minus create-task-button" id="minus" onClick={() => { createButton ? setCreateButton(false) : setCreateButton(true) }}></i>}
+                        {createButton
+                        ?  <></>
+                        :  <CreateTaskBySectionForm sectionId={section.id} setButton={setCreateButton} />}
                         {console.log('STORE TASKS~~~~~~~', tasks.map(t => [t.order, t.name]))}
                         <DragDropContext onDragEnd={onDragEnd}>
                             <Droppable droppableId={'section-' + sectionId} type='task'>

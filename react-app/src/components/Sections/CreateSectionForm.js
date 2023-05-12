@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addSectionByBoardId } from '../../store/sections'
 
-function CreateSectionForm({boardId, setButtonHidden}){
+function CreateSectionForm({boardId, setPlus}){
     const dispatch = useDispatch();
     const [sectionName, setSectionName] = useState('')
     const [errors, setErrors] = useState({})
@@ -15,15 +15,15 @@ function CreateSectionForm({boardId, setButtonHidden}){
             return;
         }
         await dispatch(addSectionByBoardId({name: sectionName}, boardId))
-        setButtonHidden(false)
+        setPlus(true)
     }
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form className='new-section-form' onSubmit={handleSubmit}>
                     <input
                         type="text"
-                        placeholder="Section Name"
+                        placeholder="New Section Name"
                         value={sectionName}
                         onChange={(e) => setSectionName(e.target.value)}
                     />

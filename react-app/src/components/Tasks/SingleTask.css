@@ -1,12 +1,39 @@
 .single-task-card {
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* border: 1px solid black; */
     padding: 20px;
 }
 
 .single-task-card > h3 {
     margin: 0px 0px;
+}
+
+.board-task {
+    margin-right: 40px;
+    /* border: 1px solid pink; */
+    /* margin-right: 40px; */
+}
+
+.board-hidden-task {
+    display: none;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-task-input-single {
+    width: 100px;
+    /* width: 100px; */
+}
+
+.single-error-container {
+    min-height: 12px;
+    font-size: 12px;
+    color: red;
 }

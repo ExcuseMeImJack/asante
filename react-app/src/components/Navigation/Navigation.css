@@ -37,6 +37,7 @@
   width: 120px;
   transition: right 1s;
   text-decoration: none;
+  background-color: white;
 }
 
 .profile-dropdown > li {

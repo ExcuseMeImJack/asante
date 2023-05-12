@@ -12,6 +12,7 @@ function Sections() {
     const history = useHistory();
     const sections = useSelector((state) => state.sections.sections);
 
+
     //dispatch thunk to populate storeSections variable
     useEffect(() => {
         dispatch(getSectionsByBoardId(boardId))
@@ -58,11 +59,6 @@ function Sections() {
                                         <div className='single-section-border' ref={provided.innerRef} {...provided.draggableProps}>
                                             <div className='section-header' {...provided.dragHandleProps}>
                                                 <div>{section.name}</div>
-                                                <button onClick={async (e) => {
-                                                    e.preventDefault()
-                                                    await dispatch(deleteSectionById(section))
-                                                    return history.push(`/boards/${boardId}`)
-                                                }}>Delete Section</button>
                                             </div>
                                             <div>
                                                 <AllTasksBySection section={section} boardId={boardId} />

@@ -19,7 +19,7 @@ function EditSectionForm({sectionId, setButtonHidden, boardId}){
         }
         await dispatch(editSectionBySectionId({name: sectionName}, sectionId));
         await dispatch(getSectionsByBoardId(boardId));
-        setButtonHidden(false)
+        // setButtonHidden(false)
     }
 
     return (
