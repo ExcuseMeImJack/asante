@@ -4,8 +4,6 @@ import { getSectionsByBoardId, orderSections, deleteSectionById } from '../../st
 import { useHistory, useParams } from 'react-router-dom';
 import { Droppable, Draggable, DragDropContext } from 'react-beautiful-dnd';
 import AllTasksBySection from '../Tasks/AllTasksBySection';
-import EditSectionForm from './EditSectionForm';
-import CreateTaskBySectionForm from '../Tasks/CreateTaskBySectionForm';
 import './Sections.css'
 
 function Sections() {
@@ -13,14 +11,11 @@ function Sections() {
     const dispatch = useDispatch();
     const history = useHistory();
     const sections = useSelector((state) => state.sections.sections);
-    const [editButtonHidden, setEditButtonHidden] = useState(false);
-    const [createButtonHidden, setCreateButtonHidden] = useState(false);
-
 
     //dispatch thunk to populate storeSections variable
     useEffect(() => {
         dispatch(getSectionsByBoardId(boardId))
-    }, [dispatch, boardId, sections.length])
+    }, [dispatch, boardId, sections.length, sections])
 
     const onDragEnd = async (result) => {
         const { destination, source, draggableId, type } = result;
@@ -68,15 +63,9 @@ function Sections() {
                                                     await dispatch(deleteSectionById(section))
                                                     return history.push(`/boards/${boardId}`)
                                                 }}>Delete Section</button>
-                                                {!editButtonHidden
-                                                    ? <button className="edit-section-button" onClick={() => { setEditButtonHidden(true) }}>Edit Section</button>
-                                                    : <EditSectionForm sectionId={section.id} setButtonHidden={setEditButtonHidden} />}
-                                                {!createButtonHidden
-                                                    ? <button className="create-task-button" onClick={() => { setCreateButtonHidden(true) }}>Add Task</button>
-                                                    : <CreateTaskBySectionForm sectionId={section.id} setButtonHidden={setCreateButtonHidden} />}
                                             </div>
                                             <div>
-                                                <AllTasksBySection sectionId={section.id} />
+                                                <AllTasksBySection section={section} />
                                             </div>
                                         </div>
                                     )}

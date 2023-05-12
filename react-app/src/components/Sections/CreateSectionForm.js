@@ -5,11 +5,13 @@ import { addSectionByBoardId } from '../../store/sections'
 function CreateSectionForm({boardId, setButtonHidden}){
     const dispatch = useDispatch();
     const [sectionName, setSectionName] = useState('')
+    const [errors, setErrors] = useState({})
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         if (!sectionName) {
-            setButtonHidden(false);
+            setErrors(errors => ({...errors, sectionName: "Please enter a section name"}))
+            // setButtonHidden(false);
             return;
         }
         await dispatch(addSectionByBoardId({name: sectionName}, boardId))
@@ -19,18 +21,15 @@ function CreateSectionForm({boardId, setButtonHidden}){
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                    <label>
-                    Name
                     <input
                         type="text"
-                        placeholder="Name"
+                        placeholder="Section Name"
                         value={sectionName}
                         onChange={(e) => setSectionName(e.target.value)}
                     />
-                    </label>
-                    {/* <div className="error-container">
-                    {errors.name && <p>{errors.name}</p>}
-                    </div> */}
+                    <div className="error-container">
+                    {errors.sectionName && <p>{errors.sectionName}</p>}
+                    </div>
                     <button type="submit" className="submit-create">Create Section</button>
                 </form>
             </div>

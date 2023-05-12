@@ -45,9 +45,6 @@ const orderTasks = (tasks, sectionId) => ({
 	}
 });
 
-
-
-
 // get task by id thunk
 export const getTaskById = (taskId) => async (dispatch) => {
 	const response = await fetch(`/api/tasks/${taskId}`, {
@@ -112,7 +109,10 @@ export const addTaskBySectionId = (task, sectionId) => async (dispatch) => {
             return;
         }
         dispatch(addTask(data.Task));
-    }
+		return response;
+    } else {
+		return response;
+	}
 }
 
 // edit task by task id
@@ -132,9 +132,8 @@ export const editTaskByTaskId = (task, taskId) => async (dispatch) => {
         }
         dispatch(editTask(data.Task));
 		return response;
-    } else {
-		return response;
-	}
+    }
+	return response;
 }
 
 // delete task by task id

@@ -17,30 +17,27 @@ function EditTaskByIdForm({ task, ulRef }){
         e.preventDefault()
         setErrors({})
         let hasErrors = false;
-        // if (!clickedOnce){
-        //     setErrors(errors => ({...errors, dueDate: "Due Date Required!"}))
-        //     hasErrors = true;
-        //     setClickedOnce(true);
-        // }
+
         if (!taskName){
             setErrors(errors => ({...errors, taskName: "Task Name Required!"}))
             hasErrors = true;
         }
-        if (!dueDate) {
-            setErrors(errors => ({...errors, dueDate: "Due Date Required!"}))
-            hasErrors = true;
-        }
+        // if (!dueDate) {
+        //     setErrors(errors => ({...errors, dueDate: "Due Date Required!"}))
+        //     hasErrors = true;
+        // }
         if (!description) {
             setErrors(errors => ({...errors, description: "Description Required!"}))
             hasErrors = true;
         }
+
         if (hasErrors) return;
         const data = await dispatch(editTaskByTaskId({
             name: taskName,
             due_date: dueDate,
             description: description
         }, task.id))
-        console.log(data)
+
         if (data.status === 401) {
             setErrors(errors => ({...errors, dueDate: "Due Date Required!"}))
             hasErrors = true;
