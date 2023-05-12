@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, NavLink } from "react-router-dom";
 import { logoutUserThunk } from "../../store/users";
 import { getUserProfile } from '../../store/users';
-import OpenModalButton from "../OpenModalButton";
 import "./ProfileButton.css";
 import { logout } from "../../store/session";
 
@@ -46,19 +45,18 @@ function ProfileButton({ user }) {
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
-  const closeMenu = () => setShowMenu(false);
 
   return (
     <>
-      <img src={profile.profile_pic_url} onClick={openMenu} id='navbar-pic-image' className='profile-button'/>
+      <img alt="" src={profile.profile_pic_url} onClick={openMenu} id='navbar-pic-image' className='profile-button'/>
         {/* <i className="fas fa-user-circle" /> */}
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li><NavLink to="/profile">Profile</NavLink></li>
             <li>{user.username}</li>
             <li>{user.email}</li>
-            <li onClick={handleLogout}>Log Out</li>
+            <li className="hoverable"><NavLink to="/profile" className="profile-link">Profile</NavLink></li>
+            <li className="hoverable" onClick={handleLogout}>Log Out</li>
           </>
         ) : (
           <>

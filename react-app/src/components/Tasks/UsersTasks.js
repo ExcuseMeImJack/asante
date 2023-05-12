@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTasksByUserId } from '../../store/tasks';
 import './UsersTasks.css'
+import SlideOutTask from '../SlideOutTask/SlideOutTask';
 
 function UsersTasks(){
     const dispatch = useDispatch();
@@ -17,8 +18,7 @@ function UsersTasks(){
     if (!storeTasks.tasks) return <h1>...Loading</h1>
     if (!user) return <h1>...Loading</h1>
 
-    const id = user.id;
-
+    // const id = user.id;
     const tasks = storeTasks.tasks;
 
     if (!tasks) return <h1>...Loading</h1>
@@ -26,11 +26,11 @@ function UsersTasks(){
 	return (
         <div>
             <h1>My Tasks</h1>
-            {tasks.map((task) => {
-            return  <div key={task.id}>
-                        <div>{task.name}</div>
-                    </div>
-            })}
+            {tasks ?
+                tasks.map(task => (
+                <SlideOutTask task={task} key={task.id}/>
+            )):
+                <div><p>You have no tasks</p></div>}
         </div>
 	);
 }

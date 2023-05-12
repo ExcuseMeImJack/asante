@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from "react-router-dom";
+import { useSelector } from 'react-redux';
 import './SlideOutTask.css'
 import EditTaskByIdForm from '../Tasks/EditTaskByIdForm';
 
 export default function SlideOutTask({ task }) {
-    const dispatch = useDispatch();
     const storeTasks = useSelector((state) => state.tasks.tasks);
     const [showTask, setShowTask] = useState(false);
     const ulRef = useRef();
@@ -36,7 +34,7 @@ export default function SlideOutTask({ task }) {
     if(!storeTask.due_date) return null
   return (
     <div>
-      <div className='profile-divider'></div>
+      {/* <div className='profile-divider'></div> */}
       <button id="profile-task-link" className='change-cursor' onClick={openTask}>{task.name}</button>
         <div className='task-slide-container'>
             <ul className={ulClassName} ref={ulRef}>

@@ -5,6 +5,7 @@ import { getBoardsByUserId } from "../../store/boards";
 import "./Homepage.css";
 import { getTasksByUserId } from "../../store/tasks";
 import { Link } from "react-router-dom";
+import SlideOutTask from "../SlideOutTask/SlideOutTask";
 
 // creating a function to format the date
 function dateFormat(date) {
@@ -59,7 +60,7 @@ function Home() {
   const greeting = greetingUser();
   const tasks = useSelector((state) => state.tasks.tasks);
   const boards = useSelector((state) => state.boards.boards);
-//   console.log("store boards:", storeBoards);
+  //   console.log("store boards:", storeBoards);
 
   useEffect(() => {
     dispatch(getUserProfile());
@@ -71,9 +72,9 @@ function Home() {
     setCurrentDate(formattedDate);
   }, [dispatch]);
 
-//   const tasks = storeTasks && storeTasks.tasks;
+  //   const tasks = storeTasks && storeTasks.tasks;
   //make sure storeBoards is not null before accessing boards property
-//   const boards = storeBoards && storeBoards.boards;
+  //   const boards = storeBoards && storeBoards.boards;
 
   return (
     <>
@@ -83,8 +84,10 @@ function Home() {
           <div className="red">
             <div className="current-date">{currentDate}</div>
             <div className="hello-user">
-              <h2>{greeting}
-              {storeProfile.name}</h2>
+              <h2>
+                {greeting}
+                {storeProfile.name}
+              </h2>
             </div>
           </div>
 
@@ -94,16 +97,7 @@ function Home() {
               <div className="homepage-user-tasks">
                 {tasks ? (
                   tasks.map((task) => (
-                    <div className="homepage-user-task-tile" key={task.id}>
-                      <div className="homepage-divider"></div>
-                      <Link
-                        to={`/tasks/${task.id}`}
-                        id="homepage-task-link"
-                        className="change-cursor"
-                      >
-                        {task.name}
-                      </Link>
-                    </div>
+                    <SlideOutTask task={task} key={task.id} />
                   ))
                 ) : (
                   <div>
@@ -111,7 +105,7 @@ function Home() {
                   </div>
                 )}
               </div>
-              <div className="profile-divider"></div>
+              <div className="homepage-divider"></div>
             </div>
             <div id="homepage-boards-container">
               <h2>My Boards</h2>
@@ -135,7 +129,7 @@ function Home() {
                   </div>
                 )}
               </div>
-              <div className="profile-divider"></div>
+              {/* <div className="pro-divider"></div> */}
             </div>
           </div>
         </div>

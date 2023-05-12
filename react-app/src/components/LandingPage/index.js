@@ -1,17 +1,15 @@
 import "./landing.css";
-import React, { useEffect, useState} from "react";
-import { Link, useHistory, Redirect } from "react-router-dom";
+import React, { useState} from "react";
+import { Link, useHistory } from "react-router-dom";
 import { login } from "../../store/session";
 import { getUserProfile } from "../../store/users";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const LandingPage = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
-  const [auth, setAuth] = useState(true)
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+
+  // eslint-disable-next-line
   const [errors, setErrors] = useState([]);
 
   const handleDemoLogin = async (e) => {
@@ -32,17 +30,11 @@ const LandingPage = () => {
     history.push("/signup");
   };
 
-  useEffect(() => {
-    if(!auth){
-
-    }
-  })
-
 
   return (
     <div className="page-container">
       <header>
-        <div className="nav-container">
+        <div className="home-nav-container">
           <div className="navbar">
             <div className="navbar-left">
               <Link to="">Why Asante?</Link>
@@ -54,16 +46,16 @@ const LandingPage = () => {
 
             <div className="navbar-right">
               <Link to="">Contact</Link>
-              {auth && <Link to="/login">
+              <Link to="/login">
                 Log In
-              </Link>}
+              </Link>
 
-              {auth && <button
+              <button
                 className="get-started-btn-1"
                 onClick={handleGetStartedClick}
               >
                 Get Started
-              </button>}
+              </button>
 
             </div>
           </div>
@@ -80,12 +72,12 @@ const LandingPage = () => {
                 flexible and easy for all teams to use, so you can deliver
                 quality work together, faster.
               </p>
-              {auth && <button
+              <button
                 className="get-started-btn-2"
                 onClick={handleGetStartedClick}
               >
                 Get Started
-              </button>}
+              </button>
               <button className="demo-user-btn" onClick={handleDemoLogin}>See how it works</button>
             </div>
             <div className="main-right">

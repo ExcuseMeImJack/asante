@@ -55,7 +55,7 @@ function UserProfile() {
             <div className='profile-page'>
                 <div className='profile-info-container'>
                     <div className='profile-pic-container'>
-                        <img id='profile-pic-image' src={profile.profile_pic_url}/>
+                        <img id='profile-pic-image' alt="" src={profile.profile_pic_url}/>
                     </div>
                     <div className='profile-info'>
                         <h1>{profile.name}</h1>

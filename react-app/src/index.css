@@ -5,6 +5,7 @@ body {
 }
 #root {
     overflow-x: hidden;
+    --jackblack: #1a1919
 }
 .overflow-hide {
     overflow-x: hidden;

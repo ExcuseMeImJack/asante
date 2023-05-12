@@ -38,7 +38,6 @@ function AllTasksBySection({sectionId}){
                 return <div key={task.id}>
                     <button onClick={async (e) => {
                             e.preventDefault()
-                            const boardId = task.board_id
                             await dispatch(deleteTaskByTaskId(task))
                             return history.push(`/boards/${storeBoards.board.id}`)
                         }}>Delete Task</button>

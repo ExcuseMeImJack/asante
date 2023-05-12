@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getTaskById } from '../../store/tasks';
-import { useParams } from 'react-router-dom';
+import React from 'react';
+
 import './SingleTask.css'
 
 function SingleTask({task}){
