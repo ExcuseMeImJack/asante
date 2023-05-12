@@ -1,33 +1,33 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getUserProfile } from '../../store/users';
-import EditProfileModal from '../EditProfileModal';
-import OpenModalButton from '../OpenModalButton';
-import './UserProfile.css'
-import { getTasksByUserId } from '../../store/tasks';
-import { getBoardsByUserId } from '../../store/boards';
-import DeleteUserModal from '../DeleteUserModal';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserProfile } from "../../store/users";
+import EditProfileModal from "../EditProfileModal";
+import OpenModalButton from "../OpenModalButton";
+import "./UserProfile.css";
+import { getTasksByUserId } from "../../store/tasks";
+import { getBoardsByUserId } from "../../store/boards";
+import DeleteUserModal from "../DeleteUserModal";
 import SlideOutTask from '../SlideOutTask/SlideOutTask'
-import quoteCensor from './quoteCensor';
-import { Link } from 'react-router-dom';
+import quoteCensor from "./quoteCensor";
+import { Link } from "react-router-dom";
 
-function UserProfile(){
-    const dispatch = useDispatch();
-    const profile = useSelector((state) => state.users.profile);
-    const tasks = useSelector((state) => state.tasks.tasks);
-    const boards = useSelector((state) => state.boards.boards);
-    const [quoteInfo, setQuoteInfo] = useState("");
+function UserProfile() {
+  const dispatch = useDispatch();
+  const profile = useSelector((state) => state.users.profile);
+  const tasks = useSelector((state) => state.tasks.tasks);
+  const boards = useSelector((state) => state.boards.boards);
+  const [quoteInfo, setQuoteInfo] = useState("");
 
-    //dispatch thunk to populate storeUsers variable
-    useEffect(() => {
-        dispatch(getUserProfile())
-        dispatch(getTasksByUserId())
-        dispatch(getBoardsByUserId())
-    }, [dispatch])
+  //dispatch thunk to populate storeUsers variable
+  useEffect(() => {
+    dispatch(getUserProfile());
+    dispatch(getTasksByUserId());
+    dispatch(getBoardsByUserId());
+  }, [dispatch]);
 
     useEffect(() => {
         const fetchQuote = async () => {
-            const res = await fetch('https://api.api-ninjas.com/v1/quotes?category=success',{
+            const res = await fetch('https://api.api-ninjas.com/v1/quotes?category=happiness',{
                 headers: {'X-Api-Key': 'WrkXdZlorsWnOkvJdFoc9Q==oNhDvwTXKFJguwGD'},
                 contentType: 'application/json'
             })
@@ -39,15 +39,16 @@ function UserProfile(){
             } else {
                 return('error', res.error)
             }
-        }
-        fetchQuote()
-    }, [dispatch])
+        };
+    fetchQuote();
 
-    if (!profile) return <h1>...Loading</h1>
+  }, [dispatch]);
 
-    if (quoteInfo[0]){
-        const quote = quoteInfo[0].quote;
-        const author = quoteCensor(quoteInfo[0].author);
+  if (!profile) return <h1>...Loading</h1>;
+
+  if (quoteInfo[0]) {
+    const quote = quoteInfo[0].quote;
+    const author = quoteCensor(quoteInfo[0].author);
 
 
         return (

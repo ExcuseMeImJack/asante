@@ -1,8 +1,26 @@
 .nav-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   /* border: 1px solid red; */
-  /* max-height: 50px; */
+  background-color: #1a1919;
+  max-height: 49px;
+}
+
+#site-icon{
+  width: 36px;
+  height: 36px;
+}
+
+#site-logo{
+  color: white;
+}
+
+.home-left-navbar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 
 .profile-dropdown {
@@ -48,9 +66,8 @@
   display: flex;
   justify-content: flex-end;
   gap: 24px;
-  background-color: white;
   padding: 15px 0;
-  margin-right: 10px;
+  margin-right: 16px;
   position: sticky;
   top: 0px;
 }
@@ -64,6 +81,8 @@
   justify-content: center;
   align-items: center;
   text-decoration: none;
+  color: white;
+  /*
   background-color: black;
   color: white;
   font-size: 17px;
@@ -72,10 +91,10 @@
   min-height: 20px;
   cursor: pointer;
   box-shadow: 3px 2px 3px grey;
-  transition: box-shadow, background-color .6s;
+  transition: box-shadow, background-color .6s; */
 }
 
-.nav-list-item:hover {
+/* .nav-list-item:hover {
   box-shadow: 4px 4px 4px grey;
   background-color: white;
   color: black;
@@ -83,4 +102,4 @@
 
 .nav-list-item:active {
   box-shadow: 1px 1px 1px grey;
-}
+} */
