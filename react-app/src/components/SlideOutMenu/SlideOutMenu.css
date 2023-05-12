@@ -1,0 +1,123 @@
+.slide-out-menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 33px;
+    left: -1px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-left:35px;
+    width: 190px;
+    height: 90%;
+    transition: left 1s;
+    text-decoration: none;
+    list-style: none;
+    margin-right: 10px;
+    background-color: #1a1919;
+    /* box-shadow: 4px 4px 5px #3054a1; */
+    border-top: rgb(77, 76, 76) 1px solid;
+    margin-left: -20px;
+    z-index: 2;
+  }
+
+  .slide-out-menu > div > a{
+    text-decoration: none;
+    color: white;
+  }
+
+  .slide-out-menu > div {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    /* width: 100%; */
+    /* height: 30px; */
+    padding: 15px 0px 15px 0px;
+    color: white;
+  }
+
+  .slide-out-menu > .hoverable:hover {
+    background-color: rgb(151, 151, 151,.3);
+    padding-left: 20px;
+    margin-left: -20px;
+  }
+
+  #bars {
+    padding: 28px;
+    font-size: 20px;
+    color: white;
+    padding: 0px 10px 0px 16px;
+  }
+
+  #bars:hover {
+    cursor: pointer;
+  }
+
+  .hidden-menu {
+    left: -250px;
+  }
+
+  .nav-home > a > i{
+    color: white;
+    font-size: 18px;
+    padding-right: 10px;
+    padding-left: 5px;
+  }
+
+  .nav-tasks > a > i{
+    color: white;
+    font-size: 18px;
+    padding-right: 16px;
+    padding-left: 10px;
+  }
+
+  .nav-border-div{
+    border-top: rgb(77, 76, 76) 1px solid;
+    width: 112%;
+    height: 0px;
+    margin-left: -23px;
+  }
+
+  .slide-out-menu > li {
+    padding: 2px 0px;
+  }
+
+  .nav-plus-boards{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-left: 10px;
+    font-size: 18px;
+  }
+
+  .nav-plus-boards > i {
+    padding-right: 25px;
+    font-size: 18px;
+  }
+
+  .nav-tasks{
+    margin-bottom: 20px;
+  }
+
+  .nav-boards{
+    color:white;
+    /* padding-right: 20px;
+    padding-left: 20px; */
+    font-size: 14px;
+
+  }
+
+  .nav-boards > i {
+    padding-bottom: 5px;
+    font-size: 8px;
+  }
+
+  .nav-inner-board-div{
+    display: flex;
+    margin-left: 8px;
+  }
+
+  .nav-boards > .nav-inner-board-div:hover{
+    margin-left: 8px;
+    padding-left: -8px;
+  }

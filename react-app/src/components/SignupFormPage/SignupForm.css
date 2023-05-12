@@ -11,7 +11,7 @@
     /* justify-content: space-between; */
     /* align-items: space-between; */
     flex-direction: column;
-    gap: 18px;
+    gap: 3px;
 }
 
 label {
@@ -21,7 +21,7 @@ label {
 
 .sign-up-h1 {
     font-size: 48px;
-    margin: 0;
+    margin: 0 0 30px 0;
     padding: 0;
 }
 
@@ -32,6 +32,7 @@ label {
     color: white;
     padding: 10px 0;
     border: 1px #3f6ac4 solid;
+    margin-top: 10px;
     border-radius: 10px;
     width: 100px;
     align-self: center;
@@ -47,9 +48,16 @@ input {
     box-shadow: 2px 2px 2px #3054a1;
     width: 260px;
     height: 24px;
+    outline: none;
 }
 
 input:focus {
     border: 1px solid #616f8f;
     box-shadow: 2px 2px 2px #3054a1;
+}
+
+.error-container {
+    color: red;
+    font-weight: bold;
+    height: 24px;
 }

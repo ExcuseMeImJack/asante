@@ -5,6 +5,7 @@ import './CreateTaskBySectionForm.css'
 
 function CreateTaskBySectionForm({sectionId, setButtonHidden}){
     const dispatch = useDispatch();
+    const [errors, setErrors] = useState('')
     const [taskName, setTaskName] = useState('')
     const [dueDate, setDueDate] = useState('')
     const [description, setDescription] = useState('')
@@ -12,7 +13,8 @@ function CreateTaskBySectionForm({sectionId, setButtonHidden}){
     const handleSubmit = async (e) => {
         e.preventDefault()
         if (!taskName) {
-            setButtonHidden(false);
+            setErrors({...errors, taskName: "Task Name Required"})
+            // setButtonHidden(false);
             return;
         }
         await dispatch(addTaskBySectionId({
@@ -35,9 +37,9 @@ function CreateTaskBySectionForm({sectionId, setButtonHidden}){
                         onChange={(e) => setTaskName(e.target.value)}
                     />
                     </label>
-                    {/* <div className="error-container">
-                    {errors.name && <p>{errors.name}</p>}
-                    </div> */}
+                    <div className="error-container">
+                    {errors.taskName && <p>{errors.taskName}</p>}
+                    </div>
                     <label>
                     Due Date
                     <input
@@ -46,9 +48,9 @@ function CreateTaskBySectionForm({sectionId, setButtonHidden}){
                         onChange={(e) => setDueDate(e.target.value)}
                     />
                     </label>
-                    {/* <div className="error-container">
-                    {errors.name && <p>{errors.name}</p>}
-                    </div> */}
+                    <div className="error-container">
+                    {errors.date && <p>{errors.date}</p>}
+                    </div>
                     <label>
                     Description
                     <input
@@ -58,9 +60,9 @@ function CreateTaskBySectionForm({sectionId, setButtonHidden}){
                         onChange={(e) => setDescription(e.target.value)}
                     />
                     </label>
-                    {/* <div className="error-container">
-                    {errors.name && <p>{errors.name}</p>}
-                    </div> */}
+                    <div className="error-container">
+                    {errors.description && <p>{errors.description}</p>}
+                    </div>
                     <button type="submit" className="submit-create">Create Task</button>
                 </form>
             </div>

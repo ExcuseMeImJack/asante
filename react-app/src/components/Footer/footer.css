@@ -2,10 +2,10 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 2.5rem;
+    height: 4rem;
     display: flex;
     justify-content: space-evenly;
-    background-color: black;
+    background-color: var(--jackblack);
     color: white;
     font-family: "Helvetica Neue", sans-serif;
     font-size: 10pt;
@@ -28,13 +28,13 @@
     word-break: break-word;
     /* width: 300px; */
 
-    background-color: black;
+    background-color: var(--jackblack);
 }
 
 .social-links a {
     color: white;
     text-decoration: none;
-    background-color: black;
+    background-color: var(--jackblack);
 }
 
 .fa-solid {

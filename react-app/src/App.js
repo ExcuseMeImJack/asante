@@ -9,13 +9,12 @@ import SingleBoard from "./components/Boards/SingleBoard";
 import SingleTask from "./components/Tasks/SingleTask";
 import SingleSection from "./components/Sections/SingleSection";
 import CreateBoardForm from "./components/Boards/CreateBoardForm";
-import UsersTasks from "./components/Tasks/UsersTasks";
-import UsersBoards from "./components/Boards/UsersBoards";
 import UserProfile from "./components/Users/UserProfile";
 import LandingPage from "./components/LandingPage";
 import { getUserProfile } from "./store/users";
 import Home from "./components/Home";
 import Footer from "./components/Footer"
+import UsersTasks from './components/Tasks/UsersTasks'
 
 function App() {
   const dispatch = useDispatch();
@@ -24,8 +23,8 @@ function App() {
 
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
+    dispatch(getUserProfile())
   }, [dispatch]);
-
   return (
     <>
       {user ? (
@@ -35,6 +34,9 @@ function App() {
             <Switch>
               <Route exact path="/">
                 <Home />
+              </Route>
+              <Route path='/tasks'>
+                <UsersTasks/>
               </Route>
               <Route path="/profile">
                 <UserProfile />
@@ -51,6 +53,9 @@ function App() {
               <Route path="/sections/:sectionId">
                 <SingleSection />
               </Route>
+              <Route>
+                <h1>404 Page not Found</h1>
+              </Route>
             </Switch>
           )}
         </>
@@ -66,10 +71,13 @@ function App() {
             <Route path="/signup">
               <SignupFormPage />
             </Route>
+            <Route>
+              <h1>404 Page not Found</h1>
+            </Route>
           </Switch>
         </>
       )}
-    <Footer />
+      <Footer />
     </>
   );
 }

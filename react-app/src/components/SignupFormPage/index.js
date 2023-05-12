@@ -14,67 +14,94 @@ function SignupFormPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [name, setName] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
+  const [errorsExist, setErrorsExist] = useState(false);
 
   if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrors({});
+    setErrorsExist(false);
+    if (!name) {
+      setErrors(errors => ({...errors, name: "Name is required"}))
+      setErrorsExist(true);
+    }
+    if (!email) setErrors(errors => ({...errors, email: "Email is required"}))
+    if (!username) setErrors(errors => ({...errors, username: "Username is required"}))
+    if (!password) setErrors(errors => ({...errors, password: "Password is required"}))
+    // if (errors.name || errors.email || errors.username || errors.password) return;
+    if (errorsExist) return;
     if (password === confirmPassword) {
-        const data = await dispatch(signUp(username, email, password, name));
-        if (data) {
-          setErrors(data)
-        }
-        dispatch(getUserProfile())
+      const data = await dispatch(signUp(username, email, password, name));
+      if (data) {
+        // setErrors(data)
+        console.log(data)
+        return;
+      }
+      dispatch(getUserProfile())
         history.push('/')
     } else {
-        setErrors(['Confirm Password field must be the same as the Password field']);
+        setErrors(errors => ({...errors, confirmPassword: 'Confirm Password must match Password'}));
     }
   };
+  console.log(errors)
 
   return (
     <>
       <div className="form-container">
         <h1 className="sign-up-h1">Sign Up</h1>
         <form onSubmit={handleSubmit} className="form">
-          <ul>
-            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-          </ul>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Name"
-              required
+              // required
               />
+            <div className="error-container">
+              {errors.name && <p>{errors.name}</p>}
+            </div>
             <input
               type="text"
               value={email}
               placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
-              required
+              // required
               />
+            <div className="error-container">
+              {errors.email && <p>{errors.email}</p>}
+            </div>
             <input
               type="text"
               value={username}
               placeholder="Username"
               onChange={(e) => setUsername(e.target.value)}
-              required
+              // required
               />
+            <div className="error-container">
+              {errors.username && <p>{errors.username}</p>}
+            </div>
             <input
               type="password"
               value={password}
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
-              required
+              // required
               />
+            <div className="error-container">
+              {errors.password && <p>{errors.password}</p>}
+            </div>
             <input
               type="password"
               value={confirmPassword}
               placeholder="Confirm Password"
               onChange={(e) => setConfirmPassword(e.target.value)}
-              required
+              // required
             />
+            `<div className="error-container">
+              {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+            </div>
           <button className="form-button" type="submit">Sign Up</button>
         </form>
       </div>

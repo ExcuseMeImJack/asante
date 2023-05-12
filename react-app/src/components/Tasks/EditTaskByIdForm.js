@@ -1,61 +1,102 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addTaskBySectionId } from '../../store/tasks';
+import { getTasksByUserId } from '../../store/tasks';
+import { editTaskByTaskId } from '../../store/tasks';
+import './EditTaskByIdForm.css'
 
-function EditTaskByIdForm({ task }){
+function EditTaskByIdForm({ task, ulRef }){
     const dispatch = useDispatch();
-    const [taskName, setTaskName] = useState(task.name)
-    const [dueDate, setDueDate] = useState(task.due_date)
-    const [description, setDescription] = useState(task.description)
+    const [taskName, setTaskName] = useState(task.name);
+    const [dueDate, setDueDate] = useState(task.due_date);
+    const [description, setDescription] = useState(task.description);
+    // const [clickedOnce, setClickedOnce] = useState(false);
+    const [errors, setErrors] = useState({});
+    const [updated, setUpdated] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        await dispatch(addTaskBySectionId({
+        setErrors({})
+        let hasErrors = false;
+        // if (!clickedOnce){
+        //     setErrors(errors => ({...errors, dueDate: "Due Date Required!"}))
+        //     hasErrors = true;
+        //     setClickedOnce(true);
+        // }
+        if (!taskName){
+            setErrors(errors => ({...errors, taskName: "Task Name Required!"}))
+            hasErrors = true;
+        }
+        if (!dueDate) {
+            setErrors(errors => ({...errors, dueDate: "Due Date Required!"}))
+            hasErrors = true;
+        }
+        if (!description) {
+            setErrors(errors => ({...errors, description: "Description Required!"}))
+            hasErrors = true;
+        }
+        if (hasErrors) return;
+        const data = await dispatch(editTaskByTaskId({
             name: taskName,
             due_date: dueDate,
             description: description
-        }, sectionId))
+        }, task.id))
+        console.log(data)
+        if (data.status === 401) {
+            setErrors(errors => ({...errors, dueDate: "Due Date Required!"}))
+            hasErrors = true;
+            return;
+            // setClickedOnce(true);
+        }
+        await dispatch(getTasksByUserId())
+        setUpdated(true)
     }
+
+
+    //format date so that input default value works
+    const date = new Date(dueDate);
+    let formattedDate = date.toLocaleDateString('en-CA');
+    const day = parseInt(formattedDate.split("-")[2]) + 1;
+    formattedDate = formattedDate.split("-");
+    formattedDate[2] = day;
+    formattedDate = formattedDate.join("-")
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                    <label>
-                    Name
+            <form onSubmit={handleSubmit} className='form'>
                     <input
+                        ref={ulRef}
+                        className='edit-task-input'
                         type="text"
                         placeholder="Name"
                         value={taskName}
                         onChange={(e) => setTaskName(e.target.value)}
                     />
-                    </label>
-                    {/* <div className="error-container">
-                    {errors.name && <p>{errors.name}</p>}
-                    </div> */}
-                    <label>
-                    Due Date
+                    <div className="error-container">
+                        {errors.taskName && <p>{errors.taskName}</p>}
+                    </div>
                     <input
                         type="date"
-                        value={dueDate}
+                        className='edit-task-input'
+                        defaultValue={formattedDate}
                         onChange={(e) => setDueDate(e.target.value)}
                     />
-                    </label>
-                    {/* <div className="error-container">
-                    {errors.name && <p>{errors.name}</p>}
-                    </div> */}
-                    <label>
-                    Description
+                    <div className="error-container">
+                        {errors.dueDate && <p>{errors.dueDate}</p>}
+                    </div>
                     <input
                         type="text"
+                        className='edit-task-input'
                         placeholder="Description"
-                        value={sectionName}
+                        value={description}
                         onChange={(e) => setDescription(e.target.value)}
                     />
-                    </label>
-                    {/* <div className="error-container">
-                    {errors.name && <p>{errors.name}</p>}
-                    </div> */}
-                    <button type="submit" className="submit-create">Create Section</button>
+                    <div className="error-container">
+                        {errors.description && <p>{errors.description}</p>}
+                    </div>
+                    <div className="updated">
+                        {updated && <p>Updated!</p>}
+                    </div>
+                    <button type="submit" className="form-button">Edit Task</button>
                 </form>
             </div>
     );

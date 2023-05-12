@@ -1,27 +1,16 @@
 import "./landing.css";
 import React, { useState} from "react";
-import { Link, useHistory, Redirect } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { login } from "../../store/session";
 import { getUserProfile } from "../../store/users";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const LandingPage = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const data = await dispatch(login(email, password));
-    if (data) {
-      setErrors(data);
-    }
-    dispatch(getUserProfile())
-    history.push('/')
-  };
+  // eslint-disable-next-line
+  const [errors, setErrors] = useState([]);
 
   const handleDemoLogin = async (e) => {
     e.preventDefault()
@@ -45,7 +34,7 @@ const LandingPage = () => {
   return (
     <div className="page-container">
       <header>
-        <div className="nav-container">
+        <div className="home-nav-container">
           <div className="navbar">
             <div className="navbar-left">
               <Link to="">Why Asante?</Link>
@@ -60,12 +49,14 @@ const LandingPage = () => {
               <Link to="/login">
                 Log In
               </Link>
+
               <button
                 className="get-started-btn-1"
                 onClick={handleGetStartedClick}
               >
                 Get Started
               </button>
+
             </div>
           </div>
         </div>

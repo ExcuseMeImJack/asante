@@ -2,6 +2,7 @@
     margin: 0 auto;
     max-width: 1000px;
     min-width: 800px;
+    margin-top: 30px;
     /* padding: 0px 32px; */
 }
 
@@ -146,4 +147,22 @@
     padding: 8px 12px;
     border: 1px #3f6ac4 solid;
     border-radius: 10px;
+}
+
+#profile-board-link{
+    text-decoration: none;
+    color: black;
+    border: 1px solid rgb(189, 189, 189);
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgb(189, 189, 189);
+    padding: 5px 5px;
+}
+
+#profile-task-link{
+    text-decoration: none;
+    color: black;
+    border: 1px solid rgb(189, 189, 189);
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgb(189, 189, 189);
+    padding: 5px 5px;
 }

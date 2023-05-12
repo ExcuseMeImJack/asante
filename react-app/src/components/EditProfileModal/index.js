@@ -1,22 +1,19 @@
-import React, { useState, useEffect, useRef } from "react";
-import { login } from "../../store/session";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserProfile } from '../../store/users';
 import { useModal } from "../../context/Modal";
 import './EditProfile.css'
 
 function EditProfileModal() {
-    const { closeModal, setModalStyleClass } = useModal();
-    const modalRef = useRef();
+    const { closeModal } = useModal();
     const dispatch = useDispatch();
     const userInfo = useSelector(state => state.users.profile)
     const [name, setName] = useState(userInfo.name)
-    const [email, setEmail] = useState(userInfo.email)
+    const [email] = useState(userInfo.email)
     const [aboutMe, setAboutMe] = useState(userInfo.about_me)
     const [profilePicUrl, setProfilePicUrl] = useState(null)
     const [imageLoading, setImageLoading] = useState(false)
-    const [isDarkMode, setIsDarkMode] = useState(false)
-    const [hasChanges, setHasChanges] = useState({})
+    // eslint-disable-next-line
     const [errors, setErrors] = useState({})
 
     if(aboutMe === null) {
@@ -66,7 +63,7 @@ function EditProfileModal() {
                     encType="multipart/form-data">
                         <p className="profile-pic-section">Your photo</p>
                         <div className="edit-profile-pic-container">
-                            <img id="current-profile-pic" src={userInfo.profile_pic_url} onClick={() => handleChangeProfilePic()}/>
+                            <img id="current-profile-pic" alt="" src={userInfo.profile_pic_url} onClick={() => handleChangeProfilePic()}/>
                             <div className="profile-pic-input-description">
                                 <label className="change-cursor"> Upload your photo
                                     <input
