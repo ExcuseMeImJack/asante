@@ -34,7 +34,7 @@ const LandingPage = () => {
 
   useEffect(() => {
     if(!auth){
-      
+
     }
   })
 
