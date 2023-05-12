@@ -7,7 +7,7 @@ import { deleteBoardById } from '../../store/boards';
 import Sections from '../Sections/Sections';
 import CreateSectionForm from '../Sections/CreateSectionForm';
 
-function SingleBoard(){
+function SingleBoard() {
     const dispatch = useDispatch();
     const history = useHistory();
     const { boardId } = useParams();
@@ -26,22 +26,24 @@ function SingleBoard(){
 
     if (!board) return <h1>...Loading</h1>
 
-	return (
-        <div className='single-board-border'>
-            <h2>{board.name}</h2>
-            <button onClick={async (e) => {
-                            e.preventDefault()
-                            await dispatch(deleteBoardById(board))
-                            return history.push(`/profile`)
-                        }}>Delete Board</button>
-            {!buttonHidden
-            ? <button className="add-section-button" onClick={() => {setButtonHidden(true)}}>Add New Section</button>
-            : <CreateSectionForm boardId={board.id} setButtonHidden={setButtonHidden} />}
-            <div>
-                <Sections />
+    return (
+        <div className='board-container'>
+            <div className='single-board-border'>
+                <h2>{board.name}</h2>
+                <button onClick={async (e) => {
+                    e.preventDefault()
+                    await dispatch(deleteBoardById(board))
+                    return history.push(`/profile`)
+                }}>Delete Board</button>
+                {!buttonHidden
+                    ? <button className="add-section-button" onClick={() => { setButtonHidden(true) }}>Add New Section</button>
+                    : <CreateSectionForm boardId={board.id} setButtonHidden={setButtonHidden} />}
+                <div>
+                    <Sections />
+                </div>
             </div>
         </div>
-	);
+    );
 }
 
 export default SingleBoard;
