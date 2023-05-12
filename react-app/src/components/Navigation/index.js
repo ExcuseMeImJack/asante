@@ -1,17 +1,25 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import SlideOutMenu from '../SlideOutMenu/SlideOutMenu';
 import './Navigation.css';
 import CreateBoardForm from '../Boards/CreateBoardForm';
+import icon_image from '../../assets/asante-icon.png'
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
+	const history = useHistory();
 
 	return (
 		<div className='nav-container'>
-			<SlideOutMenu />
+			<div className='home-left-navbar'>
+				<SlideOutMenu />
+				<div className='home-left-navbar change-cursor' onClick={() => history.push('/')}>
+					<img id="site-icon" src={icon_image}></img>
+					<h2 id='site-logo'>asana</h2>
+				</div>
+			</div>
 			<ul className='nav-list'>
 				<NavLink className='nav-list-item' exact to="/">Home</NavLink>
 				<NavLink className='nav-list-item' exact to="/profile">Profile</NavLink>

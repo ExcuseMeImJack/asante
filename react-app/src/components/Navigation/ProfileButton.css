@@ -1,29 +1,31 @@
 .profile-button {
-    display: flex;
+    /* display: flex;
     justify-content: center;
     align-items: center;
-    text-decoration: none;
-    background-color: black;
-    color: white;
-    font-size: 17px;
+    text-decoration: none; */
+    /* background-color: black; */
+    /* color: white; */
+    /* font-size: 17px;
     padding: 6px 15px 6px 15px;
     min-width: 100px;
     min-height: 34px;
+    cursor: pointer; */
+    /* box-shadow: 3px 2px 3px grey; */
+    /* transition: box-shadow, background-color .6s; */
+    /* border: none;
+    outline: none; */
     cursor: pointer;
-    box-shadow: 3px 2px 3px grey;
-    transition: box-shadow, background-color .6s;
-    border: none;
 }
 
-.profile-button:hover {
+/* .profile-button:hover {
     box-shadow: 4px 4px 4px grey;
     background-color: white;
     color: black
-  }
+  } */
 
-  .profile-button:active {
+  /* .profile-button:active {
     box-shadow: 1px 1px 1px grey;
-  }
+  } */
 
   #navbar-pic-image {
     width: 32px;

@@ -26,7 +26,7 @@ function UserProfile(){
 
     useEffect(() => {
         const fetchQuote = async () => {
-            const res = await fetch('https://api.api-ninjas.com/v1/quotes?category=success',{
+            const res = await fetch('https://api.api-ninjas.com/v1/quotes?category=happiness',{
                 headers: {'X-Api-Key': 'WrkXdZlorsWnOkvJdFoc9Q==oNhDvwTXKFJguwGD'},
                 contentType: 'application/json'
             })

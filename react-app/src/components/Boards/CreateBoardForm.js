@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { createBoard } from "../../store/boards";
 import { useHistory } from "react-router-dom";
-import "./CreateBoardForm.css"
+import "./CreateBoardForm.css";
 
-function CreateBoardForm() {
+function CreateBoardForm({needsButton}) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [boardName, setBoardName] = useState("");
@@ -41,27 +41,32 @@ function CreateBoardForm() {
 
   return (
     <>
-      <button onClick={openMenu} className="create-board-btn nav-list-item">
-        Create
-      </button>
+    {needsButton ?
+      <div className="create-button-div">
+        <button onClick={openMenu} className="create-board-btn">
+          <i className="fa-solid fa-plus create-board-plus-symb"></i>
+          Create
+        </button>
+      </div>
+    :
+      <i className="fa-solid fa-plus change-cursor" onClick={openMenu}></i>
+    }
       <div className={ulClassName} ref={ulRef}>
-       <div>
-        <form onSubmit={handleCreateBoard}>
-<div className="create-board-input">
-            <input
-              type="text"
-              placeholder="New board name..."
-              value={boardName}
-              onChange={(e) => setBoardName(e.target.value)}
-            />
-</div>
-          {/* <div className="error-container">
-                    {errors.name && <p>{errors.name}</p>}
-                </div> */}
-          <button type="submit" className="submit-create">
-            Submit
-          </button>
-        </form></div>
+        <div className="create-board-div">
+          <h2 className="create-board-text">Create a Board</h2>
+          <form onSubmit={handleCreateBoard}>
+            <div className="create-board-input">
+              <input
+                type="text"
+                placeholder="New board name..."
+                value={boardName}
+                onChange={(e) => setBoardName(e.target.value)}
+              />
+              <div className="create-board-divider"></div>
+            </div>
+            <button id="create-board-button">Create</button>
+          </form>
+        </div>
       </div>
     </>
   );
