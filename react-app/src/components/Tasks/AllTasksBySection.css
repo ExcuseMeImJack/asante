@@ -7,6 +7,7 @@
 .tasks-container {
     border: 1px dotted black;
     margin: 10px;
+    flex-grow: 1;
 }
 
 .single-task-border {

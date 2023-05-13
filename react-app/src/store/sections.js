@@ -109,7 +109,7 @@ export const editSectionBySectionId = (section, sectionId) => async (dispatch) =
 
 // move section
 export const orderSections = (sections, boardId) => async (dispatch) => {
-    console.log('Sections in thunk', sections)
+    // console.log('Sections in thunk', sections)
     dispatch(moveSection(sections));
     const response = await fetch(`/api/sections/${boardId}/move`, {
         method: "PUT",
