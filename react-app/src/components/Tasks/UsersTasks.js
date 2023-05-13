@@ -26,14 +26,6 @@ function UsersTasks() {
 //   if (!storeTasks.tasks) return <h1>...Loading</h1>;
   if (!user) return <h1>...Loading</h1>;
 
-	return (
-        <div>
-            <h1>My Tasks</h1>
-            {tasks ?
-                tasks.map(task => (
-                <SlideOutTask task={task} key={task.id}/>))
-                :
-                <div><p>You have no tasks</p></div>}
   // const id = user.id;
   const tasks = storeTasks;
   //   console.log("helloooooooo:", tasks);
