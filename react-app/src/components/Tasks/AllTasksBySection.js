@@ -26,7 +26,7 @@ function AllTasksBySection({ section, boardId }) {
     // grab tasks array from the storeTasks object
     if (!storeTasks.tasks) return <h1>...Loading</h1>
 
-    const tasks = storeTasks.tasks.filter(task => task.section_id === sectionId).sort((a, b) => a.order - b.order)
+    const tasks = storeTasks.tasks.filter(task => task.section_id === section.id).sort((a, b) => a.order - b.order)
 
     return (
         <div>
@@ -63,7 +63,7 @@ function AllTasksBySection({ section, boardId }) {
                         ?  <></>
                         :  <CreateTaskBySectionForm sectionId={section.id} setCreateButton={setCreateButton} />}
                 {console.log('SECTION TASKS~~~~~~~', tasks.map(t => t.order))}
-                <Droppable droppableId={'section-' + sectionId} type='task'>
+                <Droppable droppableId={'section-' + section.id} type='task'>
                     {(provided) => (
                         <div className='task-gallery' {...provided.droppableProps} ref={provided.innerRef}>
                             {tasks.map((task, index) => (
