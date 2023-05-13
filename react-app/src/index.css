@@ -41,6 +41,6 @@ body {
     cursor: pointer;
 }
 
-.board-container, .profile-page{
+.profile-page{
     padding: 50px;
 }

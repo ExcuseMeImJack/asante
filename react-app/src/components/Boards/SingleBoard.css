@@ -3,14 +3,19 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: 2px solid black;
-    width: 1000px;
+    margin: 0 auto;
+    max-width: 1000px;
+    min-width: 800px;
+    padding: 50px;
 }
 
 .board-container {
     display: flex;
     justify-content: center;
-    margin: 20px;
+    margin: 0 auto;
+    max-width: 1000px;
+    min-width: 800px;
+
 }
 
 #board-trash {
