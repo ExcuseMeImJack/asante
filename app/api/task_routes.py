@@ -40,17 +40,27 @@ def get_all_tasks(section_id):
 # Reorder tasks
 def edit_task_order(section_id):
     data = request.json
+    # db_tasks = []
     # Gets all tasks of current user
     for index in range(len(data)):
         task = data[index]
-        print(task)
-        print('DB TASKSSS~~~~~', task)
         db_task = Task.query.get(task['id'])
         db_task.order = index
+        db_task.section_id = section_id
         db.session.commit()
+        # db_tasks.append(db_task)
 
-    db_tasks = Task.query.filter(Task.user_id == current_user.id)
-
+    section = Section.query.get(section_id)
+    print("SECTION ~~~~~~~~~", section)
+    board_id = section.board_id
+    sections = Section.query.filter(Section.board_id == board_id)
+    db_tasks = []
+    print('SECTIONSSS ~~~~~~~~~~~~~~~', sections)
+    for section in sections:
+        print("SECTION ~~~~~~~~~", section.to_dict())
+        tasks = Task.query.filter(Task.section_id == section.id)
+        print("TASKS~~~~~~~~~", tasks)
+    print("DB TASKS~~~~~~~~~~", db_tasks)
     return { 'tasks': [task.to_dict() for task in db_tasks]}
 
 

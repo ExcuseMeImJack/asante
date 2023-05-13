@@ -23,54 +23,10 @@ function AllTasksBySection({ section, boardId }) {
         dispatch(getTasksByUserId())
     }, [dispatch, sections])
 
-    const onDragEnd = async (result) => {
-        const { destination, source, draggableId, type } = result;
-        console.log('Source ~~~~~~~~~>', source)
-        console.log('Destination ~~~~>', destination)
-        console.log('DraggableId ~~~~>', draggableId)
-        if (
-            !destination ||
-            (destination.droppableId === source.droppableId &&
-                destination.index === source.index)
-                ) {
-                    return;
-                }
-                //same column
-                if (destination.droppableId === source.droppableId) {
-                    //reorder the task in 1 section
-                    const tasksClone = [...tasks]
-                    const task = tasks[source.index]
-                    tasksClone.splice(source.index, 1)
-                    tasksClone.splice(destination.index, 0, task)
-                    await dispatch(orderTasksThunk(tasksClone, sectionId))
-                    await dispatch(getTasksByUserId())
-                }
+    // grab tasks array from the storeTasks object
+    if (!storeTasks.tasks) return <h1>...Loading</h1>
 
-                // else {
-                    //     //call 2 thunks
-                    //     //change section id for task
-                    //     //reorder the tasks in the both sections source/destination
-                    //     const tasksClone = [...storeTasks.tasks]
-                    //     const task = tasksClone[source.index]
-                    //     console.log(task)
-                    //     tasksClone.splice(source.index, 1)
-                    //     tasksClone.splice(destination.index, 0, task)
-                    //     // dispatch(editTaskByTaskId(task, task.id))
-                    //     // dispatch(orderTasks(tasksClone))
-                    // }
-
-
-                }
-
-                // grab tasks array from the storeTasks object
-                if (!storeTasks.tasks) return <h1>...Loading</h1>
-
-                const sectionId = section.id
-                const tasks = storeTasks.tasks.filter(task => task.section_id === sectionId)
-
-                tasks.sort((a,b) => {
-                    return a.order - b.order
-                })
+    const tasks = storeTasks.tasks.filter(task => task.section_id === sectionId).sort((a, b) => a.order - b.order)
 
                 return (
                     <div>
@@ -106,26 +62,24 @@ function AllTasksBySection({ section, boardId }) {
                         {createButton
                         ?  <></>
                         :  <CreateTaskBySectionForm sectionId={section.id} setCreateButton={setCreateButton} />}
-                        {console.log('STORE TASKS~~~~~~~', tasks.map(t => [t.order, t.name]))}
-                        <DragDropContext onDragEnd={onDragEnd}>
-                            <Droppable droppableId={'section-' + sectionId} type='task'>
-                                {(provided) => (
-                                    <div className='task-gallery' {...provided.droppableProps} ref={provided.innerRef}>
-                                        {tasks.map((task, index) => (
-                                            <Draggable draggableId={"task-" + task.id} key={task.id} index={index}>
-                                                {(provided) => (
-                                                    < div className='single-task-border' ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps}>
-                                                        <SingleTask task={task} />
-                                                    </div>
-                                                )}
-                                            </Draggable>
-                                        ))}
+                        {console.log('SECTION TASKS~~~~~~~', tasks.map(t => t.order))}
+                                    <Droppable droppableId={'section-' + sectionId} type='task'>
+                            {(provided) => (
+                                <div className='task-gallery' {...provided.droppableProps} ref={provided.innerRef}>
+                                    {tasks.map((task, index) => (
+                                        <Draggable draggableId={"task-" + task.id} key={task.id} index={index}>
+                                            {(provided) => (
+                                                < div className='single-task-border' ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps}>
+                                                    <SingleTask task={task} />
+                                                </div>
+                                            )}
+                                        </Draggable>
+                                    ))}
                                     {provided.placeholder}
-                                    </div>
-                                )}
-                            </Droppable>
-                        </DragDropContext>
-                    </div >
+                                </div>
+                            )}
+                        </Droppable>
+                                </div >
                 </div>
     );
 }
