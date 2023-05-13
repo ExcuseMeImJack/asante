@@ -56,17 +56,12 @@ function UsersTasks() {
 
   function getBoard(task) {
     const storeTask = storeTasks.find((findTask) => findTask.id === task.id);
-    if (storeTask && storeTask.section_id && storeTask.section_id.id) {
-
-        const board = boards.find(
-          (findBoard) => findBoard.section_id === storeTask.section_id.id
-        );
-        if (board) {
-
-            return board.name;
-        }
+    const board = boards.find(
+      (findBoard) => findBoard.section_id === storeTask.section_id.id
+    );
+    if (board) {
+        return board.name;
     }
-    return "no board"
   }
 
   return (
@@ -79,7 +74,7 @@ function UsersTasks() {
             <div className="task-item">
                 <p>Tasks</p>
                 <p>Due Date</p>
-                <p>Board</p>
+                <p>Board Name</p>
                 </div>
           {tasks.map((task) => (
             <div key={task.id} className="task-item">

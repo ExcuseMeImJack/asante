@@ -45,9 +45,9 @@
 #homepage-board-link {
     text-decoration: none;
     color: var(--jackblack);
-    border: 1px solid rgb(189, 189, 189);
+    border: 1px solid rgb(231, 116, 135);
     border-radius: 5px;
-    box-shadow: 1px 1px 5px rgb(189, 189, 189);
+    box-shadow: 1px 1px 5px rgb(231, 116, 135);
     padding: 5px 5px;
 }
 
@@ -77,16 +77,15 @@
 #homepage-task-link,
 #homepage-board-link {
   cursor: pointer;
-  border: lightblue;
+  border: rgb(231, 116, 135);
 }
 
 #homepage-tasks-container,
 #homepage-boards-container {
-  border: solid 1px rgb(209, 207, 207);
+  border: solid 1px darkgrey;
   border-radius: 10px;
-  box-shadow: 1px 1px 4px skyblue;
-  border-top: skyblue;
-  border-left: white;
+  box-shadow: 1px 1px 10px darkgrey;
+  /* border-left: white; */
   padding: 5px 20px;
   /* background-color: rgb(219, 218, 218); */
 }
@@ -94,16 +93,16 @@
 #homepage-board-link,
 #homepage-task-link {
     background-color: white;
-    color: skyblue;
+    color: rgb(231, 116, 135);
 }
 
 #homepage-boards-container h2,
 #homepage-tasks-container h2 {
     /* color: var(--jackblack); */
-    color: rgb(61, 183, 232);
+    color: rgb(231, 116, 135);
 }
 
 .hello-user h2 {
   /* color: rgb(255, 157, 0); */
-  color: skyblue;
+  color: rgb(231, 116, 135);
 }
