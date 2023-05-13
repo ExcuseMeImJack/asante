@@ -45,7 +45,7 @@ function SlideOutMenu() {
     <div>
       <i onClick={openMenu} className="fa-solid fa-bars nav-slideout-bars" id="bars"></i>
         <ul className={ulClassName} ref={ulRef}>
-            <div className='nav-create-board-form-popout'>{<CreateBoardForm />}</div>
+            <div className='nav-create-board-form-popout'>{<CreateBoardForm setShowSlideoutMenu={setShowMenu}/>}</div>
             <div className='hoverable nav-home change-cursor' onClick={() => history.push('/')}><NavLink exact to="/"><i className="fa-solid fa-house nav-home-icon"></i>Home</NavLink></div>
             <div className='hoverable nav-tasks change-cursor' onClick={() => history.push('/tasks')}><NavLink exact to="/tasks"><i className="fa-regular fa-circle-check nav-check-icon"></i>My Tasks</NavLink></div>
 

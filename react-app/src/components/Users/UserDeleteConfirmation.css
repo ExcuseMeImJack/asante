@@ -1,0 +1,20 @@
+.handle-profile-delete{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: fit-content;
+    width: fit-content;
+
+    border: 5px solid var(--asantered);
+
+    padding: 2px;
+
+    border-radius: 30px;
+
+    top: 50px;
+}
+/*
+.handle-profile-delete-div{
+
+} */

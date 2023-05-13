@@ -9,6 +9,7 @@ import "./UsersTasks.css";
 import SlideOutTask from "../SlideOutTask/SlideOutTask";
 import EditTaskByIdForm from "./EditTaskByIdForm";
 import { getBoardById } from "../../store/boards";
+import { getAllBoardsForEachSection, getSectionsByBoardId } from "../../store/sections";
 
 function UsersTasks() {
   const dispatch = useDispatch();
@@ -16,11 +17,13 @@ function UsersTasks() {
 
   const storeTasks = useSelector((state) => state.tasks.tasks);
   const boards = useSelector((state) => state.boards.boards);
+  const sections = useSelector(state => state.sections.sections);
 
   //dispatch thunk to populate storeTasks variable
   useEffect(() => {
     dispatch(getTasksByUserId());
-  }, [dispatch, user]);
+    dispatch(getAllBoardsForEachSection());
+  }, [dispatch]);
 
   // grab tasks array from the storeTasks object
 //   if (!storeTasks.tasks) return <h1>...Loading</h1>;
@@ -55,10 +58,14 @@ function UsersTasks() {
   }
 
   function getBoard(task) {
-    const storeTask = storeTasks.find((findTask) => findTask.id === task.id);
-    const board = boards.find(
-      (findBoard) => findBoard.section_id === storeTask.section_id.id
-    );
+    // GET USER BOARDS
+    // GET SECTIONS BY BOARD ID
+
+    // CHECK TO SEE IF SECTION.ID === TASK.SECTION_ID
+    const section = sections.find(findSection => findSection.id === task.section_id)
+    if(!section) return null
+    const board = boards.find(findBoard => findBoard.id === section.board_id)
+
     if (board) {
         return board.name;
     }
