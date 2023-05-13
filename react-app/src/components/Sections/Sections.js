@@ -12,6 +12,7 @@ function Sections() {
     const dispatch = useDispatch();
     const history = useHistory();
     const sections = useSelector((state) => state.sections.sections);
+    const storeTasks = useSelector((state) => state.tasks);
 
 
     //dispatch thunk to populate storeSections variable
