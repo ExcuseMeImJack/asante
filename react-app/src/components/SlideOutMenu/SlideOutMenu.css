@@ -89,7 +89,7 @@
   .slide-out-menu > .hoverable:hover {
     background-color: rgb(151, 151, 151,.3);
     padding-left: 20px;
-    margin-left: -20px;
+    margin-left: -10px;
   }
 
   .my-boards > .hoverable:hover {
