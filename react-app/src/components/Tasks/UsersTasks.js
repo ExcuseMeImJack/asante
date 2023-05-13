@@ -65,22 +65,21 @@ function UsersTasks() {
   }
 
   return (
-    <>
-    <h1 className="my-tasks-title">My Tasks</h1>
+    <div className="my-tasks-page">
     <div className="userstasks-container">
-
+    <h1 id="my-tasks-title">My Tasks</h1>
       {tasks && tasks.length > 0 ? (
         <div className="task-grid">
             <div className="task-item">
                 <p>Tasks</p>
                 <p>Due Date</p>
-                <p>Board Name</p>
+                <p id="my-tasks-boardname">Board Name</p>
                 </div>
           {tasks.map((task) => (
-            <div key={task.id} className="task-item">
+            <div key={task.id} className="task-items">
               <SlideOutTask task={task} key={task} />
               <p>{dateFormat(new Date(task.due_date))}</p>
-              <p>{getBoard(task)}</p>
+              <p id="my-tasks-getboard">{getBoard(task)}</p>
             </div>
           ))}
           </div>
@@ -90,7 +89,7 @@ function UsersTasks() {
         </div>
       )}
     </div>
-    </>
+    </div>
   );
 }
 
