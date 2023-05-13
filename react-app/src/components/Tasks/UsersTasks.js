@@ -66,8 +66,8 @@ function UsersTasks() {
 
   return (
     <>
-    <h1 className="my-tasks-title">My Tasks</h1>
     <div className="userstasks-container">
+    <h1 className="my-tasks-title">My Tasks</h1>
 
       {tasks && tasks.length > 0 ? (
         <div className="task-grid">

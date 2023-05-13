@@ -8,13 +8,22 @@
 
 .task-grid {
     width: 950px;
-    margin-left: 400px;
+    /* margin-left: 400px; */
     box-shadow: 2px 2px 16px grey;
 }
 
 .my-tasks-title {
     display: flex;
     align-items: center;
-    margin-top: 100px;
-    margin-left: 400px;
+    justify-content: center;
+    /* margin-top: 100px;
+    margin-left: 400px; */
+}
+
+.userstasks-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
 }
