@@ -58,7 +58,7 @@ function CreateBoardForm() {
             <div className="create-board-input">
               <input
                 type="text"
-                placeholder="New board name..."
+                placeholder=" New board name..."
                 value={boardName}
                 onChange={(e) => setBoardName(e.target.value)}
               />
