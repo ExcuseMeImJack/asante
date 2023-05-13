@@ -19,21 +19,13 @@
     border-radius: 10px;
 }
 
-.fa-plus {
-    font-size: 20px;
-}
-
-.fa-minus {
-    align-self: flex-end;
-}
-
 #pen {
     font-size: 22px;
 }
 
 #plus {
     font-size: 22px;
-    align-self: flex-end;
+    /* align-self: flex-end; */
 }
 
 #minus {

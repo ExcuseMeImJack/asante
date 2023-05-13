@@ -30,24 +30,6 @@ function AllTasksBySection({ section, boardId }) {
 
     return (
         <div>
-            <div className='delete-warning-section'>
-                <i className='fa-solid fa-trash section-trash' id="section-trash" onClick={async (e) => {
-                    e.preventDefault()
-                    if (!deleteClicked) {
-                        return setDeleteClicked(true)
-                    }
-                    // await dispatch(deleteSectionById(section))
-                    // return history.push(`/boards/${boardId}`)
-                }}></i>
-                {deleteClicked && <p className='delete-text-section'>Are you sure?</p>}
-                <div>
-                                {deleteClicked && <i className='fa-solid fa-xmark' id="section-xmark" onClick={() => { setDeleteClicked(false)}}></i>}
-                    {deleteClicked && <i className='fa-solid fa-check' id="section-check" onClick={async () => {
-                        await dispatch(deleteSectionById(section))
-                        return history.push(`/boards/${boardId}`)
-                    }}></i>}
-                </div>
-            </div>
             {!editButton
                 ? <i className="fa-solid fa-pen-to-square edit-section-button" id="pen" onClick={() => { setEditButton(true) }}></i>
                 : <i className="fa-solid fa-xmark edit-section-button" id="xmark" onClick={() => { setEditButton(false) }}></i>}
@@ -55,6 +37,24 @@ function AllTasksBySection({ section, boardId }) {
                 ? <></>
                 : <EditSectionForm sectionId={section.id} boardId={boardId} setEditButton={setEditButton} />}
             <div className='tasks-container'>
+                <div className='delete-warning-section'>
+                    <i className='fa-solid fa-trash section-trash' id="section-trash" onClick={async (e) => {
+                        e.preventDefault()
+                        if (!deleteClicked) {
+                            return setDeleteClicked(true)
+                        }
+                        // await dispatch(deleteSectionById(section))
+                        // return history.push(`/boards/${boardId}`)
+                    }}></i>
+                    {deleteClicked && <p className='delete-text-section'>Are you sure?</p>}
+                    <div>
+                                {deleteClicked && <i className='fa-solid fa-xmark' id="section-xmark" onClick={() => { setDeleteClicked(false)}}></i>}
+                    {deleteClicked && <i className='fa-solid fa-check' id="section-check" onClick={async () => {
+                        await dispatch(deleteSectionById(section))
+                        return history.push(`/boards/${boardId}`)
+                    }}></i>}
+                </div>
+            </div>
 
                 {createButton
                         ?  <i className="fa-solid fa-plus create-task-button" id="plus" onClick={() => { setCreateButton(false) }}></i>
