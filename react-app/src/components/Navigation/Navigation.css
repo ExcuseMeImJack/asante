@@ -5,6 +5,8 @@
   /* border: 1px solid red; */
   background-color: #1a1919;
   max-height: 49px;
+  position: fixed;
+  width: 100%;
 }
 
 #site-icon{

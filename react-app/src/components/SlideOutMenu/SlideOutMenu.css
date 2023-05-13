@@ -1,14 +1,14 @@
 .slide-out-menu {
     display: flex;
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     top: 33px;
     left: -1px;
     padding-top: 5px;
     padding-bottom: 10px;
     padding-left:35px;
     width: 190px;
-    height: 81%;
+    height: 100%;
     transition: left 1s;
     text-decoration: none;
     list-style: none;
