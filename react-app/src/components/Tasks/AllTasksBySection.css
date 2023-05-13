@@ -9,7 +9,6 @@
     display: flex;
     flex-direction: column;
     margin: 10px;
-    flex-grow: 1;
 }
 
 .single-task-border {
@@ -35,9 +34,7 @@
 .delete-warning-section {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    align-self: flex-end;
-    height: 60px;
+    justify-content: center;
 }
 
 .delete-text-section {
@@ -53,16 +50,18 @@
     align-self: center;
     font-size: 22px;
 }
+
+.section-check-x {
+    margin-left: 16px;
+}
+
 #section-xmark {
     font-size: 22px;
-    /* margin-right: 38px; */
 }
 #section-check {
     font-size: 22px;
-    margin-right: 20px;
 }
 
 #section-trash {
     font-size: 22px;
-    margin-right: 34px;
 }

@@ -31,21 +31,25 @@ function SingleBoard() {
     return (
         <div className='board-container'>
             <div className='single-board-border'>
-                <h2>{board.name}</h2>
-                <i className='fa-solid fa-trash' id="board-trash" onClick={async (e) => {
-                    e.preventDefault()
-                    if (!deleteClicked) {
-                        return setDeleteClicked(true)
-                    }
-                }}></i>
-                <div className='delete-warning-section'>
-                    {deleteClicked && <p className='delete-text red'>Are you sure?</p>}
-                    <div>
-                        {deleteClicked && <i className='fa-solid fa-xmark' id="xmark" onClick={() => { setDeleteClicked(false)}}></i>}
-                        {deleteClicked && <i className='fa-solid fa-check' id="check" onClick={async () => {
-                            await dispatch(deleteBoardById(board))
-                            return history.push(`/`)
-                        }}></i>}
+                <div className='warning-wrapper'>
+                    <div className='board-and-trash'>
+                        <h2>{board.name}</h2>
+                        <i className='fa-solid fa-trash' id="board-trash" onClick={async (e) => {
+                            e.preventDefault()
+                            if (!deleteClicked) {
+                                return setDeleteClicked(true)
+                            }
+                        }}></i>
+                    </div>
+                    <div className='delete-warning-board'>
+                        {deleteClicked && <p className='delete-text red'>Are you sure?</p>}
+                        <div className='check-and-x'>
+                            {deleteClicked && <i className='fa-solid fa-xmark' id="xmark" onClick={() => { setDeleteClicked(false)}}></i>}
+                            {deleteClicked && <i className='fa-solid fa-check' id="check" onClick={async () => {
+                                await dispatch(deleteBoardById(board))
+                                return history.push(`/`)
+                            }}></i>}
+                        </div>
                     </div>
                 </div>
                 {plus

@@ -99,6 +99,19 @@ function Sections() {
 
     return (
         <div>
+            <div className=''>
+                <div className='kb-or-mouse'>
+                    <i className="fa-solid fa-keyboard" id="keyboard"></i>
+                    <p>or</p>
+                    <i className="fa-solid fa-computer-mouse" id="mouse"></i>
+                </div>
+                <div className='scroll-container'>
+                    <i className="fa-solid fa-left-right" id="left-right"></i>
+                </div>
+                <div className='tooltip-container'>
+                    <i className="fa-regular fa-circle-question" id="tooltip" title="Click and drag with mouse or use Tab Space and Arrow Keys"></i>
+                </div>
+            </div>
             {/* {console.log(sections.map((s)=> s.order))} */}
             <DragDropContext onDragEnd={onDragEnd}>
                 <Droppable droppableId="ROOT" direction='horizontal' type='section'>

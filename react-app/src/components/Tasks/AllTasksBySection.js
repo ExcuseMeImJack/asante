@@ -36,25 +36,26 @@ function AllTasksBySection({ section, boardId }) {
             {!editButton
                 ? <></>
                 : <EditSectionForm sectionId={section.id} boardId={boardId} setEditButton={setEditButton} />}
-            <div className='tasks-container'>
-                <div className='delete-warning-section'>
                     <i className='fa-solid fa-trash section-trash' id="section-trash" onClick={async (e) => {
                         e.preventDefault()
                         if (!deleteClicked) {
                             return setDeleteClicked(true)
                         }
-                        // await dispatch(deleteSectionById(section))
-                        // return history.push(`/boards/${boardId}`)
                     }}></i>
-                    {deleteClicked && <p className='delete-text-section'>Are you sure?</p>}
-                    <div>
+                        <div className='delete-warning-section'>
+                            <div>
+                            {deleteClicked && <p className='delete-text-section'>Are you sure?</p>}
+
+                            </div>
+                            <div className='section-check-x'>
                                 {deleteClicked && <i className='fa-solid fa-xmark' id="section-xmark" onClick={() => { setDeleteClicked(false)}}></i>}
-                    {deleteClicked && <i className='fa-solid fa-check' id="section-check" onClick={async () => {
-                        await dispatch(deleteSectionById(section))
-                        return history.push(`/boards/${boardId}`)
-                    }}></i>}
-                </div>
-            </div>
+                                {deleteClicked && <i className='fa-solid fa-check' id="section-check" onClick={async () => {
+                                    await dispatch(deleteSectionById(section))
+                                    return history.push(`/boards/${boardId}`)
+                                }}></i>}
+                            </div>
+                    </div>
+            <div className='tasks-container'>
 
                 {createButton
                         ?  <i className="fa-solid fa-plus create-task-button" id="plus" onClick={() => { setCreateButton(false) }}></i>
