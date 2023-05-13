@@ -7,10 +7,9 @@
 }
 
 .task-grid {
-    /* border: 1px solid black; */
-    border-radius: 10px;
     width: 950px;
     margin-left: 400px;
+    box-shadow: 2px 2px 16px grey;
 }
 
 .my-tasks-title {
