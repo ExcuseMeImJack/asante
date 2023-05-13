@@ -26,7 +26,7 @@ function App() {
     dispatch(getUserProfile())
   }, [dispatch]);
   return (
-    <div>
+    <div className="app">
       {user ? (
         <>
           <Navigation isLoaded={isLoaded} />
@@ -77,7 +77,7 @@ function App() {
           </Switch>
         </>
       )}
-      <Footer />
+    <Footer />
     </div>
   );
 }

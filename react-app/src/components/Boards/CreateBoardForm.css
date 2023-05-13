@@ -15,6 +15,7 @@
     z-index: 1;
     background-color: #1a1919;
     height: 195px;
+    border-bottom-right-radius: 20px;
 }
 
 .create-board-slide > div {

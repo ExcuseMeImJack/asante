@@ -40,6 +40,7 @@
   width: 120px;
   transition: right 1s;
   text-decoration: none;
+  border-bottom-left-radius: 20px;
 }
 
 .profile-dropdown > li {

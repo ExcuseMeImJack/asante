@@ -1,15 +1,40 @@
+.app{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid darkblue;
+    /* height: 100%; */
+    min-height: 1000px;
+}
+
 body {
     margin: 0;
     overflow-x: hidden;
     overflow-y: scroll;
-    max-width: 100vp;
+    /* max-width: 100vp; */
     font-family: 'Noto Sans', sans-serif;
+    position: relative;
+    min-height: 100vh;
+
+    display: flex;
+    flex-flow: column wrap;
+    align-items: space-between;
+    border: 2px dotted red;
 }
+
 #root {
     overflow-x: hidden;
     --jackblack: #1a1919;
     --asantered: #da3636;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
 }
+
+/* #root > div {
+    min-height: 1000px;
+} */
+
 .overflow-hide {
     overflow-x: hidden;
     border: 1px solid red;
