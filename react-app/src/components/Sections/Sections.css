@@ -50,10 +50,12 @@
 
 #keyboard {
     font-size: 28px;
+    cursor: default;
 }
 
 #mouse {
     font-size: 28px;
+    cursor: default;
 }
 
 .scroll-container {
@@ -65,6 +67,7 @@
     font-size: 28px;
     align-self: center;
     margin-left: 10px;
+    cursor: default;
 }
 
 .tooltip-container {
