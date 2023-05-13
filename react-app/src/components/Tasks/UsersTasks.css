@@ -1,7 +1,13 @@
-
 .task-item {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 2fr 1fr 130px;
+    padding: 10px;
+    border: 1px solid lightgrey;
+}
+
+.task-items {
+    display: grid;
+    grid-template-columns: 2fr 1fr 130px;
     padding: 10px;
     border: 1px solid lightgrey;
 }
@@ -12,18 +18,22 @@
     box-shadow: 2px 2px 16px grey;
 }
 
-.my-tasks-title {
+.my-tasks-page{
     display: flex;
-    align-items: center;
     justify-content: center;
-    /* margin-top: 100px;
-    margin-left: 400px; */
+    align-items: center;
+    padding: 50px;
 }
 
-.userstasks-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 80vh;
+#my-tasks-boardname{
+    width: fit-content;
+}
+
+#my-tasks-getboard{
+    width: fit-content;
+}
+
+.task-item  > p {
+    font-size: 16px;
+    font-weight: 700;
 }
