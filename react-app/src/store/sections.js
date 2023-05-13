@@ -36,6 +36,21 @@ const moveSection = (sections) => ({
 	payload: sections,
 });
 
+export const getAllBoardsForEachSection = () => async (dispatch) => {
+    const res = await fetch('/api/sections', {
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+
+    if(res.ok){
+        const data = await res.json();
+        if(data.errors) {
+            return;
+        }
+        dispatch(getSections(data.sections))
+    }
+}
 
 // get sections by board id thunk
 export const getSectionsByBoardId = (boardId) => async (dispatch) => {

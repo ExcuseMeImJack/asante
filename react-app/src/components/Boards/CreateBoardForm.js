@@ -4,7 +4,7 @@ import { createBoard } from "../../store/boards";
 import { useHistory } from "react-router-dom";
 import "./CreateBoardForm.css";
 
-function CreateBoardForm() {
+function CreateBoardForm({setShowSlideoutMenu}) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [boardName, setBoardName] = useState("");
@@ -37,7 +37,8 @@ function CreateBoardForm() {
     e.preventDefault();
     const board = await dispatch(createBoard({ name: boardName }));
     setShowCreateBoardMenu(false)
-    return history.push(`/boards/${board.id}`);
+    history.push(`/boards/${board.id}`);
+    setShowSlideoutMenu(false)
   };
 
   const ulClassName =

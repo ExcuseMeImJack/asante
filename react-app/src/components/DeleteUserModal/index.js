@@ -5,6 +5,8 @@ import { useModal } from "../../context/Modal";
 import { useHistory } from 'react-router-dom';
 import "./DeleteUser.css"
 import UserDeleteConfirmation from "../Users/UserDeleteConfirmation";
+import { logout } from "../../store/session";
+import OpenModalButton from "../OpenModalButton";
 
 function DeleteUserModal() {
     const dispatch = useDispatch()
@@ -16,18 +18,25 @@ function DeleteUserModal() {
         dispatch(getUserProfile())
     }, [dispatch])
 
+    const handleDelete = async() => {
+        await dispatch(deleteUserThunk(storeProfile.profile))
+        await dispatch(logout())
+        history.push('/')
+        setTimeout(()=> closeModal(), 2500)
+    }
+
     return (
         <div className="delete-profile-modal-container">
             <h1>Delete Profile</h1>
             <h3 id="delete-profile-text">Are you sure you want to continue with this action? <br/>This will permanently delete your Asante account.</h3>
             <div className="delete-cancel-profile-buttons">
-                <button className="delete-profile-button" onClick={async (e) => {
-                    e.preventDefault()
-                    await dispatch(deleteUserThunk(storeProfile.profile))
-                    closeModal()
-                    history.push('/')
-                    alert('You have successfully deleted your profile.')
-                }}>Delete</button>
+                <OpenModalButton
+                modalComponent={<UserDeleteConfirmation/>}
+                onButtonClick={handleDelete}
+                buttonStyleClass="delete-profile-button"
+                modalStyleClass={"handle-profile-delete"}
+                buttonText={"Delete"}
+                />
                 <button className="cancel-delete-profile-button" onClick={() => closeModal()}>Cancel</button>
             </div>
         </div>

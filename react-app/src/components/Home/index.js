@@ -4,7 +4,7 @@ import { getUserProfile } from "../../store/users";
 import { getBoardsByUserId } from "../../store/boards";
 import "./Homepage.css";
 import { getTasksByUserId } from "../../store/tasks";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import SlideOutTask from "../SlideOutTask/SlideOutTask";
 
 // creating a function to format the date
@@ -55,6 +55,7 @@ function greetingUser() {
 
 function Home() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const storeProfile = useSelector((state) => state.users.profile);
   const [currentDate, setCurrentDate] = useState("");
   const greeting = greetingUser();
@@ -95,7 +96,7 @@ function Home() {
 
           <div className="blue">
             <div id="homepage-tasks-container">
-              <h2>My Tasks</h2>
+              <h2 className="change-cursor" onClick={() => history.push('/tasks')}>My Tasks</h2>
               <div className="homepage-user-tasks">
                 {tasks ? (
                   tasks.map((task) => (

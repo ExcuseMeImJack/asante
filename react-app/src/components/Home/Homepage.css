@@ -2,6 +2,7 @@
   font-family: "Helvetica Neue", sans-serif;
   display: grid;
   place-items: center;
+  padding: 50px;
 }
 
 .home {
@@ -15,6 +16,7 @@
   display: grid;
   place-items: center stretch;
   width: 1000px;
+  margin: 50px 0px;
 }
 
 .red {
@@ -36,7 +38,6 @@
 }
 
 .current-date {
-  margin-top: 72px;
     font-size: 18px;
     color: grey;
 }
@@ -45,9 +46,9 @@
 #homepage-board-link {
     text-decoration: none;
     color: var(--jackblack);
-    border: 1px solid rgb(231, 116, 135);
+    border: 1px solid var(--jackblack);
     border-radius: 5px;
-    box-shadow: 1px 1px 5px rgb(231, 116, 135);
+    box-shadow: 1px 1px 5px var(--jackblack);
     padding: 5px 5px;
 }
 
@@ -77,7 +78,7 @@
 #homepage-task-link,
 #homepage-board-link {
   cursor: pointer;
-  border: rgb(231, 116, 135);
+  border: var(--jackblack);
 }
 
 #homepage-tasks-container,
@@ -93,16 +94,16 @@
 #homepage-board-link,
 #homepage-task-link {
     background-color: white;
-    color: rgb(231, 116, 135);
+    color: var(--jackblack);
 }
 
 #homepage-boards-container h2,
 #homepage-tasks-container h2 {
     /* color: var(--jackblack); */
-    color: rgb(231, 116, 135);
+    color: var(--jackblack);
 }
 
 .hello-user h2 {
   /* color: rgb(255, 157, 0); */
-  color: rgb(231, 116, 135);
+  color: var(--jackblack);
 }

@@ -75,16 +75,18 @@
     border: solid 1px rgb(221, 221, 221);
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgb(189, 189, 189);
-    padding: 5px 20px;
+    padding: 20px 20px;
     grid-area: aboutme;
+    height: fit-content;
 }
 
 #quotes-container{
     border: solid 1px rgb(221, 221, 221);
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgb(189, 189, 189);
-    padding: 5px 20px;
+    padding: 20px 20px;
     grid-area: quote;
+    height: fit-content;
 }
 
 .profile-divider{
@@ -118,6 +120,7 @@
     'aboutme'
     'quote';
     gap: 25px;
+    height: fit-content;
 }
 
 #profile-boards-container{
