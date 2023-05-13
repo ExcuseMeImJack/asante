@@ -24,7 +24,7 @@ function UsersTasks() {
 
   // grab tasks array from the storeTasks object
 //   if (!storeTasks.tasks) return <h1>...Loading</h1>;
-  if (!user) return <h1>...Loading</h1>;
+  if (!user || user === null) return <h1>...Loading</h1>;
 
   // const id = user.id;
   const tasks = storeTasks;
@@ -63,26 +63,32 @@ function UsersTasks() {
   }
 
   return (
-    <div>
-      <h1>My Tasks</h1>
+    <>
+    <h1 className="my-tasks-title">My Tasks</h1>
+    <div className="userstasks-container">
+
       {tasks && tasks.length > 0 ? (
         <div className="task-grid">
+            <div className="task-item">
+                <p>Tasks</p>
+                <p>Due Date</p>
+                <p>Board</p>
+                </div>
           {tasks.map((task) => (
             <div key={task.id} className="task-item">
               <SlideOutTask task={task} key={task} />
-              <p>Due Date: {dateFormat(new Date(task.due_date))}</p>
+              <p>{dateFormat(new Date(task.due_date))}</p>
               <p>{getBoard(task)}</p>
-
-              {/* {boards.map((board) => board.name)} */}
             </div>
           ))}
-        </div>
+          </div>
       ) : (
         <div>
           <p>You have no tasks</p>
         </div>
       )}
     </div>
+    </>
   );
 }
 

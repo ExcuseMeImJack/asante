@@ -1,7 +1,21 @@
+
 .task-item {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     padding: 10px;
-    justify-items: center;
+    border: 1px solid black;
+}
+
+.task-grid {
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    width: 950px;
+    margin-left: 400px;
+}
+
+.my-tasks-title {
+    display: flex;
     align-items: center;
+    margin-top: 100px;
+    margin-left: 400px;
 }
