@@ -98,7 +98,7 @@ function Home() {
             <div id="homepage-tasks-container">
               <h2 className="change-cursor" onClick={() => history.push('/tasks')}>My Tasks</h2>
               <div className="homepage-user-tasks">
-                {tasks ? (
+                {tasks.length > 0 ? (
                   tasks.map((task) => (
                     <SlideOutTask task={task} key={task.id} />
                   ))
