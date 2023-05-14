@@ -14,8 +14,9 @@
     padding: 20px;
     border-radius: 5px;
     width: 600px;
-    height: 380px;
+    height: 400px;
     top: 100px;
+    background-color: white;
 }
 
 #profile-settings-header{

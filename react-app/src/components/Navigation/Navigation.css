@@ -5,6 +5,8 @@
   /* border: 1px solid red; */
   background-color: #1a1919;
   max-height: 49px;
+  position: fixed;
+  width: 100%;
 }
 
 #site-icon{
@@ -14,6 +16,8 @@
 
 #site-logo{
   color: white;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
 }
 
 .home-left-navbar{
@@ -29,14 +33,16 @@
   align-items: center;
   flex-direction: column;
   position: absolute;
-  top: 66px;
-  right: -1px;
+  top: 57px;
+  right: -16px;
   border: 1px solid black;
+  background-color: var(--jackblack);
+  color: white;
   padding: 5px;
-  padding-left: 10px;
-  width: 120px;
+  width: fit-content;
   transition: right 1s;
   text-decoration: none;
+  border-bottom-left-radius: 20px;
 }
 
 .profile-dropdown > li {
@@ -44,6 +50,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
   width: 100%;
   overflow: hidden;
   overscroll-behavior: none;
@@ -52,20 +59,21 @@
 
 .profile-dropdown > .hoverable:hover {
   list-style:  none;
-  background-color: rgb(214, 214, 214);
+  background-color: rgb(214, 214, 214, .3);
   cursor: pointer;
+  width: 100%;
 }
 
 .profile-link{
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 .hidden {
   /* display: none; */
   overflow: hidden;
   overscroll-behavior: none;
-  right: -200px;
+  right: -300px;
 }
 
 .nav-list {
@@ -76,6 +84,8 @@
   margin-right: 16px;
   position: sticky;
   top: 0px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
 }
 
 .nav-list > li {

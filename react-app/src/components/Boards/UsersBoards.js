@@ -30,7 +30,7 @@ function UsersBoards(){
                         <button onClick={async (e) => {
                             e.preventDefault()
                             await dispatch(deleteBoardById(board))
-                            return history.push(`/profile`)
+                            return history.push(`/`)
                         }}>Delete Board</button>
                     </div>
             })}

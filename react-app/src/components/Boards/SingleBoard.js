@@ -12,7 +12,9 @@ function SingleBoard() {
     const history = useHistory();
     const { boardId } = useParams();
     const storeBoards = useSelector((state) => state.boards);
-    const [buttonHidden, setButtonHidden] = useState(false);
+    // const sections = useSelector((state) => state.sections.sections);
+    const [plus, setPlus] = useState(true);
+    const [deleteClicked, setDeleteClicked] = useState(false);
 
     //dispatch thunk to populate storeBoards variable
     useEffect(() => {
@@ -29,15 +31,33 @@ function SingleBoard() {
     return (
         <div className='board-container'>
             <div className='single-board-border'>
-                <h2>{board.name}</h2>
-                <button onClick={async (e) => {
-                    e.preventDefault()
-                    await dispatch(deleteBoardById(board))
-                    return history.push(`/profile`)
-                }}>Delete Board</button>
-                {!buttonHidden
-                    ? <button className="add-section-button" onClick={() => { setButtonHidden(true) }}>Add New Section</button>
-                    : <CreateSectionForm boardId={board.id} setButtonHidden={setButtonHidden} />}
+                <div className='warning-wrapper'>
+                    <div className='board-and-trash'>
+                        <h2>{board.name}</h2>
+                        <i className='fa-solid fa-trash' id="board-trash" onClick={async (e) => {
+                            e.preventDefault()
+                            if (!deleteClicked) {
+                                return setDeleteClicked(true)
+                            }
+                        }}></i>
+                    </div>
+                    <div className='delete-warning-board'>
+                        {deleteClicked && <p className='delete-text red'>Are you sure?</p>}
+                        <div className='check-and-x'>
+                            {deleteClicked && <i className='fa-solid fa-xmark' id="xmark" onClick={() => { setDeleteClicked(false)}}></i>}
+                            {deleteClicked && <i className='fa-solid fa-check' id="check" onClick={async () => {
+                                await dispatch(deleteBoardById(board))
+                                return history.push(`/`)
+                            }}></i>}
+                        </div>
+                    </div>
+                </div>
+                {plus
+                    ? <i className="fa-solid fa-plus add-section-button" id="section-plus" onClick={() => { setPlus(false) }}>Add New Section</i>
+                    : <i className="fa-solid fa-minus add-section-button" id="section-minus" onClick={() => { setPlus(true) }}> Close</i>}
+                {plus
+                    ? <div className='new-section-form'></div>
+                    : <CreateSectionForm boardId={board.id} setPlus={setPlus} />}
                 <div>
                     <Sections />
                 </div>

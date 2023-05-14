@@ -12,7 +12,7 @@
     color: white;
     background-color: #da3636;
     padding: 8px 12px;
-    border: 1px #da3636 solid;
+    border: 1px var(--asantared) solid;
     border-radius: 10px;
     width: 85px;
 }
@@ -41,6 +41,7 @@
     padding: 20px;
     border-radius: 5px;
     width: 450px;
-    height: 230px;
+    height: 280px;
     top: 100px;
+    background-color: white;
 }

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getTasksByUserId } from '../../store/tasks';
+import { deleteTaskByTaskId, getTasksByUserId } from '../../store/tasks';
 import { editTaskByTaskId } from '../../store/tasks';
 import './EditTaskByIdForm.css'
 
-function EditTaskByIdForm({ task, ulRef }){
+function EditTaskByIdForm({ task, ulRef, type, setShowEditTask}){
     const dispatch = useDispatch();
     const [taskName, setTaskName] = useState(task.name);
     const [dueDate, setDueDate] = useState(task.due_date);
@@ -17,30 +17,27 @@ function EditTaskByIdForm({ task, ulRef }){
         e.preventDefault()
         setErrors({})
         let hasErrors = false;
-        // if (!clickedOnce){
-        //     setErrors(errors => ({...errors, dueDate: "Due Date Required!"}))
-        //     hasErrors = true;
-        //     setClickedOnce(true);
-        // }
+
         if (!taskName){
             setErrors(errors => ({...errors, taskName: "Task Name Required!"}))
             hasErrors = true;
         }
-        if (!dueDate) {
-            setErrors(errors => ({...errors, dueDate: "Due Date Required!"}))
-            hasErrors = true;
-        }
+        // if (!dueDate) {
+        //     setErrors(errors => ({...errors, dueDate: "Due Date Required!"}))
+        //     hasErrors = true;
+        // }
         if (!description) {
             setErrors(errors => ({...errors, description: "Description Required!"}))
             hasErrors = true;
         }
+
         if (hasErrors) return;
         const data = await dispatch(editTaskByTaskId({
             name: taskName,
             due_date: dueDate,
             description: description
         }, task.id))
-        console.log(data)
+
         if (data.status === 401) {
             setErrors(errors => ({...errors, dueDate: "Due Date Required!"}))
             hasErrors = true;
@@ -65,37 +62,40 @@ function EditTaskByIdForm({ task, ulRef }){
             <form onSubmit={handleSubmit} className='form'>
                     <input
                         ref={ulRef}
-                        className='edit-task-input'
+                        className={type === "single-task" ? 'edit-task-input-single' : 'edit-task-input'}
                         type="text"
                         placeholder="Name"
                         value={taskName}
                         onChange={(e) => setTaskName(e.target.value)}
                     />
-                    <div className="error-container">
+                    <div className={type === "single-task" ? "single-error-container" : "error-container"}>
                         {errors.taskName && <p>{errors.taskName}</p>}
                     </div>
                     <input
                         type="date"
-                        className='edit-task-input'
+                        className={type === "single-task" ? 'edit-task-input-single' : 'edit-task-input'}
                         defaultValue={formattedDate}
                         onChange={(e) => setDueDate(e.target.value)}
                     />
-                    <div className="error-container">
+                    <div className={type === "single-task" ? "single-error-container" : "error-container"}>
                         {errors.dueDate && <p>{errors.dueDate}</p>}
                     </div>
                     <input
                         type="text"
-                        className='edit-task-input'
+                        className={type === "single-task" ? 'edit-task-input-single' : 'edit-task-input'}
                         placeholder="Description"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                     />
-                    <div className="error-container">
+                    <div className={type === "single-task" ? "single-error-container" : "error-container"}>
                         {errors.description && <p>{errors.description}</p>}
                     </div>
                     <div className="updated">
                         {updated && <p>Updated!</p>}
                     </div>
+                    <button className="form-button demo-button" onClick={async () => {
+                        await dispatch(deleteTaskByTaskId(task))
+                    }}>Complete Task</button>
                     <button type="submit" className="form-button">Edit Task</button>
                 </form>
             </div>

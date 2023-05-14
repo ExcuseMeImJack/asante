@@ -9,6 +9,20 @@ from ..forms.create_section_form import CreateSectionForm
 # Creates a Blueprint for section routes
 section_routes = Blueprint('sections', __name__, url_prefix="/api/sections")
 
+@section_routes.route('')
+@login_required
+
+def get_sections():
+    sections = Section.query.all()
+    boards = Board.query.all()
+    return {'sections': [section.to_dict()
+                         for section in sections
+                         for board in boards
+                         if section.board_id == board.id
+                         if board.user_id == current_user.id]}
+
+# {'id': 1, 'name': 'Section 1', 'order': 0, 'board_id': 1, 'created_at': datetime.date(2023, 5, 8), 'updated_at': datetime.date(2023, 5, 8)}
+
 
 @section_routes.route('/<int:section_id>')
 @login_required

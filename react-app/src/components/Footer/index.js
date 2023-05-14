@@ -4,7 +4,7 @@ import "./footer.css";
 
 function Footer() {
   return (
-    <div className="footer">
+    <footer className="footer">
 
       <div className="social-links">
         <div>About Asante</div>
@@ -28,7 +28,7 @@ function Footer() {
         <a href="https://www.linkedin.com/in/wyona-b-602677224/">Wyona</a>
       </div>
 
-    </div>
+    </footer>
   );
 }
 

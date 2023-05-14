@@ -1,10 +1,81 @@
 .single-section-border {
     border: 1px solid black;
-    min-height: 240px;
+    border-radius: 20px;
+    padding: 6px;
+    padding-top: 30px;
+    /* min-height: 200px; */
     margin: 20px;
     background-color: white;
+    min-width: 300px;
+    max-height: 500px;
+    overflow: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.single-section-border::-webkit-scrollbar {
+    display: none;
+}
+
+.section-header {
+    display: flex;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
 }
 
 .section-gallery {
+    border: 1px solid black;
     display: flex;
+    justify-content: center;
+    width: 1000px;
+    overflow: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.section-gallery::-webkit-scrollbar {
+    display: none;
+  }
+
+#trash {
+    font-size: 22px;
+}
+
+.kb-or-mouse {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#keyboard {
+    font-size: 28px;
+    cursor: default;
+}
+
+#mouse {
+    font-size: 28px;
+    cursor: default;
+}
+
+.scroll-container {
+    display: flex;
+    justify-content: center;
+}
+
+#left-right {
+    font-size: 28px;
+    align-self: center;
+    margin-left: 10px;
+    cursor: default;
+}
+
+.tooltip-container {
+    display: flex;
+    /* justify-content: flex-end; */
+}
+
+#tooltip {
+    font-size: 22px;
+    margin-bottom: 2px;
 }

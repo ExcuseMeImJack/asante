@@ -1,7 +1,8 @@
 .homepage-container {
-  font-family: "Helvetica Neue", sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   display: grid;
   place-items: center;
+  padding: 50px;
 }
 
 .home {
@@ -15,6 +16,7 @@
   display: grid;
   place-items: center stretch;
   width: 1000px;
+  margin: 50px 0px;
 }
 
 .red {
@@ -36,7 +38,6 @@
 }
 
 .current-date {
-  margin-top: 72px;
     font-size: 18px;
     color: grey;
 }
@@ -44,10 +45,10 @@
 #homepage-task-link,
 #homepage-board-link {
     text-decoration: none;
-    color: black;
-    border: 1px solid rgb(189, 189, 189);
+    color: var(--jackblack);
+    border: 1px solid var(--jackblack);
     border-radius: 5px;
-    box-shadow: 1px 1px 5px rgb(189, 189, 189);
+    box-shadow: 1px 1px 5px var(--jackblack);
     padding: 5px 5px;
 }
 
@@ -58,41 +59,71 @@
   gap: 10px;
 }
 
-.homepage-user-tasks,
+/* .homepage-user-tasks,
 .homepage-user-boards-container {
   display: grid;
   gap: 10px;
-}
+  margin-bottom: 5px;
+} */
 
 .homepage-user-task-tile,
 .homepage-user-board-tile {
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: black;
+  color: var(--jackblack);
   padding-bottom: 5px;
 }
 
 #homepage-task-link,
 #homepage-board-link {
   cursor: pointer;
+  border: var(--jackblack);
 }
 
 #homepage-tasks-container,
 #homepage-boards-container {
-  border: solid 1px rgb(221, 221, 221);
-  border-radius: 5px;
-  box-shadow: 2px 2px 5px rgb(189, 189, 189);
+  border: solid 1px darkgrey;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px darkgrey;
+  /* border-left: white; */
   padding: 5px 20px;
-  background-color: darkgrey;
+  /* background-color: rgb(219, 218, 218); */
 }
 
 #homepage-board-link,
 #homepage-task-link {
     background-color: white;
+    color: var(--jackblack);
 }
 
 #homepage-boards-container h2,
 #homepage-tasks-container h2 {
-    color: white;
+    /* color: var(--jackblack); */
+    color: var(--jackblack);
+    margin-bottom: 0;
+}
+
+.hello-user h2 {
+  /* color: rgb(255, 157, 0); */
+  color: var(--jackblack);
+}
+
+.task-grid-home{
+  margin: 0 auto;
+  max-width: 1fr;
+  min-width: 1fr;
+  /* margin-left: 400px; */
+}
+
+.task-item-home {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  padding: 10px;
+}
+
+.task-items-home {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  padding: 10px;
 }

@@ -1,0 +1,24 @@
+.handle-profile-delete{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--asantered);
+    height: fit-content;
+    /* width: fit-content; */
+    color: white;
+    box-shadow: 1px 1px 5px rgb(189, 189, 189);
+    /* border: white 5px solid; */
+    padding: 5px 5px;
+
+    border-radius: 30px;
+
+    top: 50px;
+}
+/*
+.handle-profile-delete-div{
+
+} */
+
+.landing-page-none{
+    opacity: 0.3;
+}

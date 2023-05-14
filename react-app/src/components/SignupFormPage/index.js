@@ -15,37 +15,60 @@ function SignupFormPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [name, setName] = useState("");
   const [errors, setErrors] = useState({});
-  const [errorsExist, setErrorsExist] = useState(false);
 
   if (sessionUser) return <Redirect to="/" />;
+
+  function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors({});
-    setErrorsExist(false);
+    let hasErrors = false;
     if (!name) {
       setErrors(errors => ({...errors, name: "Name is required"}))
-      setErrorsExist(true);
+      hasErrors = true;
     }
-    if (!email) setErrors(errors => ({...errors, email: "Email is required"}))
-    if (!username) setErrors(errors => ({...errors, username: "Username is required"}))
-    if (!password) setErrors(errors => ({...errors, password: "Password is required"}))
+    if (!email) {
+      setErrors(errors => ({...errors, email: "Email is required"}));
+      hasErrors = true;
+    }
+    if (validateEmail(email) === false) {
+      setErrors(errors => ({...errors, email: "Please enter a valid email"}));
+      hasErrors = true;
+    }
+    if (!username) {
+      setErrors(errors => ({...errors, username: "Username is required"}));
+      hasErrors = true;
+    }
+    if (!password) {
+      setErrors(errors => ({...errors, password: "Password is required"}))
+      hasErrors = true;
+    }
     // if (errors.name || errors.email || errors.username || errors.password) return;
-    if (errorsExist) return;
+    if (hasErrors) return;
     if (password === confirmPassword) {
       const data = await dispatch(signUp(username, email, password, name));
-      if (data) {
-        // setErrors(data)
-        console.log(data)
-        return;
+      if (data[0]) {
+        const errorMessage = data[0].split(" : ")[1];
+        if (errorMessage.startsWith("Username")) {
+          setErrors(errors => ({...errors, username: errorMessage}));
+          hasErrors = true;
+        }
+        if (errorMessage.startsWith("Email")) {
+          setErrors(errors => ({...errors, email: errorMessage}));
+          hasErrors = true;
+        }
+        return data;
       }
-      dispatch(getUserProfile())
+        dispatch(getUserProfile())
         history.push('/')
     } else {
         setErrors(errors => ({...errors, confirmPassword: 'Confirm Password must match Password'}));
     }
   };
-  console.log(errors)
 
   return (
     <>
