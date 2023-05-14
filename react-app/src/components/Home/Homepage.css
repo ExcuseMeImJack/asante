@@ -1,5 +1,5 @@
 .homepage-container {
-  font-family: "Helvetica Neue", sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   display: grid;
   place-items: center;
   padding: 50px;
@@ -59,12 +59,12 @@
   gap: 10px;
 }
 
-.homepage-user-tasks,
+/* .homepage-user-tasks,
 .homepage-user-boards-container {
   display: grid;
   gap: 10px;
   margin-bottom: 5px;
-}
+} */
 
 .homepage-user-task-tile,
 .homepage-user-board-tile {
@@ -101,9 +101,29 @@
 #homepage-tasks-container h2 {
     /* color: var(--jackblack); */
     color: var(--jackblack);
+    margin-bottom: 0;
 }
 
 .hello-user h2 {
   /* color: rgb(255, 157, 0); */
   color: var(--jackblack);
+}
+
+.task-grid-home{
+  margin: 0 auto;
+  max-width: 1fr;
+  min-width: 1fr;
+  /* margin-left: 400px; */
+}
+
+.task-item-home {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  padding: 10px;
+}
+
+.task-items-home {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  padding: 10px;
 }

@@ -6,6 +6,8 @@ import "./Homepage.css";
 import { getTasksByUserId } from "../../store/tasks";
 import { Link, useHistory } from "react-router-dom";
 import SlideOutTask from "../SlideOutTask/SlideOutTask";
+import boardicon from "../../assets/board.png";
+import { getAllBoardsForEachSection } from "../../store/sections";
 
 // creating a function to format the date
 function dateFormat(date) {
@@ -40,6 +42,28 @@ function dateFormat(date) {
   return `${dayOfWeek}, ${month} ${day}`;
 }
 
+function dateFormatSmall(date) {
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const month = months[date.getMonth()];
+  const day = date.getDate();
+
+  return `${month} ${day}`;
+}
+
 function greetingUser() {
   //getHours gets the hours of 0-23 and assigns to currentTime
   const currentHour = new Date().getHours();
@@ -61,12 +85,15 @@ function Home() {
   const greeting = greetingUser();
   const tasks = useSelector((state) => state.tasks.tasks);
   const boards = useSelector((state) => state.boards.boards);
+  const sections = useSelector((state) => state.sections.sections);
   //   console.log("store boards:", storeBoards);
 
   useEffect(() => {
+    dispatch(getAllBoardsForEachSection());
     dispatch(getUserProfile());
     dispatch(getBoardsByUserId());
     dispatch(getTasksByUserId());
+
 
     const today = new Date();
     const formattedDate = dateFormat(today);
@@ -77,7 +104,23 @@ function Home() {
   //make sure storeBoards is not null before accessing boards property
   //   const boards = storeBoards && storeBoards.boards;
 
-  if(!tasks) return null
+  if (!tasks) return null;
+
+  function getBoard(task) {
+    // GET USER BOARDS
+    // GET SECTIONS BY BOARD ID
+
+    // CHECK TO SEE IF SECTION.ID === TASK.SECTION_ID
+    const section = sections.find(
+      (findSection) => findSection.id === task.section_id
+    );
+    if (!section) return null;
+    const board = boards.find((findBoard) => findBoard.id === section.board_id);
+
+    if (board) {
+      return board.name;
+    }
+  }
 
   return (
     <>
@@ -96,12 +139,28 @@ function Home() {
 
           <div className="blue">
             <div id="homepage-tasks-container">
-              <h2 className="change-cursor" onClick={() => history.push('/tasks')}>My Tasks</h2>
+              <h2
+                className="change-cursor"
+                onClick={() => history.push("/tasks")}
+              >
+                My Tasks
+              </h2>
               <div className="homepage-user-tasks">
-                {tasks.length > 0 ? (
-                  tasks.map((task) => (
-                    <SlideOutTask task={task} key={task.id} />
-                  ))
+                {tasks && tasks.length > 0 ? (
+                  <div className="task-grid-home">
+                    <div className="task-item-home">
+                      <p>Tasks</p>
+                      <p>Due Date</p>
+                      <p id="my-tasks-boardname">Board Name</p>
+                    </div>
+                    {tasks.map((task) => (
+                      <div key={task.id} className="task-items-home">
+                        <SlideOutTask task={task} key={task} />
+                        <p>{dateFormatSmall(new Date(task.due_date))}</p>
+                        <p id="my-tasks-getboard">{getBoard(task)}</p>
+                      </div>
+                    ))}
+                  </div>
                 ) : (
                   <div>
                     <p>You have no tasks</p>
@@ -112,18 +171,19 @@ function Home() {
             </div>
             <div id="homepage-boards-container">
               <h2>My Boards</h2>
-              <div className="homepage-user-boards-container">
+              <div className="profile-user-boards-container">
                 {boards.length > 0 ? (
                   boards.map((board) => (
-                    <div className="homepage-user-board-tile" key={board.id}>
+                    <div className="profile-user-board-tile" key={board.id}>
                       <div className="homepage-divider"></div>
-                      <Link
-                        to={`/boards/${board.id}`}
-                        id="homepage-board-link"
-                        className="change-cursor"
+                      <div
+                        className="profile-user-board-tile change-cursor"
+                        key={board.id}
+                        onClick={() => history.push(`/boards/${board.id}`)}
                       >
-                        {board.name}
-                      </Link>
+                        <img id="boardimg" src={boardicon} />
+                        <p id="profile-board-text">{board.name}</p>
+                      </div>
                     </div>
                   ))
                 ) : (

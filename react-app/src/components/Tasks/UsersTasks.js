@@ -27,13 +27,13 @@ function UsersTasks() {
 
   // grab tasks array from the storeTasks object
 //   if (!storeTasks.tasks) return <h1>...Loading</h1>;
-  if (!user || user === null) return <h1>...Loading</h1>;
+  if (!user || user === null) return <h1></h1>;
 
   // const id = user.id;
   const tasks = storeTasks;
   //   console.log("helloooooooo:", tasks);
 
-  if (!tasks) return <h1>...Loading</h1>;
+  if (!tasks) return <h1></h1>;
 
   function dateFormat(date) {
     const months = [

@@ -24,7 +24,7 @@ function AllTasksBySection({ section, boardId }) {
     }, [dispatch, sections])
 
     // grab tasks array from the storeTasks object
-    if (!storeTasks.tasks) return <h1>...Loading</h1>
+    if (!storeTasks.tasks) return <h1></h1>
 
     const tasks = storeTasks.tasks.filter(task => task.section_id === section.id).sort((a, b) => a.order - b.order)
 

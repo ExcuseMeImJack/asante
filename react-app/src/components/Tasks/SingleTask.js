@@ -29,7 +29,7 @@ function SingleTask({ task }) {
     return () => document.removeEventListener("click", closeTask);
     }, [showEditTask]);
 
-    if (!task) return <h1>...Loading</h1>
+    if (!task) return <h1></h1>
     const ulClassName = "board-task" + (showEditTask ? "" : " board-hidden-task");
 
     return (

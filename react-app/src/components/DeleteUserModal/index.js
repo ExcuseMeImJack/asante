@@ -22,7 +22,7 @@ function DeleteUserModal() {
         await dispatch(deleteUserThunk(storeProfile.profile))
         await dispatch(logout())
         history.push('/')
-        setTimeout(()=> closeModal(), 1500)
+        setTimeout(()=> closeModal(), 1000)
     }
 
     return (
@@ -35,6 +35,7 @@ function DeleteUserModal() {
                 onButtonClick={handleDelete}
                 buttonStyleClass="delete-profile-button"
                 modalStyleClass={"handle-profile-delete"}
+                modalBackgroundStyleClass={"landing-page-none"}
                 buttonText={"Delete"}
                 />
                 <button className="cancel-delete-profile-button" onClick={() => closeModal()}>Cancel</button>
