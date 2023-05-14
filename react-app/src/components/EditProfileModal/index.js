@@ -110,7 +110,7 @@ function EditProfileModal() {
                         <div className="display-theme">
                             {/* Implement Dark Mode/Light Mode Here */}
                         </div>
-                    {(imageLoading)&& <p>Loading...</p>}
+                    {(imageLoading)&& <p></p>}
                     <div className="commit-changes">
                         <button className="save-profile-edit-changes change-cursor" type="submit">Save changes</button>
                     </div>
