@@ -93,7 +93,7 @@ function UserProfile() {
                             <h2 id="profile-boards-header">My Boards</h2>
                             <div className='profile-divider'></div>
                             <div className='profile-user-boards-container'>
-                                {boards ?
+                                {boards.length > 0 ?
                                     boards.map(board => (
                                         <div className='profile-user-board-tile change-cursor' key={board.id} onClick={() => history.push(`/boards/${board.id}`)}>
                                             <img id="boardimg" src={boardicon}/>
@@ -108,7 +108,7 @@ function UserProfile() {
                             <h2>My Tasks</h2>
                             <div className='profile-divider'></div>
                             <div className='profile-user-tasks'>
-                                {tasks ?
+                                {tasks.length > 0 ?
                                         tasks.map(task => (
                                             <SlideOutTask task={task} key={task.id}/>
                                         ))

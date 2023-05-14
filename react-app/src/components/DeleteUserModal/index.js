@@ -22,7 +22,7 @@ function DeleteUserModal() {
         await dispatch(deleteUserThunk(storeProfile.profile))
         await dispatch(logout())
         history.push('/')
-        setTimeout(()=> closeModal(), 2500)
+        setTimeout(()=> closeModal(), 1500)
     }
 
     return (

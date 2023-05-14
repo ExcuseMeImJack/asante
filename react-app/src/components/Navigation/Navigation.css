@@ -39,7 +39,7 @@
   background-color: var(--jackblack);
   color: white;
   padding: 5px;
-  width: 120px;
+  width: fit-content;
   transition: right 1s;
   text-decoration: none;
   border-bottom-left-radius: 20px;
@@ -73,7 +73,7 @@
   /* display: none; */
   overflow: hidden;
   overscroll-behavior: none;
-  right: -200px;
+  right: -300px;
 }
 
 .nav-list {
