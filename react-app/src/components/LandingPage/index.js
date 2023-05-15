@@ -32,10 +32,8 @@ const LandingPage = () => {
 
 
   return (
-    <div className="page-container">
-      <header>
-        <div className="home-nav-container">
-          <div className="navbar">
+    <>
+     <div className="navbar">
             <div className="navbar-left">
               <Link to="">Why Asante?</Link>
               <Link to="">Features</Link>
@@ -59,8 +57,8 @@ const LandingPage = () => {
 
             </div>
           </div>
-        </div>
-      </header>
+
+    <div className="page-container">
 
       <main>
         <div className="main-container">
@@ -81,35 +79,17 @@ const LandingPage = () => {
               <button className="demo-user-btn" onClick={handleDemoLogin}>See how it works</button>
             </div>
             <div className="main-right">
+              <div className="buttons">
               <button className="button1">Marketing</button>
               <button className="button2">Product</button>
               <button className="button3">IT</button>
               <button className="button4">Operations</button>
               <button className="button5">Sales</button>
-              <div></div>
-            </div>
-          </div>
-        </div>
-
-        <div className="main2-section-container">
-          <div className="main2-section-section">
-            <div className="main2-section-left">
-              <div className="main2-section-left-text">
-                <p className="uppercase-text">Drive efficiency across teams</p>
-                <h2>Manage complex work easily</h2>
-                <p>
-                  Connect what needs to get done, who's doing it, and by when.
-                </p>
               </div>
-            </div>
-
-            <div className="main2-section-right">
               <div className="layouts-styling">
-                <div>List View</div>
+                <div>About Asante</div>
                 <p>
-                  Organize and assign tasks. With lists, teams see immediately
-                  what they need to do, which tasks are a priority, and when
-                  work is due.
+                  Asante is a clone of the popular work management platform used to streamline your team's efficiency and collaboration. Asante was built using a combination of Flask, the dynamic user interface of React, and the state management capabilities of Redux.
                 </p>
               </div>
               <div className="layouts-styling">
@@ -120,11 +100,32 @@ const LandingPage = () => {
                   where things are getting stuck.
                 </p>
               </div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+
+        <div className="main2-section-container">
+          <div className="main2-section-section">
+            <div className="main2-section-left">
+              <div className="main2-section-left-text">
+                <p className="uppercase-text">Boost efficiency across teams</p>
+                <h2>Manage complex work easily</h2>
+                <p>
+                  Connect what needs to get done, who's doing it, and by when.
+                </p>
+              </div>
+            </div>
+
+            <div className="main2-section-right">
+
+                <img src="https://i.imgur.com/lojYc8n.png" alt="boards image" className="image-class"></img>
             </div>
           </div>
         </div>
       </main>
       </div>
+      </>
   );
 };
 
