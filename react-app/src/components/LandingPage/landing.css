@@ -8,221 +8,228 @@
 } */
 
 .page-container {
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* height: 100vh; */
 }
+
 .home-nav-container {
-    font-family: "Helvetica Neue", sans-serif;
-    /* display: flex;
+  font-family: "Helvetica Neue", sans-serif;
+  /* display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center; */
 }
 
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 70px;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 70px;
+  width: 100%;
 }
 
 .navbar-left a {
-    text-decoration: none;
-    margin-left: 17px;
-    /* margin-right: 10px; */
-    color: grey;
+  text-decoration: none;
+  margin-left: 17px;
+  /* margin-right: 10px; */
+  color: grey;
 }
 
 .navbar-right a {
-    text-decoration: none;
-    margin-left: 17px;
-    margin-right: 10px;
-    color: grey;
+  text-decoration: none;
+  margin-left: 17px;
+  margin-right: 10px;
+  color: grey;
 }
 
 /** keeps the navlinks grey even after you clicked on it**/
 .navbar-left a:visited {
-    color: grey;
+  color: grey;
 }
 
 .navbar-right a:visited {
-    color: grey;
+  color: grey;
 }
 
 /***************** MAIN SECTION ******************/
 
 .main-container {
-    flex-grow: 1;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .main-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    font-family: "Helvetica Neue", sans-serif;
-}
-
-.main-left {
-    width: 35%;
-    /* border: 5px solid pink; */
-    /* padding: 0 10px; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  font-family: "Helvetica Neue", sans-serif;
+  height: 30vh;
+  margin: auto;
+  width: 80%;
 }
 
 .main-left p {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 }
 
 .main-right {
-    /* border: 5px solid rgb(192, 243, 255); */
-    margin: 0px;
-    padding: 0 10px;
+  /* border: 5px solid rgb(192, 243, 255); */
+  margin: 0px;
+  padding: 0 45px;
 }
 
 /********* BOTTOM SECTION ******/
 .main2-section-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    /* margin-top: 20px; */
-    padding-top: 70px;
-    font-family: "Helvetica Neue", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /* margin-top: 20px; */
+  padding-top: 50px;
+  font-family: "Helvetica Neue", sans-serif;
 }
 
-.main2-section-right {
-    /* border: 5px solid rgb(250, 216, 131); */
-    width: 35%;
-    /* padding: 0 0 0 10px; */
-    /* margin: 0 0 0 50px; */
-}
 
 .main2-section-left-text {
-    display: flex;
-    flex-direction: column;
-    /* gap: 6px; */
+  display: flex;
+  flex-direction: column;
+  /* gap: 6px; */
 }
 
 .main2-section-left-text h2 {
-    margin: 9px;
-    margin-left: 0px;
+  margin: 9px;
+  margin-left: 0px;
 }
 .main2-section-container p {
-    font-size: 20px;
-    /* margin: 0 10px 5px 0px; */
+  font-size: 20px;
+  /* margin: 0 10px 5px 0px; */
 }
 
 /********* CAPITAL 'DRIVE EFFICIENCY ACROSS TEAMS' *******/
 .uppercase-text {
-    text-transform: uppercase;
-    font-size: 16px;
-    color: darkgray;
+  text-transform: uppercase;
+  font-size: 16px;
+  color: darkgray;
 }
 
 /********* List View / Board View layout for title and bio **********/
 .layouts-styling div {
-    font-size: 20px;
-    margin-bottom: 7px;
+  font-size: 20px;
+  margin-bottom: 7px;
+  /* width: 35%; */
+  margin-top: 20px;
 }
 
 .layouts-styling p {
-    font-size: 16px;
-    color: gray;
-    margin-bottom: 20px;
+  font-size: 16px;
+  color: gray;
+  margin-bottom: 22px;
+  /* width: 35%; */
 }
 
 /******************* BUTTONS *********************/
 .get-started-btn-1 {
-    margin-left: 20px;
-    background-color: black;
-    color: white;
-    font-size: 17px;
-    padding: 3px 15px 3px 15px;
-    cursor: pointer;
+  margin-left: 20px;
+  background-color: #da3636;
+  color: white;
+  border: black 1px solid;
+  font-size: 17px;
+  padding: 3px 15px 3px 15px;
+  cursor: pointer;
 }
 
 .get-started-btn-2 {
-    font-size: 17px;
-    margin-right: 17px;
-    background-color: black;
-    color: white;
-    font-size: 17px;
-    padding: 3px 15px 3px 15px;
-    cursor: pointer;
+  font-size: 17px;
+  margin-right: 17px;
+  background-color: #da3636;
+  border: black 1px solid;
+  color: white;
+  font-size: 17px;
+  padding: 3px 15px 3px 15px;
+  cursor: pointer;
 }
 
 .demo-user-btn {
-    font-size: 17px;
-    background-color: white;
-    font-size: 17px;
-    padding: 3px 15px 3px 15px;
-    cursor: pointer;
+  font-size: 17px;
+  background-color: white;
+  color: #da3636;
+  font-size: 17px;
+  padding: 3px 15px 3px 15px;
+  cursor: pointer;
 }
 
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
 .button1 {
-    border: none;
-    border-radius: 10px;
-    padding: 0 16px;
-    transition: background-color 0.6s;
-    margin: 5px;
-    font-size: 17px;
-    cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  padding: 0 16px;
+  transition: background-color 0.6s;
+  font-size: 17px;
+  cursor: pointer;
 }
 
 .button1:hover {
-    background-color: #f06a6a;
-    color: white;
+  background-color: #f47878;
+  color: white;
 }
 
 .button2 {
-    border: none;
-    border-radius: 10px;
-    padding: 0 16px;
-    margin: 5px;
-    font-size: 17px;
-    cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  padding: 0 16px;
+  font-size: 17px;
+  cursor: pointer;
 }
 
 .button2:hover {
-    background-color: #f1bd6c;
-    color: white;
+  background-color: #f4c579;
+  color: white;
 }
 .button3 {
-    border: none;
-    border-radius: 10px;
-    padding: 0 16px;
-    margin: 5px;
-    font-size: 17px;
-    cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  padding: 0 16px;
+  font-size: 17px;
+  cursor: pointer;
 }
 
 .button3:hover {
-    background-color: #9ee7e3;
-    color: white;
+  background-color: #acf2ee;
+  color: white;
 }
 
 .button4 {
-    border: none;
-    border-radius: 10px;
-    padding: 0 16px;
-    margin: 5px;
-    font-size: 17px;
-    cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  padding: 0 16px;
+
+  font-size: 17px;
+  cursor: pointer;
 }
 
 .button4:hover {
-    background-color: #938ce1;
-    color: white;
+  background-color: #9f98e9;
+  color: white;
 }
 
 .button5 {
-    border: none;
-    border-radius: 10px;
-    padding: 0 16px;
-    margin: 5px;
-    font-size: 17px;
-    cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  padding: 0 16px;
+
+  font-size: 17px;
+  cursor: pointer;
 }
 
 .button5:hover {
-    background-color: #5da283;
-    color: white;
+  background-color: #6eb394;
+  color: white;
 }
