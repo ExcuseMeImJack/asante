@@ -122,12 +122,21 @@ function UserProfile() {
               modalComponent={<EditProfileModal />}
               modalStyleClass={"edit-profile-modal-content"}
             />
-            <OpenModalButton
-              buttonStyleClass={"delete-user-button change-cursor"}
-              buttonText={"Delete user"}
-              modalComponent={<DeleteUserModal />}
-              modalStyleClass={"delete-profile-modal-content"}
-            />
+            {profile.email === "tester@aa.io" ?
+                <OpenModalButton
+                buttonStyleClass={"delete-user-button"}
+                buttonText={"Cannot Delete Demo User"}
+                modalComponent={""}
+                modalStyleClass={"delete-profile-modal-content"}
+              />
+              :
+              <OpenModalButton
+                buttonStyleClass={"delete-user-button change-cursor"}
+                buttonText={"Delete user"}
+                modalComponent={<DeleteUserModal />}
+                modalStyleClass={"delete-profile-modal-content"}
+              />
+            }
           </div>
         </div>
         <div className="profile-tiles-container">
