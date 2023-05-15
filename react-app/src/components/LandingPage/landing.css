@@ -88,12 +88,13 @@
 .main2-section-section {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   /* margin-top: 20px; */
   padding-top: 50px;
   font-family: "Helvetica Neue", sans-serif;
+  margin: auto;
+  width: 80%;
 }
-
 
 .main2-section-left-text {
   display: flex;
@@ -122,7 +123,7 @@
   font-size: 20px;
   margin-bottom: 7px;
   /* width: 35%; */
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .layouts-styling p {
@@ -167,6 +168,7 @@
     display: flex;
     justify-content: space-between;
 }
+
 .button1 {
   border: none;
   border-radius: 10px;
@@ -232,4 +234,9 @@
 .button5:hover {
   background-color: #6eb394;
   color: white;
+}
+
+
+.image-class {
+    padding-left: 100px;
 }

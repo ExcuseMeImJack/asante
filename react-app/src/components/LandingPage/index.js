@@ -119,7 +119,7 @@ const LandingPage = () => {
 
             <div className="main2-section-right">
 
-                <img src="https://i.imgur.com/lojYc8n.png" alt="boards image"></img>
+                <img src="https://i.imgur.com/lojYc8n.png" alt="boards image" className="image-class"></img>
             </div>
           </div>
         </div>
