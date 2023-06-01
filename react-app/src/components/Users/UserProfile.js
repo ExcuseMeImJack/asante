@@ -126,7 +126,6 @@ function UserProfile() {
                 <OpenModalButton
                 buttonStyleClass={"delete-user-button"}
                 buttonText={"Cannot Delete Demo User"}
-                modalComponent={""}
                 modalStyleClass={"delete-profile-modal-content"}
               />
               :
