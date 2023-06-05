@@ -4,6 +4,18 @@
 
 Live site: https://asante.onrender.com/
 
+## Landing Page
+![splash](https://github.com/ExcuseMeImJack/asante/assets/107484881/d220dfe9-ae2c-4b8c-abeb-15a284fb0133)
+
+## Home
+![home](https://github.com/ExcuseMeImJack/asante/assets/107484881/fc5a2322-d443-4ed2-a640-b173c235ac75)
+
+## Profile
+![user-profile](https://github.com/ExcuseMeImJack/asante/assets/107484881/3dfaf3e8-0b34-4142-b791-90fd547751e8)
+
+## Project Board
+![board-page](https://github.com/ExcuseMeImJack/asante/assets/107484881/35e87c9c-3908-4415-b65f-618fd723b073)
+
 ## Getting started
 1. Clone this repository (only this branch)
 
