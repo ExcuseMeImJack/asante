@@ -1,8 +1,18 @@
 # Asante
 
-### An Asana clone built with Python, Flask, React, and Redux.
+### A project management web application inspired by Asana.
 
-Live site: https://asante.onrender.com/
+Live site: [Asante](https://asante.onrender.com/)
+
+## Technologies Used
+![python](https://github.com/ExcuseMeImJack/asante/assets/107484881/6d6f71d1-4c28-4089-a3b0-e60c46e5421f)
+![flask](https://github.com/ExcuseMeImJack/asante/assets/107484881/2e4d1a7e-68f3-41a0-959b-99447cd93ab3)
+![postgresql](https://github.com/RMPasta/AirBnB-Clone/assets/107484881/889cbdc9-811c-408d-a075-9cd4ee9e3cbf)
+![html5](https://github.com/RMPasta/AirBnB-Clone/assets/107484881/de294ad9-fa73-4183-a5de-cb2998f31f03)
+![css3](https://github.com/RMPasta/AirBnB-Clone/assets/107484881/023a7ed5-f5fc-41db-8735-a00b5d47ad64)
+![js](https://github.com/ExcuseMeImJack/asante/assets/107484881/0c9d211b-a02f-4dac-995a-adeb29497a45)
+![react](https://github.com/RMPasta/AirBnB-Clone/assets/107484881/b24e48ca-1a01-44b8-a856-db324ec3ee46)
+![redux](https://github.com/RMPasta/AirBnB-Clone/assets/107484881/a65d6db5-c45a-4dc4-84bc-7962a62beaa1)
 
 ## Landing Page
 ![splash](https://github.com/ExcuseMeImJack/asante/assets/107484881/d220dfe9-ae2c-4b8c-abeb-15a284fb0133)
