@@ -52,9 +52,38 @@ npm start
 ```
 8. Open the locally hosted front end at the specified port.
 
-### More information
+### Features
 
-Visit our github wiki for site documentation!
+1. New account creation, log in, log out, and guest/demo login
+    - Users can sign up, log in, and log out.
+    - Users can use a demo log in to try the site.
+    - Users can't use ANY features without logging in.
+    - Logged in users are directed to their dashboard/homepage where it displays their tasks, boards, and frequent collaborators.
+    - Logged out users are directed to the landing page.
+
+2. Board Creation & Management
+    - Users can create new boards.
+    - Users can set board goals and deadlines.
+    - Users can set priority tags + due dates for tasks.
+
+3. Columns Management
+    - Users can create columns on a board
+    - Users can update columns on a board
+    - Users can view columns on a board
+    - Users can delete columns on a board
+    - Users can rearrange columns on a board in any order
+
+4. Task Management
+    - Users can view their assigned tasks and deadlines in a task list or calendar view.
+    - Users can set reminders for tasks and deadlines.
+    - Users can mark tasks as complete or incomplete.
+    - Users can track the time the time they’ve spent on tasks.
+    - Users can rearrange task in any column in any order
+
+5. Profiles
+    - Users can view their profile details
+    - Users can update their profile details
+    - Users can delete their profile
 
 ### Built by
 
