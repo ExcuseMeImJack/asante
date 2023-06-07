@@ -107,6 +107,37 @@ npm start
     - Users can update their profile details
     - Users can delete their profile
 
+### API-ROUTES
+
+* `/boards`
+
+   * `GET /boards` view all boards
+   * `POST /boards` create a new board
+   * `GET /boards/{board_id}` view single board
+   * `DELETE /boards/{board_id}` delete single board
+   * `GET /boards/{board_id}/sections` view sections of board
+   * `POST /boards/{board_id}/sections` create section of board
+
+* `/sections`
+
+   * `GET /sections/{section_id}` get single section by id
+   * `PUT /sections/{section_id}` update single section
+   * `DELETE /sections/{section_id}` delete single section
+
+* `/tasks`
+
+   * `GET /tasks` get all tasks
+   * `POST /tasks` create new task
+   * `GET /tasks/{task_id}` get task by id
+   * `PUT /tasks/{task_id}` update single task
+   * `DELETE /tasks/{task_id}` delete single task
+
+* `/profile`
+
+   * `GET /profile` get profile of user
+   * `PUT /profile` update user profile
+   * `DELETE /profile` delete user
+
 ### Built by
 
 Jack
