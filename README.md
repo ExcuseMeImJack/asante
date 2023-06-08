@@ -110,33 +110,72 @@ npm start
 ### API-ROUTES
 
 * `/boards`
-
-   * `GET /boards` view all boards
-   * `POST /boards` create a new board
-   * `GET /boards/{board_id}` view single board
-   * `DELETE /boards/{board_id}` delete single board
-   * `GET /boards/{board_id}/sections` view sections of board
-   * `POST /boards/{board_id}/sections` create section of board
+    * `GET /boards/{board_id}/sections`
+        * Purpose: Get all sections by Board ID
+        * Return: `{'sections': [{'id': 1, 'name': 'Test Section', ...}, {'id': 2, 'name': 'Test Section', ...}, ...]}`
+    * `POST /boards`
+        * Purpose: Create a board for the Current User
+        * Return: `{"Board": {'id': 1, 'name': 'Test Board', ...}}`
+    * `GET /boards/{board_id}`
+        * Purpose: Get a single Board by Board ID
+        * Return `{"Board": {'id': 1, 'name': 'Test Board', ...}}`
+    * `DELETE /boards/{board_id}`
+        * Purpose: Delete a Board by Board ID
+        * Return: `{'message': 'Successfully deleted!'}`
 
 * `/sections`
-
-   * `GET /sections/{section_id}` get single section by id
-   * `PUT /sections/{section_id}` update single section
-   * `DELETE /sections/{section_id}` delete single section
+    * `GET /sections`
+        * Purpose: Get all Sections without a Board ID
+        * Return: `{'sections': [{'id': 1, 'name': 'Test Section', ...}, {'id': 2, 'name': 'Test Section', ...}, ...]}`
+    * `GET /sections/{section_id}`
+        * Purpose: Get a single Section by Section ID
+        * Return: `{"Section": {'id': 1, 'name': 'Test Section', ...}}`
+    * `PUT /sections/{board_id}/move`
+        * Purpose: Reorder the Sections by Board ID when moved by the User
+        * Return: `{'sections': [{'id': 1, 'name': 'Test Section', ...}, {'id': 2, 'name': 'Test Section', ...}, ...]}`
+    * `PUT /sections/{section_id}`
+        * Purpose: Edit a single Section by Section ID
+        * Return: `{"Section": {'id': 1, 'name': 'Test Section', ...}}`
+    * `POST /sections/{board_id}`
+        * Purpose: Create a Section to a Board by Board ID
+        * Return: `{"Section": {'id': 1, 'name': 'Test Section', ...}}`
 
 * `/tasks`
+    * `GET /tasks/{task_id}`
+        * Purpose: Get a single Task by Task ID
+        * Return: `{ "Task":  {'id': 1, 'name': 'Test Task', ...}}`
+    * `GET /tasks/section/{section_id}`
+        * Purpose: Get all the Tasks for a Section by Section ID
+        * Return: `{'Tasks': [{'id': 1, 'name': 'Test Task', ...}, {'id': 2, 'name': 'Test Task', ...}, ...]}`
+    * `PUT /tasks/{section_id/move}`
+        * Purpose: Reorder the Tasks by Section ID when moved by the User
+        * Return: `{'Tasks': [{'id': 1, 'name': 'Test Task', ...}, {'id': 2, 'name': 'Test Task', ...}, ...]}`
+    * `PUT /tasks/{task_id}`
+        * Purpose: Edit a single Task by Task ID
+        * Return: `{ "Task":  {'id': 1, 'name': 'Test Task', ...}}`
+    * `DELETE /tasks/{task_id}`
+        * Purpose: Delete a single Task by Task ID
+        * Return: `{'message': 'Successfully deleted!'}`
 
-   * `GET /tasks` get all tasks
-   * `POST /tasks` create new task
-   * `GET /tasks/{task_id}` get task by id
-   * `PUT /tasks/{task_id}` update single task
-   * `DELETE /tasks/{task_id}` delete single task
-
-* `/profile`
-
-   * `GET /profile` get profile of user
-   * `PUT /profile` update user profile
-   * `DELETE /profile` delete user
+* `/users`
+    * `GET /users/tasks`
+        * Purpose: Get all the Tasks of the Current User
+        * Return: `{'Tasks': [{'id': 1, 'name': 'Test Task', ...}, {'id': 2, 'name': 'Test Task', ...}, ...]}`
+    * `GET /users/boards`
+        * Purpose: Get all the Boards of the Current User
+        * Return: `{'Boards: [{'id': 1, 'name': 'Test Board', ...}, {'id': 2, 'name': 'Test Board', ...}, ...]}`
+    * `GET /users`
+        * Purpose: Get the Profile of the Current User
+        * Return: `user: {'id': 1, 'username': 'Tester', ...}`
+    * `POST /users/task/{section_id}`
+        * Purpose: Create a task by Section ID
+        * Return: `{ "Task":  {'id': 1, 'name': 'Test Task', ...}}`
+    * `PUT /users`
+        * Purpose: Edit the Profile of the Current User
+        * Return: `{'id': 1, 'username': 'Tester', ...}`
+    * `DELETE /users`
+        * Purpose: Delete the Current User
+        * Return: `{'message': 'Successfully deleted!'}`
 
 ### Built by
 
