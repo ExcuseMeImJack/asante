@@ -29,11 +29,11 @@
 .section-gallery {
     border: 1px solid rgba(65, 64, 64, 0.596);
     border-radius: 10px;
-    background-color: rgb(231, 231, 231);
+    background-color: rgba(231, 231, 231, 0.801);
     box-shadow: 1px 1px 3px var(--jackblack);
     display: flex;
     justify-content: center;
-    width: 1500px;
+    width: 100%;
     min-width: 900px;
     max-width: 1500px;
     overflow: scroll;

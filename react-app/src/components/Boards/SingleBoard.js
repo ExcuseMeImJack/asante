@@ -54,10 +54,8 @@ function SingleBoard() {
                 </div>
                 {plus
                     ? <i className="fa-solid fa-plus add-section-button" id="section-plus" onClick={() => { setPlus(false) }}>Add New Section</i>
-                    : <i className="fa-solid fa-minus add-section-button" id="section-minus" onClick={() => { setPlus(true) }}> Close</i>}
-                {plus
-                    ? <div className='new-section-form'></div>
-                    : <CreateSectionForm boardId={board.id} setPlus={setPlus} />}
+                    : <div className='close-section-creation'><i className="fa-solid fa-minus add-section-button" id="section-minus" onClick={() => { setPlus(true) }}> Close</i><CreateSectionForm boardId={board.id} setPlus={setPlus} /></div>}
+
                 <div>
                     <Sections />
                 </div>

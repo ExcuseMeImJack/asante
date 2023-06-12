@@ -7,6 +7,10 @@
     padding: 20px;
 }
 
+.single-task-card:hover{
+    background-color: #da363673;
+}
+
 .single-task-card > h3 {
     margin: 0px 0px;
 }

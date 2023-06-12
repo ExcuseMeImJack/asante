@@ -34,6 +34,12 @@
     font-size: 22px;
 }
 
+.close-section-creation{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
 .delete-warning-section {
     display: flex;
     flex-direction: column;
@@ -45,13 +51,21 @@
 }
 
 #section-plus {
+    border: 1px solid var(--jackblack);
+    background-color: rgba(231, 231, 231, 0.664);
+    border-radius: 5px;
+    padding: 15px;
     align-self: center;
     font-size: 18px;
+    color: var(--asantered);
+    font-weight: 700;
 }
 
+
 #section-minus {
-    align-self: center;
+    padding-bottom: 5px;
     font-size: 18px;
+    color: var(--asantered);
 }
 
 .section-check-x {

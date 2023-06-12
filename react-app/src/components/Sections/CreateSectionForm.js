@@ -21,15 +21,16 @@ function CreateSectionForm({boardId, setPlus}){
     return (
         <div>
             <form className='new-section-form' onSubmit={handleSubmit}>
+                    <div className="error-container">
+                        {errors.sectionName && <p>{errors.sectionName}</p>}
+                    </div>
                     <input
                         type="text"
                         placeholder="New Section Name"
                         value={sectionName}
                         onChange={(e) => setSectionName(e.target.value)}
                     />
-                    <div className="error-container">
-                    {errors.sectionName && <p>{errors.sectionName}</p>}
-                    </div>
+
                     <button type="submit" className="submit-create">Create Section</button>
                 </form>
             </div>
