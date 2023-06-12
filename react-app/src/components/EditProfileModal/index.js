@@ -72,7 +72,7 @@ function EditProfileModal() {
                                     onChange={(e) => setProfilePicUrl(e.target.files[0])}
                                     />
                                 </label>
-                                <p className="profile-pic-description">Photos help your teammates recognize you in Asana</p>
+                                <p className="profile-pic-description">Photos help your teammates recognize you in Asante</p>
                             </div>
                         </div>
                         <div className="edit-profile-details-grid">
