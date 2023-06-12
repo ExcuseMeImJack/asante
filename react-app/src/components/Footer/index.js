@@ -7,13 +7,12 @@ function Footer() {
     <footer className="footer">
 
       <div className="social-links">
-        <div>About Asante</div>
-        <div className="about-asante">Asante was developed using Python Flask, React, and Redux.</div>
+        <div className="about-asante">Asante was developed using Python, Flask, React, and Redux.</div>
         {/* <div className="about-asante">Asante was developed using Python Flask for the backend, React for the frontend, and Redux for state management.</div> */}
       </div>
 
       <div className="social-links">
-        <div>GitHub</div>
+        <i className="fa-brands fa-github"></i>
         <a href="https://github.com/koreanpro22">David · </a>
         <a href="https://github.com/ExcuseMeImJack">Jack · </a>
         <a href="https://github.com/RMPasta">Ryan · </a>
@@ -21,7 +20,7 @@ function Footer() {
       </div>
 
       <div className="social-links">
-        <div>LinkedIn</div>
+        <i className="fa-brands fa-linkedin"></i>
         <a href="https://www.linkedin.com/in/david-kim-a37b59274/">David · </a>
         <a href="https://www.linkedin.com/in/jack-roybal-719909264/">Jack · </a>
         <a href="https://www.linkedin.com/in/ryan-malmos/">Ryan · </a>

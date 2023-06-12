@@ -38,9 +38,15 @@
     color: white;
     text-decoration: none;
     background-color: var(--jackblack);
+
 }
 
 .fa-solid {
     font-size: 10px;
     margin: 0 5px 0 5px;
+}
+
+.fa-github, .fa-linkedin {
+    margin: 10px;
+    font-size: 20px;
 }

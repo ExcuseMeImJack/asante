@@ -5,6 +5,10 @@
     min-height: 600px;
 }
 
+footer{
+    font-family: 'Noto Sans', sans-serif;
+}
+
 body {
     margin: 0;
     overflow-x: hidden;
@@ -44,4 +48,3 @@ body {
 .profile-page{
     padding: 50px;
 }
-
