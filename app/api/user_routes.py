@@ -45,9 +45,7 @@ def create_task(section_id):
     task_count = len(list(Task.query.filter(Task.section_id == section_id)))
 
     section = Section.query.get(section_id)
-    print('SECTION ==================',section)
     board = list(Board.query.filter(Board.id == section.board_id))
-    print('BOARD ==================', board[0].to_dict())
 
     if not section:
         return {'errors': ['Section does not exist']}, 404
@@ -87,7 +85,6 @@ def edit_profile():
     profile = User.query.get(current_user.id)
     # Creates instance of edit profile form class
     form = EditProfileForm()
-    print("FORM ~~~~~~~~~~~~~~~~~~~~~~~~~~>", form.data)
     # Uses values from the form instance to edit a user information
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():

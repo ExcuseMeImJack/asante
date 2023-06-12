@@ -86,7 +86,6 @@ function Home() {
   const tasks = useSelector((state) => state.tasks.tasks);
   const boards = useSelector((state) => state.boards.boards);
   const sections = useSelector((state) => state.sections.sections);
-  //   console.log("store boards:", storeBoards);
 
   useEffect(() => {
     dispatch(getAllBoardsForEachSection());

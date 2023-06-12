@@ -60,7 +60,6 @@ function AllTasksBySection({ section, boardId }) {
                 {createButton
                         ?  <></>
                         :  <CreateTaskBySectionForm sectionId={section.id} setCreateButton={setCreateButton} />}
-                {console.log('SECTION TASKS~~~~~~~', tasks.map(t => t.order))}
                 <Droppable droppableId={'section-' + section.id} type='task'>
                     {(provided) => (
                         <div className='task-gallery' {...provided.droppableProps} ref={provided.innerRef}>

@@ -27,10 +27,8 @@ def get_task(task_id):
 @login_required
 # Get task by id
 def get_all_tasks(section_id):
-    print()
     # Query a task by task id
     tasks = Task.query.filter(Task.section_id == section_id)
-    print('TASKS~~~~', tasks)
     # Check if task belongs to current user
     return { "Tasks": [task.to_dict() for task in tasks] }
 
@@ -51,16 +49,11 @@ def edit_task_order(section_id):
         # db_tasks.append(db_task)
 
     section = Section.query.get(section_id)
-    print("SECTION ~~~~~~~~~", section)
     board_id = section.board_id
     sections = Section.query.filter(Section.board_id == board_id)
     db_tasks = []
-    print('SECTIONSSS ~~~~~~~~~~~~~~~', sections)
     for section in sections:
-        print("SECTION ~~~~~~~~~", section.to_dict())
         tasks = Task.query.filter(Task.section_id == section.id)
-        print("TASKS~~~~~~~~~", tasks)
-    print("DB TASKS~~~~~~~~~~", db_tasks)
     return { 'tasks': [task.to_dict() for task in db_tasks]}
 
 

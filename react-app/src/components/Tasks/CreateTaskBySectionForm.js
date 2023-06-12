@@ -30,9 +30,7 @@ function CreateTaskBySectionForm({sectionId, setCreateButton}){
             due_date: dueDate,
             description: description
         }, sectionId))
-        console.log(data)
         if (data.status === 401) {
-            console.log("WORKING!!!!?")
             setErrors(errors => ({...errors, dueDate: "Due Date Required!"}))
             return;
         }

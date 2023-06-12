@@ -23,10 +23,6 @@ function Sections() {
 
     const onDragEnd = async (result) => {
         const { destination, source, type } = result;
-        // console.log('Source ~~~~~~~~~>', source)
-        // console.log('Destination ~~~~>', destination)
-        // console.log('DraggableId ~~~~>', draggableId)
-        // console.log('Type ~~~~~~~~~~~>', type)
 
         if (
             !destination ||
@@ -53,8 +49,7 @@ function Sections() {
 
         if (type === 'task') {
             if (sourceSectionId === destSectionId) {
-                //reorder the task in 1 section
-                // console.log('TASKS~~~~~~~~~~~~~', tasks.map(t => t.order))
+
                 const tasksClone = [...sourceSectionTasks]
                 const task = sourceSectionTasks[source.index]
                 tasksClone.splice(source.index, 1)
@@ -64,21 +59,16 @@ function Sections() {
             }
 
             if (sourceSectionId !== destSectionId) {
-                console.log('source tasks ', sourceSectionTasks)
-                console.log('dest tasks ', destSectionTasks)
-                console.log('ID ', sourceSectionId)
-                console.log('ID ', destSectionId)
+
                 //call 2 thunks
                 //change section id for task
                 //reorder the tasks in the both sections source/destination
                 const sourceTasks = [...sourceSectionTasks]
                 const destTasks = [...destSectionTasks]
                 const task = sourceTasks[source.index]
-                console.log(task)
                 sourceTasks.splice(source.index, 1)
                 destTasks.splice(destination.index, 0, task)
-                console.log(sourceTasks)
-                console.log(destTasks)
+
                 // dispatch(editTaskByTaskId(task, task.id))
                 // dispatch(orderTasks(tasksClone))
                 await dispatch(orderTasksThunk(sourceTasks, sourceSectionId))
@@ -111,7 +101,6 @@ function Sections() {
                     <i className="fa-regular fa-circle-question" id="tooltip" title="Click and drag with mouse or use Tab Space and Arrow Keys"></i>
                 </div>
             </div>
-            {/* {console.log(sections.map((s)=> s.order))} */}
             <DragDropContext onDragEnd={onDragEnd}>
                 <Droppable droppableId="ROOT" direction='horizontal' type='section'>
                     {(provided) => (

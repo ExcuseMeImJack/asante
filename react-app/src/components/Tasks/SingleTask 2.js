@@ -1,8 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
+import SlideOutTask from '../SlideOutTask/SlideOutTask';
 import EditTaskByIdForm from '../Tasks/EditTaskByIdForm';
 import './SingleTask.css'
 
 function SingleTask({ task }) {
+    const storeTasks = useSelector((state) => state.tasks.tasks);
+    const storeTask = storeTasks.find(findTask => findTask.id === task.id)
     const [showEditTask, setShowEditTask] = useState(false);
     const ulRef = useRef();
 
@@ -31,9 +35,9 @@ function SingleTask({ task }) {
         <div className='single-task-card' onClick={openTask}>
             <h3>{task.name}</h3>
             <div>{task.description || "No description"}</div>
-            <div className={ulClassName} ref={ulRef}>
+            <ul className={ulClassName} ref={ulRef}>
                 <EditTaskByIdForm task={task} ulRef={ulRef} type={"single-task"} setShowEditTask={setShowEditTask}/>
-            </div>
+            </ul>
         </div>
     );
 }

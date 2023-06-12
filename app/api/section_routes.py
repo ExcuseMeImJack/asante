@@ -78,7 +78,6 @@ def edit_section_order(board_id):
         sections = []
         for index in range(0,len(data)):
             section = data[index]
-            print('SECTION ~~~~~', type(section))
             db_section = Section.query.get(section['id'])
             db_section.order = index
             db.session.commit()

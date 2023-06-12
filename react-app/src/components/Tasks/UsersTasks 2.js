@@ -1,9 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTasksByUserId } from "../../store/tasks";
-import { getAllBoardsForEachSection } from "../../store/sections";
-import SlideOutTask from "../SlideOutTask/SlideOutTask";
+import {
+  deleteTaskByTaskId,
+  editTaskByTaskId,
+  getTasksByUserId,
+} from "../../store/tasks";
 import "./UsersTasks.css";
+import SlideOutTask from "../SlideOutTask/SlideOutTask";
+import EditTaskByIdForm from "./EditTaskByIdForm";
+import { getBoardById } from "../../store/boards";
+import { getAllBoardsForEachSection, getSectionsByBoardId } from "../../store/sections";
 
 function UsersTasks() {
   const dispatch = useDispatch();

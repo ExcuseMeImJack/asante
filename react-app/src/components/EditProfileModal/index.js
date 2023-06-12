@@ -22,7 +22,6 @@ function EditProfileModal() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
-        console.log(formData)
         formData.append("profile_pic_url", profilePicUrl);
 
         if(name) formData.append("name", name);
@@ -30,7 +29,6 @@ function EditProfileModal() {
         if(aboutMe) formData.append("about_me", aboutMe);
 
         setImageLoading(true);
-        console.log("FORMDATA~~~~~~~~~~~~~>", formData)
         const res = await fetch('/api/users', {
             method: "PUT",
             body: formData
@@ -39,12 +37,10 @@ function EditProfileModal() {
         if(res.ok) {
             await res.json();
             setImageLoading(false)
-            console.log("res ok")
             closeModal();
             dispatch(getUserProfile())
         } else {
             setImageLoading(false)
-            console.log("error")
         }
     }
 

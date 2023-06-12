@@ -18,7 +18,6 @@ function UserProfile() {
   const history = useHistory();
   const profile = useSelector((state) => state.users.profile);
   const tasks = useSelector((state) => state.tasks.tasks);
-  console.log(tasks);
   const boards = useSelector((state) => state.boards.boards);
   const [quoteInfo, setQuoteInfo] = useState("");
   const sections = useSelector((state) => state.sections.sections);
@@ -41,7 +40,6 @@ function UserProfile() {
           contentType: "application/json",
         }
       );
-      // console.log('QUOTE RES', res)
       if (res.ok) {
         const data = await res.json();
         setQuoteInfo(data);

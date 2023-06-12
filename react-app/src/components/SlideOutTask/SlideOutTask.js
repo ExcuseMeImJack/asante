@@ -7,10 +7,8 @@ export default function SlideOutTask({ task }) {
     const storeTasks = useSelector((state) => state.tasks.tasks);
     const [showTask, setShowTask] = useState(false);
     const ulRef = useRef();
-    // console.log(task)
     const storeTask = storeTasks.find(findTask => findTask.id === task.id);
 
-    // console.log(storeTask)
     const openTask = () => {
         if (showTask) return;
         setShowTask(true);
@@ -33,7 +31,6 @@ export default function SlideOutTask({ task }) {
 
     const ulClassName = "slide-out-task" + (showTask ? "" : " hidden-task");
 
-    // console.log(storeTasks)
 
     // if(storeTasks.length == 0) return <p>You have no tasks.</p>
 
