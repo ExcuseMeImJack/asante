@@ -25,10 +25,14 @@
 }
 
 .section-gallery {
-    border: 1px solid black;
+    border: 1px solid rgba(65, 64, 64, 0.596);
+    border-radius: 10px;
+    background-color: rgb(231, 231, 231);
+    box-shadow: 1px 1px 3px var(--jackblack);
     display: flex;
     justify-content: center;
-    width: 1000px;
+    width: 1500px;
+    min-width: 1000px;
     overflow: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;
