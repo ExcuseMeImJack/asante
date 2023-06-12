@@ -87,6 +87,7 @@ def edit_profile():
     profile = User.query.get(current_user.id)
     # Creates instance of edit profile form class
     form = EditProfileForm()
+    print("FORM ~~~~~~~~~~~~~~~~~~~~~~~~~~>", form.data)
     # Uses values from the form instance to edit a user information
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():

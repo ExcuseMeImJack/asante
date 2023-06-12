@@ -60,6 +60,7 @@ function EditTaskByIdForm({ task, ulRef, type, setShowEditTask}){
     return (
         <div>
             <form onSubmit={handleSubmit} className='form'>
+                    <p>Task Name</p>
                     <input
                         ref={ulRef}
                         className={type === "single-task" ? 'edit-task-input-single' : 'edit-task-input'}
@@ -71,6 +72,7 @@ function EditTaskByIdForm({ task, ulRef, type, setShowEditTask}){
                     <div className={type === "single-task" ? "single-error-container" : "error-container"}>
                         {errors.taskName && <p>{errors.taskName}</p>}
                     </div>
+                    <p>Due Date</p>
                     <input
                         type="date"
                         className={type === "single-task" ? 'edit-task-input-single' : 'edit-task-input'}
@@ -80,6 +82,7 @@ function EditTaskByIdForm({ task, ulRef, type, setShowEditTask}){
                     <div className={type === "single-task" ? "single-error-container" : "error-container"}>
                         {errors.dueDate && <p>{errors.dueDate}</p>}
                     </div>
+                    <p>Description</p>
                     <input
                         type="text"
                         className={type === "single-task" ? 'edit-task-input-single' : 'edit-task-input'}

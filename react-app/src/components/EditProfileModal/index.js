@@ -31,7 +31,7 @@ function EditProfileModal() {
         if(aboutMe) formData.append("about_me", aboutMe);
 
         setImageLoading(true);
-
+        console.log("FORMDATA~~~~~~~~~~~~~>", formData)
         const res = await fetch('/api/users', {
             method: "PUT",
             body: formData

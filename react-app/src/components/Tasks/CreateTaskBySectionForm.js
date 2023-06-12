@@ -46,6 +46,7 @@ function CreateTaskBySectionForm({sectionId, setCreateButton}){
     return (
         <div>
             <form className='form' onSubmit={handleSubmit}>
+                    <p>Task Name</p>
                     <input
                         type="text"
                         placeholder="Name"
@@ -55,6 +56,7 @@ function CreateTaskBySectionForm({sectionId, setCreateButton}){
                     <div className="error-container">
                     {errors.taskName && <p>{errors.taskName}</p>}
                     </div>
+                    <p>Due Date</p>
                     <input
                         type="date"
                         value={dueDate}
@@ -63,6 +65,7 @@ function CreateTaskBySectionForm({sectionId, setCreateButton}){
                     <div className="error-container">
                     {errors.dueDate && <p>{errors.dueDate}</p>}
                     </div>
+                    <p>Description</p>
                     <input
                         type="text"
                         placeholder="Description"
