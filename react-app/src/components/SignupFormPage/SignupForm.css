@@ -28,7 +28,6 @@ label {
 .form-button {
     border: none;
     background-color: #3f6ac4;
-    box-shadow: 2px 2px 3px #3f6ac4;
     color: white;
     padding: 10px 0;
     border: 1px #3f6ac4 solid;
@@ -45,7 +44,6 @@ label {
 
 input {
     border: 1px solid #3054a1;
-    box-shadow: 2px 2px 2px #3054a1;
     width: 260px;
     height: 24px;
     outline: none;
@@ -53,7 +51,6 @@ input {
 
 input:focus {
     border: 1px solid #616f8f;
-    box-shadow: 2px 2px 2px #3054a1;
 }
 
 .error-container {

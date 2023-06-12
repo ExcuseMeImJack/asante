@@ -7,3 +7,32 @@
     height: 100px;
     resize: none;
 }
+
+
+.createtaskform{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--jackblack);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+
+.createtaskform > textarea{
+    resize: none;
+}
+
+.submit-create-task{
+    width: 100%;
+    background-color: #3f6ac4;
+    color: white;
+    padding: 10px 0;
+    border: 1px var(--jackblack) solid;
+    margin-top: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.submit-create-task:hover{
+    background-color:#315fc4;
+}

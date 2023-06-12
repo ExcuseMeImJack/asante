@@ -39,7 +39,7 @@ function CreateTaskBySectionForm({sectionId, setCreateButton}){
 
     return (
         <div>
-            <form className='form' onSubmit={handleSubmit}>
+            <form className='createtaskform' onSubmit={handleSubmit}>
                     <p>Task Name</p>
                     <input
                         type="text"
@@ -69,7 +69,7 @@ function CreateTaskBySectionForm({sectionId, setCreateButton}){
                     <div className="error-container">
                     {errors.description && <p>{errors.description}</p>}
                     </div>
-                    <button type="submit" className="submit-create">Create Task</button>
+                    <button type="submit" className="submit-create-task">Create Task</button>
                 </form>
             </div>
     );
