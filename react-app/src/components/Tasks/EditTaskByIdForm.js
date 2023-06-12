@@ -58,7 +58,7 @@ function EditTaskByIdForm({ task, ulRef, type}){
 
     return (
         <div>
-            <form onSubmit={handleSubmit} className='form'>
+            <form onSubmit={handleSubmit} className='edittaskform'>
                     <p>Task Name</p>
                     <input
                         ref={ulRef}
@@ -96,10 +96,12 @@ function EditTaskByIdForm({ task, ulRef, type}){
                     <div className="updated">
                         {updated && <p>Updated!</p>}
                     </div>
-                    <button className="form-button demo-button" onClick={async () => {
-                        await dispatch(deleteTaskByTaskId(task))
-                    }}>Complete Task</button>
-                    <button type="submit" className="form-button">Edit Task</button>
+                    <div className='edit-task-button-confirms'>
+                        <button className="form-button demo-button" onClick={async () => {
+                            await dispatch(deleteTaskByTaskId(task))
+                        }}>Complete Task</button>
+                        <button type="submit" className="form-button">Edit Task</button>
+                    </div>
                 </form>
             </div>
     );

@@ -1,9 +1,9 @@
-.form {
+.edittaskform {
     display: flex;
     flex-direction: column;
 }
 
 #description-box {
-    width: 180px;
-    height: 160px;
+    height: 100px;
+    resize: none;
 }
