@@ -65,8 +65,8 @@ function CreateTaskBySectionForm({sectionId, setCreateButton}){
                     <div className="error-container">
                     {errors.dueDate && <p>{errors.dueDate}</p>}
                     </div>
-                    <p>Description</p>
-                    <input
+                    <p className='test'>Description</p>
+                    <textarea
                         type="text"
                         placeholder="Description"
                         value={description}

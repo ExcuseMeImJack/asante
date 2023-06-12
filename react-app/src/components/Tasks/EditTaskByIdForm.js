@@ -83,8 +83,9 @@ function EditTaskByIdForm({ task, ulRef, type, setShowEditTask}){
                         {errors.dueDate && <p>{errors.dueDate}</p>}
                     </div>
                     <p>Description</p>
-                    <input
+                    <textarea
                         type="text"
+                        id="description-box"
                         className={type === "single-task" ? 'edit-task-input-single' : 'edit-task-input'}
                         placeholder="Description"
                         value={description}
