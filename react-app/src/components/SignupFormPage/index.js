@@ -138,6 +138,7 @@ function SignupFormPage() {
               {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
             </div>
           <button className="form-button" type="submit">Sign Up</button>
+          <div onClick={() => history.goBack()} className="back-button cursor-pointer"><i className="fa-sharp fa-solid fa-arrow-left"></i>Back</div>
         </form>
       </div>
     </>

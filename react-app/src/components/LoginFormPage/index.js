@@ -85,6 +85,7 @@ function LoginFormPage() {
             <button type="submit" className="form-button">Log In</button>
             <button onClick={handleDemoLogin} className="form-button demo-button">Demo User</button>
           </div>
+        <div onClick={() => history.goBack()} className="back-button cursor-pointer"><i className="fa-sharp fa-solid fa-arrow-left"></i>Back</div>
         </form>
       </div>
     </>

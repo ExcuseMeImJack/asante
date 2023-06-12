@@ -19,3 +19,8 @@
 .demo-button:hover {
     background-color: #1da734;
 }
+
+.back-button {
+    margin-top: 20px;
+    cursor: pointer;
+}
