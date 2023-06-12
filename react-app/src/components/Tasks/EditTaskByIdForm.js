@@ -4,12 +4,11 @@ import { deleteTaskByTaskId, getTasksByUserId } from '../../store/tasks';
 import { editTaskByTaskId } from '../../store/tasks';
 import './EditTaskByIdForm.css'
 
-function EditTaskByIdForm({ task, ulRef, type, setShowEditTask}){
+function EditTaskByIdForm({ task, ulRef, type}){
     const dispatch = useDispatch();
     const [taskName, setTaskName] = useState(task.name);
     const [dueDate, setDueDate] = useState(task.due_date);
     const [description, setDescription] = useState(task.description);
-    // const [clickedOnce, setClickedOnce] = useState(false);
     const [errors, setErrors] = useState({});
     const [updated, setUpdated] = useState(false);
 

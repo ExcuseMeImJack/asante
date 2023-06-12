@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import Board, db, Section, Task
+from app.models import db, Section, Task
 from flask_login import login_required, current_user
 from .auth_routes import validation_errors_to_error_messages
 from ..forms.edit_task_form import EditTaskForm

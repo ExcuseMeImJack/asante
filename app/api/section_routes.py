@@ -1,9 +1,8 @@
 from flask import Blueprint, request
-from app.models import Board, db, Section, Task
+from app.models import Board, db, Section
 from flask_login import login_required, current_user
 from .auth_routes import validation_errors_to_error_messages
 from ..forms.edit_section_form import EditSectionForm
-from ..forms.create_task_form import CreateTaskForm
 from ..forms.create_section_form import CreateSectionForm
 
 # Creates a Blueprint for section routes

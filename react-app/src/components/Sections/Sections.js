@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSectionsByBoardId, orderSections, deleteSectionById } from '../../store/sections';
+import { getSectionsByBoardId, orderSections } from '../../store/sections';
 import { getTasksByUserId, orderTasksThunk } from '../../store/tasks';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Droppable, Draggable, DragDropContext } from 'react-beautiful-dnd';
 import AllTasksBySection from '../Tasks/AllTasksBySection';
 import './Sections.css'
@@ -10,7 +10,6 @@ import './Sections.css'
 function Sections() {
     const { boardId } = useParams();
     const dispatch = useDispatch();
-    const history = useHistory();
     const sections = useSelector((state) => state.sections.sections);
     const storeTasks = useSelector((state) => state.tasks);
 
@@ -23,7 +22,7 @@ function Sections() {
     }, [dispatch, boardId, sections.length])
 
     const onDragEnd = async (result) => {
-        const { destination, source, draggableId, type } = result;
+        const { destination, source, type } = result;
         // console.log('Source ~~~~~~~~~>', source)
         // console.log('Destination ~~~~>', destination)
         // console.log('DraggableId ~~~~>', draggableId)

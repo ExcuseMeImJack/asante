@@ -14,7 +14,6 @@ function EditProfileModal() {
     const [profilePicUrl, setProfilePicUrl] = useState(null)
     const [imageLoading, setImageLoading] = useState(false)
     // eslint-disable-next-line
-    const [errors, setErrors] = useState({})
 
     if(aboutMe === null) {
          setAboutMe("")

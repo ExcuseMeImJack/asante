@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTasksByUserId, orderTasksThunk } from '../../store/tasks';
-import { useHistory, useParams } from 'react-router-dom';
-import { getSectionsByBoardId, orderSections, deleteSectionById } from '../../store/sections';
-import { Droppable, Draggable, DragDropContext } from 'react-beautiful-dnd';
+import { getTasksByUserId } from '../../store/tasks';
+import { useHistory } from 'react-router-dom';
+import { deleteSectionById } from '../../store/sections';
+import { Droppable, Draggable } from 'react-beautiful-dnd';
 import SingleTask from './SingleTask';
 import EditSectionForm from '../Sections/EditSectionForm';
 import CreateTaskBySectionForm from '../Tasks/CreateTaskBySectionForm';

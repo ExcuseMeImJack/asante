@@ -9,7 +9,7 @@ import { getBoardsByUserId } from "../../store/boards";
 import DeleteUserModal from "../DeleteUserModal";
 import SlideOutTask from "../SlideOutTask/SlideOutTask";
 import quoteCensor from "./quoteCensor";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import boardicon from "../../assets/board.png";
 import { getAllBoardsForEachSection } from "../../store/sections";
 
@@ -46,7 +46,7 @@ function UserProfile() {
         const data = await res.json();
         setQuoteInfo(data);
       } else {
-        return "error", res.error;
+        return res.error;
       }
     };
     fetchQuote();
@@ -151,7 +151,7 @@ function UserProfile() {
                       key={board.id}
                       onClick={() => history.push(`/boards/${board.id}`)}
                     >
-                      <img id="boardimg" src={boardicon} />
+                      <img id="boardimg" src={boardicon} alt="board icon" />
                       <p id="profile-board-text">{board.name}</p>
                     </div>
                   ))

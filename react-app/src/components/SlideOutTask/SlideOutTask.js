@@ -5,12 +5,10 @@ import EditTaskByIdForm from '../Tasks/EditTaskByIdForm';
 
 export default function SlideOutTask({ task }) {
     const storeTasks = useSelector((state) => state.tasks.tasks);
-    const boards = useSelector(state => state.boards.boards);
     const [showTask, setShowTask] = useState(false);
     const ulRef = useRef();
     // console.log(task)
-    const storeTask = storeTasks.find(findTask => findTask.id === task.id)
-    const board = boards.find(findBoard => findBoard.section_id === storeTask.section_id.id)
+    const storeTask = storeTasks.find(findTask => findTask.id === task.id);
 
     // console.log(storeTask)
     const openTask = () => {
@@ -39,12 +37,12 @@ export default function SlideOutTask({ task }) {
 
     // if(storeTasks.length == 0) return <p>You have no tasks.</p>
 
-    const formatDateForDisplay = () => {
-      const formattedDate = storeTask.due_date?.split("00:00:00")[0].split(' ');
-      const date = formattedDate[2]
-      const month = formattedDate[1]
-      return date + ' ' + month
-    }
+    // const formatDateForDisplay = () => {
+    //   const formattedDate = storeTask.due_date?.split("00:00:00")[0].split(' ');
+    //   const date = formattedDate[2]
+    //   const month = formattedDate[1]
+    //   return date + ' ' + month
+    // }
 
   return (
     <div>

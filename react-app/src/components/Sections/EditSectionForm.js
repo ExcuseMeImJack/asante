@@ -11,10 +11,8 @@ function EditSectionForm({sectionId, setEditButton, boardId}){
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors({});
-        let hasErrors = false;
         if (!sectionName) {
             setErrors(errors => ({...errors, sectionName: "Please enter a new name"}))
-            hasErrors = true;
             return;
         }
         await dispatch(editSectionBySectionId({name: sectionName}, sectionId));

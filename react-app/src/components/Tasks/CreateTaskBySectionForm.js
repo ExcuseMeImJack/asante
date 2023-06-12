@@ -14,10 +14,8 @@ function CreateTaskBySectionForm({sectionId, setCreateButton}){
     const handleSubmit = async (e) => {
         e.preventDefault()
         setErrors({})
-        let hasErrors = false;
         if (!taskName) {
             setErrors(error => ({...errors, taskName: "Task Name Required"}))
-            hasErrors = true;
         }
         // if (!dueDate) {
         //     setErrors(errors => ({...errors, dueDate: "Due Date Required!"}))
@@ -25,7 +23,6 @@ function CreateTaskBySectionForm({sectionId, setCreateButton}){
         // }
         if (!description) {
             setErrors(errors => ({...errors, description: "Description Required!"}))
-            hasErrors = true;
         }
 
         const data = await dispatch(addTaskBySectionId({
@@ -37,7 +34,6 @@ function CreateTaskBySectionForm({sectionId, setCreateButton}){
         if (data.status === 401) {
             console.log("WORKING!!!!?")
             setErrors(errors => ({...errors, dueDate: "Due Date Required!"}))
-            hasErrors = true;
             return;
         }
         setCreateButton(true)

@@ -1,12 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
-import SlideOutTask from '../SlideOutTask/SlideOutTask';
 import EditTaskByIdForm from '../Tasks/EditTaskByIdForm';
 import './SingleTask.css'
 
 function SingleTask({ task }) {
-    const storeTasks = useSelector((state) => state.tasks.tasks);
-    const storeTask = storeTasks.find(findTask => findTask.id === task.id)
     const [showEditTask, setShowEditTask] = useState(false);
     const ulRef = useRef();
     // console.log(task)

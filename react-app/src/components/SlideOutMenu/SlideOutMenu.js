@@ -53,7 +53,7 @@ function SlideOutMenu() {
             {boards.length > 0 ? <div><div className='nav-plus-boards nav-create-board-form-popout'>My Boards</div></div> : <></>}
             <div className='my-boards scroll'>
               {boards.map(board => (
-                <div key={board.id} className='nav-boards change-cursor hoverable' onClick={() => history.push(`/boards/${board.id}`)}><div className='nav-inner-board-div'><img id='sidemenu-boards-icon' src={boardicon}/><p>{board.name}</p></div></div>
+                <div key={board.id} className='nav-boards change-cursor hoverable' onClick={() => history.push(`/boards/${board.id}`)}><div className='nav-inner-board-div'><img id='sidemenu-boards-icon' src={boardicon} alt="board icon"/><p>{board.name}</p></div></div>
               ))}
             </div>
         </ul>
