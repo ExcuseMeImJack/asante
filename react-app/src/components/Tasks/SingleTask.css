@@ -9,6 +9,7 @@
 
 .single-task-card:hover{
     background-color: #da363673;
+    border-radius: 6px;
 }
 
 .single-task-card > h3 {

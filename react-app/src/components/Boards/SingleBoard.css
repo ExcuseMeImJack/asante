@@ -81,10 +81,6 @@
     cursor: pointer;
 }
 
-.new-section-form {
-    /* height: 60px; */
-}
-
 .aligned-right {
     align-self: flex-end;
     margin-right: 46px;
