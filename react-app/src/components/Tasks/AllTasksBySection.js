@@ -43,11 +43,8 @@ function AllTasksBySection({ section, boardId }) {
                         }
                     }}></i>
                         <div className='delete-warning-section'>
-                            <div>
-                            {deleteClicked && <p className='delete-text-section'>Are you sure?</p>}
-
-                            </div>
                             <div className='section-check-x'>
+                                {deleteClicked && <p className='delete-text-section'>Are you sure?</p>}
                                 {deleteClicked && <i className='fa-solid fa-xmark' id="section-xmark" onClick={() => { setDeleteClicked(false)}}></i>}
                                 {deleteClicked && <i className='fa-solid fa-check' id="section-check" onClick={async () => {
                                     await dispatch(deleteSectionById(section))

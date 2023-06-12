@@ -32,9 +32,9 @@ function SingleTask({ task }) {
         <div className='single-task-card' onClick={openTask}>
             <h3>{task.name}</h3>
             <div>{task.description || "No description"}</div>
-            <ul className={ulClassName} ref={ulRef}>
+            <div className={ulClassName} ref={ulRef}>
                 <EditTaskByIdForm task={task} ulRef={ulRef} type={"single-task"} setShowEditTask={setShowEditTask}/>
-            </ul>
+            </div>
         </div>
     );
 }

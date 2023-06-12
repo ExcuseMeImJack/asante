@@ -7,10 +7,12 @@
     margin: 20px;
     background-color: white;
     min-width: 300px;
-    max-height: 500px;
     overflow: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    min-height: 400px;
+    max-height: 800px;
+    height: 560px;
 }
 
 .single-section-border::-webkit-scrollbar {
@@ -32,11 +34,14 @@
     display: flex;
     justify-content: center;
     width: 1500px;
-    min-width: 950px;
+    min-width: 900px;
     max-width: 1500px;
     overflow: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    min-height: 400px;
+    max-height: 690px;
+    height: 640px;
 }
 
 .section-gallery::-webkit-scrollbar {

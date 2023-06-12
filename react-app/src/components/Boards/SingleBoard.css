@@ -5,7 +5,7 @@
     flex-direction: column;
     margin: 0 auto;
     max-width: 1000px;
-    padding: 50px;
+    padding: 80px;
 }
 
 .board-container {
@@ -17,31 +17,24 @@
 
 }
 
-.board-and-trash {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 30px;
-    margin-left: 60px;
-}
-
 .warning-wrapper {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .board-and-trash {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     gap: 30px;
-    margin-left: 60px;
 }
 
-.warning-wrapper {
-    display: flex;
-    flex-direction: column;
+.board-and-trash > h2 {
+    margin: 0;
 }
+
 
 #board-trash {
     /* align-self: flex-end; */
@@ -61,20 +54,18 @@
 
 .delete-warning-board {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    height: 60px;
+    height: 50px;
     margin-left: 20px;
 }
 
 .check-and-x {
     display: flex;
     justify-content: center;
-    margin-left: 20px;
+    margin-left: 5px;
 }
 
 .delete-text {
-    margin-right: 10px;
     color: red;
 }
 .delete-warning {
@@ -83,7 +74,7 @@
     align-items: center;
     flex-direction: column;
     /* align-self: flex-end; */
-    height: 60px;
+    /* height: 60px; */
 }
 
 .fa-solid {
@@ -91,7 +82,7 @@
 }
 
 .new-section-form {
-    height: 60px;
+    /* height: 60px; */
 }
 
 .aligned-right {

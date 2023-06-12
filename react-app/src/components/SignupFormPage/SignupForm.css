@@ -34,7 +34,7 @@ label {
     border: 1px #3f6ac4 solid;
     margin-top: 10px;
     border-radius: 10px;
-    width: 100px;
+    width: 100%;
     align-self: center;
 }
 
