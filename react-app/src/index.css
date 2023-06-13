@@ -14,13 +14,13 @@ body {
     overflow-x: hidden;
     /* overflow-y: scroll; */
     /* max-width: 100vp; */
-    font-family: 'Noto Sans', sans-serif;
     position: relative;
     min-height: 100vh;
 
     display: flex;
     flex-flow: column wrap;
     align-items: space-between;
+    font-family: 'Quicksand', sans-serif;
 }
 
 #root {

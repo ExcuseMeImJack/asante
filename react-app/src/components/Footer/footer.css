@@ -38,7 +38,10 @@
     color: white;
     text-decoration: none;
     background-color: var(--jackblack);
+}
 
+.social-links a:hover{
+    text-decoration: underline;
 }
 
 .fa-solid {
