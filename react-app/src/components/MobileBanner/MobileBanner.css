@@ -1,7 +1,6 @@
 .mobile-banner-container {
     margin-top: 0;
     padding: 80px;
-    padding-left: 0px;
     font-size: 34px;
     position: absolute;
     height: 200vh;
@@ -38,6 +37,10 @@
 }
 
 @media screen and (max-width: 650px) {
+    .mobile-banner-container {
+        display: flex;
+        padding-left: 10px;
+    }
     .mobile-banner {
         width: 26%;
     }
@@ -47,6 +50,9 @@
 }
 
 @media screen and (max-width: 500px) {
+    .mobile-banner-container {
+        padding-left: 0px;
+    }
     .mobile-banner {
         padding-left: 0;
     }
