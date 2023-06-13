@@ -15,6 +15,7 @@ import { getUserProfile } from "./store/users";
 import Home from "./components/Home";
 import Footer from "./components/Footer"
 import UsersTasks from './components/Tasks/UsersTasks'
+import MobileBanner from "./components/MobileBanner";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ function App() {
   }, [dispatch]);
   return (
     <div className="app">
+      <MobileBanner />
       {user ? (
         <>
           <Navigation isLoaded={isLoaded} />
