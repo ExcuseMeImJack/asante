@@ -1,6 +1,6 @@
 from app.models import db, Task, environment, SCHEMA
 from sqlalchemy.sql import text
-from datetime import datetime
+from datetime import datetime, date
 
 
 # Adds a demo user, you can add other users here if you want
@@ -9,6 +9,7 @@ def seed_tasks():
         name='Task 1',
         order=0,
         section_id=1,
+        due_date=datetime(2024, 3, 10),
         user_id='1'
     )
     task2 = Task(
@@ -16,12 +17,14 @@ def seed_tasks():
         order=1,
         description='This is task numero dos',
         section_id=2,
+        due_date=datetime(2024, 9, 7),
         user_id='1'
     )
     task3 = Task(
         name='Task 3',
         order=0,
         section_id=3,
+        due_date=datetime(2024, 8, 29),
         user_id='2'
     )
     task4 = Task(
@@ -29,12 +32,14 @@ def seed_tasks():
         order=1,
         description='This is task numero quatro',
         section_id=4,
+        due_date=datetime(2024, 6, 18),
         user_id='2'
     )
     task5 = Task(
         name='Task 5',
         order=0,
         section_id=5,
+        due_date=datetime(2024, 1, 11),
         user_id='3'
     )
     task6 = Task(
@@ -42,12 +47,14 @@ def seed_tasks():
         order=1,
         description='This is task numero seis',
         section_id=6,
+        due_date=datetime(2024, 5, 23),
         user_id='3'
     )
     task7 = Task(
         name='Task 7',
         order=0,
         section_id=7,
+        due_date=datetime(2024, 11, 28),
         user_id='4'
     )
     task8 = Task(
@@ -55,18 +62,21 @@ def seed_tasks():
         order=1,
         description='This is task numero ocho',
         section_id=8,
+        due_date=datetime(2024, 12, 25),
         user_id='4'
     )
     task9 = Task(
         name='Task 9',
         order=0,
         section_id=9,
+        due_date=datetime(2024, 12, 7),
         user_id='5'
     )
     task10 = Task(
         name='Task 10',
         order=1,
         description='This is task numero diez',
+        due_date=datetime(2024, 7, 1),
         section_id=10,
         user_id='5'
     )
@@ -75,6 +85,7 @@ def seed_tasks():
         order=0,
         description='This is task numero once',
         section_id=2,
+        due_date=datetime(2024, 7, 10),
         user_id='1'
     )
     task12 = Task(
@@ -82,6 +93,7 @@ def seed_tasks():
         order=0,
         description='This is task numero doce',
         section_id=4,
+        due_date=datetime(2024, 9, 15),
         user_id='2'
     )
     task13 = Task(
@@ -89,6 +101,7 @@ def seed_tasks():
         order=0,
         description='This is task numero trece',
         section_id=6,
+        due_date=datetime(2024, 10, 10),
         user_id='3'
     )
     task14 = Task(
@@ -96,6 +109,7 @@ def seed_tasks():
         order=0,
         description='This is task numero catorce',
         section_id=8,
+        due_date=datetime(2024, 10, 31),
         user_id='4'
     )
     task15 = Task(
@@ -103,6 +117,7 @@ def seed_tasks():
         order=0,
         description='This is task numero quince',
         section_id=10,
+        due_date=datetime(2024, 2, 22),
         user_id='5'
     )
 

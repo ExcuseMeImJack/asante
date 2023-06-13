@@ -87,7 +87,7 @@ function EditTaskByIdForm({ task, ulRef, type}){
                         id="description-box"
                         className={type === "single-task" ? 'edit-task-input-single description-input' : 'edit-task-input'}
                         placeholder="Description"
-                        value={description}
+                        value={description || ""}
                         onChange={(e) => setDescription(e.target.value)}
                     />
                     <div className={type === "single-task" ? "single-error-container" : "error-container"}>

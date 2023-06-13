@@ -94,6 +94,8 @@ function UserProfile() {
         }
       }
 
+
+
     return (
       <div className="profile-page">
         <div className="profile-info-container">
@@ -174,7 +176,8 @@ function UserProfile() {
                     {tasks.map((task) => (
                       <div key={task.id} className="task-items-home">
                         <SlideOutTask task={task} key={task} />
-                        <p>{dateFormatSmall(new Date(task.due_date))}</p>
+                        <p>{task.due_date?.split("00:00:00")[0]}</p>
+                        {/* <p>{dateFormatSmall(new Date(task.due_date))}</p> */}
                         <p id="my-tasks-getboard">{getBoard(task)}</p>
                       </div>
                     ))}
