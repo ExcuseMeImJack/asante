@@ -191,8 +191,9 @@ function Home() {
                   </div>
                 )}
               </div>
-              {/* <div className="pro-divider"></div> */}
             </div>
+              <div className="buffer-space"></div>
+
           </div>
         </div>
       </div>

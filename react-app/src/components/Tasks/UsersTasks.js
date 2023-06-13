@@ -88,6 +88,7 @@ function UsersTasks() {
           <p>You have no tasks</p>
         </div>
       )}
+    <div className="buffer-space-big"></div>
     </div>
     </div>
   );

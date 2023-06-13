@@ -49,3 +49,11 @@ body {
 .profile-page{
     padding: 50px;
 }
+
+.buffer-space{
+    height: 200px;
+}
+
+.buffer-space-big{
+    height: 382px;
+}
