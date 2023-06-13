@@ -4,12 +4,11 @@ import { deleteTaskByTaskId, getTasksByUserId } from '../../store/tasks';
 import { editTaskByTaskId } from '../../store/tasks';
 import './EditTaskByIdForm.css'
 
-function EditTaskByIdForm({ task, ulRef, type, setShowEditTask}){
+function EditTaskByIdForm({ task, ulRef, type}){
     const dispatch = useDispatch();
     const [taskName, setTaskName] = useState(task.name);
     const [dueDate, setDueDate] = useState(task.due_date);
     const [description, setDescription] = useState(task.description);
-    // const [clickedOnce, setClickedOnce] = useState(false);
     const [errors, setErrors] = useState({});
     const [updated, setUpdated] = useState(false);
 
@@ -59,7 +58,8 @@ function EditTaskByIdForm({ task, ulRef, type, setShowEditTask}){
 
     return (
         <div>
-            <form onSubmit={handleSubmit} className='form'>
+            <form onSubmit={handleSubmit} className='edittaskform'>
+                    <p>Task Name</p>
                     <input
                         ref={ulRef}
                         className={type === "single-task" ? 'edit-task-input-single' : 'edit-task-input'}
@@ -71,6 +71,7 @@ function EditTaskByIdForm({ task, ulRef, type, setShowEditTask}){
                     <div className={type === "single-task" ? "single-error-container" : "error-container"}>
                         {errors.taskName && <p>{errors.taskName}</p>}
                     </div>
+                    <p>Due Date</p>
                     <input
                         type="date"
                         className={type === "single-task" ? 'edit-task-input-single' : 'edit-task-input'}
@@ -80,11 +81,13 @@ function EditTaskByIdForm({ task, ulRef, type, setShowEditTask}){
                     <div className={type === "single-task" ? "single-error-container" : "error-container"}>
                         {errors.dueDate && <p>{errors.dueDate}</p>}
                     </div>
-                    <input
+                    <p>Description</p>
+                    <textarea
                         type="text"
-                        className={type === "single-task" ? 'edit-task-input-single' : 'edit-task-input'}
+                        id="description-box"
+                        className={type === "single-task" ? 'edit-task-input-single description-input' : 'edit-task-input'}
                         placeholder="Description"
-                        value={description}
+                        value={description || ""}
                         onChange={(e) => setDescription(e.target.value)}
                     />
                     <div className={type === "single-task" ? "single-error-container" : "error-container"}>
@@ -93,10 +96,12 @@ function EditTaskByIdForm({ task, ulRef, type, setShowEditTask}){
                     <div className="updated">
                         {updated && <p>Updated!</p>}
                     </div>
-                    <button className="form-button demo-button" onClick={async () => {
-                        await dispatch(deleteTaskByTaskId(task))
-                    }}>Complete Task</button>
-                    <button type="submit" className="form-button">Edit Task</button>
+                    <div className='edit-task-button-confirms'>
+                        <button className="form-button demo-button" onClick={async () => {
+                            await dispatch(deleteTaskByTaskId(task))
+                        }}>Complete Task</button>
+                        <button type="submit" className="form-button">Edit Task</button>
+                    </div>
                 </form>
             </div>
     );

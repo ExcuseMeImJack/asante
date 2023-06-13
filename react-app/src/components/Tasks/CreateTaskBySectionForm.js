@@ -14,10 +14,8 @@ function CreateTaskBySectionForm({sectionId, setCreateButton}){
     const handleSubmit = async (e) => {
         e.preventDefault()
         setErrors({})
-        let hasErrors = false;
         if (!taskName) {
             setErrors(error => ({...errors, taskName: "Task Name Required"}))
-            hasErrors = true;
         }
         // if (!dueDate) {
         //     setErrors(errors => ({...errors, dueDate: "Due Date Required!"}))
@@ -25,19 +23,15 @@ function CreateTaskBySectionForm({sectionId, setCreateButton}){
         // }
         if (!description) {
             setErrors(errors => ({...errors, description: "Description Required!"}))
-            hasErrors = true;
         }
-
+        console.log(dueDate)
         const data = await dispatch(addTaskBySectionId({
             name: taskName,
             due_date: dueDate,
             description: description
         }, sectionId))
-        console.log(data)
         if (data.status === 401) {
-            console.log("WORKING!!!!?")
             setErrors(errors => ({...errors, dueDate: "Due Date Required!"}))
-            hasErrors = true;
             return;
         }
         setCreateButton(true)
@@ -45,7 +39,8 @@ function CreateTaskBySectionForm({sectionId, setCreateButton}){
 
     return (
         <div>
-            <form className='form' onSubmit={handleSubmit}>
+            <form className='createtaskform' onSubmit={handleSubmit}>
+                    <p>Task Name</p>
                     <input
                         type="text"
                         placeholder="Name"
@@ -55,6 +50,7 @@ function CreateTaskBySectionForm({sectionId, setCreateButton}){
                     <div className="error-container">
                     {errors.taskName && <p>{errors.taskName}</p>}
                     </div>
+                    <p>Due Date</p>
                     <input
                         type="date"
                         value={dueDate}
@@ -63,7 +59,8 @@ function CreateTaskBySectionForm({sectionId, setCreateButton}){
                     <div className="error-container">
                     {errors.dueDate && <p>{errors.dueDate}</p>}
                     </div>
-                    <input
+                    <p className='test'>Description</p>
+                    <textarea
                         type="text"
                         placeholder="Description"
                         value={description}
@@ -72,7 +69,7 @@ function CreateTaskBySectionForm({sectionId, setCreateButton}){
                     <div className="error-container">
                     {errors.description && <p>{errors.description}</p>}
                     </div>
-                    <button type="submit" className="submit-create">Create Task</button>
+                    <button type="submit" className="submit-create-task">Create Task</button>
                 </form>
             </div>
     );

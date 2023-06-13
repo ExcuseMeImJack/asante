@@ -7,12 +7,20 @@
     padding: 20px;
 }
 
+.single-task-card:hover{
+    background-color: #da363673;
+    border-radius: 6px;
+}
+
 .single-task-card > h3 {
     margin: 0px 0px;
 }
 
 .board-task {
-    margin-right: 40px;
+    display: flex;
+    justify-content: center;
+
+    /* margin-right: 40px; */
     /* border: 1px solid pink; */
     /* margin-right: 40px; */
 }
@@ -25,10 +33,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
 }
 
 .edit-task-input-single {
-    width: 100px;
+    width: 100%;
     /* width: 100px; */
 }
 
@@ -36,4 +45,9 @@
     min-height: 12px;
     font-size: 12px;
     color: red;
+}
+
+
+.description-input{
+    resize: none;
 }

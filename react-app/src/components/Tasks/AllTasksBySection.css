@@ -2,10 +2,13 @@
     min-height: 400px;
     /* border: 1px solid red !important; */
     margin: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .tasks-container {
-    border: 1px dotted black;
+    /* border: 1px dotted black; */
     display: flex;
     flex-direction: column;
     margin: 10px;
@@ -16,6 +19,15 @@
     border: 1px solid black;
     align-items: center;
     border-radius: 10px;
+    transition: box-shadow .2s ease;
+}
+
+.single-task-border:hover {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.432);
+}
+
+.single-task-border:active {
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.432);
 }
 
 #pen {
@@ -31,6 +43,12 @@
     font-size: 22px;
 }
 
+.close-section-creation{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
 .delete-warning-section {
     display: flex;
     flex-direction: column;
@@ -42,13 +60,21 @@
 }
 
 #section-plus {
+    border: 1px solid var(--jackblack);
+    background-color: rgba(231, 231, 231, 0.664);
+    border-radius: 5px;
+    padding: 15px;
     align-self: center;
-    font-size: 22px;
+    font-size: 18px;
+    color: var(--asantered);
+    font-weight: 700;
 }
 
+
 #section-minus {
-    align-self: center;
-    font-size: 22px;
+    padding-bottom: 5px;
+    font-size: 18px;
+    color: var(--asantered);
 }
 
 .section-check-x {
@@ -60,6 +86,7 @@
 }
 #section-check {
     font-size: 22px;
+    color: red;
 }
 
 #section-trash {

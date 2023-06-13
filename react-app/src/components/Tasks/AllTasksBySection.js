@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTasksByUserId, orderTasksThunk } from '../../store/tasks';
-import { useHistory, useParams } from 'react-router-dom';
-import { getSectionsByBoardId, orderSections, deleteSectionById } from '../../store/sections';
-import { Droppable, Draggable, DragDropContext } from 'react-beautiful-dnd';
+import { getTasksByUserId } from '../../store/tasks';
+import { useHistory } from 'react-router-dom';
+import { deleteSectionById } from '../../store/sections';
+import { Droppable, Draggable } from 'react-beautiful-dnd';
 import SingleTask from './SingleTask';
 import EditSectionForm from '../Sections/EditSectionForm';
 import CreateTaskBySectionForm from '../Tasks/CreateTaskBySectionForm';
@@ -43,11 +43,8 @@ function AllTasksBySection({ section, boardId }) {
                         }
                     }}></i>
                         <div className='delete-warning-section'>
-                            <div>
-                            {deleteClicked && <p className='delete-text-section'>Are you sure?</p>}
-
-                            </div>
                             <div className='section-check-x'>
+                                {deleteClicked && <p className='delete-text-section'>Are you sure?</p>}
                                 {deleteClicked && <i className='fa-solid fa-xmark' id="section-xmark" onClick={() => { setDeleteClicked(false)}}></i>}
                                 {deleteClicked && <i className='fa-solid fa-check' id="section-check" onClick={async () => {
                                     await dispatch(deleteSectionById(section))
@@ -63,7 +60,6 @@ function AllTasksBySection({ section, boardId }) {
                 {createButton
                         ?  <></>
                         :  <CreateTaskBySectionForm sectionId={section.id} setCreateButton={setCreateButton} />}
-                {console.log('SECTION TASKS~~~~~~~', tasks.map(t => t.order))}
                 <Droppable droppableId={'section-' + section.id} type='task'>
                     {(provided) => (
                         <div className='task-gallery' {...provided.droppableProps} ref={provided.innerRef}>

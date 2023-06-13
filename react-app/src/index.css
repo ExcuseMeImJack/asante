@@ -1,8 +1,13 @@
 .app{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     /* height: 100%; */
-    min-height: 600px;
+    min-height: 100vh;
+}
+
+footer{
+    font-family: 'Noto Sans', sans-serif;
 }
 
 body {
@@ -10,13 +15,13 @@ body {
     overflow-x: hidden;
     /* overflow-y: scroll; */
     /* max-width: 100vp; */
-    font-family: 'Noto Sans', sans-serif;
-    position: relative;
-    min-height: 100vh;
+    /* position: relative; */
+    min-height: 100%;
 
     display: flex;
     flex-flow: column wrap;
     align-items: space-between;
+    font-family: 'Quicksand', sans-serif;
 }
 
 #root {
@@ -45,3 +50,10 @@ body {
     padding: 50px;
 }
 
+.buffer-space{
+    height: 200px;
+}
+
+.buffer-space-big{
+    height: 382px;
+}

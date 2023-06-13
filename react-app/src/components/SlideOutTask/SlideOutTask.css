@@ -1,14 +1,14 @@
 
 .slide-out-task {
   display: flex;
-  justify-content: space-around;
   flex-direction: column;
   position: absolute;
-  top: 25%;
+  top: 28%;
   right: -1px;
   padding: 10px 60px;
-  width: 550px;
-  height: 65%;
+  width: 320px;
+  height: 55%;
+  min-height: 490px;
   cursor: pointer;
   transition: right 1.5s;
   text-decoration: none;
@@ -16,7 +16,7 @@
   margin-right: 10px;
   box-shadow: 4px 4px 5px #3054a1;
   border: 1px solid #3054a1;
-  background-color: white;
+  background-color: rgb(231, 231, 231);
 }
 
   .slide-out-task > li {
@@ -37,4 +37,8 @@
 
   .slide-out-task-item {
     font-size: 26px;
+  }
+
+  .edit-task-button-confirms{
+    width: 100%;
   }

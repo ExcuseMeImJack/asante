@@ -7,14 +7,25 @@
     margin: 20px;
     background-color: white;
     min-width: 300px;
-    max-height: 500px;
     overflow: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    min-height: 400px;
+    max-height: 800px;
+    height: 560px;
+    transition: box-shadow .2s ease;
 }
 
 .single-section-border::-webkit-scrollbar {
     display: none;
+}
+
+.single-section-border:hover {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.432);
+}
+
+.single-section-border:active {
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.432);
 }
 
 .section-header {
@@ -25,13 +36,21 @@
 }
 
 .section-gallery {
-    border: 1px solid black;
+    border: 1px solid rgba(65, 64, 64, 0.596);
+    border-radius: 10px;
+    background-color: rgba(231, 231, 231, 0.801);
+    box-shadow: 1px 1px 3px var(--jackblack);
     display: flex;
     justify-content: center;
-    width: 1000px;
+    width: 100%;
+    min-width: 900px;
+    max-width: 1500px;
     overflow: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    min-height: 400px;
+    max-height: 690px;
+    height: 640px;
 }
 
 .section-gallery::-webkit-scrollbar {

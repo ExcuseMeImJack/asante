@@ -1,15 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  deleteTaskByTaskId,
-  editTaskByTaskId,
-  getTasksByUserId,
-} from "../../store/tasks";
-import "./UsersTasks.css";
+import { getTasksByUserId } from "../../store/tasks";
+import { getAllBoardsForEachSection } from "../../store/sections";
 import SlideOutTask from "../SlideOutTask/SlideOutTask";
-import EditTaskByIdForm from "./EditTaskByIdForm";
-import { getBoardById } from "../../store/boards";
-import { getAllBoardsForEachSection, getSectionsByBoardId } from "../../store/sections";
+import "./UsersTasks.css";
 
 function UsersTasks() {
   const dispatch = useDispatch();
@@ -31,7 +25,6 @@ function UsersTasks() {
 
   // const id = user.id;
   const tasks = storeTasks;
-  //   console.log("helloooooooo:", tasks);
 
   if (!tasks) return <h1></h1>;
 
@@ -95,6 +88,7 @@ function UsersTasks() {
           <p>You have no tasks</p>
         </div>
       )}
+    <div className="buffer-space-big"></div>
     </div>
     </div>
   );

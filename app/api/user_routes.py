@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import db, User, Board, Task, Section
 from ..forms.create_task_form import CreateTaskForm
@@ -45,9 +45,7 @@ def create_task(section_id):
     task_count = len(list(Task.query.filter(Task.section_id == section_id)))
 
     section = Section.query.get(section_id)
-    print('SECTION ==================',section)
     board = list(Board.query.filter(Board.id == section.board_id))
-    print('BOARD ==================', board[0].to_dict())
 
     if not section:
         return {'errors': ['Section does not exist']}, 404

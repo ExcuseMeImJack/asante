@@ -9,12 +9,12 @@ function CreateBoardForm({setShowSlideoutMenu}) {
   const history = useHistory();
   const [boardName, setBoardName] = useState("");
   const [showCreateBoardMenu, setShowCreateBoardMenu] = useState(false);
-  const [isMenuOpen, setMenuOpen] = useState(false)
+  // const [isMenuOpen, setMenuOpen] = useState(false)
   const ulRef = useRef();
 
   const openMenu = () => {
     setBoardName("")
-    setMenuOpen(true)
+    // setMenuOpen(true)
     setShowCreateBoardMenu(true);
 
     if (showCreateBoardMenu) return;
@@ -26,7 +26,7 @@ function CreateBoardForm({setShowSlideoutMenu}) {
     const closeMenu = (e) => {
       if (!ulRef.current.contains(e.target)) {
         setShowCreateBoardMenu(false);
-        setMenuOpen(false)
+        // setMenuOpen(false)
       }
     };
     document.addEventListener("click", closeMenu);

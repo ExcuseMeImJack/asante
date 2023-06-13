@@ -9,7 +9,7 @@ import { getBoardsByUserId } from "../../store/boards";
 import DeleteUserModal from "../DeleteUserModal";
 import SlideOutTask from "../SlideOutTask/SlideOutTask";
 import quoteCensor from "./quoteCensor";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import boardicon from "../../assets/board.png";
 import { getAllBoardsForEachSection } from "../../store/sections";
 
@@ -18,7 +18,6 @@ function UserProfile() {
   const history = useHistory();
   const profile = useSelector((state) => state.users.profile);
   const tasks = useSelector((state) => state.tasks.tasks);
-  console.log(tasks);
   const boards = useSelector((state) => state.boards.boards);
   const [quoteInfo, setQuoteInfo] = useState("");
   const sections = useSelector((state) => state.sections.sections);
@@ -41,12 +40,11 @@ function UserProfile() {
           contentType: "application/json",
         }
       );
-      // console.log('QUOTE RES', res)
       if (res.ok) {
         const data = await res.json();
         setQuoteInfo(data);
       } else {
-        return "error", res.error;
+        return res.error;
       }
     };
     fetchQuote();
@@ -95,6 +93,8 @@ function UserProfile() {
           return board.name;
         }
       }
+
+
 
     return (
       <div className="profile-page">
@@ -151,7 +151,7 @@ function UserProfile() {
                       key={board.id}
                       onClick={() => history.push(`/boards/${board.id}`)}
                     >
-                      <img id="boardimg" src={boardicon} />
+                      <img id="boardimg" src={boardicon} alt="board icon" />
                       <p id="profile-board-text">{board.name}</p>
                     </div>
                   ))
@@ -176,7 +176,8 @@ function UserProfile() {
                     {tasks.map((task) => (
                       <div key={task.id} className="task-items-home">
                         <SlideOutTask task={task} key={task} />
-                        <p>{dateFormatSmall(new Date(task.due_date))}</p>
+                        <p>{task.due_date?.split("00:00:00")[0]}</p>
+                        {/* <p>{dateFormatSmall(new Date(task.due_date))}</p> */}
                         <p id="my-tasks-getboard">{getBoard(task)}</p>
                       </div>
                     ))}

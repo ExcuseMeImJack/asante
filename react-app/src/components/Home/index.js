@@ -4,7 +4,7 @@ import { getUserProfile } from "../../store/users";
 import { getBoardsByUserId } from "../../store/boards";
 import "./Homepage.css";
 import { getTasksByUserId } from "../../store/tasks";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import SlideOutTask from "../SlideOutTask/SlideOutTask";
 import boardicon from "../../assets/board.png";
 import { getAllBoardsForEachSection } from "../../store/sections";
@@ -86,7 +86,6 @@ function Home() {
   const tasks = useSelector((state) => state.tasks.tasks);
   const boards = useSelector((state) => state.boards.boards);
   const sections = useSelector((state) => state.sections.sections);
-  //   console.log("store boards:", storeBoards);
 
   useEffect(() => {
     dispatch(getAllBoardsForEachSection());
@@ -181,7 +180,7 @@ function Home() {
                         key={board.id}
                         onClick={() => history.push(`/boards/${board.id}`)}
                       >
-                        <img id="boardimg" src={boardicon} />
+                        <img id="boardimg" src={boardicon} alt="board icon" />
                         <p id="profile-board-text">{board.name}</p>
                       </div>
                     </div>
@@ -192,8 +191,9 @@ function Home() {
                   </div>
                 )}
               </div>
-              {/* <div className="pro-divider"></div> */}
             </div>
+              <div className="buffer-space"></div>
+
           </div>
         </div>
       </div>

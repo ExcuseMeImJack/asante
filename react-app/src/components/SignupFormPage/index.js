@@ -39,12 +39,24 @@ function SignupFormPage() {
       setErrors(errors => ({...errors, email: "Please enter a valid email"}));
       hasErrors = true;
     }
+    if (email.length > 255) {
+      setErrors(errors => ({...errors, email: "Email must be less than 256 characters."}));
+      hasErrors = true;
+    }
     if (!username) {
       setErrors(errors => ({...errors, username: "Username is required"}));
       hasErrors = true;
     }
+    if (username.length > 40) {
+      setErrors(errors => ({...errors, username: "Username must be less than 41 characters."}));
+      hasErrors = true;
+    }
     if (!password) {
       setErrors(errors => ({...errors, password: "Password is required"}))
+      hasErrors = true;
+    }
+    if (password.length > 255) {
+      setErrors(errors => ({...errors, password: "Password must be less than 256 characters."}))
       hasErrors = true;
     }
     // if (errors.name || errors.email || errors.username || errors.password) return;
@@ -126,6 +138,7 @@ function SignupFormPage() {
               {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
             </div>
           <button className="form-button" type="submit">Sign Up</button>
+          <div onClick={() => history.goBack()} className="back-button cursor-pointer"><i className="fa-sharp fa-solid fa-arrow-left"></i>Back</div>
         </form>
       </div>
     </>

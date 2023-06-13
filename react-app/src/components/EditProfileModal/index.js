@@ -14,7 +14,6 @@ function EditProfileModal() {
     const [profilePicUrl, setProfilePicUrl] = useState(null)
     const [imageLoading, setImageLoading] = useState(false)
     // eslint-disable-next-line
-    const [errors, setErrors] = useState({})
 
     if(aboutMe === null) {
          setAboutMe("")
@@ -23,7 +22,6 @@ function EditProfileModal() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
-        console.log(formData)
         formData.append("profile_pic_url", profilePicUrl);
 
         if(name) formData.append("name", name);
@@ -31,7 +29,6 @@ function EditProfileModal() {
         if(aboutMe) formData.append("about_me", aboutMe);
 
         setImageLoading(true);
-
         const res = await fetch('/api/users', {
             method: "PUT",
             body: formData
@@ -40,12 +37,10 @@ function EditProfileModal() {
         if(res.ok) {
             await res.json();
             setImageLoading(false)
-            console.log("res ok")
             closeModal();
             dispatch(getUserProfile())
         } else {
             setImageLoading(false)
-            console.log("error")
         }
     }
 
@@ -73,7 +68,7 @@ function EditProfileModal() {
                                     onChange={(e) => setProfilePicUrl(e.target.files[0])}
                                     />
                                 </label>
-                                <p className="profile-pic-description">Photos help your teammates recognize you in Asana</p>
+                                <p className="profile-pic-description">Photos help your teammates recognize you in Asante</p>
                             </div>
                         </div>
                         <div className="edit-profile-details-grid">
