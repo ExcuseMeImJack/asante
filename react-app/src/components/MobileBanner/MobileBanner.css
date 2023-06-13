@@ -5,7 +5,7 @@
     font-size: 34px;
     position: absolute;
     height: 200vh;
-    width: 140vh;
+    width: 120vh;
     z-index: 100;
     background-color: whitesmoke;
     text-align: center;
@@ -14,17 +14,26 @@
 }
 
 .mobile-banner {
-    width: 36%;
+    position: absolute;
+    width: 24%;
+    z-index: 3;
 }
 .mobile-img {
     position: absolute;
-    width: 36%;
+    width: 24%;
+    z-index: 2;
 }
 
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 912px) {
     .mobile-banner-container {
         display: flex;
+    }
+    .mobile-banner {
+        width: 14%;
+    }
+    .mobile-img {
+        width: 14%;
     }
 }
 
@@ -32,11 +41,22 @@
     .mobile-banner-container {
         padding-left: 30px;
     }
+    .mobile-banner {
+        width: 26%;
+    }
+    .mobile-img {
+        width: 26%;
+    }
 }
 
 @media screen and (max-width: 500px) {
     .mobile-banner {
         padding-left: 0;
-        font-size: 28px;
+    }
+    .mobile-banner {
+        width: 30%;
+    }
+    .mobile-img {
+        width: 30%;
     }
 }
