@@ -13,10 +13,19 @@
     min-height: 400px;
     max-height: 800px;
     height: 560px;
+    transition: box-shadow .2s ease;
 }
 
 .single-section-border::-webkit-scrollbar {
     display: none;
+}
+
+.single-section-border:hover {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.432);
+}
+
+.single-section-border:active {
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.432);
 }
 
 .section-header {
