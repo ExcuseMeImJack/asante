@@ -1,37 +1,42 @@
 .mobile-banner-container {
     margin-top: 0;
     padding: 80px;
+    padding-left: 40px;
     font-size: 34px;
     position: absolute;
     height: 200vh;
-    width: 100vh;
+    width: 140vh;
     z-index: 100;
     background-color: whitesmoke;
     text-align: center;
     display: none;
+    flex-wrap: wrap;
 }
 
 .mobile-banner {
-    width: 60%;
+    width: 36%;
+}
+.mobile-img {
+    position: absolute;
+    width: 36%;
 }
 
 
 @media screen and (max-width: 800px) {
     .mobile-banner-container {
         display: flex;
-        flex-wrap: wrap;
     }
 }
 
 @media screen and (max-width: 650px) {
     .mobile-banner-container {
-        padding-left: 40px;
+        padding-left: 30px;
     }
 }
 
 @media screen and (max-width: 500px) {
     .mobile-banner {
         padding-left: 0;
-        font-size: 24px;
+        font-size: 28px;
     }
 }
