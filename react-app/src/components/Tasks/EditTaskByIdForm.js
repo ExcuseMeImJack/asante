@@ -4,13 +4,45 @@ import { deleteTaskByTaskId, getTasksByUserId } from '../../store/tasks';
 import { editTaskByTaskId } from '../../store/tasks';
 import './EditTaskByIdForm.css'
 
-function EditTaskByIdForm({ task, ulRef, type}){
+function EditTaskByIdForm({ task, ulRef, type, updated, setUpdated}){
     const dispatch = useDispatch();
     const [taskName, setTaskName] = useState(task.name);
     const [dueDate, setDueDate] = useState(task.due_date);
     const [description, setDescription] = useState(task.description);
     const [errors, setErrors] = useState({});
-    const [updated, setUpdated] = useState(false);
+
+
+    const checkDate = () => {
+        if(dueDate === task.due_date){
+            let year = task.due_date.split(' ')[3]
+            let month = task.due_date.split(' ')[2]
+            let date = task.due_date.split(' ')[1]
+            let taskMonth;
+
+            const months = {
+                'Jan': "01",
+                'Feb': "02",
+                'Mar': "03",
+                'Apr': "04",
+                'May': "05",
+                'Jun': "06",
+                'Jul': "07",
+                'Aug': "08",
+                'Sep': "09",
+                'Oct': "10",
+                'Nov': "11",
+                'Dec': "12"
+              };
+
+              for(let monthAbr in months){
+                if(month === monthAbr) {
+                  taskMonth = months[monthAbr];
+                }
+              }
+
+              return `${year}-${taskMonth}-${date}`
+        } else return dueDate
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -30,10 +62,18 @@ function EditTaskByIdForm({ task, ulRef, type}){
             hasErrors = true;
         }
 
+        if(description.length > 60){
+            setErrors(errors => ({...errors, description: "Description must be less than 60 characters."}))
+            hasErrors = true;
+        }
+
+        // "2024-11-29"
+        // "Wed, 25 Dec 2024 00:00:00 GMT"
+
         if (hasErrors) return;
         const data = await dispatch(editTaskByTaskId({
             name: taskName,
-            due_date: dueDate,
+            due_date: checkDate(),
             description: description
         }, task.id))
 
@@ -45,6 +85,9 @@ function EditTaskByIdForm({ task, ulRef, type}){
         }
         await dispatch(getTasksByUserId())
         setUpdated(true)
+        setTimeout(() => {
+            setUpdated(false)
+        }, 1500)
     }
 
 

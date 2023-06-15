@@ -8,6 +8,7 @@ export default function SlideOutTask({ task }) {
     const [showTask, setShowTask] = useState(false);
     const ulRef = useRef();
     const storeTask = storeTasks.find(findTask => findTask.id === task.id);
+    const [updated, setUpdated] = useState(false);
 
     const openTask = () => {
         if (showTask) return;
@@ -21,6 +22,9 @@ export default function SlideOutTask({ task }) {
         if (!ulRef.current) return;
         if (!ulRef.current.contains(e.target)) {
         setShowTask(false);
+        setTimeout(() => {
+          setUpdated(false)
+        }, 500)
         }
     };
 
@@ -51,7 +55,7 @@ export default function SlideOutTask({ task }) {
             <ul className={ulClassName} ref={ulRef}>
                 <li className='slide-out-task-item'>{storeTask.name}</li>
                 <li className='slide-out-task-item'>Due: {storeTask.due_date?.split("00:00:00")[0]}</li>
-                <EditTaskByIdForm task={task} ulRef={ulRef}/>
+                <EditTaskByIdForm task={task} ulRef={ulRef} updated={updated} setUpdated={setUpdated}/>
             </ul>
         </div>
     </div>

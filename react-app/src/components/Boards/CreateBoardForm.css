@@ -18,6 +18,27 @@
     border-bottom-right-radius: 20px;
 }
 
+.create-board-slide-small{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 49px;
+    left: 0px;
+    padding: 5px;
+    padding-right: 10px;
+    width: 250px;
+    cursor: pointer;
+    transition: all 1s;
+    text-decoration: none;
+    z-index: 1;
+    background-color: #1a1919;
+    height: 195px;
+    border-bottom-right-radius: 20px;
+}
+
+
 .create-board-slide > div {
     list-style: none;
     display: flex;
@@ -74,13 +95,43 @@
     margin-right: 15px;
 }
 
+.create-board-btn-small{
+    height: 25px;
+    width: 100px;
+    border: 1px rgb(117, 117, 117) solid;
+    border-radius: 30px;
+    color: white;
+    background-color: #1a1919;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    font-size: 14px;
+}
+
+.create-board-btn-small > i {
+    font-size: 16px;
+    margin-right: 8px;
+}
+
 .create-button-div > button:hover{
     background-color: rgb(151, 151, 151,.3);
     cursor: pointer;
 }
 
+
+.create-button-div-small > button:hover{
+    background-color: rgba(46, 46, 46, 0.986);
+    cursor: pointer;
+}
+
 .create-board-text{
     color: white;
+}
+
+.create-board-text-small{
+    color: white;
+    padding-bottom: 15px;
+    text-align: center;
 }
 
 .create-board-div{

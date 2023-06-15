@@ -4,6 +4,11 @@
   place-items: center;
   padding: 50px;
 }
+.board-title-home{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
 
 .home {
   display: flex;
@@ -101,7 +106,7 @@
 #homepage-boards-container h2,
 #homepage-tasks-container h2 {
     /* color: var(--jackblack); */
-    color: var(--jackblack);
+    /* color: var(--jackblack); */
     margin-bottom: 0;
 }
 
