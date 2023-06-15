@@ -5,6 +5,7 @@ import './SingleTask.css'
 function SingleTask({ task }) {
     const [showEditTask, setShowEditTask] = useState(false);
     const ulRef = useRef();
+    const [updated, setUpdated] = useState(false);
 
     const openTask = () => {
         if (showEditTask) return;
@@ -30,9 +31,9 @@ function SingleTask({ task }) {
     return (
         <div className='single-task-card' onClick={openTask}>
             <h3>{task.name}</h3>
-            <div>{task.description || "No description"}</div>
+            <div className='single-task-desc'>{task.description || "No description"}</div>
             <div className={ulClassName} ref={ulRef}>
-                <EditTaskByIdForm task={task} ulRef={ulRef} type={"single-task"} setShowEditTask={setShowEditTask}/>
+                <EditTaskByIdForm task={task} ulRef={ulRef} type={"single-task"} setShowEditTask={setShowEditTask} updated={updated} setUpdated={setUpdated}/>
             </div>
         </div>
     );

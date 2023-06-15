@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom";
 import SlideOutTask from "../SlideOutTask/SlideOutTask";
 import boardicon from "../../assets/board.png";
 import { getAllBoardsForEachSection } from "../../store/sections";
+import CreateBoardForm from "../Boards/CreateBoardForm";
 
 // creating a function to format the date
 function dateFormat(date) {
@@ -169,7 +170,10 @@ function Home() {
               <div className="homepage-divider"></div>
             </div>
             <div id="homepage-boards-container">
-              <h2>My Boards</h2>
+              <div className="board-title-home">
+                <h2>My Boards</h2>
+                <CreateBoardForm buttonType={'small'}/>
+              </div>
               <div className="profile-user-boards-container">
                 {boards.length > 0 ? (
                   boards.map((board) => (

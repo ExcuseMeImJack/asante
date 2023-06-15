@@ -8,6 +8,12 @@
     max-width: 220px;
 }
 
+.single-task-desc{
+    width: 100%;
+    word-wrap: break-word;
+    text-align: center;
+}
+
 .single-task-card:hover{
     background-color: #da363673;
     border-radius: 6px;
