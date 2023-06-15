@@ -31,17 +31,19 @@ function AllTasksBySection({ section, boardId }) {
     return (
         <div>
             {!editButton
-                ? <i className="fa-solid fa-pen-to-square edit-section-button" id="pen" onClick={() => { setEditButton(true) }}></i>
+                ? <div className='edit-section-btn' onClick={() => { setEditButton(true) }}><i className="fa-solid fa-pen-to-square edit-section-button" id="pen" ></i><p>Edit Section Name</p></div>
                 : <i className="fa-solid fa-xmark edit-section-button" id="xmark" onClick={() => { setEditButton(false) }}></i>}
             {!editButton
                 ? <></>
                 : <EditSectionForm sectionId={section.id} boardId={boardId} setEditButton={setEditButton} />}
-                    <i className='fa-solid fa-trash section-trash' id="section-trash" onClick={async (e) => {
+                    <div className='delete-section-btn' onClick={async (e) => {
                         e.preventDefault()
                         if (!deleteClicked) {
-                            return setDeleteClicked(true)
-                        }
-                    }}></i>
+                            setDeleteClicked(true)
+                        } else setDeleteClicked(false)
+                    }}>
+                    <i className='fa-solid fa-trash section-trash' id="section-trash" ></i><p>Delete Section</p>
+                    </div>
                         <div className='delete-warning-section'>
                             <div className='section-check-x'>
                                 {deleteClicked && <p className='delete-text-section'>Are you sure?</p>}
@@ -52,10 +54,11 @@ function AllTasksBySection({ section, boardId }) {
                                 }}></i>}
                             </div>
                     </div>
+                    <div className='border-divider-tasks'></div>
             <div className='tasks-container'>
 
                 {createButton
-                        ?  <i className="fa-solid fa-plus create-task-button" id="plus" onClick={() => { setCreateButton(false) }}></i>
+                        ?  <div className='add-task-sec-butn' onClick={() => { setCreateButton(false) }}><i className="fa-solid fa-plus create-task-button" id="plus" ></i><p>Add Task</p></div>
                     : <i className="fa-solid fa-minus create-task-button" id="minus" onClick={() => { setCreateButton(true) }}></i>}
                 {createButton
                         ?  <></>

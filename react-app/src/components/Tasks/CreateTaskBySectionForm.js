@@ -25,6 +25,11 @@ function CreateTaskBySectionForm({sectionId, setCreateButton}){
             setErrors(errors => ({...errors, description: "Description Required!"}))
             return;
         }
+        if(description.length > 60){
+            setErrors(errors => ({...errors, description: "Description must be 60 characters or less."}))
+            return;
+        }
+
         const data = await dispatch(addTaskBySectionId({
             name: taskName,
             due_date: dueDate,
