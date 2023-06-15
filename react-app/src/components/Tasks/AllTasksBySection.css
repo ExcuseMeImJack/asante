@@ -43,6 +43,27 @@
     font-size: 22px;
 }
 
+.add-task-sec-butn{
+    display: flex;
+    cursor: pointer;
+}
+
+.edit-section-btn{
+    display: flex;
+    cursor: pointer;
+}
+
+.delete-section-btn{
+    display: flex;
+    cursor: pointer;
+}
+
+.border-divider-tasks{
+    border-bottom: 1px solid var(--jackblack);
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
 .close-section-creation{
     display: flex;
     justify-content: flex-end;

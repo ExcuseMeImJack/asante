@@ -56,5 +56,6 @@ input:focus {
 .error-container {
     color: red;
     font-weight: bold;
-    height: 24px;
+    font-size: 14px;
+    height: 28px;
 }

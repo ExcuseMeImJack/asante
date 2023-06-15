@@ -20,6 +20,7 @@
 
 .createtaskform > textarea{
     resize: none;
+    height: 100px;
 }
 
 .submit-create-task{

@@ -50,8 +50,9 @@
 
 .single-error-container {
     min-height: 12px;
-    font-size: 12px;
+    font-size: 16px;
     color: red;
+    font-weight: bold;
 }
 
 

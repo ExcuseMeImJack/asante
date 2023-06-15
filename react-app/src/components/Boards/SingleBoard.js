@@ -37,8 +37,8 @@ function SingleBoard() {
                         <i className='fa-solid fa-trash' id="board-trash" onClick={async (e) => {
                             e.preventDefault()
                             if (!deleteClicked) {
-                                return setDeleteClicked(true)
-                            }
+                                setDeleteClicked(true)
+                            } else setDeleteClicked(false)
                         }}></i>
                     </div>
                     <div className='delete-warning-board'>

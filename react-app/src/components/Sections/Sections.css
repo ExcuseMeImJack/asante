@@ -98,6 +98,9 @@
 }
 
 #tooltip {
+    cursor: pointer;
     font-size: 22px;
     margin-bottom: 2px;
+    margin-right: 5px;
 }
+

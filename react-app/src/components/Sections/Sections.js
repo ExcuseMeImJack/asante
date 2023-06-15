@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSectionsByBoardId, orderSections } from '../../store/sections';
 import { getTasksByUserId, orderTasksThunk } from '../../store/tasks';
@@ -12,6 +12,7 @@ function Sections() {
     const dispatch = useDispatch();
     const sections = useSelector((state) => state.sections.sections);
     const storeTasks = useSelector((state) => state.tasks);
+    const [helpNeeded, setHelpNeeded] = useState(false)
 
 
 
@@ -98,7 +99,12 @@ function Sections() {
                     <i className="fa-solid fa-left-right" id="left-right"></i>
                 </div> */}
                 <div className='tooltip-container'>
-                    <i className="fa-regular fa-circle-question" id="tooltip" title="Click and drag with mouse or use Tab Space and Arrow Keys"></i>
+                    <i className="fa-regular fa-circle-question" id="tooltip" title="Click and drag with mouse or use Tab Space and Arrow Keys" onClick={() => {
+                        if(helpNeeded) setHelpNeeded(false)
+                        else setHelpNeeded(true)
+                    }}></i>
+                    {helpNeeded ? <p>Click and drag with mouse or use Tab, Space, and Arrow Keys</p> : <p>How to use Drag and Drop</p> }
+
                 </div>
             </div>
             <DragDropContext onDragEnd={onDragEnd}>
