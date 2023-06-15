@@ -23,14 +23,15 @@ function CreateTaskBySectionForm({sectionId, setCreateButton}){
         // }
         if (!description) {
             setErrors(errors => ({...errors, description: "Description Required!"}))
+            return;
         }
-        console.log(dueDate)
         const data = await dispatch(addTaskBySectionId({
             name: taskName,
             due_date: dueDate,
             description: description
         }, sectionId))
         if (data.status === 401) {
+            console.log(data)
             setErrors(errors => ({...errors, dueDate: "Due Date Required!"}))
             return;
         }
