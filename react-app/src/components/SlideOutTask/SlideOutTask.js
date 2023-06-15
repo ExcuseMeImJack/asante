@@ -51,7 +51,6 @@ export default function SlideOutTask({ task }) {
             <ul className={ulClassName} ref={ulRef}>
                 <li className='slide-out-task-item'>{storeTask.name}</li>
                 <li className='slide-out-task-item'>Due: {storeTask.due_date?.split("00:00:00")[0]}</li>
-                <li className='slide-out-task-item'>{storeTask.description}</li>
                 <EditTaskByIdForm task={task} ulRef={ulRef}/>
             </ul>
         </div>

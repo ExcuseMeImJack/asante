@@ -122,6 +122,7 @@
   grid-template-columns: 1fr 1fr 1fr;
   padding: 10px;
   gap: 30px;
+  text-align: center;
 }
 
 .task-items-home {
@@ -129,4 +130,8 @@
   grid-template-columns: 1fr 1fr 1fr;
   padding: 10px;
   gap: 30px;
+}
+
+.task-items-home > p {
+  width: 130px;
 }
