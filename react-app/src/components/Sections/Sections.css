@@ -7,6 +7,7 @@
     margin: 20px;
     background-color: white;
     min-width: 300px;
+    max-width: 300px;
     overflow: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -30,9 +31,11 @@
 
 .section-header {
     display: flex;
-    justify-content: center;
+    justify-content: center;;
     font-size: 22px;
     font-weight: bold;
+    text-align: center;
+
 }
 
 .section-gallery {

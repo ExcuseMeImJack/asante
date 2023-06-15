@@ -71,10 +71,10 @@ const LandingPage = () => {
             <img id="site-icon" alt="" src={icon_image}></img>
 					  <h2 id='site-logo-landing'>asante</h2>
             </div>
-            <Link to="">About</Link>
+            {/* <Link to="">About</Link>
             <Link to="">Features</Link>
             <Link to="">Resources</Link>
-            <Link to="">Creators</Link>
+            <Link to="">Creators</Link> */}
           </div>
 
           <div className="navbar-right">

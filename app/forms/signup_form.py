@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired, ValidationError, Email
 from app.models import User
 
 
-def user_exists(field):
+def user_exists(form, field):
     # Checking if user exists
     email = field.data
     user = User.query.filter(User.email == email).first()
@@ -12,24 +12,24 @@ def user_exists(field):
         raise ValidationError('Email address is already in use.')
 
 
-def username_exists(field):
+def username_exists(form, field):
     # Checking if username is already in use
     username = field.data
     user = User.query.filter(User.username == username).first()
     if user:
         raise ValidationError('Username is already in use.')
 
-def username_length(field):
+def username_length(form, field):
     username = field.data
     if len(username) > 40:
         raise ValidationError('Username must be less than 41 characters.')
 
-def email_length(field):
+def email_length(form, field):
     email = field.data
     if len(email) > 255:
         raise ValidationError('Email must be less than 256 characters.')
 
-def password_length(field):
+def password_length(form, field):
     password = field.data
     if len(password) > 255:
         raise ValidationError('Password must be less than 256 characters.')

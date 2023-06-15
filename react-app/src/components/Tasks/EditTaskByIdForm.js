@@ -21,10 +21,10 @@ function EditTaskByIdForm({ task, ulRef, type}){
             setErrors(errors => ({...errors, taskName: "Task Name Required!"}))
             hasErrors = true;
         }
-        // if (!dueDate) {
-        //     setErrors(errors => ({...errors, dueDate: "Due Date Required!"}))
-        //     hasErrors = true;
-        // }
+        if (taskName.length > 15) {
+            setErrors(errors => ({...errors, taskName: "Task Must be 15 or less characters."}))
+            return;
+        }
         if (!description) {
             setErrors(errors => ({...errors, description: "Description Required!"}))
             hasErrors = true;

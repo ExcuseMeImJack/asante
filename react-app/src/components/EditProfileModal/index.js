@@ -12,9 +12,10 @@ function EditProfileModal() {
     const [email] = useState(userInfo.email)
     const [aboutMe, setAboutMe] = useState(userInfo.about_me)
     const [profilePicUrl, setProfilePicUrl] = useState(null)
+    const [photoPreview, setPhotoPreview] = useState(userInfo.profile_pic_url)
     const [imageLoading, setImageLoading] = useState(false)
     // eslint-disable-next-line
-
+    // setPhotoPreview(URL.createObjectURL(e.target.files[0]))
     if(aboutMe === null) {
          setAboutMe("")
     }
@@ -44,7 +45,7 @@ function EditProfileModal() {
         }
     }
 
-    const handleChangeProfilePic = () => {
+    const handleChangeProfilePic = (e) => {
 
     }
 
@@ -58,14 +59,17 @@ function EditProfileModal() {
                     encType="multipart/form-data">
                         <p className="profile-pic-section">Your photo</p>
                         <div className="edit-profile-pic-container">
-                            <img id="current-profile-pic" alt="" src={userInfo.profile_pic_url} onClick={() => handleChangeProfilePic()}/>
+                            <img id="current-profile-pic" alt="" src={photoPreview} onClick={() => handleChangeProfilePic()}/>
                             <div className="profile-pic-input-description">
                                 <label className="change-cursor"> Upload your photo
                                     <input
                                     className="upload-profile-pic-input"
                                     type="file"
                                     accept="image/*"
-                                    onChange={(e) => setProfilePicUrl(e.target.files[0])}
+                                    onChange={(e) => {
+                                        setProfilePicUrl(e.target.files[0])
+                                        setPhotoPreview(URL.createObjectURL(e.target.files[0]))
+                                    }}
                                     />
                                 </label>
                                 <p className="profile-pic-description">Photos help your teammates recognize you in Asante</p>

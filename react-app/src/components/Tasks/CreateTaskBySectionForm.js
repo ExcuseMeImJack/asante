@@ -17,20 +17,21 @@ function CreateTaskBySectionForm({sectionId, setCreateButton}){
         if (!taskName) {
             setErrors(error => ({...errors, taskName: "Task Name Required"}))
         }
-        // if (!dueDate) {
-        //     setErrors(errors => ({...errors, dueDate: "Due Date Required!"}))
-        //     hasErrors = true;
-        // }
+        if (taskName.length > 15) {
+            setErrors(error => ({...errors, taskName: "Task Must be 15 or less characters."}))
+            return;
+        }
         if (!description) {
             setErrors(errors => ({...errors, description: "Description Required!"}))
+            return;
         }
-        console.log(dueDate)
         const data = await dispatch(addTaskBySectionId({
             name: taskName,
             due_date: dueDate,
             description: description
         }, sectionId))
         if (data.status === 401) {
+            console.log(data)
             setErrors(errors => ({...errors, dueDate: "Due Date Required!"}))
             return;
         }
