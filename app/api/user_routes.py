@@ -4,7 +4,7 @@ from app.models import db, User, Board, Task, Section
 from ..forms.create_task_form import CreateTaskForm
 from .auth_routes import validation_errors_to_error_messages
 from ..forms.edit_profile_form import EditProfileForm
-from .aws_helpers import upload_file_to_s3, get_unique_filename
+from .aws_helpers import upload_file_to_s3, get_unique_filename, remove_file_from_s3
 
 # Creates a Blueprint for user routes
 user_routes = Blueprint('users', __name__)
@@ -91,6 +91,7 @@ def edit_profile():
         profile_pic = form.data["profile_pic_url"]
 
         if profile_pic:
+            remove_file_from_s3(profile.profile_pic_url)
             profile_pic.filename = get_unique_filename(profile_pic.filename)
             upload = upload_file_to_s3(profile_pic)
 
