@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteBoardById, getBoardsByUserId } from '../../store/boards';
 import { useHistory } from 'react-router-dom';
 import './UsersBoards.css'
+import Loading from '../Loading/Loading';
 
 function UsersBoards(){
     const dispatch = useDispatch();
@@ -14,11 +15,11 @@ function UsersBoards(){
         dispatch(getBoardsByUserId())
     }, [dispatch])
 
-    if (!storeBoards.boards) return <h1>...Loading</h1>
+    if (!storeBoards.boards) return <Loading/>
     // grab boards array from the storeBoards object
     const boards = storeBoards.boards;
 
-    if (!boards) return <h1>...Loading</h1>
+    if (!boards) return <Loading/>
 
 	return (
         <div>

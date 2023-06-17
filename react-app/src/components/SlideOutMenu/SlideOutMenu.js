@@ -5,6 +5,7 @@ import CreateBoardForm2 from "../Boards/CreateBoardForm";
 import { useDispatch, useSelector } from "react-redux";
 import { getBoardsByUserId } from "../../store/boards";
 import boardicon from "../../assets/board.png";
+import Loading from "../Loading/Loading";
 
 function SlideOutMenu() {
   const [showMenu, setShowMenu] = useState(false);
@@ -39,7 +40,7 @@ function SlideOutMenu() {
 
   const ulClassName = "slide-out-menu" + (showMenu ? "" : " hidden-menu");
 
-  if (!boards) return <p></p>;
+  if (!boards) return null;
 
   return (
     <div>

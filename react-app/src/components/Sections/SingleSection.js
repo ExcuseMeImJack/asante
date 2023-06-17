@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getSectionById } from '../../store/sections';
 import { useParams } from 'react-router-dom';
 import './SingleSection.css'
+import Loading from '../Loading/Loading';
 
 function SingleSection(){
     const dispatch = useDispatch();
@@ -16,7 +17,7 @@ function SingleSection(){
 
     const section = storeSections.section;
 
-    if (!section) return <h1>...Loading</h1>
+    if (!storeSections) return <Loading/>
 
 	return (
         <div>

@@ -4,6 +4,7 @@ import { getTasksByUserId } from "../../store/tasks";
 import { getAllBoardsForEachSection } from "../../store/sections";
 import SlideOutTask from "../SlideOutTask/SlideOutTask";
 import "./UsersTasks.css";
+import Loading from "../Loading/Loading";
 
 function UsersTasks() {
   const dispatch = useDispatch();
@@ -21,12 +22,12 @@ function UsersTasks() {
 
   // grab tasks array from the storeTasks object
 //   if (!storeTasks.tasks) return <h1>...Loading</h1>;
-  if (!user || user === null) return <h1></h1>;
+  if (!user || user === null || !storeTasks) return null;
 
   // const id = user.id;
   const tasks = storeTasks;
 
-  if (!tasks) return <h1></h1>;
+  if (!tasks) return null;
 
   function dateFormat(date) {
     const months = [

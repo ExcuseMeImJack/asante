@@ -9,6 +9,7 @@ import SlideOutTask from "../SlideOutTask/SlideOutTask";
 import boardicon from "../../assets/board.png";
 import { getAllBoardsForEachSection } from "../../store/sections";
 import CreateBoardForm from "../Boards/CreateBoardForm";
+import Loading from "../Loading/Loading";
 
 // creating a function to format the date
 function dateFormat(date) {
@@ -104,7 +105,7 @@ function Home() {
   //make sure storeBoards is not null before accessing boards property
   //   const boards = storeBoards && storeBoards.boards;
 
-  if (!tasks) return null;
+  if (!tasks || !boards || !sections || !storeProfile) return <Loading/>;
 
   function getBoard(task) {
     // GET USER BOARDS

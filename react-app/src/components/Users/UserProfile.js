@@ -12,6 +12,7 @@ import quoteCensor from "./quoteCensor";
 import { useHistory } from "react-router-dom";
 import boardicon from "../../assets/board.png";
 import { getAllBoardsForEachSection } from "../../store/sections";
+import Loading from "../Loading/Loading";
 
 function UserProfile() {
   const dispatch = useDispatch();
@@ -209,7 +210,7 @@ function UserProfile() {
       </div>
     );
   } else {
-    return <h1>...Loading</h1>;
+    return <Loading/>;
   }
 }
 

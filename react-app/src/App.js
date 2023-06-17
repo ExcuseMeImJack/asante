@@ -20,14 +20,12 @@ import MobileBanner from "./components/MobileBanner";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  const user = useSelector((state) => state.users.profile);
+  const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
       dispatch(authenticate()).then(() => setIsLoaded(true));
-      dispatch(getUserProfile())
-
-
   }, [dispatch]);
+  
   return (
     <div className="app">
       <MobileBanner />

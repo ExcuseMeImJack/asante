@@ -6,6 +6,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { deleteBoardById } from "../../store/boards";
 import Sections from "../Sections/Sections";
 import CreateSectionForm from "../Sections/CreateSectionForm";
+import Loading from "../Loading/Loading";
 
 function SingleBoard() {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ function SingleBoard() {
 
   const board = storeBoards.board;
 
-  if (!board) return <h1>...Loading</h1>;
+  if (!board || !storeBoards) return <Loading/>;
 
   return (
     <div className="board-container">

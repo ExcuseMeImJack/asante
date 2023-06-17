@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import EditTaskByIdForm from "../Tasks/EditTaskByIdForm";
 import "./SingleTask.css";
+import Loading from "../Loading/Loading";
 
 function SingleTask({ task }) {
   const [showEditTask, setShowEditTask] = useState(false);
@@ -25,26 +26,42 @@ function SingleTask({ task }) {
     return () => document.removeEventListener("click", closeTask);
   }, [showEditTask]);
 
-  if (!task) return <h1></h1>;
+  if (!task) return <Loading />;
   const ulClassName = "board-task" + (showEditTask ? "" : " board-hidden-task");
 
-  const getDueDate = () => {
+  const getTaskInfo = () => {
+    const currDate = new Date();
+    let date = task.due_date.split(" ")[1];
+    let month = task.due_date.split(" ")[2];
+    let year = task.due_date.split(" ")[3];
 
-    let date = task.due_date.split(' ')[1]
-    let month = task.due_date.split(' ')[2]
-    let year = task.due_date.split(' ')[3]
-
-    const due = date + ' ' + month + ' ' + year
-    return due;
-  }
+    if (new Date(task.due_date).getTime() < currDate.getTime()) {
+      return (
+        <>
+          <h3 id="task-overdue">{task.name}</h3>{" "}
+          <h4 id="task-overdue">{date + " " + month + " " + year}</h4>
+          <div id="task-overdue" className="single-task-desc">
+            {task.description || "No description"}
+          </div>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <h3>{task.name}</h3>{" "}
+          <h4>{date + " " + month + " " + year}</h4>
+          <div className="single-task-desc">
+            {task.description || "No description"}
+          </div>
+        </>
+      )
+    }
+  };
 
   return (
     <div className="single-task-card" onClick={openTask}>
-      <h3>{task.name}</h3>
-      <h4>{getDueDate()}</h4>
-      <div className="single-task-desc">
-        {task.description || "No description"}
-      </div>
+      {getTaskInfo()}
+
       <div className={ulClassName} ref={ulRef}>
         <EditTaskByIdForm
           task={task}
