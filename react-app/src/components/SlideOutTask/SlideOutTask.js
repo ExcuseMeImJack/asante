@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import './SlideOutTask.css'
 import EditTaskByIdForm from '../Tasks/EditTaskByIdForm';
+import Loading from '../Loading/Loading';
 
 export default function SlideOutTask({ task }) {
     const storeTasks = useSelector((state) => state.tasks.tasks);
@@ -35,16 +36,7 @@ export default function SlideOutTask({ task }) {
 
     const ulClassName = "slide-out-task" + (showTask ? "" : " hidden-task");
 
-
-    // if(storeTasks.length == 0) return <p>You have no tasks.</p>
-
-    // const formatDateForDisplay = () => {
-    //   const formattedDate = storeTask.due_date?.split("00:00:00")[0].split(' ');
-    //   const date = formattedDate[2]
-    //   const month = formattedDate[1]
-    //   return date + ' ' + month
-    // }
-
+    if(!storeTasks || !storeTask) return <Loading/>
   return (
     <div>
       {/* <div className='profile-divider'></div> */}

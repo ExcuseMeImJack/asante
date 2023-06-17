@@ -8,6 +8,7 @@ import SingleTask from "./SingleTask";
 import EditSectionForm from "../Sections/EditSectionForm";
 import CreateTaskBySectionForm from "../Tasks/CreateTaskBySectionForm";
 import "./AllTasksBySection.css";
+import Loading from "../Loading/Loading";
 
 function AllTasksBySection({ section, boardId }) {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ function AllTasksBySection({ section, boardId }) {
   }, [dispatch, sections]);
 
   // grab tasks array from the storeTasks object
-  if (!storeTasks.tasks) return <h1></h1>;
+  if (!storeTasks || !sections || !storeTasks.tasks) return <Loading/>;
 
   const tasks = storeTasks.tasks
     .filter((task) => task.section_id === section.id)

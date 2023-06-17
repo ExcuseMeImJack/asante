@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { Droppable, Draggable, DragDropContext } from 'react-beautiful-dnd';
 import AllTasksBySection from '../Tasks/AllTasksBySection';
 import './Sections.css'
+import Loading from '../Loading/Loading';
 
 function Sections() {
     const { boardId } = useParams();
@@ -21,6 +22,8 @@ function Sections() {
         dispatch(getSectionsByBoardId(boardId))
         dispatch(getTasksByUserId())
     }, [dispatch, boardId, sections.length])
+
+    if (!sections || !storeTasks) return <Loading/>
 
     const onDragEnd = async (result) => {
         const { destination, source, type } = result;
@@ -81,7 +84,7 @@ function Sections() {
 
     // grab sections array from the storeSections object
 
-    if (!sections) return <h1>...Loading</h1>
+
 
     sections.sort((a, b) => {
         return a.order - b.order

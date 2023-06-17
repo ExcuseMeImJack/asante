@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import EditTaskByIdForm from "../Tasks/EditTaskByIdForm";
 import "./SingleTask.css";
+import Loading from "../Loading/Loading";
 
 function SingleTask({ task }) {
   const [showEditTask, setShowEditTask] = useState(false);
@@ -25,7 +26,7 @@ function SingleTask({ task }) {
     return () => document.removeEventListener("click", closeTask);
   }, [showEditTask]);
 
-  if (!task) return <h1></h1>;
+  if (!task) return <Loading/>;
   const ulClassName = "board-task" + (showEditTask ? "" : " board-hidden-task");
 
   const getDueDate = () => {

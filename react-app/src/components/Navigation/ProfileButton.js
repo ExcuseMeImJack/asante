@@ -46,6 +46,8 @@ function ProfileButton({ user }) {
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
+  if(!profile) return null
+
   return (
     <>
       <img alt="" src={profile.profile_pic_url} onClick={openMenu} id='navbar-pic-image' className='profile-button'/>
