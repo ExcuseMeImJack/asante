@@ -25,13 +25,14 @@ function CreateSectionForm({boardId, setPlus}){
                         {errors.sectionName && <p>{errors.sectionName}</p>}
                     </div>
                     <input
+                        id='new-section-input'
                         type="text"
                         placeholder="New Section Name"
                         value={sectionName}
                         onChange={(e) => setSectionName(e.target.value)}
                     />
 
-                    <button type="submit" className="submit-create">Create Section</button>
+                    <button type="submit" className="submit-create"><i className="fa-solid fa-check"></i></button>
                 </form>
             </div>
     );

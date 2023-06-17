@@ -21,8 +21,8 @@ function EditSectionForm({sectionId, setEditButton, boardId}){
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className='edit-section-div'>
+            <form onSubmit={handleSubmit} className='new-section-form'>
                     <input
                         type="text"
                         placeholder="Section Name"
@@ -32,7 +32,7 @@ function EditSectionForm({sectionId, setEditButton, boardId}){
                     <div className="error-container">
                         {errors.sectionName && <p>{errors.sectionName}</p>}
                     </div>
-                    <button type="submit" className="submit-create">Edit Section</button>
+                    <button type="submit" className="submit-create"><i className="fa-solid fa-check"></i></button>
                 </form>
             </div>
     );

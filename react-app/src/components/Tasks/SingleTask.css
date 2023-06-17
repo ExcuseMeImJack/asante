@@ -19,8 +19,8 @@
     border-radius: 6px;
 }
 
-.single-task-card > h3 {
-    margin: 0px 0px;
+.single-task-card > h3, h4 {
+    margin: 2px 0px;
 }
 
 .board-task {

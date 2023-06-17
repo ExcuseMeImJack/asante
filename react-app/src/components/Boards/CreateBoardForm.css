@@ -48,7 +48,23 @@
 }
 
 .submit-create {
-    display: none;
+    height: 28px;
+    outline: none;
+    background-color: transparent;
+    border: none;
+}
+
+.submit-create > i {
+    font-size: 22px;
+}
+
+.new-section-form > input{
+    outline: none;
+    border: none;
+}
+
+#new-section-input{
+    border: none;
 }
 
 .create-board-input{
@@ -72,10 +88,19 @@
     /* border: none; */
     min-height: 26px;
     cursor: pointer;
+
+}
+
+.edit-section-div{
+    margin-bottom: 10px;
 }
 
 .createBoardHidden {
     top: -300px;
+}
+
+.new-section-form{
+    display: flex;
 }
 
 .create-board-btn{
@@ -147,4 +172,9 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
+}
+
+.edit-section-div{
+    border: 2px solid var(--jackblack);
+    border-radius: 5px;
 }

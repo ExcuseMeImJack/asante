@@ -23,8 +23,10 @@ function App() {
   const user = useSelector((state) => state.users.profile);
 
   useEffect(() => {
-    dispatch(authenticate()).then(() => setIsLoaded(true));
-    dispatch(getUserProfile())
+      dispatch(authenticate()).then(() => setIsLoaded(true));
+      dispatch(getUserProfile())
+
+
   }, [dispatch]);
   return (
     <div className="app">
