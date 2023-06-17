@@ -64,6 +64,15 @@ function UsersTasks() {
     }
   }
 
+  const getDueDate = (task) => {
+    let date = task.due_date.split(' ')[1]
+    let month = task.due_date.split(' ')[2]
+    let year = task.due_date.split(' ')[3]
+
+    const due =  month + ' ' + date + ' ' + year
+    return due;
+  }
+
   return (
     <div className="my-tasks-page">
     <div className="userstasks-container">
@@ -78,7 +87,7 @@ function UsersTasks() {
           {tasks.map((task) => (
             <div key={task.id} className="task-items">
               <SlideOutTask task={task} key={task} />
-              <p>{dateFormat(new Date(task.due_date))}</p>
+              <p>{getDueDate(task)}</p>
               <p id="my-tasks-getboard">{getBoard(task)}</p>
             </div>
           ))}
